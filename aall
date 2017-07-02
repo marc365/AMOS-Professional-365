@@ -5,6 +5,7 @@ execute apro
 execute adata
 execute aedit
 execute amon
+execute aext
 
 delete >NIL: +LEqu.s
 delete >NIL: +Toktab_Verif.Bin

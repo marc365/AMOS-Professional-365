@@ -23,7 +23,7 @@ ExtNb		equ	6-1
 
 ;		AMIGA's includes
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		INCDIR		":Includes/I/"
+		INCDIR		"includes/"
 		INCLUDE		"Exec/Types.I"
 		INCLUDE		"Exec/Exec.I"
 		INCLUDE 	"Devices/Serial.I"

@@ -121,12 +121,12 @@ Txt1		EdT	1,<APSystem/>
 		EdT	15,<>
 ; Liste des 26 extensions
 ; ~~~~~~~~~~~~~~~~~~~~~~~
-		EdT	16,<>
-		EdT	17,<>
-		EdT	18,<>
+		EdT	16,<AMOSPro_Music.Lib>
+		EdT	17,<AMOSPro_Compact.Lib>
+		EdT	18,<AMOSPro_Request.Lib>
 		EdT	19,<>
 		EdT	20,<>
-		EdT	21,<>
+		EdT	21,<AMOSPro_IOPorts.Lib>
 		EdT	22,<>
 		EdT	23,<>
 		EdT	24,<>
