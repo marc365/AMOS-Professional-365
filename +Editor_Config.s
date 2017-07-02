@@ -53,8 +53,8 @@ Debut
 		dc.w	256		46
 		ds.l	7		48 Securite
 ; Flags
-.Ed_AutoSave	dc.l	5*50*60		76
-.Ed_AutoSaveMn	dc.l	5		80
+.Ed_AutoSave	dc.l	0		76
+.Ed_AutoSaveMn	dc.l	0		80
 .Ed_SchMode	dc.w 	0		84
 .Ed_Tabs	dc.w	3		86
 .Esc_Output	dc.b	1		88

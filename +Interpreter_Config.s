@@ -48,7 +48,7 @@ PI_PrtRet	dc.b 	1		34-
 PI_Icons	dc.b	0		35-
 ; Autoclose workbench?
 ; ~~~~~~~~~~~~~~~~~~~~
-PI_AutoWB	dc.b	1		36- Fermer automatiquement
+PI_AutoWB	dc.b	0		36- Fermer automatiquement
 PI_AllowWB	dc.b	1		37- Close Workbench effective?
 ; Close editor?
 ; ~~~~~~~~~~~~~~~~~~~~
@@ -121,12 +121,12 @@ Txt1		EdT	1,<APSystem/>
 		EdT	15,<>
 ; Liste des 26 extensions
 ; ~~~~~~~~~~~~~~~~~~~~~~~
-		EdT	16,<AMOSPro_Music.Lib>
-		EdT	17,<AMOSPro_Compact.Lib>
-		EdT	18,<AMOSPro_Request.Lib>
+		EdT	16,<>
+		EdT	17,<>
+		EdT	18,<>
 		EdT	19,<>
 		EdT	20,<>
-		EdT	21,<AMOSPro_IOPorts.Lib>
+		EdT	21,<>
 		EdT	22,<>
 		EdT	23,<>
 		EdT	24,<>
