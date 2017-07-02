@@ -1,0 +1,37 @@
+
+; Version
+
+IF EXISTS +Debug_2On
+	ALib
+	AProd
+	AMusic
+	ARequest
+	ACompact
+	AIO
+;	ACompext
+	Aw
+	AComp
+	AClib
+	AHeader
+ENDIF
+IF NOT EXISTS +Debug_2On
+	ALib
+	IF EXISTS +Debug_On
+		AProd
+	ENDIF
+	IF NOT EXISTS +Debug_On
+		Apro
+	ENDIF
+	AMusic
+	ARequest
+	ACompact
+	AIO
+;	ACompext
+	AEdit
+	AMon
+	Aw
+	AComp
+	AClib
+	AHeader
+ENDIF
+

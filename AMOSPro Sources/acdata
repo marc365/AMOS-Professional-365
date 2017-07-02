@@ -1,0 +1,2 @@
+Genam "+Compiler_Config.s" TO "(Compiler_Config.o)"
+GetChunk (Compiler_Config.o) S:AMOSPro_Compiler_Config
