@@ -58,7 +58,7 @@ Debut
 .Ed_SchMode	dc.w 	0		84
 .Ed_Tabs	dc.w	3		86
 .Esc_Output	dc.b	1		88
-.Ed_QuitFlags	dc.b	0		89 Par default: confirm quit
+.Ed_QuitFlags	dc.b	1		89 Par default: confirm quit
 .Ed_Insert	dc.b	-1		90
 .Ed_Sounds	dc.b	0		91
 
@@ -190,8 +190,8 @@ Debut
 		dc.b 	1,43,0			    Resource Maker
 		dc.b 	0,0,0			    -------------
 		dc.b 	1,44,0			10  Re-tokeniser
-		dc.b 	0,0,0			    User Menu
-		dc.b 	0,0,0			    User Menu
+		dc.b 	1,45,0			    Compiler Shell
+		dc.b 	1,46,0			    Compile
 		dc.b 	0,0,0			    User Menu
 		dc.b 	0,0,0			    User Menu
 		dc.b 	0,0,0			15  User Menu
@@ -1095,7 +1095,8 @@ Auto1	EdT	1,<AMOSPro_Accessories:AMOSPro_Help/AMOSPro_Help.AMOS>
 	EdT	42,<AMOSPro_Accessories:Sample_Bank_Maker.AMOS>
 	EdT	43,<AMOSPro_Accessories:Resource_Bank_Maker.AMOS>
 	EdT	44,<AMOSPro_Tutorial:ReTokenise.AMOS>
-	EdT	45,<>
+	EdT	45,<AMOSPro_Compiler:Compiler_Shell.AMOS>
+	EdT	46,<AMOSPro_Compiler:Tiny_Shell.AMOS>
 	dc.b	0,$ff
 	even
 Auto2
@@ -1114,8 +1115,8 @@ Menu1	EdT	1,<Edit Objects>
 	EdT	9,<Resource Ed.>
 	EdT	10,<>
 	EdT	11,<Re-tokeniser>
-	EdT	12,<>
-	EdT	13,<>
+	EdT	12,<Compiler Shell>
+	EdT	13,<Compile>
 	EdT	14,<>
 	EdT	15,<>
 	EdT	16,<>

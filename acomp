@@ -1,2 +1,6 @@
-Genim2 +APComp.s -oAP2:APCmp -d
-Copy APCmp To APro:APSystem
+echo "***Assembling compiler"
+execute compiler/acdata
+execute compiler/acomp
+execute compiler/aclib
+execute compiler/acompext
+execute compiler/aheader
