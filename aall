@@ -12,3 +12,7 @@ delete >NIL: +LEqu.s
 delete >NIL: +Toktab_Verif.Bin
 
 echo "***Success RELEASE build"
+
+echo "***Running Tests"
+execute atools
+echo "***All Tests Successful"
