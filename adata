@@ -1,11 +1,15 @@
-Genim2 +Editor_Config.s -o(Editor_Config.o)
-GetChunk (Editor_Config.o) APro:APSystem/AMOSPro_Editor_Config
-Genim2 +Interpreter_Config.s -o(Interpreter_Config.o)
-GetChunk (Interpreter_Config.o) S:AMOSPro_Interpreter_Config
-Delete APro:APSystem/AMOSPro_Editor_LastSession
-Delete Default_Editor_Config
-Delete Default_Interpreter_Config
-Copy APro:APSystem/AMOSPro_Editor_Config Default_Editor_Config
-Copy S:AMOSPro_Interpreter_Config Default_Interpreter_Config
-;Copy APro:APSystem/AMOSPro_Editor_Config AMOSPro_Tutorial:Extra_Configs/Editor_Config.Backup
-;Copy S:AMOSPro_Interpreter_Config AMOSPro_Tutorial:Extra_Configs/Interpreter_Config.Backup
+echo "***Assembling the Editor Configuration"
+c/genim2 +Editor_Config.s -oRAM:Editor_Config.o
+c/Get_Chunk RAM:Editor_Config.o AMOS/Tutorial/Extra_Configs/Editor_Config.Backup
+
+echo "***Assembling the default Interpreter Configuration"
+c/genim2 +Interpreter_Config.s -oRAM:Interpreter_Config.o
+c/Get_Chunk RAM:Interpreter_Config.o AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup
+
+echo "***Installing default configuration"
+Copy AMOS/Tutorial/Extra_Configs/Editor_Config.Backup AMOS/APSystem/AMOSPro_Editor_Config
+Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup AMOS/AMOSPro_Interpreter_Config
+
+echo "***Installing default configuration to s:"
+Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup s:AMOSPro_Interpreter_Config
+
