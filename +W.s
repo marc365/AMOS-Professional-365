@@ -14,23 +14,18 @@ EZFlag		equ 	0
 		ENDC
 ***************************************************************************
 
-		IncDir	":Includes/i/"
-		Include "graphics/rastport.i"
-		Include	"graphics/clip.i"
+		IncDir	"includes/"
+		Include "exec/types.i"
+		Include "exec/interrupts.i"
+		Include "graphics/gfx.i"
 		Include "graphics/layers.i"
-		Include "graphics/text.i"
+		Include "graphics/clip.i"
+		Include "hardware/intbits.i"
 		Include "devices/input.i"
 		Include "devices/inputevent.i"
-		Include "exec/interrupts.i"
-		Include "exec/io.i"
-		Include "hardware/intbits.i"
-		
-		Include "layers_lib.i"
-		Include "graphics_lib.i"
 
-		IncDir	":AMOS.s/Pro2/"
-		Include	"+AMOS_Includes.S"
-
+		Include	"+Debug.s"
+		Include	"+AMOS_Includes.s"
 
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Version	MACRO
@@ -9842,7 +9837,7 @@ NewScreen:	dc.w 0,0,NTx,NTy,NNp
 
 ;		Caracteres speciaux des fontes AMOS
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Def_Font	IncBin	"+WFont.Bin"
+Def_Font	IncBin	"bin/+WFont.bin"
 		even
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -16533,7 +16528,7 @@ TNeg2		dc.b 27,"Z2",0
 RPic_Sx		equ	112
 RPic_Sy		equ	56
 RPic_Np		equ	3
-Req_Pal		Incbin	"ReqPic.Bin"
+Req_Pal		Incbin	"bin/ReqPic.bin"
 RPic		equ	Req_Pal+32*2
 		even
 
@@ -16768,7 +16763,7 @@ ShInit
 ;		Banque MOUSE.ABK par defaut
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		SECTION	"m",DATA_C
-		IncBin	"+AMOSPro_Mouse.Abk"
+		IncBin	"bin/+AMOSPro_Mouse.abk"
 
 		even
 

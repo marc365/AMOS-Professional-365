@@ -21156,7 +21156,7 @@ Dia_NParam	dc.w	0		0 EXit
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	Dia_FTokens
 ; - - - - - - - - - - - - -
-Dia_FTokens	IncBin	"+Dialog_Funcs.Bin"
+Dia_FTokens	IncBin	"bin/+Dialog_Funcs.bin"
 		Even
 
 * Définition des fonctions

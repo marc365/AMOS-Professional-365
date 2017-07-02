@@ -520,7 +520,7 @@ Debut
 ; Chaines Menus
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	dc.l	.Mn2-.Mn1
-.Mn1	IncBin	"Editor_Menus.Asc"
+.Mn1	IncBin	"bin/Editor_Menus.asc"
 	Even
 .Mn2
 
@@ -1130,7 +1130,7 @@ Menu2
 ; Definitions Menu
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	dc.l	DMenu2-DMenu1
-DMenu1	Incbin	"Editor_Menus.Bin"
+DMenu1	Incbin	"bin/Editor_Menus.bin"
 	Even
 DMenu2	
 
