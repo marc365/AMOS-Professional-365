@@ -26,3 +26,8 @@ In occasion of Pianeta Amiga 2012, Pietro Ghizzoni, current owner of AMOS Pro so
 > [pre Public Domain ?](http://www.amiworld.it/news/amos_upgrade_eng.html)
 As you know some months ago i've obtained the AMOS sources... during these months I've spent my time learning the AMOS internal functions and structures, in order to upgrade it and develop the new AMOSPro V3... but I've to say that my projects have changed a lot during this period. My original idea was to upgrade/expand it, add AGA support and most of all to make AMOS more OS friendly! but when I examined the sources some problems have arisen...
 
+
+# AmiDARK Note on 2019.10.25 :
+The AmiDARK branch of marc365/AMOSProfessional was created with some objectives.
+The first one, due to the fact that the AmosPersonal.lib source code is available in the marc365 original AMOSProfessional repository, is to provide a version with a compilable source code of the AmosPersonal.lib.
+Once this objective will be reached, I will start another one.
