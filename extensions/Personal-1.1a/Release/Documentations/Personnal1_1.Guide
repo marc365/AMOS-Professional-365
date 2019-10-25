@@ -1,0 +1,1033 @@
+@database "Personnal1_0b.Guide"
+
+@node Main "Amos Pro/1.3 Personnal.Lib Documentation"
+*************************************************************************** 
+
+            ------------------------------------------------
+----------- Amos Professionnal PERSONNAL.LIB Documentation ---------------
+            ------------------------------------------------
+
+*************************************************************************** 
+
+Les librairies 'Amospro_Personnal.lib' et 'Personnal.lib' sont les version
+ respectives AmosProfessionnal et Amos1.3 de ma librairie personnelle.
+
+                         Contenu de ce Guide :
+                         ---------------------
+
+                      @{" A propos de l'extension " link ABOUT }
+
+                  @{" Comment se procurer les UPDATES " link VERSION }
+
+                 @{" Installation sur l'AmosPro/Amos1.3 " link INSTALL }
+
+                 @{" Documentation sur les instructions " link DOC }
+
+                             @{" Adresses " link ADRESSES }
+
+                          @{" Derniere Minute " link MINUTE }
+
+                     @{" ATTENTION AUX ERREURS !!! " link ERREURS }
+
+     @{" Nouvelles instructions non presentes sur la version V1.0b " link NEWS1 }
+
+             @{" Nouvelles instructions de la version 1.2 " link NEWS2 }
+
+@endnode
+
+@node ERREURS
+
+Il est possible que certain programmes affichent lors du test d'integrite
+de l'AMOS des messages d'erreur du style 'Extension not loaded'.
+C'est normal.Sur certain programmes,pour accentuer a son Zenith la vitesse
+de calcul,j'ai utilise les instructions 'Multi No' et 'Multi Yes' de la
+librairie 'Amospro_Turbo1_9.lib' (Version donnee dans la revue AMIGA DREAM).
+il suffit de les enlever du programme.
+
+@endnode
+
+@node DOC
+
+         Documentation sur les instructions de la version 1.0b :
+         -------------------------------------------------------
+ 
+        @{"                Les routines simples               "link I1 }
+
+        @{"              Les routines COPPER LIST             "link I2 }
+
+        @{"                Les effets MOSAIQUES               "link I3 }
+
+        @{"             Les instructions IFF/ILBM             "link I4 }
+
+        @{"      Les fonctions MATHEMATIQUES simplifiees      "link I5 }
+
+        @{"           Les Differentiels BLITTER/CPU           "link I6 }
+
+        @{"                 Le PATCH AGA/ECS                  "link I7 }
+
+        @{"          Le second ecran graphique COPPER         "link I8 }
+
+        @{"               Les copies de BLOCKS                "link I9 }
+
+        @{"           Les icones AGA/ECS simplifies           "link I10 }
+
+        @{"                 Le MULTI PLOT                     "link I11 }
+
+@endnode
+
+@node ABOUT
+
+                        A PROPOS DE CETTE EXTENSION
+                       -----------------------------
+
+ J'ai programme cette extension car je voulais pouvoir utiliser le chipset
+AGA et quelques effets du genre Mosaiques et Faux Dual Playfields.
+
+ Toutes les routines presentes dans cette version de ma librairie ont ete
+testees sur un AMIGA 1200 standard , sur un AMIGA 1200 avec 68030 et 4 Mega
+octets de FAST MEM 32 BITS et Sur la configuration precedente avec 1 Mega
+octets de FAST MEM 32 BITS .
+
+ Si des bugs sont decouverts(Echappes aux tests ???),Ecrivez-moi directement
+a mon adresse en donnant une description exacte et precise de l'erreur ou du
+plantage.Ceci me permettra d'ameliorer mon extension pour un meilleur usage.
+  
+@endnode
+
+@node VERSION
+
+      Comment se procurer la version complete et les futurs UPDATES
+     ---------------------------------------------------------------
+ C'est tres simple.Il suffit de m'ecrire a l'adresse donnee a la fin de ce
+fichier avec un cheque de 60 francs en mon nom.Il vous sera alors envoye la
+derniere version COMPILABLE de l'extension avec toutes la documentation et
+ tout les exemples pour mieux utiliser mon extension.
+
+                                                 @{" Adresse "  link ADRESSES}
+
+Si vous avez commande une version COMPLETE,Vous recevrez la derniere version
+en cours et,lorsque une future version sortira,vous la recevrez sans avoir
+besoin de la commander.La version suivante sera GRATUITE.
+
+@endnode
+
+@node I1
+
+> Les instructions simples <
+----------------------------
+
+Set Ntsc
+	-> Met l'amiga en 60 Hertz.
+
+Set Pal
+	-> Met l'amiga en 50 Hertz.
+
+=Right Click
+	-> Renvoie l'etat (TRUE/FALSE) du bouton droit (Bouton 2) de la 
+          souris.
+
+=Fire(1,2) et =Fire(1,3)
+	-> Renvoie l'etat (TRUE/FALSE) des boutons 2 et 3 de la manette.
+
+=Ham
+	-> Renvoie 4096 (Ex: Screen Open 0,320,256,Ham,Lowres)
+
+=Ehb
+	-> Renvoie 64 (Ex: Screen Open 0,320,256,Ehb,Lowres)
+
+Low Filter.b MASK To START,END / Low Filter.w ... / Low Filter.L ...
+	-> Calcule un filtre minimum de l'adresse START a l'adresse END tout
+	  les 1 octet (.b) , 2 octets (.w) , 4 octets (.l)
+	  Si DONNEE<MASK Alors DONNEE=MASK.
+
+Octets Fill VALUE,START To END
+	-> Rempli une zone memoire de START a END avec la valeur VALUE.
+	  Octets par octets.
+
+                                   @{" Exemple " link EXEMPLE01 }
+
+Blitter Copy BASE0 To BASE1
+	-> Equivalent de Screen Copy mais avec les bases des ecrans sources
+	  (BASE0) et cible (BASE1).
+
+Lsr Zone START To END
+	-> Produit un decalage de 4 octets vers la droite sur la zone allant
+	  de START a END.
+
+@endnode
+
+@node I2
+
+> Les instructions de gestion d'ecran COPPER <
+----------------------------------------------
+
+Ma gestion de copper est assez simple.Elle ne permet d'avoir qu'un seul ecran
+ visible mais permet des effets de changements de couleurs par lignes.
+  On peut avoir jusqu'a 256 couleurs a l'ecran(sur les machines AGA).
+
+Create Aga ADR
+	-> Permet de creer un copper list AGA (Jusqu'a 256 couleurs) a partir
+	  de l'adresse ADR.Ce copper list sera alors utilise par la librairie
+	  pour gerer les instructions suivantes.
+
+Create Standard ADR
+	-> Meme instruction que la precedente mais pour les machines ECS
+	  (Jusqu'a 64 couleurs EHB).
+
+                   @{" Exemple d'utilisation de copper list " link EXEMPLE02 }
+
+Copper Base ADR
+	-> Permet de changer de base copper list.
+	  Il faut toujours redefinir les BITS PLANS correspondant a l'ecran
+	  destine au nouveau copper car au sinon ERREURS !!!.
+	   Le changement d'ecran ne sera visible que lorsqu'un 'SCREEN POSITION'
+	  sera utilise.
+
+=Copper Base
+	-> Renvoie l'adresse de base du copper list courant(Pas ceux de l'amos
+	  ou du workbench mais celui de la librairie).
+
+Set Plane BPL,ADR
+	-> Definit le Bit Plan BPL a l'adresse ADR dans le copper list courant.
+
+                      @{" Exemple d'utilisation du copper " link EXEMPLE02 }
+
+=Plane Base(BPL)
+	-> Renvoie l'adresse de base du Bit Plan BPL du copper courant.
+
+Set View Planes NUM
+	-> Definit le nombre de Bits Plans visibles(0 a 8 AGA/0 a 6 ECS).
+
+Set Screen Sizes XSIZE,YSIZE
+	-> Definit les dimensions de l'ecran entier sachant que seulement 320
+	  pixels seront visibles en X et 192 en Y.
+
+Set Color REG,R,V,B
+	-> Permet de definir la couleur REG (0 a 15 ECS) en Rouge(R),
+	  Vert(V) et en Bleu(B) de 0 a 15.
+
+Set Aga Color REG,R,V,B
+	-> Meme instruction que la precedente mais en AGA (0 a 255).
+
+=Set Color(REG)
+	-> Renvoie la valeur de la couleur REG (0 a $FFF)
+
+X Fade
+	-> Produit un Fade Down de toutes les couleurs utilisees dans le copper
+	  list courant(Assombrit l'ecran de 1 ton en R,V,B)
+
+Copper Next Line
+	-> Deplace la position COPPER MODIFY de 1 ligne vers le bas de l'ecran.
+	  Cette instruction permet de redefinir 256 couleurs (AGA) ou 32 couleurs
+	  (ECS) par lignes.
+
+=Copper Line
+	-> Renvoie la ligne courante de COPPER MODIFY.
+
+New Color Value REG,R,V,B
+	-> Modifie la couleur REG en Rouge(R),Vert(V) et Bleu(B) a partir de la
+	  ligne Copper de COPPER MODIFY(Permet de creer des rainbows sur autant
+	  de couleurs que l'on veut en meme temps).
+
+                     @{" Exemple de degrade copper list " link EXEMPLE04 }
+
+=X Screen Size
+	-> Renvoie la dimension en X de l'ecran courant.
+
+=Y Screen Size
+	-> Renvoie la dimension en Y de l'ecran courant.
+
+Screen Position MODE,X,Y
+	-> Equivalent a 'Screen Offset' de l'amos.
+	  MODE represente de mode graphique:
+	   0=Tous les bits plans !!!
+	   1=Bits plans IMPAIRS (Double Playfield).
+	   2=Bits plans PAIRS (Double Playfield).
+	  X,Y les coordonnees du premier point en haut a gauche.
+
+Set Dual Mode MODE
+	-> Active le mode dual playfield (MODE<>0) ou le desactive (MODE=0).
+
+Set Resolution MODE
+	-> Definit Lowres (MODE=0) ou Hires (MODE<>0).
+
+Set Lace MODE
+	-> Definit InterLace (MODE<>0) ou Non InterLace (MODE=0)
+
+Copper Wait Line LINE
+	-> Equivalent de 'Copper Next Line' mais permet de se deplacer seulement
+	  vers le bas de l'ecran jusqu'a la ligne LINE.
+
+Ham Mode MODE
+	-> Active le mode HAM (MODE<>0) ou le desactive (MODE=0)
+
+Active Copper
+	-> Active le copper AUXILIAIRE de la librairie.
+	  !!! ATTENTION !!! Un copper list doit avoir ete cree auparavant et
+	  l'Amos doit etre en mode 'Copper Off' !!!
+
+Inverse Playfield / Normal Playfield
+	-> Definit l'inversion des deux playfield dans un DUAL PLAYFIELD.
+
+Set Dual Palette PAL
+	-> Permet de definir le bloc palette du second playfield lorsque l'on
+	  est en mode dual playfield (SET DUAL MODE<>0).
+	  Cette instruction ne sert que pour les machines AGA.
+          la valeur par defaut est : mode AGA pal 16 a 31 : $1000
+                                     mode ECS pal 08 a 15 : $0C00
+
+Vbl Line Wait LINE
+	-> Fait une attente vbl jusqu'a la ligne LINE.
+
+Utilisations de Double Buffer :
+-------------------------------
+
+Set D Plane BPL,ADRESS
+	-> Definit les Bits Planes Logiques (BPL) a l'adresse ADRESS.
+
+Swap Planes
+	-> Met les plans logiques a la place des bits plans courants et
+	  place les bits plans courant en logic.
+          Equivalent de 'Screen Swap'
+
+                   @{" Exemple de bouble buffer " link EXEMPLE05 }
+
+@endnode
+
+@node I3
+
+> Les effets Mosaiques <
+------------------------
+
+Mosaic X2 BASE / Mosaic X4 BASE / Mosaic X8 BASE / Mosaic X16 BASE
+               / Mosaic X32 BASE
+	-> Cree un effet de mosaique de facteur 2/4/8/16/32 pixels sur l'ecran
+	  dont BASE=Screen Base.
+
+                  @{" Exemple d'utilisation des mosaiques " link EXEMPLE06 }
+
+@endnode
+
+@node I4
+
+> L'IFF/ILBM <
+--------------
+
+  Ces petites routines permettent d'avoir des informations sur un fichier IFF
+ graphique charge dans une banque Amos.
+
+=Iff X Size(IFFBASE)
+	-> Renvoie la dimension en X du graphique iff stocke a partir de l'
+	  adresse IFFBASE.
+
+=Iff Y Size(IFFBASE)
+	-> Renvoie la dimension en Y du graphique iff stocke a partir de l'
+	  adresse IFFBASE.
+
+=Iff Planes(IFFBASE)
+	-> Renvoie le nombre de Bits Plans dont le dessin a besoin pour etre
+	  entierement vu.Le fichier IFF doit etre stocke a partir de l'adresse
+	  IFFBASE.
+
+=Iff Color(IffBase,Color)
+	-> Renvoie la valeur en rouge,vert,bleu ($0RGB) de la couleur 'Color'
+	  contenue dans le fichier Iff/Ilbm commencant a l'adresse IffBase.
+
+=Cmap Base(IffBase)
+	-> Renvoie l'adresse de base de la CMAP du fichier Iff/Ilbm.
+
+!!!ATTENTION !!!
+Les routines suivantes agissent sur le COPPER-LIST cree dans la partie qui
+parle de la gestion de l'ecran.
+
+Iff Convert IFFBASE
+	-> Affiche le dessin du fichier IFF stocke a partie de IFFBASE sur
+	  l'ecran definit precedemment avec 'Set Planes BPL,ADR'
+	  !!! ATTENTION !!! Si il n'a pas ete definit assez de Bits Plans pour
+	  afficher le nombre de couleurs demandees par le dessin :
+	  GROS PLANTAGE + SOFTWARE FAILURE(GURU MEDITATION!!!)
+
+Iff4bits Palette To Copper NUM,CMAPBASE
+	-> Redefinit NUM couleurs du copper list avec les couleurs du fichier
+	  Iff/Ilbm en memoire. (Palette de base en composantes 0/15)
+
+Iff8bits Palette To Copper NUM,CMAPBASE
+	-> Redefinit NUM couleurs du copper list avec les couleurs du fichier
+	  Iff/Ilbm en memoire. (Palette de base en composantes 0/255)
+
+Change Palette NUM,PALETTEBASE
+	-> Redefinit NUM Couleurs du copper list avec une liste de couleurs
+	  definies en Octets Rouge.b,Vert.b,Bleu.b sur une intensite de 0 a 255
+	  pour chaque composantes de couleur.
+
+Fade Palette NUM,SOURCE,CIBLE
+	-> Compare deux palettes en R,V,B(4bits 0/15) et augmente ou dimunue
+	  les composantes de couleurs de la CIBLE pour obtenir la palette
+	  de couleur de la source.Le calcul est effectue sur NUM couleurs
+	  de la palette et se produit par saut de 1 intensite.
+	  Si on doit decaler une couleur de x tons,il faudra appeler x fois
+	  cette routine.
+
+Change Palette Num,R,V,B,SOURCE To CIBLE
+	-> Cree la palette SOURCE dans la palette CIBLE avec les composantes
+	  en Rouge(R),Vert(V) et Bleu(B) modifiee en ajoutant R,V,B et cela
+	  sur NUM Couleurs.
+
+Iff8bits To Iff4Bits NUM,SOURCE To CIBLE
+	-> Cree une palette au format iff 4 bits(Intensite de 0 a 15)
+	  a partir de l'adresse CIBLE avec les Composantes 8 bits
+	  (intensite de 0 a 255) de la SOURCE et cela sur NUM Couleurs.
+
+@endnode
+
+@node I5
+
+> Les routines Mathematiques <
+------------------------------
+
+  Ces routines sont des routines simplifiees qui renvoient des nombres
+  ENTIERS (sans VIRGULE !!!)
+
+=Fc Cos(ANGLE)
+	-> Renvoie Cos(ANGLE)*1000 (DEGREE)
+
+=Fc Sin(ANGLE)
+	-> Renvoie Sin(ANGLE)*1000 (DEGREE)
+
+=Fc Tan(ANGLE)
+	-> Renvoie Tan(ANGLE)*1000 (DEGREE)
+
+@endnode
+
+@node I6
+
+> Le Faux DUAL PLAYFIELD <
+--------------------------
+
+Double Mask BASEM TO BASE0,BASE1
+	-> Calcule un faux Dual Playfield.
+	  BASEM est la 'Screen Base' d'un ecran en 2 couleurs representant le
+	  masque de calcul.
+	  BASE0 est la 'S. B.' de l'ecran de fond.
+	  BASE1 est celle de l'ecran de 1er plan qui est aussi l'ecran cible.
+
+L Double Mask BASEM,YSTART,YEND to BASE0,BASE2
+	-> Meme routine que la precedente mais la calcule a partir de la ligne
+	  YSTART et jusqu'a la ligne YEND.
+
+Blit Mask BASE0,BASEM,BASE1 TO BASE2
+	-> Meme principe que les deux routines precedentes mais utilise le
+	  BLITTER pour faire son calcul.
+	  BASE0 est l'ecran de 1er plan.
+	  BASEM est l'ecran de masque.
+	  BASE1 est l'ecran de fond.
+	  BASE2 est l'ecran cible.
+
+L Blit Mask BASE0,BASEM,BASE1 to BASE2,YSTART,YEND
+	-> Meme routine que la precedente utilisant elle aussi le blitter.
+	  avec en plus:
+	  YSTART represente la premiere ligne du calcul.
+	  YEND   represente la derniere ligne du calcul.
+
+!!! ATTENTION !!! Toutes les Bases BASEx (0,1,2,M) representent les
+  ' Screen Base ' des ecrans utilises !!!
+
+@endnode
+
+@node I7
+
+> SPECIAL AMOS 1.3 PATCH !!! <
+------------------------------
+
+  Vous avez surement remarque que lorsque vous lancez votre Amos1.3 sur une
+ machine AGA avec l'aga actif ou que vous lancez un programme compile avec l'
+ amos 1.3 sur une meme machine,il arrive que l'ecran soit BROUILLE.
+ Cela vient du mode double scanning de l'aga.pour remedier a cela,j'ai fait une
+ petite instruction qui s'utilise tres simplement.
+ Losrque vous chargez votre amos 1.3. si l'ecran est brouille,placez vous en
+ mode direct ('esc'). tapez 'Aga Patch' puis validez.Automatiquement votre ecran
+ redeviendra normal.
+  Pour les programmes que vous compilerez,placez cette instruction en premiere
+ ligne ou juste apres les SET BUFFER si il y en a.Cela evitera d'avoir la mauvaise
+ surprise de voir votre programme ou jeu en 'PIXELS-BUGGS'.
+  Elle s'execute automatiquement lors du lancement d'un programme mais doit
+ etre reutilisee si l'AMOS est switche avec le WORKBENCH...
+
+Aga Patch
+	-> Desactive le mode Double Scanning AGA pour ameliorer la compatibilite
+	  de l'amos 1.3 / Compile avec les machines AGA.
+
+@endnode
+
+@node I8
+
+> LE SECOND ECRAN GRAPHIQUE <
+-----------------------------
+
+Ceci est un rajout de derniere minute.J'ai ete contraint de rajouter ces
+ quelques instructions pour un petit jeu que je travaille.
+Ces instructions sont limitees pour l'instant mais seront plus developpees
+ sur des versions superieures de la librairie.
+Les instructions suivantes agissent sur le COPPER-LIST cree dans la partie
+reservee a la gestion de l'ecran.
+
+Active Second Screen
+	-> Active un ecran en 320*32 en 6 Bits plans maximum(64EHB)
+	  Cet ecran se trouve juste en dessous de l'ecran copper.
+	!!! ATTENTION !!! Une fois que le Second Screen est active,il est
+	impossible de faire des modifications de couleurs par ligne copper
+	sur le 1er ecran.Elle s'effectueront alors sur le Second Ecran.
+
+Set Second Planes BPL,ADRESS
+	-> Definit le bit plan BPL du Second Screen avec l'adresse ADRESS.
+
+Set Second View VIEW
+	-> Definit le nombre de bits plans visibles dans le Second Screen
+	  (VIEW<9) soit 2^VIEW Couleurs. (EHB Max(Ecs),256 Max(Aga))
+	   Attention !!! Seules les couleurs de 0 a 31 peuvent etre definies
+	   Les couleurs de 32 a 255 (AGA Seulement) seront les memes que
+	   celles de l'ecran copper courant.
+
+Set Second Color REG,R,V,B
+	-> Redefinit la couleur REG du Second Screen en Rouge(R),Vert(V)
+	  et Bleu(B).(de 0 a 15)
+
+Second Y Size YSIZE
+	-> Definit la taille visible de l'ecran 2 en Y (Y>16)
+
+@endnode
+
+@node I9
+
+> Les COPY de BLOCKS <
+----------------------
+
+S32 Block To Screen SBASE
+	-> Copie un icone de 32*32 pixels situe en haut a gauche de l'ecran
+	  sur la totalite de l'ecran.
+	  SBASE Correspond a : SBASE=Screen Base . Pour l'ecran concerne.
+
+S32 Vertice To Screen SBASE
+	-> Meme instruction que la precedente a l'exception pres que l'icone
+	  a pour dimension 32 de large sur la hauteur de l'ecran.
+
+                  @{" Exemple de copie de blocks " link EXEMPLE07 }
+
+@endnode
+
+@node I10
+
+> Les ICONES AGA <
+------------------
+
+!!! ATTENTION !!!
+La saisie des icones depend du nombre de bits plans definis dans la partie
+qui parle de la gestion de l'ecran !!!
+
+Aga Reserve Icon NUM
+	-> reserve de la memoire pour creer NUM Icones en 16*16 pixels
+	  utilisant au maximum 8 bits plans.
+	Soit 8 octets + 260 Octets par icone reserve.
+
+Aga Erase Icon
+	-> Libere la memoire reservee avec l'instruction precedente.
+
+Aga Get Icon IC,X,Y
+	-> Equivalent de Get Icon IC,X,Y To X+16,Y+16 de l'amos mais 
+	  saisit un icone de 16*16 pixels contenu dans l'ecran definit
+	  avec ' Set Plane ' aux coordonnees X,Y.
+
+Aga Paste Icon IC,X,Y
+	-> Equivalent de Paste Icon X,Y,IC mais dans l'ecran definit avec
+	  ' Set Plane '.
+
+=Aga Icon Base
+	-> Renvoie l'adresse de base de la banque d'icones utilisees.
+
+Aga Icon Save FILE$
+	-> Sauvegarde la banque d'icones en cours.
+
+Aga Icon Load FILE$
+	-> Charge une banque d'icones sauvegardees.
+
+@endnode
+
+@node I11
+
+> Le Multi Plots <
+------------------
+
+Attention !!!
+Ces instructions s'utilisent avec le copper utilisateur de la librairie.
+Les calculs des couleurs et les traces s'effectuent sur des bits plans
+definis par 'Set Plane BPL,ADR'
+La valeur de la couleur d'un point peut aller de 0 a 63 pour les machines
+ECS et de 0 a 255 pour les machines AGA Selon le nombre de bits plans qui
+ont ete definis.
+
+Mplot Reserve NUM
+	-> Reserve un espace memoire suffisant pour stocker:
+	   -> Des coordonnees de points : X(.w),Y(.w) .
+	   -> La couleur utilisee :       C(.w) .
+	Soit 8 octets + 6 Octets par points reserve.
+
+Mplot Erase
+	-> Libere l'espace memoire reserve avec 'Mplot Reserve NUM'
+
+Mplot Define PTS,X,Y,C
+	-> Definit le point PTS avec les coordonnees (X,Y).
+	  Le point sera trace avec la couleur C.
+
+Mplot Save FILE$
+	-> Sauve la banque memoire alloue pour les Multi Plots.
+
+Mplot Load FILE$
+	-> Charge le fichier Multi Plots en memoire.
+
+Mplot Draw FIRST To LAST
+	-> Trace tous les points a partir du point FIRST et jusqu'au point
+	  LAST.
+
+Mplot Dpf1 Draw FIRST To LAST
+	-> Equivalent de l'instruction precedente mais trace les points sur
+	  les bits plans impairs (1,3,5(&7 if AGA)).
+	  Ceci est utile en cas de double playfield.
+
+Mplot Dpf2 Draw FIRST To LAST
+	-> Voir instruction precedente mais sur les bits plans pairs.
+	  (2,4,6(&8 if AGA)).
+
+Mplot Modify FIRST To LAST,XADD,YADD
+	-> Modifie la position des points FIRST a LAST en ajoutant XADD a
+	  leur position en Abscisses (x) et YADD a leur position en (y)
+	  ordonnee.XADD et YADD peuvent etre negatifs.
+
+Mplot X Define POINT,XVALUE
+	-> Change la valeur de l'abscisse du point POINT en ajoutant XVALUE
+	  a sa valeur initiale.XVALUE peut etre negatif.
+
+Mplot Y Define POINT,YVALUE
+	-> Change la valeur de l'ordonnee du point POINT en ajoutant YVALUE
+	  a sa valeur initiale.YVALUE peut etre negatif.
+
+Mplot C Define POINT,VALUE
+	-> Change la couleur du point POINT.
+
+Mplot Origin XORI,YORI
+	-> Definit l'origine du plan de trace aux coordonnees (XORI,YORI).
+	  ces valeurs seront ajoutees aux coordonnees des points pour le
+	  trace de ces derniers.
+	!!! ATTENTION !!! Les origines ne sont pas redefinies a 0 lors de
+	 l'execution d'un programme !!!.
+
+Mplot Planes PL
+	-> Definit sur combien de bits plans doivent se tracer les Multi
+	  plots.
+
+@endnode
+
+@node INSTALL
+
+****************                                              ****************
+
+> Installation sur l'Amospro ou l'Amos 1.3 <
+--------------------------------------------
+ 
+   Cette extension n'a ete prevue que pour l'AmosProV1+ et l'Amos V1.3.
+  Pour l'installer,il suffit de copier la librairie dans le repertoire:
+  'APSystem/' Pour l'amos pro et 'Amos_System/' pour l'amos 1.3.
+  Avec le 'Set interpreter' de l'amos pro ou le programme 'Config1_3.AMOS'
+  pour l'amos 1.3,placer l'extension dans l'emplacement numero 13.
+   Il faudra relancer l'amos pour que l'extension soit active apres avoir 
+   modifie votre Fichier de configuration.
+ 
+@endnode
+
+@node ADRESSES
+
+**************                                              ****************
+
+> Adresses... <
+---------------
+
+Pour obtenir la version complete,donner des idees de routines,avoir
+des contacts amicaux sur amiga,ecrire a l'adresse suivante :
+
+					Cordier Frederic
+					 Bat 16 Lou Cigaloun
+					  Square de tournadre
+					   13090 Aix En Provence
+
+  Vous pouvez m'ecrire pour recevoir la version COMPILABLE de ma librairie,
+pour me donner des idees pour augmenter les capacites de ma librairie ou 
+autres si LEGALS.
+
+							Frederic.C
+
+@endnode
+
+@node MINUTE
+
+**************                                              ****************
+
+> Derniere Minute <
+-------------------
+
+Sur les versions superieures,Il y aura en rajout de toutes les instructions
+presentes sur la v1.0b :
+	- Gestion des Sprites ECS D'apres les banques AMOS.
+	- Gestion des sprites AGA.Banque memoire separee.
+	- Toutes les idees qui me seront parvenues d'ici la.
+	- (Support de Compactage de fichier au format POWER PACKER) ? 
+	- (Support des musiques OCTAMED) ???
+
+D'apres les derniers tests de la librairie,je n'ai rien a dire de plus.
+J'espere que ma librairie vous servira pleinement.
+
+@endnode
+
+@node EXEMPLE01
+
+Octet Fill VALUE,START To END :
+-------------------------------
+
+Cette instruction est equivalente a :
+
+ For I=START To END
+    Poke I,VALUE
+   Next I
+
+@endnode
+
+@node EXEMPLE02
+
+Create Aga ADR / Create Standard ADR :
+--------------------------------------
+
+Ces deux instructions permettent de creer un copper list UTILISATEUR.
+la methode a suivre est simple :
+
+EXEMPLE :
+'
+' Ouverture de deux ecrans en 16 couleurs pour beneficier de 8 plans.
+' Saisie dans A0 et A1 des deux bases d'ecrans qui permettront de definir
+' les 8 bits plans de l'ecran en 256 couleurs.
+Screen Open 0,320,256,16,lowres
+Wait vbl
+A0=Screen Base
+Screen Open 1,320,256,16,lowres
+Wait Vbl
+A1=Screen Base
+'
+' On cree un copper list AGA dans la CHIP-RAM Obligatoirement !!!
+Reserve As Chip Data 8,4096
+Create Aga Start(8)
+'
+' On definit les 8 bits plans.
+For I=1 To 4
+   Set Plane I,Leek(A0)
+   Set Plane I+4,Leek(A1)
+   Add A0,4
+   Add A1,4
+  Next I
+'
+' On definit ensuite la palette de couleurs
+' (Pour cet exemple,les couleurs seront definies aleatoirement)
+For I=1 To 255
+   Set Aga Color I,Rnd(255),Rnd(255),Rnd(255)
+  Next i
+'
+' On definit les particularites de l'ecran.
+Set Screen Sizes 320,256
+' Le nombre de bits plans (Couleurs =2^8=256 )
+Set View Planes 8
+' Le screen offset.
+Screen Position 0,0,0
+'
+' On desactive la gestion Amos et on place notre copper list.
+Copper off
+Active Copper
+Wait Vbl
+'
+' A partir de cela,l'ecran visible fait 320*192 pixels,l'ecran reel 320*256
+' et l'on peut faire ce que l'on veut dans les 2 ecrans 0 et 1.
+
+@endnode
+
+@node EXEMPLE04
+
+Copper Next Line / Copper Wait Line LI / New Color Value REG,R,V,B :
+--------------------------------------------------------------------
+
+Pour utiliser ces instructions,nous avons besoin d'un copper utilisateur.
+
+@{"Voir l'exemple de copper utilisateur" link EXEMPLE02 }
+
+EXEMPLE 1 :
+'
+' Creer un degrade de gris sur 16 tons avec 1 ton par ligne.
+' A partir de la ligne START de l'ecran visible.
+START=32
+@{" Copper Wait Line $50+START " link WHY01 }
+For I=1 To 15
+   New Color Value 0,I,I,I
+   Copper Next Line
+  Next I
+For I=15 To 0 Step -1
+   New Color Value 0,I,I,I
+   Copper Next Line
+  Next I
+'
+' Fini.
+
+EXEMPLE 2 :
+'
+' Creer un degrade de gris sur 16 tons avec 1 ton toute les 4 lignes.
+' A partir de la ligne START de l'ecran visible.
+START=32
+@{" Copper Wait Line $50+START " link WHY01 }
+For I=1 To 15
+   Add START,4
+   New Color Value 0,I,I,I
+   Copper Wait Line $50+START
+  Next I
+For I=15 To 0 Step -1
+   ADD START,4
+   New Color Value 0,I,I,I
+   Copper Wait Line $50+START
+  Next I
+'
+' Fini.
+
+@endnode
+
+@node EXEMPLE05
+
+Set D Plane BPL,ADR / Swap Planes :
+-----------------------------------
+
+Pour utiliser ces instructions,nous avons besoin d'un copper utilisateur.
+
+@{"Voir l'exemple de copper utilisateur" link EXEMPLE02 }
+
+Si vous utilisez le mode:
+
+'
+Double Buffer
+Autoback 0
+'
+
+Vous avez un ecran en double buffer simple.
+'
+L'utilisation est simple:
+
+EXEMPLE :
+
+'
+' On ouvre un ecran en 32 couleurs.
+Screen Open 0,320,256,32,lowres
+Cls 0 : Curs Off : Hide : Flash Off : Cls 0
+Wait Vbl
+A0=Screen Base
+'
+' On Cree Le Copper List Utilisateur ...
+'... (Voir Exemple Copper Utilisateur)
+'
+' On Met l'Ecran 0 en double buffer
+Double Buffer
+Autoback 0
+'
+' On saisit les 5 plans Logiques.
+Screen Swap
+Wait Vbl
+For I=1 To 5
+   Set D Plane I,Leek(A0)
+   Add A0,4
+  Next I
+Screen Swap
+Wait Vbl
+'
+' Et on cree la boucle...
+BOUCLE:
+'
+' Faire ses dessins dans l'ecran logique,...
+Screen Swap
+Swap Planes
+Wait Vbl
+If Left Click=False Then Goto BOUCLE
+'
+' Fini.
+
+@endnode
+
+@node EXEMPLE06
+
+Mosaic X2 A0 / Mosaic X4 A0 / Mosaic X8 A0 / Mosaic X16 A0 / Mosaic X32 A0 :
+----------------------------------------------------------------------------
+
+EXEMPLE :
+'
+' On Ouvre un ecran.
+Screen Open 0,320,256,32,Lowres
+Cls 0 : Curs Off : Hide : Flash Off : Cls 0
+Double Buffer
+Autoback 0
+A0=Screen Base
+'
+' On trace un peu n'importe quoi.
+For I=1 To 64
+   Ink Rnd(30)+1
+   Draw Rnd(319),Rnd(255) To Rnd(319),Rnd(255)
+  Next I
+'
+' On fait les mosaiques.
+Mosaic X2 A0
+Screen Swap
+Wait 4
+Mosaic X4 A0
+Screen Swap
+Wait 4
+Mosaic X8 A0
+Screen Swap
+Wait 4
+Mosaic X16 A0
+Screen Swap
+Wait 4
+Mosaic X32 A0
+Screen Swap
+Wait 4
+'
+' Fini.
+
+@endnode
+
+@node EXEMPLE07
+
+S32 Block To Screen A0 / S32 Vertice To screen A0 :
+---------------------------------------------------
+
+EXEMPLE Block :
+'
+' On Ouvre un ecran.
+Screen Open 0,320,256,32,Lowres
+Cls 0 : Curs Off : Hide : Flash Off : Cls 0
+Double Buffer
+Autoback 0
+A0=Screen Base
+'
+' On Trace n'importe quoi dans un bloc de 32*32 pixels
+BOUCLE:
+For i=1 to 16
+   Ink Rnd(30)+1
+   Draw Rnd(31),Rnd(31) To Rnd(31),Rnd(31)
+  Next I
+'
+' On Conforme a tout l'ecran.
+S32 Block To Screen A0
+Screen Swap
+Wait Vbl
+If Left Click=False Then goto BOUCLE
+'
+' Fini
+
+EXEMPLE Vertice :
+'
+' On Ouvre un ecran.
+Screen Open 0,320,256,32,Lowres
+Cls 0 : Curs Off : Hide : Flash Off : Cls 0
+Double Buffer
+Autoback 0
+A0=Screen Base
+'
+' On Trace n'importe quoi dans un bloc de 32*256 pixels
+BOUCLE:
+For i=1 to 16
+   Ink Rnd(30)+1
+   Draw Rnd(31),Rnd(255) To Rnd(31),Rnd(255)
+  Next I
+'
+' On Conforme a tout l'ecran.
+S32 Vertice To Screen A0
+Screen Swap
+Wait Vbl
+If Left Click=False Then goto BOUCLE
+'
+' Fini
+@endnode
+
+@node WHY01
+
+lors d'une instruction :
+
+' Copper Wait Line $50+START '
+
+           ou ..
+
+' Copper Wait Line $50+START '
+
+Il faut mettre $50+numero de ligne car :
+L'ecran HARDWARE se trouve aux coordonnees 128,50 HARDWARE.
+Ce qui correspond a peu pres au bord gauche superieur (en haut) de l'ecran.
+
+@endnode
+@node NEWS1
+Ce sont des nouvelles instructions que j'ai developpe depuis.
+
+Blitter Clear A0 :
+------------------
+  Efface l'ecran dont la base est A0.
+  (A0=Screen Base)
+  Cette routine comme son nom l'indique,utilise le blitter.
+
+LONG=Picture Pack(A0 To BANK) :
+-------------------------------
+  Cette routine compacte une image au format 'F.C3'.
+Pour cela,vous devez rentrer en 'A0' la 'Screen Base' de l'ecran amos a PACKER
+et en 'BANK' l'adresse de depart de la banque amos (A reserver soit meme) dans
+laquelle l'image compactee sera stockee au format F.C3 .
+en retour,'LONG' donne la longueur utilisee par l'image compactee(Longueur a
+sauver)
+
+Picture Unpack BANK To A0 :
+---------------------------
+  Cette routine decompacte l'image stockee a l'adresse 'BANK' sur l'ecran amos
+  dont A0=Screen Base et dont la BANK est au format F.C3
+
+Anim Unpack BANK,IMAGE To A0 :
+------------------------------
+  Cette routine decompacte une image stockee dans une banque d'images au format
+F.C4 et cela sur l'ecran dont la base est A0=Screen Base.
+
+ATTENTION !!! 'Pic pack','Pic Unpack' et 'Anim Unpack' N'ont pas ete testees a
+100%.J'ai eu des problemes avec quelques images.
+Pour plus de surete,laisser les 2 ou 3 dernieres lignes de chaque images de
+votre anim vides ou remplies d'une couleur unie.
+
+Word Switch START To END :
+--------------------------
+  Cette routine inverse les octets mots par mots.Elle me sert pour mettre des
+ fichiers datas PC sur AMIGA et l'inverse de l'adresse START a l'adresse END.
+ Exemple : Initial  : Dc.l $12 34 56 78 , $13 57 24 68
+	   Resultat : Dc.l $34 12 78 56 , $57 13 68 24
+
+Mplot Start Plane PL :
+----------------------
+	-> Definit quel sont les bits plans sur lesquels les Multi plots se
+	  traceront.Les multi plots se traceront sur tous les bits plans
+	  Pl,Pl+1,..,Pl=8
+
+A=Fpeek(ADR) :
+--------------
+	-> Renvoie la valeur des 4 bits de poids fort de l'adresse ADR.
+	  (0<=a<=15)
+
+A=Speek(ADR) :
+--------------
+	-> Renvoie la valeur des 4 bits de poids faible de l'adresse ADR.
+	  (0<=a<=15)
+
+@endnode
+@node NEWS2
+
+
+@endnode

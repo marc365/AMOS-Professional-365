@@ -1,0 +1,46 @@
+                      
+                      AmiDARK's Amos Personnal.Lib V1.1a 
+                     ------------------------------------
+                         -->> REGISTERED VERSION <<--
+
+INTRODUCTION :
+--------------  
+  AmosPersonal.lib is a small lib I developed several years ago to add
+some more functionalities to Amos/AmosPRO. Function per function, this
+extension started to grow and finally, it contain more than 90 new
+functions that can be used.
+
+
+DISTRIBUTE :
+------------
+  This is the final free version. No limitations.
+
+USER :
+------
+  By installing AmosPersonnal library, you agree that you use it entirely
+at your own risk. The author IS NOT responsive for any problem/damage that
+can result with the use of this product.
+
+
+MAIN COMMAND SETS :
+-------------------
+  - Use AGA with 2 Amos screens under 320x192pixels resolution.
+  - Mosaics effects like on Super Nintendo.
+  - Differential scrollings using blitter.
+  - Aga icons ( up to 256 colors with 16x16 pixels icons)
+  - Many functionalities commands ( set Ntsc, Set Pal, No Aga, = Right Click, etc ... )
+  - Raster effects on both AGA and non AGA (rainbows like)
+  - Multi dot functions
+  - Many others commands.
+
+HOW TO INSTALL :
+----------------
+  This extension places in the 13rd slot, enter the extension name
+  AmosPro_Personnal.Lib for AmosPRO and Personnal.Lib for Amos 1.x
+
+LIMITATIONS :
+-------------
+  - ECS/AGA sprite support never added.
+
+Feel free to contact me at : fred (at) amidark (minus) engine (dot) com
+AmiDARK

@@ -1,0 +1,4 @@
+echo "***Assembling AMOSPro_Personal.lib"
+
+//c/Genam FROM AMOSPro_Personnal.Lib.s TO Release/Extension/AMOSPro_Personnal.Lib
+
