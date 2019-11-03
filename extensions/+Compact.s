@@ -48,20 +48,36 @@ C_Off
 ;		TOKEN_START
 C_Tk		dc.w 	1,0
 		dc.b 	$80,-1
+; *STARTREADTOKENS* // 2019.11.03 Added for the AMOS Commenter tool
+; ***************************************************** pack
+; Method in file '+Compact.s' at line '122' : pack Integer to Integer
 		dc.w 	L_InPack2,L_Nul
 		dc.b 	"!pac","k"+$80,"I0t0",-2
+; ***************************************************** pack
+; Method in file '+Compact.s' at line '136' : pack Integer to Integer, Integer, Integer, Integer, Integer
 		dc.w	L_InPack6,L_Nul
 		dc.b	$80,"I0t0,0,0,0,0",-1
+; ***************************************************** spack
+; Method in file '+Compact.s' at line '149' : spack Integer to Integer
 		dc.w 	L_InSPack2,L_Nul
 		dc.b 	"!spac","k"+$80,"I0t0",-2
+; ***************************************************** spack
+; Method in file '+Compact.s' at line '163' : spack Integer to Integer, Integer, Integer, Integer, Integer
 		dc.w	L_InSPack6,L_Nul
 		dc.b	$80,"I0t0,0,0,0,0",-1
+; ***************************************************** unpack
+; Method in file '+Compact.s' at line '199' : unpack Integer
 		dc.w	L_InUnpack1,L_Nul
 		dc.b	"!unpac","k"+$80,"I0",-2
+; ***************************************************** unpack
+; Method in file '+Compact.s' at line '261' : unpack Integer to Integer
 		dc.w 	L_InUnpack2,L_Nul
 		dc.b	$80,"I0t0",-2
+; ***************************************************** unpack
+; Method in file '+Compact.s' at line '214' : unpack Integer, Integer, Integer
 		dc.w 	L_InUnpack3,L_Nul
 		dc.b	$80,"I0,0,0",-1
+; *ENDREADTOKENS*  // 2019.11.03 Added for the AMOS Commenter tool
 ;		TOKEN_END
 		dc.w 	0
 		dc.l	0			Important!
@@ -101,6 +117,8 @@ BadVer	moveq	#-1,d0			* Bad version number
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PACK Screen,Bank#
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pack
+; Method : pack Integer to Integer
 	Lib_Par	InPack2		
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -113,6 +131,8 @@ BadVer	moveq	#-1,d0			* Bad version number
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PACK Screen,Bank#
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pack
+; Method : pack Integer to Integer, Integer, Integer, Integer, Integer
 	Lib_Par	InPack6		
 ; - - - - - - - - - - - - -
 	Rbsr	L_PacPar
@@ -124,6 +144,8 @@ BadVer	moveq	#-1,d0			* Bad version number
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SPACK Screen,Bank#
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** spack
+; Method : spack Integer to Integer
 	Lib_Par	InSPack2	
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -136,6 +158,8 @@ BadVer	moveq	#-1,d0			* Bad version number
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SPACK Screen,Bank#,X1,Y1 TO X2,Y2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** spack
+; Method : spack Integer to Integer, Integer, Integer, Integer, Integer
 	Lib_Par	InSPack6	
 ; - - - - - - - - - - - - -
 	Rbsr	L_PacPar
@@ -170,6 +194,8 @@ SPac1	move.w	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	UNPACK Bank# 		-> To current screen
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** unpack
+; Method : unpack Integer
 	Lib_Par	InUnpack1	
 ; - - - - - - - - - - - - -
 	move.l	ScOnAd(a5),d0
@@ -183,6 +209,8 @@ SPac1	move.w	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	UNPACK Bank#,X,Y	-> To current screen
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** unpack
+; Method : unpack Integer, Integer, Integer
 	Lib_Par	InUnpack3	
 ; - - - - - - - - - - - - -
 	move.l	ScOnAd(a5),d0
@@ -228,6 +256,8 @@ ABPac2	tst.w	(sp)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	UNPACK Bank# TO screen	-> Creates/Erases screen!
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** unpack
+; Method : unpack Integer to Integer
 	Lib_Par	InUnpack2	
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0		Get bank address
