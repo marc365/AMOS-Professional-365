@@ -95,1573 +95,3089 @@ C_Tk	dc.w L_Nul,L_FnNull			//$2F$03$05$00
 	dc.w L_Nul,L_Nul     			//$01$01$05$00
 	dc.b "]"+$80,"O",-1
 
+; *STARTREADTOKENS* // 2019.11.03 Added for the AMOS Commenter tool
 * Instructions normales
+; ***************************************************** end if 
+; Method in file '[Not Found]' at line '[Not found]' : end if  
 	dc.w L_Nul,L_FnNull			//$01$02$07$00
 	dc.b "to"," "+$80,-1
+; ***************************************************** not 
+; Method in file '[Not Found]' at line '[Not found]' : not  
 	dc.w L_Nul,L_FnNot			//$01$0A$08$00
 	dc.b "not"," "+$80,-1
+; ***************************************************** swap 
+; Method in file '+lib.s' at line '10756' : swap  
 	dc.w L_InSwap,L_Nul			//$22$01$09$00
 	dc.b "swap"," "+$80,-1
+; ***************************************************** def fn 
+; Method in file '[Not Found]' at line '[Not found]' : def fn  
 	dc.w L_InDFn,L_Nul			//$fc$01$0B$00
 	dc.b "def fn"," "+$80,-1
+; ***************************************************** fn 
+; Method in file '[Not Found]' at line '[Not found]' : fn  
 	dc.w L_Nul,L_FnFn			//$01$09$07$00
 	dc.b "fn"," "+$80,-1
+; ***************************************************** follow off
+; Method in file '+lib.s' at line '15391' : follow off 
 	dc.w L_Syntax,L_Nul			//$00$01$0E$00
 	dc.b "follow of","f"+$80,"I",-1
+; ***************************************************** follow off
+; Method in file '+lib.s' at line '15391' : follow off 
 	dc.w L_Syntax,L_Nul			//$23$01$0A$00
 	dc.b "follo","w"+$80,"I",-1
+; ***************************************************** resume next
+; Method in file '[Not Found]' at line '[Not found]' : resume next 
 	dc.w L_InResumeNext,L_Nul		//$00$01$0F$00
 	dc.b "resume nex","t"+$80,"I",-1
 * Tokens AVANT les autres!
+; ***************************************************** inkey$
+; Method in file '+lib.s' at line '16126' : String = inkey$()
 	dc.w L_Nul,L_FnInkey			//$01$00$0A$00
 	dc.b "inkey","$"+$80,"2",-1
+; ***************************************************** repeat$
+; Method in file '+lib.s' at line '16728' : String = repeat$( String, Integer )
 	dc.w L_Nul,L_FnRepeat			//$01$00$0B$00
 	dc.b "repeat","$"+$80,"22,0",-1
+; ***************************************************** zone$
+; Method in file '+lib.s' at line '16760' : String = zone$( String, Integer )
 	dc.w L_Nul,L_FnZoneD			//$01$00$09$00
 	dc.b "zone","$"+$80,"22,0",-1
+; ***************************************************** border$
+; Method in file '+lib.s' at line '16744' : String = border$( String, Integer )
 	dc.w L_Nul,L_FnBorderD			//$01$00$0B$00
 	dc.b "border","$"+$80,"22,0",-1
+; ***************************************************** double buffer
+; Method in file '+lib.s' at line '10733' : double buffer 
 	dc.w L_InDoubleBuffer,L_Nul		//$00$01$11$00
 	dc.b "double buffe","r"+$80,"I",-1
+; ***************************************************** start
+; Method in file '+lib.s' at line '4078' : Integer = start( Integer )
 	dc.w L_Nul,L_FnStart			//$01$00$09$00
 	dc.b "star","t"+$80,"00",-1
+; ***************************************************** length
+; Method in file '+lib.s' at line '4090' : Integer = length( Integer )
 	dc.w L_Nul,L_FnLength			//$01$00$0A$00
 	dc.b "lengt","h"+$80,"00",-1
+; ***************************************************** doke
+; Method in file '+lib.s' at line '4385' : doke Integer, Integer
 	dc.w L_InDoke,L_Nul			//$00$01$08$00
 	dc.b "dok","e"+$80,"I0,0",-1
+; ***************************************************** on menu del
+; Method in file '+lib.s' at line '18078' : on menu del 
 	dc.w L_InOnMenuDel,L_Nul		//$00$01$0F$00
 	dc.b "on menu de","l"+$80,"I",-1
+; ***************************************************** on menu on
+; Method in file '+lib.s' at line '18054' : on menu on 
 	dc.w L_InOnMenuOn,L_Nul			//$00$01$0E$00
 	dc.b "on menu o","n"+$80,"I",-1
+; ***************************************************** on menu off
+; Method in file '+lib.s' at line '18065' : on menu off 
 	dc.w L_InOnMenuOff,L_Nul		//$00$01$0F$00
 	dc.b "on menu of","f"+$80,"I",-1
+; ***************************************************** every on
+; Method in file '[Not Found]' at line '[Not found]' : every on 
 	dc.w L_InEveryOn,L_Nul			//$00$01$0C$00
 	dc.b "every o","n"+$80,"I",-1
+; ***************************************************** every off
+; Method in file '[Not Found]' at line '[Not found]' : every off 
 	dc.w L_InEveryOff,L_Nul			//$00$01$0D$00
 	dc.b "every of","f"+$80,"I",-1
+; ***************************************************** logbase
+; Method in file '+lib.s' at line '10702' : Integer = logbase( Integer )
 	dc.w L_Nul,L_FnLogBase			//$01$00$0B$00
 	dc.b "logbas","e"+$80,"00",-1
+; ***************************************************** logic
+; Method in file '+lib.s' at line '12514' : Integer = logic()
 	dc.w L_Nul,L_FnLogic0			//$01$00$0A$00
 	dc.b "!logi","c"+$80,"0",-2
+; ***************************************************** logic
+; Method in file '+lib.s' at line '12522' : Integer = logic( Integer )
 	dc.w L_Nul,L_FnLogic1			//$01$19$05$00
 	dc.b $80,"00",-1
+; ***************************************************** asc
+; Method in file '+lib.s' at line '16855' : Integer = asc( String )
 	dc.w L_Nul,L_FnAsc			//$01$00$07$00
 	dc.b "as","c"+$80,"02",-1
+; ***************************************************** follow off
+; Method in file '+lib.s' at line '15391' : follow off 
 	dc.w L_Syntax,L_Syntax			//$01$01$06$00
 	dc.b "a","s"+$80,"I",-1
+; ***************************************************** call
+; Method in file '[Not Found]' at line '[Not found]' : call 
 	dc.w L_InCall,L_Nul			//$1A$01$08$00
 	dc.b "cal","l"+$80,"I",-1
+; ***************************************************** execall
+; Method in file '+lib.s' at line '4592' : Integer = execall( Integer )
 	dc.w L_Nul,L_FnExeCall			//$01$00$0B$00
 	dc.b "execal","l"+$80,"00",-1
+; ***************************************************** gfxcall
+; Method in file '+lib.s' at line '4599' : Integer = gfxcall( Integer )
 	dc.w L_Nul,L_FnGfxCall			//$01$00$0B$00
 	dc.b "gfxcal","l"+$80,"00",-1
+; ***************************************************** doscall
+; Method in file '+lib.s' at line '4606' : Integer = doscall( Integer )
 	dc.w L_Nul,L_FnDosCall			//$01$00$0B$00
 	dc.b "doscal","l"+$80,"00",-1
+; ***************************************************** intcall
+; Method in file '+lib.s' at line '4613' : Integer = intcall( Integer )
 	dc.w L_Nul,L_FnIntCall			//$01$00$0B$00
 	dc.b "intcal","l"+$80,"00",-1
+; ***************************************************** freeze
+; Method in file '+lib.s' at line '17081' : freeze 
 	dc.w L_InFreeze,L_Nul			//$00$01$0A$00
 	dc.b "freez","e"+$80,"I",-1
 
 * Boucles / Branchements
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_InFor,L_Nul			//$30$01$08$00
 	dc.b "for"," "+$80,-1
+; ***************************************************** next 
+; Method in file '[Not Found]' at line '[Not found]' : next  
 	dc.w L_InNext,L_Nul			//$31$01$09$00
 	dc.b "next"," "+$80,-1
+; ***************************************************** repeat 
+; Method in file '[Not Found]' at line '[Not found]' : repeat  
 	dc.w L_InRepeat,L_Nul			//$32$01$0B$12
 	dc.b "repeat"," "+$80,-1
+; ***************************************************** until 
+; Method in file '[Not Found]' at line '[Not found]' : until  
 	dc.w L_InUntil,L_Nul			//$33$01$0A$12
 	dc.b "until"," "+$80,-1
+; ***************************************************** while 
+; Method in file '[Not Found]' at line '[Not found]' : while  
 	dc.w L_InWhile,L_Nul			//$34$01$0A$12
 	dc.b "while"," "+$80,-1
+; ***************************************************** wend 
+; Method in file '[Not Found]' at line '[Not found]' : wend  
 	dc.w L_InWend,L_Nul			//$35$01$09$12
 	dc.b "wend"," "+$80,-1
+; ***************************************************** do 
+; Method in file '[Not Found]' at line '[Not found]' : do  
 	dc.w L_InDo,L_Nul			//$36$01$07$12
 	dc.b "do"," "+$80,-1
+; ***************************************************** loop 
+; Method in file '[Not Found]' at line '[Not found]' : loop  
 	dc.w L_InLoop,L_Nul			//$37$01$09$12
 	dc.b "loop"," "+$80,-1
+; ***************************************************** exit if 
+; Method in file '[Not Found]' at line '[Not found]' : exit if  
 	dc.w L_InExitIf,L_Nul			//$39$01$0C$12
 	dc.b "exit if"," "+$80,-1
+; ***************************************************** exit 
+; Method in file '[Not Found]' at line '[Not found]' : exit  
 	dc.w L_InExit,L_Nul			//$38$01$09$12
 	dc.b "exit"," "+$80,-1
+; ***************************************************** goto 
+; Method in file '[Not Found]' at line '[Not found]' : goto  
 	dc.w L_InGoto,L_Nul			//$3E$01$09$12
 	dc.b "goto"," "+$80,-1
+; ***************************************************** gosub 
+; Method in file '[Not Found]' at line '[Not found]' : gosub  
 	dc.w L_InGosub,L_Nul			//$3F$01$0A$12
 	dc.b "gosub"," "+$80,-1
+; ***************************************************** if 
+; Method in file '+lib.s' at line '6257' : if  
 	dc.w L_InIf,L_Nul			//$3A$01$07$12
 	dc.b "if"," "+$80,-1
+; ***************************************************** end if 
+; Method in file '[Not Found]' at line '[Not found]' : end if  
 	dc.w L_Nul,L_FnNull			//$52$02$09$12
 	dc.b "then"," "+$80,-1
+; ***************************************************** else 
+; Method in file '[Not Found]' at line '[Not found]' : else  
 	dc.w L_InElse,L_FnElse			//$3B$02$09$12
 	dc.b "else"," "+$80,-1
+; ***************************************************** end if 
+; Method in file '[Not Found]' at line '[Not found]' : end if  
 	dc.w L_InNull,L_FnNull			//$3D$01$0B$12
 	dc.b "end if"," "+$80,-1
+; ***************************************************** on error 
+; Method in file '[Not Found]' at line '[Not found]' : on error  
 	dc.w L_InOnError,L_Nul			//$40$01$0D$12
 	dc.b "on error"," "+$80,-1
+; ***************************************************** on break proc 
+; Method in file '[Not Found]' at line '[Not found]' : on break proc  
 	dc.w L_InOnBreak,L_Nul			//$41$01$12$12
 	dc.b "on break proc"," "+$80,-1
+; ***************************************************** on menu
+; Method in file '[Not Found]' at line '[Not found]' : on menu Integer
 	dc.w L_InOnMenu,L_NoFlag		//$42$01$0B$12
 	dc.b "on men","u"+$80,"I0",-1
+; ***************************************************** on 
+; Method in file '+lib.s' at line '10513' : on  
 	dc.w L_InOn,L_Nul			//$43$01$07$12
 	dc.b "on"," "+$80,-1
+; ***************************************************** resume label 
+; Method in file '[Not Found]' at line '[Not found]' : resume label  
 	dc.w L_InResumeLabel,L_Nul		//$45$01$11$12
 	dc.b "resume label"," "+$80,-1
+; ***************************************************** resume 
+; Method in file '[Not Found]' at line '[Not found]' : resume  
 	dc.w L_InResume,L_Nul			//$44$01$0B$12
 	dc.b "resume"," "+$80,-1
+; ***************************************************** pop proc
+; Method in file '[Not Found]' at line '[Not found]' : pop proc 
 	dc.w L_InPopProc,L_Nul			//$46$01$0C$12
 	dc.b "pop pro","c"+$80,-1
+; ***************************************************** every
+; Method in file '[Not Found]' at line '[Not found]' : every 
 	dc.w L_InEvery,L_Nul			//$47$01$09$12
 	dc.b "ever","y"+$80,"I",-1
 
+; ***************************************************** follow off
+; Method in file '+lib.s' at line '15391' : follow off 
 	dc.w L_Syntax,L_Nul			//$01$01$09$00
 	dc.b "step"," "+$80,-1
+; ***************************************************** return
+; Method in file '[Not Found]' at line '[Not found]' : return 
 	dc.w L_InReturn,L_Nul			//$53$01$0A$00
 	dc.b "retur","n"+$80,"I",-1
+; ***************************************************** pop
+; Method in file '[Not Found]' at line '[Not found]' : pop 
 	dc.w L_InPop,L_Nul			//$54$01$07$00
 	dc.b "po","p"+$80,"I",-1
+; ***************************************************** procedure 
+; Method in file '[Not Found]' at line '[Not found]' : procedure  
 	dc.w L_InProcedure,L_Nul		//$ff$01$0E$0A
 	dc.b "procedure"," "+$80,-1
+; ***************************************************** proc 
+; Method in file '[Not Found]' at line '[Not found]' : proc  
 	dc.w L_InProc,L_Nul			//$0F$01$09$0F
 	dc.b "proc"," "+$80,-1
+; ***************************************************** end proc
+; Method in file '[Not Found]' at line '[Not found]' : end proc 
 	dc.w L_InEndProc,L_Nul			//$fe$01$0C$0B
 	dc.b "end pro","c"+$80,-1
+; ***************************************************** shared 
+; Method in file '[Not Found]' at line '[Not found]' : shared  
 	dc.w L_InShared,0     			//$fb$01$0B$00
 	dc.b "shared"," "+$80,-1
+; ***************************************************** shared 
+; Method in file '[Not Found]' at line '[Not found]' : shared  
 	dc.w L_InShared,0     			//$fb$01$0B$00
 	dc.b "global"," "+$80,-1
+; ***************************************************** end
+; Method in file '[Not Found]' at line '[Not found]' : end 
 	dc.w L_InEnd,L_Nul			//$00$01$07$00
 	dc.b "en","d"+$80,"I",-1
+; ***************************************************** stop
+; Method in file '+lib.s' at line '15457' : stop 
 	dc.w L_InStop,L_Nul			//$00$01$08$00
 	dc.b "sto","p"+$80,"I",-1
+; ***************************************************** param#
+; Method in file '[Not Found]' at line '[Not found]' : Integer = param#()
 	dc.w L_Nul,L_FnParamF			//$01$1C$0A$00
 	dc.b "param","#"+$80,"0",-1
+; ***************************************************** param$
+; Method in file '+lib.s' at line '3731' : String = param$()
 	dc.w L_Nul,L_FnParamS			//$01$1D$0A$00
 	dc.b "param","$"+$80,"2",-1
+; ***************************************************** param
+; Method in file '+lib.s' at line '3740' : Integer = param()
 	dc.w L_Nul,L_FnParamE			//$01$1B$09$00
 	dc.b "para","m"+$80,"0",-1
+; ***************************************************** error
+; Method in file '+lib.s' at line '13590' : error Integer
 	dc.w L_InError,L_Nul			//$00$01$09$00
 	dc.b "erro","r"+$80,"I0",-1
+; ***************************************************** errn
+; Method in file '+lib.s' at line '3234' : Integer = errn()
 	dc.w L_Nul,L_FnErrn			//$01$00$08$00
 	dc.b "err","n"+$80,"0",-1
+; ***************************************************** data 
+; Method in file '[Not Found]' at line '[Not found]' : data  
 	dc.w L_InData,L_Nul			//$fd$01$09$00
 	dc.b "data"," "+$80,-1
+; ***************************************************** read 
+; Method in file '+lib.s' at line '17419' : read  
 	dc.w L_InRead,L_Nul			//$13$01$09$00
 	dc.b "read"," "+$80,-1
+; ***************************************************** restore 
+; Method in file '[Not Found]' at line '[Not found]' : restore  
 	dc.w L_InRestore,L_Nul			//$14$01$0C$00
 	dc.b "restore"," "+$80,-1
+; ***************************************************** break off
+; Method in file '[Not Found]' at line '[Not found]' : break off 
 	dc.w L_InBreakOff,L_Nul			//$00$01$0D$00
 	dc.b "break of","f"+$80,"I",-1
+; ***************************************************** break on
+; Method in file '[Not Found]' at line '[Not found]' : break on 
 	dc.w L_InBreakOn,L_Nul			//$00$01$0C$00
 	dc.b "break o","n"+$80,"I",-1
+; ***************************************************** inc
+; Method in file '[Not Found]' at line '[Not found]' : inc 
 	dc.w L_InInc,L_Nul			//$16$01$07$00
 	dc.b "in","c"+$80,"I",-1
+; ***************************************************** dec
+; Method in file '[Not Found]' at line '[Not found]' : dec 
 	dc.w L_InDec,L_Nul			//$0E$01$07$00
 	dc.b "de","c"+$80,"I",-1
+; ***************************************************** add
+; Method in file '[Not Found]' at line '[Not found]' : add 
 	dc.w L_InAdd2,L_Nul			//$17$01$08$00
 	dc.b "!ad","d"+$80,"I",-2
+; ***************************************************** add
+; Method in file '[Not Found]' at line '[Not found]' : add 
 	dc.w L_InAdd4,L_Nul			//$4F$01$05$00
 	dc.b $80,"I",-1
 * Print/Input
+; ***************************************************** print #
+; Method in file '[Not Found]' at line '[Not found]' : print # 
 	dc.w L_InPrintH,L_Nul			//$0B$01$0B$00
 	dc.b "print ","#"+$80,-1
+; ***************************************************** print
+; Method in file '[Not Found]' at line '[Not found]' : print 
 	dc.w L_InPrint,L_Nul  			//$0A$01$09$00
 	dc.b "prin","t"+$80,"I",-1
+; ***************************************************** lprint
+; Method in file '[Not Found]' at line '[Not found]' : lprint 
 	dc.w L_InLPrint,L_Nul			//$48$01$0A$00
 	dc.b "lprin","t"+$80,"I",-1
+; ***************************************************** input$
+; Method in file '+lib.s' at line '6418' : String = input$( Integer )
 	dc.w L_Nul,L_FnInputD1			//$01$00$0B$00
 	dc.b "!input","$"+$80,"20",-2
+; ***************************************************** input$
+; Method in file '+lib.s' at line '6440' : String = input$( Integer, Integer )
 	dc.w L_Nul,L_FnInputD2			//$01$19$05$00
 	dc.b $80,"20,0",-1
+; ***************************************************** follow off
+; Method in file '+lib.s' at line '15391' : follow off 
 	dc.w L_Syntax,L_Syntax			//$01$01$09$00
 	dc.b "usin","g"+$80,"I",-1
+; ***************************************************** input #
+; Method in file '[Not Found]' at line '[Not found]' : input # 
 	dc.w L_InInputH,L_Nul			//$0D$01$0B$00
 	dc.b "input ","#"+$80,-1
+; ***************************************************** line input #
+; Method in file '[Not Found]' at line '[Not found]' : line input # 
 	dc.w L_InLineInputH,L_Nul		//$4A$01$10$00
 	dc.b "line input ","#"+$80,-1
+; ***************************************************** input
+; Method in file '[Not Found]' at line '[Not found]' : input 
 	dc.w L_InInput,L_Nul			//$0C$01$09$00
 	dc.b "inpu","t"+$80,"I",-1
+; ***************************************************** line input
+; Method in file '[Not Found]' at line '[Not found]' : line input 
 	dc.w L_InLineInput,L_Nul		//$49$01$0E$00
 	dc.b "line inpu","t"+$80,"I",-1
+; ***************************************************** run
+; Method in file '[Not Found]' at line '[Not found]' : run 
 	dc.w L_InRun0,L_Nul			//$00$01$08$00
 	dc.b "!ru","n"+$80,"I",-2
+; ***************************************************** run
+; Method in file '[Not Found]' at line '[Not found]' : run String
 	dc.w L_InRun1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I2",-1
+; ***************************************************** set buffer
+; Method in file '[Not Found]' at line '[Not found]' : set buffer 
 	dc.w L_InSetBuffer,L_Nul		//$03$01$0E$00
 	dc.b "set buffe","r"+$80,"I",-1
 * Gestion des chaines
+; ***************************************************** mid$
+; Method in file '[Not Found]' at line '[Not found]' : String = mid$( String, Integer, Integer )
 	dc.w L_InMid3,L_NoFlag			//$4B$21$09$00
 	dc.b "!mid","$"+$80,"22,0,0",-2
+; ***************************************************** mid$
+; Method in file '[Not Found]' at line '[Not found]' : String = mid$( String, Integer )
 	dc.w L_InMid2,L_NoFlag			//$4C$22$05$00
 	dc.b $80,"22,0",-1
+; ***************************************************** left$
+; Method in file '[Not Found]' at line '[Not found]' : String = left$( String, Integer )
 	dc.w L_InLeft,L_NoFlag			//$4D$23$09$00
 	dc.b "left","$"+$80,"22,0",-1
+; ***************************************************** right$
+; Method in file '[Not Found]' at line '[Not found]' : String = right$( String, Integer )
 	dc.w L_InRight,L_NoFlag			//$4E$24$0A$00
 	dc.b "right","$"+$80,"22,0",-1
+; ***************************************************** flip$
+; Method in file '+lib.s' at line '16448' : String = flip$( String )
 	dc.w L_Nul,L_FnFlip			//$01$00$09$00
 	dc.b "flip","$"+$80,"22",-1
+; ***************************************************** chr$
+; Method in file '+lib.s' at line '16520' : String = chr$( Integer )
 	dc.w L_Nul,L_FnChr			//$01$00$08$00
 	dc.b "chr","$"+$80,"20",-1
+; ***************************************************** space$
+; Method in file '+lib.s' at line '16479' : String = space$( Integer )
 	dc.w L_Nul,L_FnSpace			//$01$00$0A$00
 	dc.b "space","$"+$80,"20",-1
+; ***************************************************** string$
+; Method in file '+lib.s' at line '16488' : String = string$( String, Integer )
 	dc.w L_Nul,L_FnString			//$01$00$0B$00
 	dc.b "string","$"+$80,"22,0",-1
+; ***************************************************** upper$
+; Method in file '+lib.s' at line '16830' : String = upper$( String )
 	dc.w L_Nul,L_FnUpper			//$01$00$0A$00
 	dc.b "upper","$"+$80,"22",-1
+; ***************************************************** lower$
+; Method in file '+lib.s' at line '16805' : String = lower$( String )
 	dc.w L_Nul,L_FnLower			//$01$00$0A$00
 	dc.b "lower","$"+$80,"22",-1
+; ***************************************************** str$
+; Method in file '+lib.s' at line '3278' : String = str$( 4 )
 	dc.w L_Nul,L_FnStrE			//$01$00$08$00
 	dc.b "str","$"+$80,"24",-1
+; ***************************************************** val
+; Method in file '[Not Found]' at line '[Not found]' : Integer = val( String )
 	dc.w L_Nul,L_FnVal			//$01$05$07$00
 	dc.b "va","l"+$80,"02",-1
+; ***************************************************** bin$
+; Method in file '+lib.s' at line '16869' : String = bin$( Integer )
 	dc.w L_Nul,L_FnBin1			//$01$00$09$00
 	dc.b "!bin","$"+$80,"20",-2
+; ***************************************************** bin$
+; Method in file '+lib.s' at line '16878' : String = bin$( Integer, Integer )
 	dc.w L_Nul,L_FnBin2			//$01$19$05$00
 	dc.b $80,"20,0",-1
+; ***************************************************** hex$
+; Method in file '+lib.s' at line '16890' : String = hex$( Integer )
 	dc.w L_Nul,L_FnHex1			//$01$00$09$00
 	dc.b "!hex","$"+$80,"20",-2
+; ***************************************************** hex$
+; Method in file '+lib.s' at line '16899' : String = hex$( Integer, Integer )
 	dc.w L_Nul,L_FnHex2			//$01$19$05$00
 	dc.b $80,"20,0",-1
+; ***************************************************** len
+; Method in file '+lib.s' at line '16467' : Integer = len( String )
 	dc.w L_Nul,L_FnLen			//$01$00$07$00
 	dc.b "le","n"+$80,"02",-1
+; ***************************************************** instr
+; Method in file '+lib.s' at line '16376' : Integer = instr( String, String )
 	dc.w L_Nul,L_FnInstr2			//$01$00$0A$00
 	dc.b "!inst","r"+$80,"02,2",-2
+; ***************************************************** instr
+; Method in file '+lib.s' at line '16390' : Integer = instr( String, String, Integer )
 	dc.w L_Nul,L_FnInstr3			//$01$19$05$00
 	dc.b $80,"02,2,0",-1
+; ***************************************************** tab$
+; Method in file '+lib.s' at line '16531' : String = tab$()
 	dc.w L_Nul,L_FnTab			//$01$00$08$00
 	dc.b "tab","$"+$80,"2",-1
+; ***************************************************** free
+; Method in file '+lib.s' at line '16113' : Integer = free()
 	dc.w L_Nul,L_FnFree			//$01$00$08$00
 	dc.b "fre","e"+$80,"0",-1
+; ***************************************************** varptr
+; Method in file '[Not Found]' at line '[Not found]' : Integer = varptr()
 	dc.w L_Nul,L_FnVarPtr			//$01$08$0A$00
 	dc.b "varpt","r"+$80,"0",-1
+; ***************************************************** remember x
+; Method in file '+lib.s' at line '16015' : remember x 
 	dc.w L_InRememberX,L_Nul		//$00$01$0E$00
 	dc.b "remember ","x"+$80,"I",-1
+; ***************************************************** remember y
+; Method in file '+lib.s' at line '16025' : remember y 
 	dc.w L_InRememberY,L_Nul		//$00$01$0E$00
 	dc.b "remember ","y"+$80,"I",-1
 
+; ***************************************************** dim
+; Method in file '[Not Found]' at line '[Not found]' : dim 
 	dc.w L_InDim,L_Nul			//$09$01$07$00
 	dc.b "di","m"+$80,"I",-1
+; ***************************************************** rem
+; Method in file '[Not Found]' at line '[Not found]' : rem 
 	dc.w L_InRem,L_Nul			//$02$01$07$0E
 	dc.b "re","m"+$80,-1
+; ***************************************************** rem
+; Method in file '[Not Found]' at line '[Not found]' : rem 
 	dc.w L_InRem,L_Nul			//$02$01$05$0E
 	dc.b "'"+$80,-1
+; ***************************************************** sort
+; Method in file '[Not Found]' at line '[Not found]' : sort 
 	dc.w L_InSort,L_NoFlag			//$21$01$08$00
 	dc.b "sor","t"+$80,"I",-1
+; ***************************************************** match
+; Method in file '[Not Found]' at line '[Not found]' : Integer = match( 3, 3 )
 	dc.w L_NoFlag,L_FnMatch			//$01$0D$09$00
 	dc.b "matc","h"+$80,"03,3",-1
+; ***************************************************** edit
+; Method in file '[Not Found]' at line '[Not found]' : edit 
 	dc.w L_InEdit,L_Nul			//$00$01$08$00
 	dc.b "edi","t"+$80,"I",-1
+; ***************************************************** direct
+; Method in file '[Not Found]' at line '[Not found]' : direct 
 	dc.w L_InDirect,L_Nul			//$00$01$0A$00
 	dc.b "direc","t"+$80,"I",-1
 * Fonctions
+; ***************************************************** rnd
+; Method in file '+lib.s' at line '3509' : Integer = rnd( Integer )
 	dc.w L_Nul,L_FnRnd			//$01$00$07$00
 	dc.b "rn","d"+$80,"00",-1
+; ***************************************************** randomize
+; Method in file '+lib.s' at line '7014' : randomize Integer
 	dc.w L_InRandom,L_Nul			//$00$01$0D$00
 	dc.b "randomiz","e"+$80,"I0",-1
+; ***************************************************** sgn
+; Method in file '+lib.s' at line '3260' : Integer = sgn( 4 )
 	dc.w L_Nul,L_FnSgn			//$01$00$07$00
 	dc.b "sg","n"+$80,"04",-1
+; ***************************************************** abs
+; Method in file '+lib.s' at line '3305' : 4 = abs( 4 )
 	dc.w L_Nul,L_FnAbs			//$01$00$07$00
 	dc.b "ab","s"+$80,"44",-1
+; ***************************************************** int
+; Method in file '+lib.s' at line '3322' : 4 = int( 4 )
 	dc.w L_Nul,L_FnInt			//$01$00$07$00
 	dc.b "in","t"+$80,"44",-1
+; ***************************************************** radian
+; Method in file '+lib.s' at line '3469' : radian 
 	dc.w L_InRadian,L_Nul			//$00$01$0A$00
 	dc.b "radia","n"+$80,"I",-1
+; ***************************************************** degree
+; Method in file '+lib.s' at line '3479' : degree 
 	dc.w L_InDegree,L_Nul			//$00$01$0A$00
 	dc.b "degre","e"+$80,"I",-1
+; ***************************************************** pi#
+; Method in file '+lib.s' at line '6061' : Float = pi#()
 	dc.w L_Nul,L_FnPi			//$01$00$07$00
 	dc.b "pi","#"+$80,"1",-1
+; ***************************************************** fix
+; Method in file '+lib.s' at line '3489' : fix Integer
 	dc.w L_InFix,L_Nul			//$00$01$07$00
 	dc.b "fi","x"+$80,"I0",-1
+; ***************************************************** min
+; Method in file '[Not Found]' at line '[Not found]' : Integer = min( Integer, Integer )
 	dc.w L_NoFlag,L_FnMin			//$01$0F$07$00
 	dc.b "mi","n"+$80,"00,0",-1
+; ***************************************************** max
+; Method in file '[Not Found]' at line '[Not found]' : Integer = max( Integer, Integer )
 	dc.w L_NoFlag,L_FnMax			//$01$20$07$00
 	dc.b "ma","x"+$80,"00,0",-1
+; ***************************************************** sin
+; Method in file '+lib.s' at line '3389' : Float = sin( 5 )
 	dc.w L_Nul,L_FnSin			//$01$13$07$00
 	dc.b "si","n"+$80,"15",-1
+; ***************************************************** cos
+; Method in file '+lib.s' at line '3399' : Float = cos( 5 )
 	dc.w L_Nul,L_FnCos 			//$01$13$07$00
 	dc.b "co","s"+$80,"15",-1
+; ***************************************************** tan
+; Method in file '+lib.s' at line '3336' : Float = tan( 5 )
 	dc.w L_Nul,L_FnTan			//$01$13$07$00
 	dc.b "ta","n"+$80,"15",-1
+; ***************************************************** asin
+; Method in file '+lib.s' at line '3409' : Float = asin( Float )
 	dc.w L_Nul,L_FnASin			//$01$13$08$00
 	dc.b "asi","n"+$80,"11",-1
+; ***************************************************** acos
+; Method in file '+lib.s' at line '3419' : Float = acos( Float )
 	dc.w L_Nul,L_FnACos			//$01$13$08$00
 	dc.b "aco","s"+$80,"11",-1
+; ***************************************************** atan
+; Method in file '+lib.s' at line '3429' : Float = atan( Float )
 	dc.w L_Nul,L_FnATan			//$01$13$08$00
 	dc.b "ata","n"+$80,"11",-1
+; ***************************************************** hsin
+; Method in file '+lib.s' at line '3439' : Float = hsin( 5 )
 	dc.w L_Nul,L_FnHSin			//$01$13$08$00
 	dc.b "hsi","n"+$80,"15",-1
+; ***************************************************** hcos
+; Method in file '+lib.s' at line '3449' : Float = hcos( 5 )
 	dc.w L_Nul,L_FnHCos			//$01$13$08$00
 	dc.b "hco","s"+$80,"15",-1
+; ***************************************************** htan
+; Method in file '+lib.s' at line '3459' : Float = htan( 5 )
 	dc.w L_Nul,L_FnHTan			//$01$13$08$00
 	dc.b "hta","n"+$80,"15",-1
+; ***************************************************** sqr
+; Method in file '+lib.s' at line '3346' : Float = sqr( Float )
 	dc.w L_Nul,L_FnSqr			//$01$13$07$00
 	dc.b "sq","r"+$80,"11",-1
+; ***************************************************** log
+; Method in file '+lib.s' at line '3357' : Float = log( Float )
 	dc.w L_Nul,L_FnLog			//$01$13$07$00
 	dc.b "lo","g"+$80,"11",-1
+; ***************************************************** ln
+; Method in file '+lib.s' at line '3368' : Float = ln( Float )
 	dc.w L_Nul,L_FnLn			//$01$13$06$00
 	dc.b "l","n"+$80,"11",-1
+; ***************************************************** exp
+; Method in file '+lib.s' at line '3379' : Float = exp( Float )
 	dc.w L_Nul,L_FnExp			//$01$13$07$00
 	dc.b "ex","p"+$80,"11",-1
 * MENUS!!!
+; ***************************************************** menu to bank
+; Method in file '+lib.s' at line '18106' : menu to bank Integer
 	dc.w L_InMenuToBank,L_Nul		//$00$01$10$00
 	dc.b "menu to ban","k"+$80,"I0",-1
+; ***************************************************** bank to menu
+; Method in file '+lib.s' at line '18201' : bank to menu Integer
 	dc.w L_InBankToMenu,L_Nul		//$00$01$10$00
 	dc.b "bank to men","u"+$80,"I0",-1
+; ***************************************************** menu on
+; Method in file '+lib.s' at line '18507' : menu on 
 	dc.w L_InMenuOn,L_Nul			//$00$01$0B$00
 	dc.b "menu o","n"+$80,"I",-1
+; ***************************************************** menu off
+; Method in file '+lib.s' at line '18314' : menu off 
 	dc.w L_InMenuOff,L_Nul			//$00$01$0C$00
 	dc.b "menu of","f"+$80,"I",-1
+; ***************************************************** menu calc
+; Method in file '+lib.s' at line '18518' : menu calc 
 	dc.w L_InMenuCalc,L_Nul			//$00$01$0D$00
 	dc.b "menu cal","c"+$80,"I",-1
+; ***************************************************** menu mouse on
+; Method in file '+lib.s' at line '18324' : menu mouse on 
 	dc.w L_InMenuMouseOn,L_Nul		//$00$01$11$00
 	dc.b "menu mouse o","n"+$80,"I",-1
+; ***************************************************** menu mouse off
+; Method in file '+lib.s' at line '18331' : menu mouse off 
 	dc.w L_InMenuMouseOff,L_Nul		//$00$01$12$00
 	dc.b "menu mouse of","f"+$80,"I",-1
+; ***************************************************** menu base
+; Method in file '+lib.s' at line '18341' : menu base Integer, Integer
 	dc.w L_InMenuBase,L_Nul			//$00$01$0D$00
 	dc.b "menu bas","e"+$80,"I0,0",-1
 
+; ***************************************************** set menu
+; Method in file '[Not Found]' at line '[Not found]' : set menu Integer to Integer, Integer
 	dc.w L_InSetMenu,L_NoFlag		//$1D$01$0C$00
 	dc.b "set men","u"+$80,"I0t0,0",-1
+; ***************************************************** x menu
+; Method in file '+lib.s' at line '18364' : Integer = x menu( Integer )
 	dc.w L_NoFlag,L_FnXMenu			//$01$0B$0A$00
 	dc.b "x men","u"+$80,"00",-1
+; ***************************************************** y menu
+; Method in file '+lib.s' at line '18375' : Integer = y menu( Integer )
 	dc.w L_NoFlag,L_FnYMenu			//$01$0B$0A$00
 	dc.b "y men","u"+$80,"00",-1
+; ***************************************************** menu key
+; Method in file '[Not Found]' at line '[Not found]' : menu key Integer to Integer, Integer
 	dc.w L_InMenuKey,L_NoFlag		//$1E$01$0C$00
 	dc.b "menu ke","y"+$80,"I0t0,0",-1
+; ***************************************************** menu bar
+; Method in file '+lib.s' at line '18409' : menu bar Integer
 	dc.w L_InMenuBar,L_NoFlag		//$1F$01$0C$00
 	dc.b "menu ba","r"+$80,"I0",-1
+; ***************************************************** menu line
+; Method in file '+lib.s' at line '18417' : menu line Integer
 	dc.w L_InMenuLine,L_NoFlag		//$1F$01$0D$00
 	dc.b "menu lin","e"+$80,"I0",-1
+; ***************************************************** menu tline
+; Method in file '+lib.s' at line '18426' : menu tline Integer
 	dc.w L_InMenuTline,L_NoFlag		//$1F$01$0E$00
 	dc.b "menu tlin","e"+$80,"I0",-1
+; ***************************************************** menu movable
+; Method in file '+lib.s' at line '18435' : menu movable Integer
 	dc.w L_InMenuMovable,L_NoFlag		//$1F$01$10$00
 	dc.b "menu movabl","e"+$80,"I0",-1
+; ***************************************************** menu static
+; Method in file '+lib.s' at line '18443' : menu static Integer
 	dc.w L_InMenuStatic,L_NoFlag		//$1F$01$0F$00
 	dc.b "menu stati","c"+$80,"I0",-1
+; ***************************************************** menu item movable
+; Method in file '+lib.s' at line '18451' : menu item movable Integer
 	dc.w L_InMenuItemMovable,L_NoFlag	//$1F$01$15$00
 	dc.b "menu item movabl","e"+$80,"I0",-1
+; ***************************************************** menu item static
+; Method in file '+lib.s' at line '18459' : menu item static Integer
 	dc.w L_InMenuItemStatic,L_NoFlag	//$1F$01$14$00
 	dc.b "menu item stati","c"+$80,"I0",-1
+; ***************************************************** menu active
+; Method in file '+lib.s' at line '18467' : menu active Integer
 	dc.w L_InMenuActive,L_NoFlag		//$1F$01$0F$00
 	dc.b "menu activ","e"+$80,"I0",-1
+; ***************************************************** menu inactive
+; Method in file '+lib.s' at line '18475' : menu inactive Integer
 	dc.w L_InMenuInactive,L_NoFlag		//$1F$01$11$00
 	dc.b "menu inactiv","e"+$80,"I0",-1
+; ***************************************************** menu separate
+; Method in file '+lib.s' at line '18483' : menu separate Integer
 	dc.w L_InMenuSeparate,L_NoFlag		//$1F$01$11$00
 	dc.b "menu separat","e"+$80,"I0",-1
+; ***************************************************** menu link
+; Method in file '+lib.s' at line '18491' : menu link Integer
 	dc.w L_InMenuLink,L_NoFlag		//$1F$01$0D$00
 	dc.b "menu lin","k"+$80,"I0",-1
+; ***************************************************** menu called
+; Method in file '+lib.s' at line '18499' : menu called Integer
 	dc.w L_InMenuCalled,L_NoFlag		//$1F$01$0F$00
 	dc.b "menu calle","d"+$80,"I0",-1
+; ***************************************************** menu on
+; Method in file '+lib.s' at line '18507' : menu on 
 	dc.w L_InMenuOnce,L_NoFlag		//$1F$01$0D$00
 	dc.b "menu onc","e"+$80,"I0",-1
 	
+; ***************************************************** menu del
+; Method in file '[Not Found]' at line '[Not found]' : menu del 
 	dc.w L_InMenuDel,L_NoFlag		//$1C$01$0C$00
 	dc.b "menu de","l"+$80,"I",-1
+; ***************************************************** menu$
+; Method in file '[Not Found]' at line '[Not found]' : null
 	dc.w L_InMenu,L_NoFlag			//$1B$01$09$00
 	dc.b "menu","$"+$80,"V",-1
+; ***************************************************** choice
+; Method in file '+lib.s' at line '18387' : Integer = choice()
 	dc.w L_Nul,L_FnChoice0			//$01$00$0B$00
 	dc.b "!choic","e"+$80,"0",-2
+; ***************************************************** choice
+; Method in file '+lib.s' at line '18396' : Integer = choice( Integer )
 	dc.w L_Nul,L_FnChoice1			//$01$19$05$00
 	dc.b $80,"00",-1
 	
 * Screen instructions
+; ***************************************************** screen copy
+; Method in file '+lib.s' at line '12332' : screen copy Integer to Integer
 	dc.w L_InScreenCopy2,L_Nul		//$00$01$10$00
 	dc.b "!screen cop","y"+$80,"I0t0",-2
+; ***************************************************** screen copy
+; Method in file '+lib.s' at line '12340' : screen copy Integer to IntegerInteger
 	dc.w L_InScreenCopy3,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0t00",-2
+; ***************************************************** screen copy
+; Method in file '+lib.s' at line '12364' : screen copy Integer, Integer, Integer, Integer, Integer to Integer, Integer, Integer
 	dc.w L_InScreenCopy8,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0,0t0,0,0",-2
+; ***************************************************** screen copy
+; Method in file '+lib.s' at line '12372' : screen copy Integer, Integer, Integer, Integer, Integer to Integer, Integer, Integer, Integer
 	dc.w L_InScreenCopy9,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0,0t0,0,0,0",-1
+; ***************************************************** screen clone
+; Method in file '+lib.s' at line '10801' : screen clone Integer
 	dc.w L_InScreenClone,L_Nul		//$00$01$10$00
 	dc.b "screen clon",$80+"e","I0",-1
+; ***************************************************** screen open
+; Method in file '+lib.s' at line '10816' : screen open Integer, Integer, Integer, Integer, Integer
 	dc.w L_InScreenOpen,L_Nul		//$00$01$0F$00
 	dc.b "screen ope","n"+$80,"I0,0,0,0,0",-1
+; ***************************************************** screen close
+; Method in file '+lib.s' at line '10872' : screen close Integer
 	dc.w L_InScreenClose,L_Nul		//$00$01$10$00
 	dc.b "screen clos",$80+"e","I0",-1
+; ***************************************************** screen display
+; Method in file '+lib.s' at line '10895' : screen display Integer, Integer, Integer, Integer, Integer
 	dc.w L_InScreenDisplay,L_Nul		//$00$01$12$00
 	dc.b "screen displa","y"+$80,"I0,0,0,0,0",-1
+; ***************************************************** screen offset
+; Method in file '+lib.s' at line '10912' : screen offset Integer, Integer, Integer
 	dc.w L_InScreenOffset,L_Nul		//$00$01$11$00
 	dc.b "screen offse","t"+$80,"I0,0,0",-1
+; ***************************************************** follow off
+; Method in file '+lib.s' at line '15391' : follow off 
 	dc.w L_Syntax,L_Syntax			//$01$01$0F$00
 	dc.b "screen siz","e"+$80,-1
+; ***************************************************** screen colour
+; Method in file '+lib.s' at line '10649' : Integer = screen colour()
 	dc.w L_Nul,L_FnScreenColour		//$01$00$11$00
 	dc.b "screen colou","r"+$80,"0",-1
+; ***************************************************** screen to front
+; Method in file '+lib.s' at line '11005' : screen to front 
 	dc.w L_InScreenToFront0,L_Nul		//$00$01$14$00
 	dc.b "!screen to fron","t"+$80,"I",-2
+; ***************************************************** screen to front
+; Method in file '+lib.s' at line '11015' : screen to front Integer
 	dc.w L_InScreenToFront1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** screen to back
+; Method in file '+lib.s' at line '11028' : screen to back 
 	dc.w L_InScreenToBack0,L_Nul		//$00$01$13$00
 	dc.b "!screen to bac","k"+$80,"I",-2
+; ***************************************************** screen to back
+; Method in file '+lib.s' at line '11038' : screen to back Integer
 	dc.w L_InScreenToBack1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** screen hide
+; Method in file '+lib.s' at line '10944' : screen hide 
 	dc.w L_InScreenHide0,L_Nul		//$00$01$10$00
 	dc.b "!screen hid","e"+$80,"I",-2
+; ***************************************************** screen hide
+; Method in file '+lib.s' at line '10959' : screen hide Integer
 	dc.w L_InScreenHide1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** screen show
+; Method in file '+lib.s' at line '10928' : screen show 
 	dc.w L_InScreenShow0,L_Nul		//$00$01$10$00
 	dc.b "!screen sho","w"+$80,"I",-2
+; ***************************************************** screen show
+; Method in file '+lib.s' at line '10935' : screen show Integer
 	dc.w L_InScreenShow1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** swap 
+; Method in file '+lib.s' at line '10756' : swap  
 	dc.w L_InScreenSwap0,L_Nul		//$00$01$10$00
 	dc.b "!screen swa","p"+$80,"I",-2
+; ***************************************************** swap 
+; Method in file '+lib.s' at line '10756' : swap  
 	dc.w L_InScreenSwap1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** save iff
+; Method in file '+lib.s' at line '6341' : save iff String
 	dc.w L_InSaveIff1,L_Nul			//$00$01$0D$00
 	dc.b "!save if","f"+$80,"I2",-2
+; ***************************************************** save iff
+; Method in file '+lib.s' at line '6349' : save iff String, Integer
 	dc.w L_InSaveIff2,L_Nul			//$2D$01$05$00
 	dc.b $80,"I2,0",-1
+; ***************************************************** view
+; Method in file '+lib.s' at line '10994' : view 
 	dc.w L_InView,L_Nul			//$00$01$08$00
 	dc.b "vie","w"+$80,"I",-1
+; ***************************************************** auto view off
+; Method in file '+lib.s' at line '10984' : auto view off 
 	dc.w L_InAutoViewOff,L_Nul		//$00$01$11$00
 	dc.b "auto view of","f"+$80,"I",-1
+; ***************************************************** auto view on
+; Method in file '+lib.s' at line '10977' : auto view on 
 	dc.w L_InAutoViewOn,L_Nul		//$00$01$10$00
 	dc.b "auto view o","n"+$80,"I",-1
+; ***************************************************** screen base
+; Method in file '+lib.s' at line '10639' : Integer = screen base()
 	dc.w L_Nul,L_FnScreenBase		//$01$00$0F$00
 	dc.b "screen bas","e"+$80,"0",-1
+; ***************************************************** screen width
+; Method in file '+lib.s' at line '10615' : Integer = screen width()
 	dc.w L_Nul,L_FnScreenWidth0		//$01$00$11$00
 	dc.b "!screen widt","h"+$80,"0",-2
+; ***************************************************** screen width
+; Method in file '+lib.s' at line '10624' : Integer = screen width( Integer )
 	dc.w L_Nul,L_FnScreenWidth1		//$01$19$05$00
 	dc.b $80,"00",-1
+; ***************************************************** screen height
+; Method in file '+lib.s' at line '10591' : Integer = screen height()
 	dc.w L_Nul,L_FnScreenHeight0		//$01$00$12$00
 	dc.b "!screen heigh","t"+$80,"0",-2
+; ***************************************************** screen height
+; Method in file '+lib.s' at line '10600' : Integer = screen height( Integer )
 	dc.w L_Nul,L_FnScreenHeight1		//$01$19$05$00
 	dc.b $80,"00",-1
+; ***************************************************** get palette
+; Method in file '+lib.s' at line '11194' : get palette Integer
 	dc.w L_InGetPalette1,L_Nul		//$00$01$10$00
 	dc.b "!get palett","e"+$80,"I0",-2
+; ***************************************************** get palette
+; Method in file '+lib.s' at line '11202' : get palette Integer, Integer
 	dc.w L_InGetPalette2,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0",-1
+; ***************************************************** cls
+; Method in file '+lib.s' at line '10549' : cls 
 	dc.w L_InCls0,L_Nul			//$00$01$08$00
 	dc.b "!cl","s"+$80,"I",-2
+; ***************************************************** cls
+; Method in file '+lib.s' at line '10558' : cls Integer
 	dc.w L_InCls1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-2
+; ***************************************************** cls
+; Method in file '+lib.s' at line '10569' : cls Integer, Integer, Integer to Integer, Integer
 	dc.w L_InCls5,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0t0,0",-1
+; ***************************************************** def scroll
+; Method in file '+lib.s' at line '12250' : def scroll Integer, Integer, Integer to Integer, Integer, Integer, Integer
 	dc.w L_InDefScroll,L_Nul		//$00$01$0E$00
 	dc.b "def scrol","l"+$80,"I0,0,0t0,0,0,0",-1
 * Conversions de coordonnees
+; ***************************************************** x hard
+; Method in file '+lib.s' at line '12845' : Integer = x hard( Integer )
 	dc.w L_Nul,L_FnXHard1			//$01$00$0B$00
 	dc.b "!x har","d"+$80,"00",-2
+; ***************************************************** x hard
+; Method in file '+lib.s' at line '12855' : Integer = x hard( Integer, Integer )
 	dc.w L_Nul,L_FnXHard2			//$01$19$05$00
 	dc.b $80,"00,0",-1
+; ***************************************************** y hard
+; Method in file '+lib.s' at line '12875' : Integer = y hard( Integer )
 	dc.w L_Nul,L_FnYHard1			//$01$00$0B$00
 	dc.b "!y har","d"+$80,"00",-2
+; ***************************************************** y hard
+; Method in file '+lib.s' at line '12885' : Integer = y hard( Integer, Integer )
 	dc.w L_Nul,L_FnYHard2			//$01$19$05$00
 	dc.b $80,"00,0",-1
+; ***************************************************** x screen
+; Method in file '+lib.s' at line '12905' : Integer = x screen( Integer )
 	dc.w L_Nul,L_FnXScreen1			//$01$00$0D$00
 	dc.b "!x scree","n"+$80,"00",-2
+; ***************************************************** x screen
+; Method in file '+lib.s' at line '12915' : Integer = x screen( Integer, Integer )
 	dc.w L_Nul,L_FnXScreen2			//$01$19$05$00
 	dc.b $80,"00,0",-1
+; ***************************************************** y screen
+; Method in file '+lib.s' at line '12935' : Integer = y screen( Integer )
 	dc.w L_Nul,L_FnYScreen1			//$01$00$0D$00
 	dc.b "!y scree","n"+$80,"00",-2
+; ***************************************************** y screen
+; Method in file '+lib.s' at line '12945' : Integer = y screen( Integer, Integer )
 	dc.w L_Nul,L_FnYScreen2			//$01$19$05$00
 	dc.b $80,"00,0",-1
+; ***************************************************** x text
+; Method in file '+lib.s' at line '12965' : Integer = x text( Integer )
 	dc.w L_Nul,L_FnXText			//$01$00$0A$00
 	dc.b "x tex","t"+$80,"00",-1
+; ***************************************************** y text
+; Method in file '+lib.s' at line '12979' : Integer = y text( Integer )
 	dc.w L_Nul,L_FnYText			//$01$00$0A$00
 	dc.b "y tex","t"+$80,"00",-1
 
+; ***************************************************** screen
+; Method in file '+lib.s' at line '11065' : screen Integer
 	dc.w L_InScreen,L_Nul			//$00$18$0B$00
 	dc.b "!scree","n"+$80,"I0",-3
+; ***************************************************** screen
+; Method in file '+lib.s' at line '11065' : screen Integer
 	dc.w L_Nul,L_FnScreen			//$01$19$05$00
 	dc.b $80,"0",-1
+; ***************************************************** hires
+; Method in file '+lib.s' at line '11084' : Integer = hires()
 	dc.w L_Nul,L_FnHires			//$01$00$09$00
 	dc.b "hire","s"+$80,"0",-1
+; ***************************************************** lowres
+; Method in file '+lib.s' at line '11091' : Integer = lowres()
 	dc.w L_Nul,L_FnLowres			//$01$00$0A$00
 	dc.b "lowre","s"+$80,"0",-1
+; ***************************************************** dual playfield
+; Method in file '+lib.s' at line '10769' : dual playfield Integer, Integer
 	dc.w L_InDualPlayfield,L_Nul		//$00$01$12$00
 	dc.b "dual playfiel","d"+$80,"I0,0",-1
+; ***************************************************** dual priority
+; Method in file '+lib.s' at line '10785' : dual priority Integer, Integer
 	dc.w L_InDualPriority,L_Nul		//$00$01$11$00
 	dc.b "dual priorit","y"+$80,"I0,0",-1
+; ***************************************************** wait vbl
+; Method in file '+lib.s' at line '3680' : wait vbl 
 	dc.w L_InWtVbl,L_Nul			//$00$01$0C$00
 	dc.b "wait vb","l"+$80,"I",-1
+; ***************************************************** default palette
+; Method in file '[Not Found]' at line '[Not found]' : default palette 
 	dc.w L_InDefaultPalette,L_Nul		//$11$01$13$00
 	dc.b "default palett","e"+$80,"I",-1
+; ***************************************************** default
+; Method in file '+lib.s' at line '10535' : default 
 	dc.w L_InDefault,L_Nul			//$00$01$0B$00
 	dc.b "defaul","t"+$80,"I",-1
+; ***************************************************** palette
+; Method in file '+lib.s' at line '11161' : palette 
 	dc.w L_InPalette,L_Nul			//$12$01$0B$00
 	dc.b "palett","e"+$80,"I",-1
+; ***************************************************** colour back
+; Method in file '+lib.s' at line '11142' : colour back Integer
 	dc.w L_InColourBack,L_Nul		//$00$01$0F$00
 	dc.b "colour bac","k"+$80,"I0",-1
+; ***************************************************** colour
+; Method in file '+lib.s' at line '11127' : colour Integer, Integer
 	dc.w L_InColour,L_Nul			//$00$18$0B$00
 	dc.b "!colou","r"+$80,"I0,0",-3
+; ***************************************************** colour
+; Method in file '+lib.s' at line '11127' : colour Integer, Integer
 	dc.w L_Nul,L_FnColour			//$01$19$05$00
 	dc.b $80,"00",-1
+; ***************************************************** flash off
+; Method in file '+lib.s' at line '11239' : flash off 
 	dc.w L_InFlashOff,L_Nul			//$00$01$0D$00
 	dc.b "flash of","f"+$80,"I",-1
+; ***************************************************** flash
+; Method in file '+lib.s' at line '11250' : flash Integer, String
 	dc.w L_InFlash,L_Nul			//$00$01$09$00
 	dc.b "flas","h"+$80,"I0,2",-1
+; ***************************************************** shift off
+; Method in file '+lib.s' at line '11268' : shift off 
 	dc.w L_InShiftOff,L_Nul			//$00$01$0D$00
 	dc.b "shift of","f"+$80,"I",-1
+; ***************************************************** shift up
+; Method in file '+lib.s' at line '11279' : shift up Integer, Integer, Integer, Integer
 	dc.w L_InShiftUp,L_Nul			//$00$01$0C$00
 	dc.b "shift u","p"+$80,"I0,0,0,0",-1
+; ***************************************************** shift down
+; Method in file '+lib.s' at line '11286' : shift down Integer, Integer, Integer, Integer
 	dc.w L_InShiftDown,L_Nul		//$00$01$0E$00
 	dc.b "shift dow","n"+$80,"I0,0,0,0",-1
+; ***************************************************** set rainbow
+; Method in file '+lib.s' at line '11314' : set rainbow Integer, Integer, Integer, String, String, String
 	dc.w L_InSetRainbow6,L_Nul		//$00$01$10$00
 	dc.b "!set rainbo","w"+$80,"I0,0,0,2,2,2",-2
+; ***************************************************** set rainbow
+; Method in file '+lib.s' at line '11322' : set rainbow Integer, Integer, Integer, String, String, String, Integer
 	dc.w L_InSetRainbow7,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,2,2,2,0",-1
+; ***************************************************** rainbow del
+; Method in file '+lib.s' at line '11364' : rainbow del 
 	dc.w L_InRainbowDel0,L_Nul		//$00$01$10$00
 	dc.b "!rainbow de","l"+$80,"I",-2
+; ***************************************************** rainbow del
+; Method in file '+lib.s' at line '11371' : rainbow del Integer
 	dc.w L_InRainbowDel1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** rainbow
+; Method in file '+lib.s' at line '11350' : rainbow Integer, Integer, Integer, Integer
 	dc.w L_InRainbow,L_Nul			//$00$01$0B$00
 	dc.b "rainbo","w"+$80,"I0,0,0,0",-1
+; ***************************************************** rain
+; Method in file '+lib.s' at line '11394' : Integer = rain( Integer, Integer )
 	dc.w L_InRain,L_FnRain			//$2B$1A$08$00
 	dc.b "rai","n"+$80,"V00,0",-1
+; ***************************************************** fade
+; Method in file '[Not Found]' at line '[Not found]' : fade 
 	dc.w L_InFade,L_Nul			//$20$01$08$00
 	dc.b "fad","e"+$80,"I",-1
+; ***************************************************** phybase
+; Method in file '+lib.s' at line '10717' : Integer = phybase( Integer )
 	dc.w L_Nul,L_FnPhyBase			//$01$00$0B$00
 	dc.b "phybas","e"+$80,"00",-1
+; ***************************************************** physic
+; Method in file '+lib.s' at line '12497' : Integer = physic()
 	dc.w L_Nul,L_FnPhysic0			//$01$00$0B$00
 	dc.b "!physi","c"+$80,"0",-2
+; ***************************************************** physic
+; Method in file '+lib.s' at line '12504' : Integer = physic( Integer )
 	dc.w L_Nul,L_FnPhysic1			//$01$19$05$00
 	dc.b $80,"00",-1
+; ***************************************************** autoback
+; Method in file '+lib.s' at line '11506' : autoback Integer
 	dc.w L_InAutoback,L_Nul			//$00$01$0C$00
 	dc.b "autobac","k"+$80,"I0",-1
 * Instructions graphiques
+; ***************************************************** plot
+; Method in file '+lib.s' at line '11522' : plot Integer, Integer
 	dc.w L_InPlot2,L_Nul			//$00$01$09$00
 	dc.b "!plo","t"+$80,"I0,0",-2
+; ***************************************************** plot
+; Method in file '+lib.s' at line '11535' : plot Integer, Integer, Integer
 	dc.w L_InPlot3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0",-1
+; ***************************************************** point
+; Method in file '+lib.s' at line '11559' : Integer = point( Integer, Integer )
 	dc.w L_Nul,L_FnPoint			//$01$00$09$00
 	dc.b "poin","t"+$80,"00,0",-1
+; ***************************************************** draw to
+; Method in file '+lib.s' at line '11583' : draw to Integer, Integer
 	dc.w L_InDrawTo,L_Nul			//$00$01$0B$00
 	dc.b "draw t","o"+$80,"I0,0",-1
+; ***************************************************** draw
+; Method in file '+lib.s' at line '11594' : draw Integer, Integer to Integer, Integer
 	dc.w L_InDraw,L_Nul			//$00$01$08$00
 	dc.b "dra","w"+$80,"I0,0t0,0",-1
+; ***************************************************** ellipse
+; Method in file '+lib.s' at line '11627' : ellipse Integer, Integer, Integer, Integer
 	dc.w L_InEllipse,L_Nul			//$00$01$0B$00
 	dc.b "ellips","e"+$80,"I0,0,0,0",-1
+; ***************************************************** circle
+; Method in file '+lib.s' at line '11611' : circle Integer, Integer, Integer
 	dc.w L_InCircle,L_Nul			//$00$01$0A$00
 	dc.b "circl","e"+$80,"I0,0,0",-1
+; ***************************************************** polyline
+; Method in file '[Not Found]' at line '[Not found]' : polyline 
 	dc.w L_InPolyline,L_Nul			//$18$01$0C$00
 	dc.b "polylin","e"+$80,"I",-1
+; ***************************************************** polygon
+; Method in file '[Not Found]' at line '[Not found]' : polygon 
 	dc.w L_InPolygon,L_Nul			//$18$01$0B$00
 	dc.b "polygo","n"+$80,"I",-1
+; ***************************************************** bar
+; Method in file '+lib.s' at line '11998' : bar Integer, Integer to Integer, Integer
 	dc.w L_InBar,L_Nul			//$00$01$07$00
 	dc.b "ba","r"+$80,"I0,0t0,0",-1
+; ***************************************************** box
+; Method in file '+lib.s' at line '11691' : box Integer, Integer to Integer, Integer
 	dc.w L_InBox,L_Nul			//$00$01$07$00
 	dc.b "bo","x"+$80,"I0,0t0,0",-1
+; ***************************************************** paint
+; Method in file '+lib.s' at line '11965' : paint Integer, Integer
 	dc.w L_InPaint2,L_Nul			//$00$01$0A$00
 	dc.b "!pain","t"+$80,"I0,0",-2
+; ***************************************************** paint
+; Method in file '+lib.s' at line '11973' : paint Integer, Integer, Integer
 	dc.w L_InPaint3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0",-1
+; ***************************************************** gr locate
+; Method in file '+lib.s' at line '11677' : gr locate Integer, Integer
 	dc.w L_InGrLocate,L_Nul			//$00$01$0D$00
 	dc.b "gr locat","e"+$80,"I0,0",-1
+; ***************************************************** text length
+; Method in file '+lib.s' at line '11888' : Integer = text length( String )
 	dc.w L_Nul,L_FnTextLength		//$01$00$0F$00
 	dc.b "text lengt","h"+$80,"02",-1
+; ***************************************************** text styles
+; Method in file '+lib.s' at line '11907' : Integer = text styles()
 	dc.w L_Nul,L_FnTextStyle		//$01$00$0F$00
 	dc.b "text style","s"+$80,"0",-1
+; ***************************************************** text base
+; Method in file '+lib.s' at line '11874' : Integer = text base()
 	dc.w L_Nul,L_FnTextBase			//$01$00$0D$00
 	dc.b "text bas","e"+$80,"0",-1
+; ***************************************************** text
+; Method in file '+lib.s' at line '11854' : text Integer, Integer, String
 	dc.w L_InText,L_Nul			//$00$01$08$00
 	dc.b "tex","t"+$80,"I0,0,2",-1
+; ***************************************************** set text
+; Method in file '+lib.s' at line '11921' : set text Integer
 	dc.w L_InSetText,L_Nul			//$00$01$0C$00
 	dc.b "set tex","t"+$80,"I0",-1
+; ***************************************************** set paint
+; Method in file '+lib.s' at line '11947' : set paint Integer
 	dc.w L_InSetPaint,L_Nul			//$00$01$0D$00
 	dc.b "set pain","t"+$80,"I0",-1
+; ***************************************************** get fonts
+; Method in file '+lib.s' at line '11771' : get fonts 
 	dc.w L_InGetFonts,L_Nul			//$00$01$0D$00
 	dc.b "get font","s"+$80,"I",-1
+; ***************************************************** get disc fonts
+; Method in file '+lib.s' at line '11762' : get disc fonts 
 	dc.w L_InGetDiscFonts,L_Nul		//$00$01$12$00
 	dc.b "get disc font","s"+$80,"I",-1
+; ***************************************************** get rom fonts
+; Method in file '+lib.s' at line '11753' : get rom fonts 
 	dc.w L_InGetRomFonts,L_Nul		//$00$01$11$00
 	dc.b "get rom font","s"+$80,"I",-1
+; ***************************************************** set font
+; Method in file '+lib.s' at line '11838' : set font Integer
 	dc.w L_InSetFont,L_Nul			//$00$01$0C$00
 	dc.b "set fon","t"+$80,"I0",-1
+; ***************************************************** font$
+; Method in file '+lib.s' at line '11788' : String = font$( Integer )
 	dc.w L_Nul,L_FnFont			//$01$00$09$00
 	dc.b "font","$"+$80,"20",-1
+; ***************************************************** hslider
+; Method in file '+lib.s' at line '12184' : hslider Integer, Integer to Integer, Integer, Integer, Integer, Integer
 	dc.w L_InHSlider,L_Nul			//$00$01$0B$00
 	dc.b "hslide","r"+$80,"I0,0t0,0,0,0,0",-1
+; ***************************************************** vslider
+; Method in file '+lib.s' at line '12194' : vslider Integer, Integer to Integer, Integer, Integer, Integer, Integer
 	dc.w L_InVSlider,L_Nul			//$00$01$0B$00
 	dc.b "vslide","r"+$80,"I0,0t0,0,0,0,0",-1
+; ***************************************************** set slider
+; Method in file '+lib.s' at line '12229' : set slider Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer
 	dc.w L_InSetSlider,L_Nul		//$00$01$0E$00
 	dc.b "set slide","r"+$80,"I0,0,0,0,0,0,0,0",-1
+; ***************************************************** set pattern
+; Method in file '+lib.s' at line '11934' : set pattern Integer
 	dc.w L_InSetPattern,L_Nul		//$00$01$0F$00
 	dc.b "set patter","n"+$80,"I0",-1
+; ***************************************************** set line
+; Method in file '+lib.s' at line '12171' : set line Integer
 	dc.w L_InSetLine,L_Nul			//$00$01$0C$00
 	dc.b "set lin","e"+$80,"I0",-1
+; ***************************************************** ink
+; Method in file '+lib.s' at line '12116' : ink Integer
 	dc.w L_InInk1,L_Nul			//$00$01$08$00
 	dc.b "!in","k"+$80,"I0",-2
+; ***************************************************** ink
+; Method in file '+lib.s' at line '12125' : ink Integer, Integer
 	dc.w L_InInk2,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0",-2
+; ***************************************************** ink
+; Method in file '+lib.s' at line '12133' : ink Integer, Integer, Integer
 	dc.w L_InInk3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0",-1
+; ***************************************************** gr writing
+; Method in file '+lib.s' at line '12156' : gr writing Integer
 	dc.w L_InGrWriting,L_Nul		//$00$01$0E$00
 	dc.b "gr writin","g"+$80,"I0",-1
+; ***************************************************** clip
+; Method in file '+lib.s' at line '11725' : clip 
 	dc.w L_InClip0,L_Nul			//$00$01$09$00
 	dc.b "!cli","p"+$80,"I",-2
+; ***************************************************** clip
+; Method in file '+lib.s' at line '11735' : clip Integer, Integer to Integer, Integer
 	dc.w L_InClip4,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0t0,0",-1
+; ***************************************************** set tempras
+; Method in file '+lib.s' at line '12033' : set tempras 
 	dc.w L_InSetTempras0,L_Nul		//$00$01$10$00
 	dc.b "!set tempra","s"+$80,"I",-2
+; ***************************************************** set tempras
+; Method in file '+lib.s' at line '12022' : set tempras Integer
 	dc.w L_InSetTempras1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-2
+; ***************************************************** set tempras
+; Method in file '+lib.s' at line '12040' : set tempras Integer, Integer
 	dc.w L_InSetTempras2,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0",-1
+; ***************************************************** appear
+; Method in file '+lib.s' at line '12533' : appear Integer to Integer, Integer
 	dc.w L_InAppear3,L_Nul			//$00$01$0B$00
 	dc.b "!appea","r"+$80,"I0t0,0",-2
+; ***************************************************** appear
+; Method in file '+lib.s' at line '12541' : appear Integer to Integer, Integer, Integer
 	dc.w L_InAppear4,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0t0,0,0",-1
+; ***************************************************** zoom
+; Method in file '+lib.s' at line '12631' : zoom Integer, Integer, Integer, Integer, Integer to Integer, Integer, Integer, Integer, Integer
 	dc.w L_InZoom,L_Nul			//$00$01$08$00
 	dc.b "zoo","m"+$80,"I0,0,0,0,0t0,0,0,0,0",-1
 	
 * Blocs
+; ***************************************************** get cblock
+; Method in file '+lib.s' at line '13214' : get cblock Integer, Integer, Integer, Integer, Integer
 	dc.w L_InGetCBlock,L_Nul		//$00$01$0E$00
 	dc.b "get cbloc","k"+$80,"I0,0,0,0,0",-1
+; ***************************************************** put cblock
+; Method in file '+lib.s' at line '13233' : put cblock Integer
 	dc.w L_InPutCBlock1,L_Nul		//$00$01$0F$00
 	dc.b "!put cbloc","k"+$80,"I0",-2
+; ***************************************************** put cblock
+; Method in file '+lib.s' at line '13242' : put cblock Integer, Integer, Integer
 	dc.w L_InPutCBlock3,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0",-1
+; ***************************************************** del cblock
+; Method in file '+lib.s' at line '13259' : del cblock 
 	dc.w L_InDelCBlock0,L_Nul		//$00$01$0F$00
 	dc.b "!del cbloc","k"+$80,"I",-2
+; ***************************************************** del cblock
+; Method in file '+lib.s' at line '13266' : del cblock Integer
 	dc.w L_InDelCBlock1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** get block
+; Method in file '+lib.s' at line '13281' : get block Integer, Integer, Integer, Integer, Integer
 	dc.w L_InGetBlock5,L_Nul		//$00$01$0E$00
 	dc.b "!get bloc","k"+$80,"I0,0,0,0,0",-2
+; ***************************************************** get block
+; Method in file '+lib.s' at line '13289' : get block Integer, Integer, Integer, Integer, Integer, Integer
 	dc.w L_InGetBlock6,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0,0,0",-1
+; ***************************************************** put block
+; Method in file '+lib.s' at line '13312' : put block Integer
 	dc.w L_InPutBlock1,L_Nul		//$00$01$0E$00
 	dc.b "!put bloc","k"+$80,"I0",-2
+; ***************************************************** put block
+; Method in file '+lib.s' at line '13323' : put block Integer, Integer, Integer
 	dc.w L_InPutBlock3,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0",-2
+; ***************************************************** put block
+; Method in file '+lib.s' at line '13332' : put block Integer, Integer, Integer, Integer
 	dc.w L_InPutBlock4,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0",-2
+; ***************************************************** put block
+; Method in file '+lib.s' at line '13340' : put block Integer, Integer, Integer, Integer, Integer
 	dc.w L_InPutBlock5,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0,0",-1
+; ***************************************************** del block
+; Method in file '+lib.s' at line '13361' : del block 
 	dc.w L_InDelBlock0,L_Nul		//$00$01$0E$00
 	dc.b "!del bloc","k"+$80,"I",-2
+; ***************************************************** del block
+; Method in file '+lib.s' at line '13368' : del block Integer
 	dc.w L_InDelBlock1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
 
 * Instructions clavier
+; ***************************************************** key speed
+; Method in file '+lib.s' at line '3716' : key speed Integer, Integer
 	dc.w L_InKeySpeed,L_Nul			//$00$01$0D$00
 	dc.b "key spee","d"+$80,"I0,0",-1
+; ***************************************************** key state
+; Method in file '+lib.s' at line '16170' : Integer = key state( Integer )
 	dc.w L_Nul,L_FnKeyState			//$01$00$0D$00
 	dc.b "key stat","e"+$80,"00",-1
+; ***************************************************** key shift
+; Method in file '+lib.s' at line '16183' : Integer = key shift()
 	dc.w L_Nul,L_FnKeyShift			//$01$00$0D$00
 	dc.b "key shif","t"+$80,"0",-1
+; ***************************************************** joy
+; Method in file '+lib.s' at line '16194' : Integer = joy( Integer )
 	dc.w L_Nul,L_FnJoy			//$01$00$07$00
 	dc.b "jo","y"+$80,"00",-1
+; ***************************************************** jup
+; Method in file '+lib.s' at line '16205' : Integer = jup( Integer )
 	dc.w L_Nul,L_FnJup			//$01$00$07$00
 	dc.b "ju","p"+$80,"00",-1
+; ***************************************************** jdown
+; Method in file '+lib.s' at line '16214' : Integer = jdown( Integer )
 	dc.w L_Nul,L_FnJdown			//$01$00$09$00
 	dc.b "jdow","n"+$80,"00",-1
+; ***************************************************** jleft
+; Method in file '+lib.s' at line '16223' : Integer = jleft( Integer )
 	dc.w L_Nul,L_FnJleft			//$01$00$09$00
 	dc.b "jlef","t"+$80,"00",-1
+; ***************************************************** jright
+; Method in file '+lib.s' at line '16232' : Integer = jright( Integer )
 	dc.w L_Nul,L_FnJright			//$01$00$0A$00
 	dc.b "jrigh","t"+$80,"00",-1
+; ***************************************************** fire
+; Method in file '+lib.s' at line '16241' : Integer = fire( Integer )
 	dc.w L_Nul,L_FnFire			//$01$00$08$00
 	dc.b "fir","e"+$80,"00",-1
+; ***************************************************** true
+; Method in file '+lib.s' at line '10506' : Integer = true()
 	dc.w L_Nul,L_FnTrue			//$01$1F$08$00
 	dc.b "tru","e"+$80,"0",-1
+; ***************************************************** false
+; Method in file '+lib.s' at line '10520' : Integer = false()
 	dc.w L_Nul,L_FnFalse			//$01$1E$09$00
 	dc.b "fals","e"+$80,"0",-1
+; ***************************************************** put key
+; Method in file '+lib.s' at line '16261' : put key String
 	dc.w L_InPutKey,L_Nul			//$00$01$0B$00
 	dc.b "put ke","y"+$80,"I2",-1
+; ***************************************************** scancode
+; Method in file '+lib.s' at line '16148' : Integer = scancode()
 	dc.w L_Nul,L_FnScancode			//$01$00$0C$00
 	dc.b "scancod","e"+$80,"0",-1
+; ***************************************************** scanshift
+; Method in file '+lib.s' at line '16159' : Integer = scanshift()
 	dc.w L_Nul,L_FnScanshift		//$01$00$0D$00
 	dc.b "scanshif","t"+$80,"0",-1
+; ***************************************************** clear key
+; Method in file '+lib.s' at line '16276' : clear key 
 	dc.w L_InClearKey,L_Nul			//$00$01$0D$00
 	dc.b "clear ke","y"+$80,"I",-1
+; ***************************************************** wait key
+; Method in file '+lib.s' at line '3691' : wait key 
 	dc.w L_InWtKy,L_Nul			//$00$01$0C$00
 	dc.b "wait ke","y"+$80,"I",-1
+; ***************************************************** wait
+; Method in file '+lib.s' at line '3616' : wait Integer
 	dc.w L_InWait,L_Nul			//$00$01$08$00
 	dc.b "wai","t"+$80,"I0",-1
+; ***************************************************** key$
+; Method in file '+lib.s' at line '16300' : String = key$( Integer )
 	dc.w L_InKeyD,L_FnKeyD			//$2B$1A$08$00
 	dc.b "key","$"+$80,"V20",-1
+; ***************************************************** scan$
+; Method in file '+lib.s' at line '16344' : String = scan$( Integer )
 	dc.w L_Nul,L_FnScan1			//$01$00$0A$00
 	dc.b "!scan","$"+$80,"20",-2
+; ***************************************************** scan$
+; Method in file '+lib.s' at line '16352' : String = scan$( Integer, Integer )
 	dc.w L_Nul,L_FnScan2			//$01$19$05$00
 	dc.b $80,"20,0",-1
+; ***************************************************** timer
+; Method in file '+lib.s' at line '3595' : Integer = timer()
 	dc.w L_InTimer,L_FnTimer		//$2B$1A$09$00
 	dc.b "time","r"+$80,"V0",-1
 
 * Instruction fenetres
+; ***************************************************** wind open
+; Method in file '+lib.s' at line '15477' : wind open Integer, Integer, Integer, Integer, Integer
 	dc.w L_InWindopen5,L_Nul		//$00$01$0E$00
 	dc.b "!wind ope","n"+$80,"I0,0,0,0,0",-2
+; ***************************************************** wind open
+; Method in file '+lib.s' at line '15486' : wind open Integer, Integer, Integer, Integer, Integer, Integer
 	dc.w L_InWindopen6,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0,0,0",-2
+; ***************************************************** wind open
+; Method in file '+lib.s' at line '15494' : wind open Integer, Integer, Integer, Integer, Integer, Integer, Integer
 	dc.w L_InWindopen7,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0,0,0,0",-1
+; ***************************************************** wind close
+; Method in file '+lib.s' at line '15566' : wind close 
 	dc.w L_InWindclose,L_Nul		//$00$01$0E$00
 	dc.b "wind clos","e"+$80,"I",-1
+; ***************************************************** wind save
+; Method in file '+lib.s' at line '15519' : wind save 
 	dc.w L_InWindsave,L_Nul			//$00$01$0D$00
 	dc.b "wind sav","e"+$80,"I",-1
+; ***************************************************** wind move
+; Method in file '+lib.s' at line '15532' : wind move Integer, Integer
 	dc.w L_InWindmove,L_Nul			//$00$01$0D$00
 	dc.b "wind mov","e"+$80,"I0,0",-1
+; ***************************************************** wind size
+; Method in file '+lib.s' at line '15549' : wind size Integer, Integer
 	dc.w L_InWindsize,L_Nul			//$00$01$0D$00
 	dc.b "wind siz","e"+$80,"I0,0",-1
+; ***************************************************** window
+; Method in file '+lib.s' at line '15579' : window Integer
 	dc.w L_InWindow,L_Nul			//$00$01$0A$00
 	dc.b "windo","w"+$80,"I0",-1
+; ***************************************************** windon
+; Method in file '+lib.s' at line '15593' : Integer = windon()
 	dc.w L_Nul,L_FnWindon			//$01$00$0A$00
 	dc.b "windo","n"+$80,"0",-1
 	
+; ***************************************************** locate
+; Method in file '+lib.s' at line '15727' : locate Integer, Integer
 	dc.w L_InLocate,L_Nul			//$00$01$0A$00
 	dc.b "locat","e"+$80,"I0,0",-1
+; ***************************************************** clw
+; Method in file '+lib.s' at line '15825' : clw 
 	dc.w L_InClw,L_Nul			//$00$01$07$00
 	dc.b "cl","w"+$80,"I",-1
+; ***************************************************** home
+; Method in file '+lib.s' at line '15835' : home 
 	dc.w L_InHome,L_Nul			//$00$01$08$00
 	dc.b "hom","e"+$80,"I",-1
+; ***************************************************** curs pen
+; Method in file '+lib.s' at line '15787' : curs pen Integer
 	dc.w L_InCursPen,L_Nul			//$00$01$0C$00
 	dc.b "curs pe","n"+$80,"I0",-1
+; ***************************************************** pen$
+; Method in file '+lib.s' at line '16588' : String = pen$( Integer )
 	dc.w L_Nul,L_FnPenD			//$01$00$08$00
 	dc.b "pen","$"+$80,"20",-1
+; ***************************************************** paper$
+; Method in file '+lib.s' at line '16597' : String = paper$( Integer )
 	dc.w L_Nul,L_FnPaperD			//$01$00$0A$00
 	dc.b "paper","$"+$80,"20",-1
+; ***************************************************** at
+; Method in file '+lib.s' at line '16669' : String = at( Integer, Integer )
 	dc.w L_Nul,L_FnAt			//$01$00$06$00
 	dc.b "a","t"+$80,"20,0",-1
+; ***************************************************** pen
+; Method in file '+lib.s' at line '15807' : pen Integer
 	dc.w L_InPen,L_Nul			//$00$01$07$00
 	dc.b "pe","n"+$80,"I0",-1
+; ***************************************************** paper
+; Method in file '+lib.s' at line '15797' : paper Integer
 	dc.w L_InPaper,L_Nul			//$00$01$09$00
 	dc.b "pape","r"+$80,"I0",-1
+; ***************************************************** centre
+; Method in file '+lib.s' at line '15742' : centre String
 	dc.w L_InCentre,L_Nul			//$00$01$0A$00
 	dc.b "centr","e"+$80,"I2",-1
+; ***************************************************** border
+; Method in file '+lib.s' at line '15636' : border Integer, Integer, Integer
 	dc.w L_InBorder,L_Nul			//$00$01$0A$00
 	dc.b "borde","r"+$80,"I0,0,0",-1
+; ***************************************************** writing
+; Method in file '+lib.s' at line '15606' : writing Integer
 	dc.w L_InWriting1,L_Nul			//$00$01$0C$00
 	dc.b "!writin","g"+$80,"I0",-2
+; ***************************************************** writing
+; Method in file '+lib.s' at line '15614' : writing Integer, Integer
 	dc.w L_InWriting2,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0",-1
+; ***************************************************** title top
+; Method in file '+lib.s' at line '15651' : title top String
 	dc.w L_InTitleTop,L_Nul			//$00$01$0D$00
 	dc.b "title to","p"+$80,"I2",-1
+; ***************************************************** title bottom
+; Method in file '+lib.s' at line '15664' : title bottom String
 	dc.w L_InTitleBottom,L_Nul		//$00$01$10$00
 	dc.b "title botto","m"+$80,"I2",-1
+; ***************************************************** curs off
+; Method in file '+lib.s' at line '15885' : curs off 
 	dc.w L_InCursOff,L_Nul			//$00$01$0C$00
 	dc.b "curs of","f"+$80,"I",-1
+; ***************************************************** curs on
+; Method in file '+lib.s' at line '15895' : curs on 
 	dc.w L_InCursOn,L_Nul			//$00$01$0B$00
 	dc.b "curs o","n"+$80,"I",-1
+; ***************************************************** inverse off
+; Method in file '+lib.s' at line '15915' : inverse off 
 	dc.w L_InInverseOff,L_Nul		//$00$01$0F$00
 	dc.b "inverse of","f"+$80,"I",-1
+; ***************************************************** inverse on
+; Method in file '+lib.s' at line '15905' : inverse on 
 	dc.w L_InInverseOn,L_Nul		//$00$01$0E$00
 	dc.b "inverse o","n"+$80,"I",-1
+; ***************************************************** under off
+; Method in file '+lib.s' at line '15935' : under off 
 	dc.w L_InUnderOff,L_Nul			//$00$01$0D$00
 	dc.b "under of","f"+$80,"I",-1
+; ***************************************************** under on
+; Method in file '+lib.s' at line '15925' : under on 
 	dc.w L_InUnderOn,L_Nul			//$00$01$0C$00
 	dc.b "under o","n"+$80,"I",-1
+; ***************************************************** shade off
+; Method in file '+lib.s' at line '15975' : shade off 
 	dc.w L_InShadeOff,L_Nul			//$00$01$0D$00
 	dc.b "shade of","f"+$80,"I",-1
+; ***************************************************** shade on
+; Method in file '+lib.s' at line '15965' : shade on 
 	dc.w L_InShadeOn,L_Nul			//$00$01$0C$00
 	dc.b "shade o","n"+$80,"I",-1
+; ***************************************************** scroll off
+; Method in file '+lib.s' at line '15955' : scroll off 
 	dc.w L_InScrollOff,L_Nul		//$00$01$0E$00
 	dc.b "scroll of","f"+$80,"I",-1
+; ***************************************************** scroll on
+; Method in file '+lib.s' at line '15945' : scroll on 
 	dc.w L_InScrollOn,L_Nul			//$00$01$0D$00
 	dc.b "scroll o","n"+$80,"I",-1
+; ***************************************************** scroll
+; Method in file '+lib.s' at line '12270' : scroll Integer
 	dc.w L_InScroll,L_Nul			//$00$01$0A$00
 	dc.b "scrol","l"+$80,"I0",-1
+; ***************************************************** cup$
+; Method in file '+lib.s' at line '16558' : String = cup$()
 	dc.w L_Nul,L_FnCup			//$01$00$08$00
 	dc.b "cup","$"+$80,"2",-1
+; ***************************************************** cdown$
+; Method in file '+lib.s' at line '16567' : String = cdown$()
 	dc.w L_Nul,L_FnCdown			//$01$00$0A$00
 	dc.b "cdown","$"+$80,"2",-1
+; ***************************************************** cleft$
+; Method in file '+lib.s' at line '16540' : String = cleft$()
 	dc.w L_Nul,L_FnCleft			//$01$00$0A$00
 	dc.b "cleft","$"+$80,"2",-1
+; ***************************************************** cright$
+; Method in file '+lib.s' at line '16549' : String = cright$()
 	dc.w L_Nul,L_FnCright			//$01$00$0B$00
 	dc.b "cright","$"+$80,"2",-1
+; ***************************************************** cup
+; Method in file '+lib.s' at line '15865' : cup 
 	dc.w L_InCup,L_Nul			//$00$01$07$00
 	dc.b "cu","p"+$80,"I",-1
+; ***************************************************** cdown
+; Method in file '+lib.s' at line '15875' : cdown 
 	dc.w L_InCdown,L_Nul			//$00$01$09$00
 	dc.b "cdow","n"+$80,"I",-1
+; ***************************************************** cleft
+; Method in file '+lib.s' at line '15845' : cleft 
 	dc.w L_InCleft,L_Nul			//$00$01$09$00
 	dc.b "clef","t"+$80,"I",-1
+; ***************************************************** cright
+; Method in file '+lib.s' at line '15855' : cright 
 	dc.w L_InCright,L_Nul			//$00$01$0A$00
 	dc.b "crigh","t"+$80,"I",-1
+; ***************************************************** memorize x
+; Method in file '+lib.s' at line '15995' : memorize x 
 	dc.w L_InMemorizeX,L_Nul		//$00$01$0E$00
 	dc.b "memorize ","x"+$80,"I",-1
+; ***************************************************** memorize y
+; Method in file '+lib.s' at line '16005' : memorize y 
 	dc.w L_InMemorizeY,L_Nul		//$00$01$0E$00
 	dc.b "memorize ","y"+$80,"I",-1
+; ***************************************************** cmove$
+; Method in file '+lib.s' at line '16676' : String = cmove$( Integer, Integer )
 	dc.w L_Nul,L_FnCMoveD			//$01$00$0A$00
 	dc.b "cmove","$"+$80,"20,0",-1
+; ***************************************************** cmove
+; Method in file '+lib.s' at line '15759' : cmove Integer, Integer
 	dc.w L_InCmove,L_Nul			//$00$01$09$00
 	dc.b "cmov","e"+$80,"I0,0",-1
+; ***************************************************** cline
+; Method in file '+lib.s' at line '15985' : cline 
 	dc.w L_InCline0,L_Nul			//$00$01$0A$00
 	dc.b "!clin","e"+$80,"I",-2
+; ***************************************************** cline
+; Method in file '+lib.s' at line '16035' : cline Integer
 	dc.w L_InCline1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** hscroll
+; Method in file '+lib.s' at line '16051' : hscroll Integer
 	dc.w L_InHScroll,L_Nul			//$00$01$0B$00
 	dc.b "hscrol","l"+$80,"I0",-1
+; ***************************************************** vscroll
+; Method in file '+lib.s' at line '16061' : vscroll Integer
 	dc.w L_InVScroll,L_Nul			//$00$01$0B$00
 	dc.b "vscrol","l"+$80,"I0",-1
+; ***************************************************** set tab
+; Method in file '+lib.s' at line '16083' : set tab Integer
 	dc.w L_InSetTab,L_Nul			//$00$01$0B$00
 	dc.b "set ta","b"+$80,"I0",-1
+; ***************************************************** set curs
+; Method in file '+lib.s' at line '15710' : set curs Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer
 	dc.w L_InSetCurs,L_Nul			//$00$01$0C$00
 	dc.b "set cur","s"+$80,"I0,0,0,0,0,0,0,0",-1
+; ***************************************************** x curs
+; Method in file '+lib.s' at line '15686' : Integer = x curs()
 	dc.w L_Nul,L_FnXCurs			//$01$00$0A$00
 	dc.b "x cur","s"+$80,"0",-1
+; ***************************************************** y curs
+; Method in file '+lib.s' at line '15696' : Integer = y curs()
 	dc.w L_Nul,L_FnYCurs			//$01$00$0A$00
 	dc.b "y cur","s"+$80,"0",-1
+; ***************************************************** x graphic
+; Method in file '+lib.s' at line '12994' : Integer = x graphic( Integer )
 	dc.w L_Nul,L_FnXGraphic			//$01$00$0D$00
 	dc.b "x graphi","c"+$80,"00",-1
+; ***************************************************** y graphic
+; Method in file '+lib.s' at line '13006' : Integer = y graphic( Integer )
 	dc.w L_Nul,L_FnYGraphic			//$01$00$0D$00
 	dc.b "y graphi","c"+$80,"00",-1
+; ***************************************************** xgr
+; Method in file '+lib.s' at line '11653' : Integer = xgr()
 	dc.w L_Nul,L_FnXGr			//$01$00$07$00
 	dc.b "xg","r"+$80,"0",-1
+; ***************************************************** ygr
+; Method in file '+lib.s' at line '11664' : Integer = ygr()
 	dc.w L_Nul,L_FnYGr			//$01$00$07$00
 	dc.b "yg","r"+$80,"0",-1
 	
 
 * Zones
+; ***************************************************** reserve zone
+; Method in file '+lib.s' at line '13021' : reserve zone 
 	dc.w L_InReserveZone0,L_Nul		//$00$01$11$00
 	dc.b "!reserve zon","e"+$80,"I",-2
+; ***************************************************** reserve zone
+; Method in file '+lib.s' at line '13028' : reserve zone Integer
 	dc.w L_InReserveZone1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** reset zone
+; Method in file '+lib.s' at line '13042' : reset zone 
 	dc.w L_InResetZone0,L_Nul		//$00$01$0F$00
 	dc.b "!reset zon","e"+$80,"I",-2
+; ***************************************************** reset zone
+; Method in file '+lib.s' at line '13049' : reset zone Integer
 	dc.w L_InResetZone1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** set zone
+; Method in file '+lib.s' at line '13066' : set zone Integer, Integer, Integer to Integer, Integer
 	dc.w L_InSetZone,L_Nul			//$00$01$0C$00
 	dc.b "set zon","e"+$80,"I0,0,0t0,0",-1
+; ***************************************************** zone
+; Method in file '+lib.s' at line '13085' : Integer = zone( Integer, Integer )
 	dc.w L_Nul,L_FnZone2			//$01$00$09$00
 	dc.b "!zon","e"+$80,"00,0",-2
+; ***************************************************** zone
+; Method in file '+lib.s' at line '13094' : Integer = zone( Integer, Integer, Integer )
 	dc.w L_Nul,L_FnZone3			//$01$19$05$00
 	dc.b $80,"00,0,0",-1
+; ***************************************************** hzone
+; Method in file '+lib.s' at line '13118' : Integer = hzone( Integer, Integer )
 	dc.w L_Nul,L_FnHZone2			//$01$00$0A$00
 	dc.b "!hzon","e"+$80,"00,0",-2
+; ***************************************************** hzone
+; Method in file '+lib.s' at line '13127' : Integer = hzone( Integer, Integer, Integer )
 	dc.w L_Nul,L_FnHZone3			//$01$19$05$00
 	dc.b $80,"00,0,0",-1
+; ***************************************************** scin
+; Method in file '+lib.s' at line '13151' : Integer = scin( Integer, Integer )
 	dc.w L_Nul,L_FnScIn2			//$01$00$09$00
 	dc.b "!sci","n"+$80,"00,0",-2
+; ***************************************************** scin
+; Method in file '+lib.s' at line '13160' : Integer = scin( Integer, Integer, Integer )
 	dc.w L_Nul,L_FnScIn3			//$01$19$05$00
 	dc.b $80,"00,0,0",-1
+; ***************************************************** mouse screen
+; Method in file '+lib.s' at line '13183' : Integer = mouse screen()
 	dc.w L_Nul,L_FnMouseScreen		//$01$00$10$00
 	dc.b "mouse scree","n"+$80,"0",-1
+; ***************************************************** mouse zone
+; Method in file '+lib.s' at line '13198' : Integer = mouse zone()
 	dc.w L_Nul,L_FnMouseZone		//$01$00$0E$00
 	dc.b "mouse zon","e"+$80,"0",-1
 
 
 * Instructions disques
+; ***************************************************** set input
+; Method in file '+lib.s' at line '6403' : set input Integer, Integer
 	dc.w L_InSetInput,L_Nul			//$00$01$0D$00
 	dc.b "set inpu","t"+$80,"I0,0",-1
+; ***************************************************** close workbench
+; Method in file '+lib.s' at line '13505' : close workbench 
 	dc.w L_InCloseWorkbench,L_Nul		//$00$01$13$00
 	dc.b "close workbenc","h"+$80,"I",-1
+; ***************************************************** close editor
+; Method in file '[Not Found]' at line '[Not found]' : close editor 
 	dc.w L_InCloseEditor,L_Nul		//$00$01$10$00
 	dc.b "close edito","r"+$80,"I",-1
+; ***************************************************** dir first$
+; Method in file '+lib.s' at line '7347' : String = dir first$( String )
 	dc.w L_Nul,L_FnDirFirst			//$01$00$0E$00
 	dc.b "dir first","$"+$80,"22",-1
+; ***************************************************** dir next$
+; Method in file '+lib.s' at line '7367' : String = dir next$()
 	dc.w L_Nul,L_FnFillNext			//$01$00$0D$00
 	dc.b "dir next","$"+$80,"2",-1
+; ***************************************************** exist
+; Method in file '+lib.s' at line '7520' : Integer = exist( String )
 	dc.w L_Nul,L_FnExist			//$01$00$09$00
 	dc.b "exis","t"+$80,"02",-1
+; ***************************************************** dir$
+; Method in file '+lib.s' at line '6575' : String = dir$()
 	dc.w L_InDirD,L_FnDirD			//$2B$1A$08$00
 	dc.b "dir","$"+$80,"V2",-1
+; ***************************************************** ldir/w
+; Method in file '+lib.s' at line '7582' : ldir/w 
 	dc.w L_InLDirW0,L_Nul			//$51$01$0B$00
 	dc.b "!ldir/","w"+$80,"I",-2
+; ***************************************************** ldir/w
+; Method in file '+lib.s' at line '7607' : ldir/w String
 	dc.w L_InLDirW1,L_Nul			//$51$01$05$00
 	dc.b $80,"I2",-1
+; ***************************************************** dir/w
+; Method in file '+lib.s' at line '7589' : dir/w 
 	dc.w L_InDirW0,L_Nul			//$51$01$0A$00
 	dc.b "!dir/","w"+$80,"I",-2
+; ***************************************************** dir/w
+; Method in file '+lib.s' at line '7614' : dir/w String
 	dc.w L_InDirW1,L_Nul			//$51$01$05$00
 	dc.b $80,"I2",-1
+; ***************************************************** ldir
+; Method in file '+lib.s' at line '7639' : ldir 
 	dc.w L_InLDir0,L_Nul			//$51$01$09$00
 	dc.b "!ldi","r"+$80,"I",-2
+; ***************************************************** ldir
+; Method in file '+lib.s' at line '7664' : ldir String
 	dc.w L_InLDir1,L_Nul			//$51$01$05$00
 	dc.b $80,"I2",-1
+; ***************************************************** dir
+; Method in file '+lib.s' at line '7646' : dir 
 	dc.w L_InDir0,L_Nul			//$51$01$08$00
 	dc.b "!di","r"+$80,"I",-2
+; ***************************************************** dir
+; Method in file '+lib.s' at line '7671' : dir String
 	dc.w L_InDir1,L_Nul			//$51$01$05$00
 	dc.b $80,"I2",-1
+; ***************************************************** set dir
+; Method in file '+lib.s' at line '7300' : set dir Integer
 	dc.w L_InSetDir1,L_Nul			//$00$01$0B$00
 	dc.b "set di","r"+$80,"I0",-2
+; ***************************************************** set dir
+; Method in file '+lib.s' at line '7285' : set dir Integer, String
 	dc.w L_InSetDir2,L_Nul			//$2D$01$0B$00
 	dc.b "set di","r"+$80,"I0,2",-1
+; ***************************************************** load iff
+; Method in file '+lib.s' at line '6071' : load iff String
 	dc.w L_InLoadIff1,L_Nul			//$00$01$0D$00
 	dc.b "!load if","f"+$80,"I2",-2
+; ***************************************************** load iff
+; Method in file '+lib.s' at line '6081' : load iff String, Integer
 	dc.w L_InLoadIff2,L_Nul			//$2D$01$05$00
 	dc.b $80,"I2,0",-1
+; ***************************************************** mask iff
+; Method in file '+lib.s' at line '6052' : mask iff Integer
 	dc.w L_InMaskIff,L_Nul			//$00$01$0C$00
 	dc.b "mask if","f"+$80,"I0",-1
+; ***************************************************** pi#
+; Method in file '+lib.s' at line '6061' : Float = pi#()
 	dc.w L_Nul,L_FnPicture			//$01$00$0B$00
 	dc.b "pictur","e"+$80,"0",-1
+; ***************************************************** bload
+; Method in file '+lib.s' at line '5990' : bload String, Integer
 	dc.w L_InBload,L_Nul			//$00$01$09$00
 	dc.b "bloa","d"+$80,"I2,0",-1
+; ***************************************************** bsave
+; Method in file '+lib.s' at line '6024' : bsave String, Integer to Integer
 	dc.w L_InBSave,L_Nul			//$00$01$09$00
 	dc.b "bsav","e"+$80,"I2,0t0",-1
+; ***************************************************** pload
+; Method in file '+lib.s' at line '5935' : pload String, Integer
 	dc.w L_InPLoad,L_Nul			//$00$01$09$00
 	dc.b "ploa","d"+$80,"I2,0",-1
+; ***************************************************** save
+; Method in file '+lib.s' at line '5523' : save String
 	dc.w L_InSave1,L_Nul			//$00$01$09$00
 	dc.b "!sav","e"+$80,"I2",-2
+; ***************************************************** save
+; Method in file '+lib.s' at line '5502' : save String, Integer
 	dc.w L_InSave2,L_Nul			//$2D$01$05$00
 	dc.b $80,"I2,0",-1
+; ***************************************************** load
+; Method in file '+lib.s' at line '5694' : load String
 	dc.w L_InLoad1,L_Nul			//$00$01$09$00
 	dc.b "!loa","d"+$80,"I2",-2
+; ***************************************************** load
+; Method in file '+lib.s' at line '5704' : load String, Integer
 	dc.w L_InLoad2,L_Nul			//$2D$01$05$00
 	dc.b $80,"I2,0",-1
 
+; ***************************************************** dfree
+; Method in file '+lib.s' at line '6710' : Integer = dfree()
 	dc.w L_Nul,L_FnDFree			//$01$00$09$00
 	dc.b "dfre","e"+$80,"0",-1
+; ***************************************************** mkdir
+; Method in file '+lib.s' at line '6672' : mkdir String
 	dc.w L_InMkDir,L_Nul			//$00$01$09$00
 	dc.b "mkdi","r"+$80,"I2",-1
+; ***************************************************** lof
+; Method in file '+lib.s' at line '6889' : Integer = lof( Integer )
 	dc.w L_Nul,L_FnLof			//$01$00$07$00
 	dc.b "lo","f"+$80,"00",-1
+; ***************************************************** eof
+; Method in file '+lib.s' at line '6936' : Integer = eof( Integer )
 	dc.w L_Nul,L_FnEof			//$01$00$07$00
 	dc.b "eo","f"+$80,"00",-1
+; ***************************************************** pof
+; Method in file '+lib.s' at line '6921' : Integer = pof( Integer )
 	dc.w L_InPof,L_FnPof			//$2B$1A$07$00
 	dc.b "po","f"+$80,"V00",-1
+; ***************************************************** port
+; Method in file '+lib.s' at line '6795' : Integer = port( Integer )
 	dc.w L_Nul,L_FnPort			//$01$00$08$00
 	dc.b "por","t"+$80,"00",-1
+; ***************************************************** randomize
+; Method in file '+lib.s' at line '7014' : randomize Integer
 	dc.w L_InOpenRandom,L_Nul		//$00$01$0F$00
 	dc.b "open rando","m"+$80,"I0,2",-1
+; ***************************************************** open in
+; Method in file '+lib.s' at line '6845' : open in Integer, String
 	dc.w L_InOpenIn,L_Nul			//$00$01$0B$00
 	dc.b "open i","n"+$80,"I0,2",-1
+; ***************************************************** open out
+; Method in file '+lib.s' at line '6835' : open out Integer, String
 	dc.w L_InOpenOut,L_Nul			//$00$01$0C$00
 	dc.b "open ou","t"+$80,"I0,2",-1
+; ***************************************************** open port
+; Method in file '+lib.s' at line '6825' : open port Integer, String
 	dc.w L_InOpenPort,L_Nul			//$00$01$0D$00
 	dc.b "open por","t"+$80,"I0,2",-1
+; ***************************************************** append
+; Method in file '+lib.s' at line '7024' : append Integer, String
 	dc.w L_InAppend,L_Nul			//$00$01$0A$00
 	dc.b "appen","d"+$80,"I0,2",-1
+; ***************************************************** close
+; Method in file '+lib.s' at line '6977' : close 
 	dc.w L_InClose0,L_Nul			//$00$01$0A$00
 	dc.b "!clos","e"+$80,"I",-2
+; ***************************************************** close
+; Method in file '+lib.s' at line '6967' : close Integer
 	dc.w L_InClose1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** parent
+; Method in file '+lib.s' at line '6609' : parent 
 	dc.w L_InParent,L_Nul			//$00$01$0A$00
 	dc.b "paren","t"+$80,"I",-1
+; ***************************************************** rename
+; Method in file '+lib.s' at line '6650' : rename String to String
 	dc.w L_InRename,L_Nul			//$00$01$0A$00
 	dc.b "renam","e"+$80,"I2t2",-1
+; ***************************************************** kill
+; Method in file '+lib.s' at line '6635' : kill String
 	dc.w L_InKill,L_Nul			//$00$01$08$00
 	dc.b "kil","l"+$80,"I2",-1
+; ***************************************************** drive
+; Method in file '+lib.s' at line '6690' : Integer = drive( String )
 	dc.w L_Nul,L_FnDrive			//$01$00$09$00
 	dc.b "driv","e"+$80,"02",-1
+; ***************************************************** field
+; Method in file '[Not Found]' at line '[Not found]' : field 
 	dc.w L_InField,L_Nul			//$19$01$09$00
 	dc.b "fiel","d"+$80,"I",-1
+; ***************************************************** fsel$
+; Method in file '+lib.s' at line '8585' : String = fsel$( String )
 	dc.w L_Nul,L_FnFileSelector1		//$01$26$0A$00
 	dc.b "!fsel","$"+$80,"22",-2
+; ***************************************************** fsel$
+; Method in file '+lib.s' at line '8595' : String = fsel$( String, String )
 	dc.w L_Nul,L_FnFileSelector2		//$01$26$05$00
 	dc.b $80,"22,2",-2
+; ***************************************************** fsel$
+; Method in file '+lib.s' at line '8604' : String = fsel$( String, String, String )
 	dc.w L_Nul,L_FnFileSelector3		//$01$26$05$00
 	dc.b $80,"22,2,2",-2
+; ***************************************************** fsel$
+; Method in file '+lib.s' at line '8612' : String = fsel$( String, String, String, String )
 	dc.w L_Nul,L_FnFileSelector4		//$01$26$05$00
 	dc.b $80,"22,2,2,2",-1
 
 * Instructions SPRITES
+; ***************************************************** set sprite buffer
+; Method in file '+lib.s' at line '14625' : set sprite buffer Integer
 	dc.w L_InSetSpriteBuffer,L_Nul		//$00$01$15$00
 	dc.b "set sprite buffe","r"+$80,"I0",-1
+; ***************************************************** sprite off
+; Method in file '+lib.s' at line '14670' : sprite off 
 	dc.w L_InSpriteOff0,L_Nul		//$00$01$0F$00
 	dc.b "!sprite of","f"+$80,"I",-2
+; ***************************************************** sprite off
+; Method in file '+lib.s' at line '14678' : sprite off Integer
 	dc.w L_InSpriteOff1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** sprite priority
+; Method in file '+lib.s' at line '14639' : sprite priority Integer
 	dc.w L_InSpritePriority,L_Nul		//$00$01$13$00
 	dc.b "sprite priorit","y"+$80,"I0",-1
+; ***************************************************** sprite update off
+; Method in file '+lib.s' at line '13677' : sprite update off 
 	dc.w L_InSpriteUpdateOff,L_Nul		//$00$01$15$00
 	dc.b "sprite update of","f"+$80,"I",-1
+; ***************************************************** sprite update on
+; Method in file '+lib.s' at line '13684' : sprite update on 
 	dc.w L_InSpriteUpdateOn,L_Nul		//$00$01$14$00
 	dc.b "sprite update o","n"+$80,"I",-1
+; ***************************************************** sprite update
+; Method in file '+lib.s' at line '13691' : sprite update 
 	dc.w L_InSpriteUpdate,L_Nul		//$00$01$11$00
 	dc.b "sprite updat","e"+$80,"I",-1
+; ***************************************************** spritebob col
+; Method in file '+lib.s' at line '14776' : Integer = spritebob col( Integer )
 	dc.w L_Nul,L_FnSpriteBobCol1		//$01$00$12$00
 	dc.b "!spritebob co","l"+$80,"00",-2
+; ***************************************************** spritebob col
+; Method in file '+lib.s' at line '14789' : Integer = spritebob col( Integer, Integer to Integer )
 	dc.w L_Nul,L_FnSpriteBobCol3		//$01$19$05$00
 	dc.b $80,"00,0t0",-1
+; ***************************************************** sprite col
+; Method in file '+lib.s' at line '14807' : Integer = sprite col( Integer )
 	dc.w L_Nul,L_FnSpriteCol1		//$01$00$0F$00
 	dc.b "!sprite co","l"+$80,"00",-2
+; ***************************************************** sprite col
+; Method in file '+lib.s' at line '14819' : Integer = sprite col( Integer, Integer to Integer )
 	dc.w L_Nul,L_FnSpriteCol3		//$01$19$05$00
 	dc.b $80,"00,0t0",-1
+; ***************************************************** set hardcol
+; Method in file '+lib.s' at line '14691' : set hardcol Integer, Integer
 	dc.w L_InSetHardcol,L_Nul		//$00$01$0F$00
 	dc.b "set hardco","l"+$80,"I0,0",-1
+; ***************************************************** hardcol
+; Method in file '+lib.s' at line '14700' : Integer = hardcol( Integer )
 	dc.w L_Nul,L_FnHardcol			//$01$00$0B$00
 	dc.b "hardco","l"+$80,"00",-1
+; ***************************************************** sprite base
+; Method in file '+lib.s' at line '15199' : Integer = sprite base( Integer )
 	dc.w L_Nul,L_FnSpriteBase		//$01$00$0F$00
 	dc.b "sprite bas","e"+$80,"00",-1
+; ***************************************************** icon base
+; Method in file '+lib.s' at line '15206' : Integer = icon base( Integer )
 	dc.w L_Nul,L_FnIconBase			//$01$00$0D$00
 	dc.b "icon bas","e"+$80,"00",-1
+; ***************************************************** sprite
+; Method in file '+lib.s' at line '14654' : sprite Integer, Integer, Integer, Integer
 	dc.w L_InSprite,L_Nul			//$00$01$0A$00
 	dc.b "sprit","e"+$80,"I0,0,0,0",-1
 
+; ***************************************************** bob off
+; Method in file '+lib.s' at line '14607' : bob off 
 	dc.w L_InBobOff0,L_Nul			//$00$01$0C$00
 	dc.b "!bob of","f"+$80,"I",-2
+; ***************************************************** bob off
+; Method in file '+lib.s' at line '14614' : bob off Integer
 	dc.w L_InBobOff1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** bob update off
+; Method in file '+lib.s' at line '13651' : bob update off 
 	dc.w L_InBobUpdateOff,L_Nul		//$00$01$12$00
 	dc.b "bob update of","f"+$80,"I",-1
+; ***************************************************** bob update on
+; Method in file '+lib.s' at line '13658' : bob update on 
 	dc.w L_InBobUpdateOn,L_Nul		//$00$01$11$00
 	dc.b "bob update o","n"+$80,"I",-1
+; ***************************************************** bob update
+; Method in file '+lib.s' at line '13665' : bob update 
 	dc.w L_InBobUpdate,L_Nul		//$00$01$0E$00
 	dc.b "bob updat","e"+$80,"I",-1
+; ***************************************************** bob clear
+; Method in file '+lib.s' at line '13716' : bob clear 
 	dc.w L_InBobClear,L_Nul			//$00$01$0D$00
 	dc.b "bob clea","r"+$80,"I",-1
+; ***************************************************** bob draw
+; Method in file '+lib.s' at line '13725' : bob draw 
 	dc.w L_InBobDraw,L_Nul			//$00$01$0C$00
 	dc.b "bob dra","w"+$80,"I",-1
+; ***************************************************** bobsprite col
+; Method in file '+lib.s' at line '14716' : Integer = bobsprite col( Integer )
 	dc.w L_Nul,L_FnBobSpriteCol1		//$01$00$12$00
 	dc.b "!bobsprite co","l"+$80,"00",-2
+; ***************************************************** bobsprite col
+; Method in file '+lib.s' at line '14729' : Integer = bobsprite col( Integer, Integer to Integer )
 	dc.w L_Nul,L_FnBobSpriteCol3		//$01$19$05$00
 	dc.b $80,"00,0t0",-1
+; ***************************************************** bob col
+; Method in file '+lib.s' at line '14747' : Integer = bob col( Integer )
 	dc.w L_Nul,L_FnBobCol1			//$01$00$0C$00
 	dc.b "!bob co","l"+$80,"00",-2
+; ***************************************************** bob col
+; Method in file '+lib.s' at line '14759' : Integer = bob col( Integer, Integer to Integer )
 	dc.w L_Nul,L_FnBobCol3			//$01$19$05$00
 	dc.b $80,"00,0t0",-1
+; ***************************************************** col
+; Method in file '+lib.s' at line '14836' : Integer = col( Integer )
 	dc.w L_Nul,L_FnCol			//$01$00$07$00
 	dc.b "co","l"+$80,"00",-1
+; ***************************************************** limit bob
+; Method in file '+lib.s' at line '13738' : limit bob 
 	dc.w L_InLimitBob0,L_Nul		//$00$01$0E$00
 	dc.b "!limit bo","b"+$80,"I",-2
+; ***************************************************** limit bob
+; Method in file '+lib.s' at line '13751' : limit bob Integer, Integer to Integer, Integer
 	dc.w L_InLimitBob4,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0t0,0",-2
+; ***************************************************** limit bob
+; Method in file '+lib.s' at line '13764' : limit bob Integer, Integer, Integer to Integer, Integer
 	dc.w L_InLimitBob5,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0t0,0",-1
+; ***************************************************** set bob
+; Method in file '+lib.s' at line '14552' : set bob Integer, Integer, Integer, Integer
 	dc.w L_InSetBob,L_Nul			//$00$01$0B$00
 	dc.b "set bo","b"+$80,"I0,0,0,0",-1
+; ***************************************************** bob
+; Method in file '+lib.s' at line '14584' : bob Integer, Integer, Integer, Integer
 	dc.w L_InBob,L_Nul			//$00$01$07$00
 	dc.b "bo","b"+$80,"I0,0,0,0",-1
+; ***************************************************** get sprite palette
+; Method in file '+lib.s' at line '11174' : get sprite palette 
 	dc.w L_InGetSpritePalette0,L_Nul	//$00$01$17$00
 	dc.b "!get sprite palett","e"+$80,"I",-2
+; ***************************************************** get sprite palette
+; Method in file '+lib.s' at line '11181' : get sprite palette Integer
 	dc.w L_InGetSpritePalette1,L_Nul	//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** get sprite
+; Method in file '+lib.s' at line '15000' : get sprite Integer, Integer, Integer to Integer, Integer
 	dc.w L_InGetSprite5,L_Nul		//$00$01$0F$00
 	dc.b "!get sprit","e"+$80,"I0,0,0t0,0",-2
+; ***************************************************** get sprite
+; Method in file '+lib.s' at line '14986' : get sprite Integer, Integer, Integer, Integer to Integer, Integer
 	dc.w L_InGetSprite6,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0t0,0",-1
+; ***************************************************** get sprite
+; Method in file '+lib.s' at line '15000' : get sprite Integer, Integer, Integer to Integer, Integer
 	dc.w L_InGetSprite5,L_Nul		//$00$01$0C$00
 	dc.b "!get bo","b"+$80,"I0,0,0t0,0",-2
+; ***************************************************** get sprite
+; Method in file '+lib.s' at line '14986' : get sprite Integer, Integer, Integer, Integer to Integer, Integer
 	dc.w L_InGetSprite6,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0,0,0t0,0",-1
+; ***************************************************** del sprite
+; Method in file '+lib.s' at line '3983' : del sprite Integer
 	dc.w L_InDelSprite1,L_Nul		//$00$01$0F$00
 	dc.b "!del sprit","e"+$80,"I0",-2
+; ***************************************************** del sprite
+; Method in file '+lib.s' at line '3990' : del sprite Integer to Integer
 	dc.w L_InDelSprite2,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0t0",-1
+; ***************************************************** del sprite
+; Method in file '+lib.s' at line '3983' : del sprite Integer
 	dc.w L_InDelSprite1,L_Nul		//$00$01$0C$00
 	dc.b "!del bo","b"+$80,"I0",-2
+; ***************************************************** del sprite
+; Method in file '+lib.s' at line '3990' : del sprite Integer to Integer
 	dc.w L_InDelSprite2,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0t0",-1
+; ***************************************************** del icon
+; Method in file '+lib.s' at line '3966' : del icon Integer
 	dc.w L_InDelIcon1,L_Nul			//$00$01$0D$00
 	dc.b "!del ico","n"+$80,"I0",-2
+; ***************************************************** del icon
+; Method in file '+lib.s' at line '3973' : del icon Integer to Integer
 	dc.w L_InDelIcon2,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0t0",-1
+; ***************************************************** ins sprite
+; Method in file '+lib.s' at line '3936' : ins sprite Integer
 	dc.w L_InInsSprite,L_Nul		//$00$01$0E$00
 	dc.b "ins sprit","e"+$80,"I0",-1
+; ***************************************************** ins sprite
+; Method in file '+lib.s' at line '3936' : ins sprite Integer
 	dc.w L_InInsSprite,L_Nul		//$00$01$0B$00
 	dc.b "ins bo","b"+$80,"I0",-1
+; ***************************************************** ins icon
+; Method in file '+lib.s' at line '3951' : ins icon Integer
 	dc.w L_InInsIcon,L_Nul			//$00$01$0C$00
 	dc.b "ins ico","n"+$80,"I0",-1
+; ***************************************************** palette
+; Method in file '+lib.s' at line '11161' : palette 
 	dc.w L_InGetIconPalette0,L_Nul		//$00$01$15$00
 	dc.b "!get icon palett","e"+$80,"I",-2
+; ***************************************************** palette
+; Method in file '+lib.s' at line '11161' : palette 
 	dc.w L_InGetIconPalette1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** get icon
+; Method in file '+lib.s' at line '15054' : get icon Integer, Integer, Integer to Integer, Integer
 	dc.w L_InGetIcon5,L_Nul			//$00$01$0D$00
 	dc.b "!get ico","n"+$80,"I0,0,0t0,0",-2
+; ***************************************************** get icon
+; Method in file '+lib.s' at line '15040' : get icon Integer, Integer, Integer, Integer to Integer, Integer
 	dc.w L_InGetIcon6,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0,0t0,0",-1
+; ***************************************************** put bob
+; Method in file '+lib.s' at line '15118' : put bob Integer
 	dc.w L_InPutBob,L_Nul			//$00$01$0B$00
 	dc.b "put bo","b"+$80,"I0",-1
+; ***************************************************** paste bob
+; Method in file '+lib.s' at line '15156' : paste bob Integer, Integer, Integer
 	dc.w L_InPasteBob,L_Nul			//$00$01$0D$00
 	dc.b "paste bo","b"+$80,"I0,0,0",-1
+; ***************************************************** paste icon
+; Method in file '+lib.s' at line '15168' : paste icon Integer, Integer, Integer
 	dc.w L_InPasteIcon,L_Nul		//$00$01$0E$00
 	dc.b "paste ico","n"+$80,"I0,0,0",-1
+; ***************************************************** make mask
+; Method in file '+lib.s' at line '14888' : make mask 
 	dc.w L_InMakeMask0,L_Nul		//$00$01$0E$00
 	dc.b "!make mas","k"+$80,"I",-2
+; ***************************************************** make mask
+; Method in file '+lib.s' at line '14898' : make mask Integer
 	dc.w L_InMakeMask1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** no mask
+; Method in file '+lib.s' at line '14919' : no mask 
 	dc.w L_InNoMask0,L_Nul			//$00$01$0C$00
 	dc.b "!no mas","k"+$80,"I",-2
+; ***************************************************** no mask
+; Method in file '+lib.s' at line '14929' : no mask Integer
 	dc.w L_InNoMask1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** make icon mask
+; Method in file '+lib.s' at line '14848' : make icon mask 
 	dc.w L_InMakeIconMask0,L_Nul		//$00$01$13$00
 	dc.b "!make icon mas","k"+$80,"I",-2
+; ***************************************************** make icon mask
+; Method in file '+lib.s' at line '14858' : make icon mask Integer
 	dc.w L_InMakeIconMask1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** no icon mask
+; Method in file '+lib.s' at line '14868' : no icon mask 
 	dc.w L_InNoIconMask0,L_Nul		//$00$01$11$00
 	dc.b "!no icon mas","k"+$80,"I",-2
+; ***************************************************** no icon mask
+; Method in file '+lib.s' at line '14878' : no icon mask Integer
 	dc.w L_InNoIconMask1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** hot spot
+; Method in file '+lib.s' at line '14964' : hot spot Integer, Integer
 	dc.w L_InHotSpot2,L_Nul			//$00$01$0D$00
 	dc.b "!hot spo","t"+$80,"I0,0",-2
+; ***************************************************** hot spot
+; Method in file '+lib.s' at line '14956' : hot spot Integer, Integer, Integer
 	dc.w L_InHotSpot3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0",-1
+; ***************************************************** priority on
+; Method in file '+lib.s' at line '13780' : priority on 
 	dc.w L_InPriorityOn,L_Nul		//$00$01$0F$00
 	dc.b "priority o","n"+$80,"I",-1
+; ***************************************************** priority off
+; Method in file '+lib.s' at line '13788' : priority off 
 	dc.w L_InPriorityOff,L_Nul		//$00$01$10$00
 	dc.b "priority of","f"+$80,"I",-1
 
+; ***************************************************** hide on
+; Method in file '+lib.s' at line '14474' : hide on 
 	dc.w L_InHideOn,L_Nul			//$00$01$0B$00
 	dc.b "hide o","n"+$80,"I",-1
+; ***************************************************** hide
+; Method in file '+lib.s' at line '14467' : hide 
 	dc.w L_InHide,L_Nul			//$00$01$08$00
 	dc.b "hid","e"+$80,"I",-1
+; ***************************************************** show on
+; Method in file '+lib.s' at line '14490' : show on 
 	dc.w L_InShowOn,L_Nul			//$00$01$0B$00
 	dc.b "show o","n"+$80,"I",-1
+; ***************************************************** show
+; Method in file '+lib.s' at line '14483' : show 
 	dc.w L_InShow,L_Nul			//$00$01$08$00
 	dc.b "sho","w"+$80,"I",-1
+; ***************************************************** change mouse
+; Method in file '+lib.s' at line '14539' : change mouse Integer
 	dc.w L_InChangeMouse,L_Nul		//$00$01$10$00
 	dc.b "change mous","e"+$80,"I0",-1
+; ***************************************************** x mouse
+; Method in file '+lib.s' at line '14416' : Integer = x mouse()
 	dc.w L_InXMouse,L_FnXMouse		//$2B$1A$0B$00
 	dc.b "x mous","e"+$80,"V0",-1
+; ***************************************************** y mouse
+; Method in file '+lib.s' at line '14434' : Integer = y mouse()
 	dc.w L_InYMouse,L_FnYMouse		//$2B$1A$0B$00
 	dc.b "y mous","e"+$80,"V0",-1
+; ***************************************************** mouse key
+; Method in file '+lib.s' at line '14446' : Integer = mouse key()
 	dc.w L_Nul,L_FnMouseKey			//$01$00$0D$00
 	dc.b "mouse ke","y"+$80,"0",-1
+; ***************************************************** mouse click
+; Method in file '+lib.s' at line '14455' : Integer = mouse click()
 	dc.w L_Nul,L_FnMouseClick		//$01$00$0F$00
 	dc.b "mouse clic","k"+$80,"0",-1
+; ***************************************************** limit mouse
+; Method in file '+lib.s' at line '14500' : limit mouse 
 	dc.w L_InLimitMouse0,L_Nul		//$00$01$10$00
 	dc.b "!limit mous","e"+$80,"I",-2
+; ***************************************************** limit mouse
+; Method in file '+lib.s' at line '14507' : limit mouse Integer
 	dc.w L_InLimitMouse1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-2
+; ***************************************************** limit mouse
+; Method in file '+lib.s' at line '14524' : limit mouse Integer, Integer to Integer, Integer
 	dc.w L_InLimitMouse4,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0,0t0,0",-1
 	
 * AMAL!
+; ***************************************************** freeze
+; Method in file '+lib.s' at line '17081' : freeze 
 	dc.w L_InUnFreeze,L_Nul			//$00$01$0C$00
 	dc.b "unfreez","e"+$80,"I",-1
+; ***************************************************** move x
+; Method in file '+lib.s' at line '14073' : move x Integer, 3
 	dc.w L_InMoveX2,L_Nul			//$00$01$0B$00
 	dc.b "!move ","x"+$80,"I0,3",-2
+; ***************************************************** move x
+; Method in file '+lib.s' at line '14038' : move x Integer, String to Integer
 	dc.w L_InMoveX3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,2t0",-1
+; ***************************************************** move y
+; Method in file '+lib.s' at line '14080' : move y Integer, 3
 	dc.w L_InMoveY2,L_Nul			//$00$01$0B$00
 	dc.b "!move ","y"+$80,"I0,3",-2
+; ***************************************************** move y
+; Method in file '+lib.s' at line '14045' : move y Integer, String to Integer
 	dc.w L_InMoveY3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,2t0",-1
+; ***************************************************** move off
+; Method in file '+lib.s' at line '13917' : move off 
 	dc.w L_InMoveOff0,L_Nul			//$00$01$0D$00
 	dc.b "!move of","f"+$80,"I",-2
+; ***************************************************** move off
+; Method in file '+lib.s' at line '13996' : move off Integer
 	dc.w L_InMoveOff1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** move on
+; Method in file '+lib.s' at line '13901' : move on 
 	dc.w L_InMoveOn0,L_Nul			//$00$01$0C$00
 	dc.b "!move o","n"+$80,"I",-2
+; ***************************************************** move on
+; Method in file '+lib.s' at line '13980' : move on Integer
 	dc.w L_InMoveOn1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** move freeze
+; Method in file '+lib.s' at line '13933' : move freeze 
 	dc.w L_InMoveFreeze0,L_Nul		//$00$01$10$00
 	dc.b "!move freez","e"+$80,"I",-2
+; ***************************************************** move freeze
+; Method in file '+lib.s' at line '14012' : move freeze Integer
 	dc.w L_InMoveFreeze1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** anim off
+; Method in file '+lib.s' at line '13925' : anim off 
 	dc.w L_InAnimOff0,L_Nul			//$00$01$0D$00
 	dc.b "!anim of","f"+$80,"I",-2
+; ***************************************************** anim off
+; Method in file '+lib.s' at line '14004' : anim off Integer
 	dc.w L_InAnimOff1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** anim on
+; Method in file '+lib.s' at line '13909' : anim on 
 	dc.w L_InAnimOn0,L_Nul			//$00$01$0C$00
 	dc.b "!anim o","n"+$80,"I",-2
+; ***************************************************** anim on
+; Method in file '+lib.s' at line '13988' : anim on Integer
 	dc.w L_InAnimOn1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** anim freeze
+; Method in file '+lib.s' at line '13941' : anim freeze 
 	dc.w L_InAnimFreeze0,L_Nul		//$00$01$10$00
 	dc.b "!anim freez","e"+$80,"I",-2
+; ***************************************************** anim freeze
+; Method in file '+lib.s' at line '14020' : anim freeze Integer
 	dc.w L_InAnimFreeze1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** anim
+; Method in file '+lib.s' at line '14094' : anim Integer, 3
 	dc.w L_InAnim2,L_Nul			//$00$01$08$00
 	dc.b "ani","m"+$80,"I0,3",-2
+; ***************************************************** anim freeze
+; Method in file '+lib.s' at line '14052' : anim freeze Integer, String to Integer
 	dc.w L_InAnim3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,2t0",-1
+; ***************************************************** movon
+; Method in file '+lib.s' at line '14191' : Integer = movon( Integer )
 	dc.w L_Nul,L_FnMovon			//$01$00$09$00
 	dc.b "movo","n"+$80,"00",-1
+; ***************************************************** chanan
+; Method in file '+lib.s' at line '14202' : Integer = chanan( Integer )
 	dc.w L_Nul,L_FnChanAn			//$01$00$0A$00
 	dc.b "chana","n"+$80,"00",-1
+; ***************************************************** chanmv
+; Method in file '+lib.s' at line '14213' : Integer = chanmv( Integer )
 	dc.w L_Nul,L_FnChanMv			//$01$00$0A$00
 	dc.b "chanm","v"+$80,"00",-1
+; ***************************************************** channel
+; Method in file '[Not Found]' at line '[Not found]' : channel 
 	dc.w L_InChannel,L_Nul			//$15$01$0B$00
 	dc.b "channe","l"+$80,"I",-1
+; ***************************************************** amreg
+; Method in file '+lib.s' at line '14244' : Integer = amreg( Integer )
 	dc.w L_InAmreg1,L_FnAmreg1		//$2B$1A$0A$00
 	dc.b "!amre","g"+$80,"V00",-2
+; ***************************************************** amreg
+; Method in file '+lib.s' at line '14260' : Integer = amreg( Integer, Integer )
 	dc.w L_InAmreg2,L_FnAmreg2		//$2B$1A$05$00
 	dc.b $80,"V00,0",-1
+; ***************************************************** amal on
+; Method in file '+lib.s' at line '13877' : amal on 
 	dc.w L_InAmalOn0,L_Nul			//$00$01$0C$00
 	dc.b "!amal o","n"+$80,"I",-2
+; ***************************************************** amal on
+; Method in file '+lib.s' at line '13956' : amal on Integer
 	dc.w L_InAmalOn1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** amal off
+; Method in file '+lib.s' at line '13885' : amal off 
 	dc.w L_InAmalOff0,L_Nul			//$00$01$0D$00
 	dc.b "!amal of","f"+$80,"I",-2
+; ***************************************************** amal off
+; Method in file '+lib.s' at line '13964' : amal off Integer
 	dc.w L_InAmalOff1,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** amal freeze
+; Method in file '+lib.s' at line '13893' : amal freeze 
 	dc.w L_InAmalFreeze0,L_Nul		//$00$01$10$00
 	dc.b "!amal freez","e"+$80,"I",-2
+; ***************************************************** amal freeze
+; Method in file '+lib.s' at line '13972' : amal freeze Integer
 	dc.w L_InAmalFreeze1,L_Nul		//$2D$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** amalerr
+; Method in file '+lib.s' at line '13822' : Integer = amalerr()
 	dc.w L_Nul,L_FnAmalerr			//$01$00$0B$00
 	dc.b "amaler","r"+$80,"0",-1
+; ***************************************************** amal
+; Method in file '+lib.s' at line '14087' : amal Integer, 3
 	dc.w L_InAmal2,L_Nul			//$00$01$09$00
 	dc.b "!ama","l"+$80,"I0,3",-2
+; ***************************************************** amal
+; Method in file '+lib.s' at line '14059' : amal Integer, String to Integer
 	dc.w L_InAmal3,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,2t0",-1
+; ***************************************************** amplay
+; Method in file '+lib.s' at line '14300' : amplay Integer, Integer
 	dc.w L_InAmPlay2,L_Nul			//$00$01$0B$00
 	dc.b "!ampla","y"+$80,"I0,0",-2
+; ***************************************************** amplay
+; Method in file '+lib.s' at line '14309' : amplay Integer, Integer, Integer to Integer
 	dc.w L_InAmPlay4,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0t0",-1
+; ***************************************************** synchro on
+; Method in file '+lib.s' at line '13849' : synchro on 
 	dc.w L_InSynchroOn,L_Nul		//$00$01$0E$00
 	dc.b "synchro o","n"+$80,"I",-1
+; ***************************************************** synchro off
+; Method in file '+lib.s' at line '13858' : synchro off 
 	dc.w L_InSynchroOff,L_Nul		//$00$01$0F$00
 	dc.b "synchro of","f"+$80,"I",-1
+; ***************************************************** synchro
+; Method in file '+lib.s' at line '13867' : synchro 
 	dc.w L_InSynchro,L_Nul			//$00$01$0B$00
 	dc.b "synchr","o"+$80,"I",-1
+; ***************************************************** update off
+; Method in file '+lib.s' at line '13619' : update off 
 	dc.w L_InUpdateOff,L_Nul		//$00$01$0E$00
 	dc.b "update of","f"+$80,"I",-1
+; ***************************************************** update on
+; Method in file '+lib.s' at line '13627' : update on 
 	dc.w L_InUpdateOn,L_Nul			//$00$01$0D$00
 	dc.b "update o","n"+$80,"I",-1
+; ***************************************************** update every
+; Method in file '+lib.s' at line '13704' : update every Integer
 	dc.w L_InUpdateEvery,L_Nul		//$00$01$10$00
 	dc.b "update ever","y"+$80,"I0",-1
+; ***************************************************** update
+; Method in file '+lib.s' at line '13635' : update 
 	dc.w L_InUpdate,L_Nul			//$00$01$0A$00
 	dc.b "updat","e"+$80,"I",-1
+; ***************************************************** x bob
+; Method in file '+lib.s' at line '14328' : Integer = x bob( Integer )
 	dc.w L_Nul,L_FnXBob			//$01$00$09$00
 	dc.b "x bo","b"+$80,"00",-1
+; ***************************************************** y bob
+; Method in file '+lib.s' at line '14340' : Integer = y bob( Integer )
 	dc.w L_Nul,L_FnYBob			//$01$00$09$00
 	dc.b "y bo","b"+$80,"00",-1
+; ***************************************************** x sprite
+; Method in file '+lib.s' at line '14355' : Integer = x sprite( Integer )
 	dc.w L_Nul,L_FnXSprite			//$01$00$0C$00
 	dc.b "x sprit","e"+$80,"00",-1
+; ***************************************************** y sprite
+; Method in file '+lib.s' at line '14367' : Integer = y sprite( Integer )
 	dc.w L_Nul,L_FnYSprite			//$01$00$0C$00
 	dc.b "y sprit","e"+$80,"00",-1
 	
 * Memoire / Banques
+; ***************************************************** reserve as work
+; Method in file '+lib.s' at line '4012' : reserve as work Integer, Integer
 	dc.w L_InResWork,L_Nul			//$00$01$13$00
 	dc.b "reserve as wor","k"+$80,"I0,0",-1
+; ***************************************************** reserve as chip work
+; Method in file '+lib.s' at line '4022' : reserve as chip work Integer, Integer
 	dc.w L_InResChipWork,L_Nul		//$00$01$18$00
 	dc.b "reserve as chip wor","k"+$80,"I0,0",-1
+; ***************************************************** reserve as data
+; Method in file '+lib.s' at line '4032' : reserve as data Integer, Integer
 	dc.w L_InResData,L_Nul			//$00$01$13$00
 	dc.b "reserve as dat","a"+$80,"I0,0",-1
+; ***************************************************** reserve as chip data
+; Method in file '+lib.s' at line '4042' : reserve as chip data Integer, Integer
 	dc.w L_InResChipData,L_Nul		//$00$01$18$00
 	dc.b "reserve as chip dat","a"+$80,"I0,0",-1
+; ***************************************************** erase
+; Method in file '+lib.s' at line '3790' : erase Integer
 	dc.w L_InErase,L_Nul			//$00$01$09$00
 	dc.b "eras","e"+$80,"I0",-1
+; ***************************************************** list bank
+; Method in file '+lib.s' at line '3751' : list bank 
 	dc.w L_InListBank,L_Nul			//$00$01$0D$00
 	dc.b "list ban","k"+$80,"I",-1
+; ***************************************************** chip free
+; Method in file '+lib.s' at line '4111' : Integer = chip free()
 	dc.w L_Nul,L_FnChipFree			//$01$00$0D$00
 	dc.b "chip fre","e"+$80,"0",-1
+; ***************************************************** fast free
+; Method in file '+lib.s' at line '4120' : Integer = fast free()
 	dc.w L_Nul,L_FnFastFree			//$01$00$0D$00
 	dc.b "fast fre","e"+$80,"0",-1
+; ***************************************************** fill
+; Method in file '+lib.s' at line '4246' : fill Integer to Integer, Integer
 	dc.w L_InFill,L_Nul			//$00$01$08$00
 	dc.b "fil","l"+$80,"I0t0,0",-1
+; ***************************************************** copy
+; Method in file '+lib.s' at line '4231' : copy Integer, Integer to Integer
 	dc.w L_InCopy,L_Nul			//$00$01$08$00
 	dc.b "cop","y"+$80,"I0,0t0",-1
+; ***************************************************** hunt
+; Method in file '+lib.s' at line '4281' : Integer = hunt( Integer to Integer, String )
 	dc.w L_Nul,L_FnHunt			//$01$00$08$00
 	dc.b "hun","t"+$80,"00t0,2",-1
+; ***************************************************** poke
+; Method in file '+lib.s' at line '4469' : poke Integer, Integer
 	dc.w L_InPoke,L_Nul			//$00$01$08$00
 	dc.b "pok","e"+$80,"I0,0",-1
+; ***************************************************** loke
+; Method in file '+lib.s' at line '4400' : loke Integer, Integer
 	dc.w L_InLoke,L_Nul			//$00$01$08$00
 	dc.b "lok","e"+$80,"I0,0",-1
+; ***************************************************** peek
+; Method in file '+lib.s' at line '4492' : Integer = peek( Integer )
 	dc.w L_Nul,L_FnPeek			//$01$00$08$00
 	dc.b "pee","k"+$80,"00",-1
+; ***************************************************** deek
+; Method in file '+lib.s' at line '4432' : Integer = deek( Integer )
 	dc.w L_Nul,L_FnDeek			//$01$00$08$00
 	dc.b "dee","k"+$80,"00",-1
+; ***************************************************** leek
+; Method in file '+lib.s' at line '4448' : Integer = leek( Integer )
 	dc.w L_Nul,L_FnLeek			//$01$00$08$00
 	dc.b "lee","k"+$80,"00",-1
+; ***************************************************** bset
+; Method in file '[Not Found]' at line '[Not found]' : bset Integer, Integer
 	dc.w L_InBset,L_NoFlag			//$56$01$08$00
 	dc.b "bse","t"+$80,"I0,0",-1
+; ***************************************************** bclr
+; Method in file '[Not Found]' at line '[Not found]' : bclr Integer, Integer
 	dc.w L_InBclr,L_NoFlag			//$56$01$08$00
 	dc.b "bcl","r"+$80,"I0,0",-1
+; ***************************************************** bchg
+; Method in file '[Not Found]' at line '[Not found]' : bchg Integer, Integer
 	dc.w L_InBchg,L_NoFlag			//$56$01$08$00
 	dc.b "bch","g"+$80,"I0,0",-1
+; ***************************************************** btst
+; Method in file '[Not Found]' at line '[Not found]' : Integer = btst( Integer, Integer )
 	dc.w L_NoFlag,L_FnBtst			//$01$27$08$00
 	dc.b "bts","t"+$80,"00,0",-1
+; ***************************************************** ror.b
+; Method in file '[Not Found]' at line '[Not found]' : ror.b Integer, Integer
  	dc.w L_InRorB,L_NoFlag			//$56$01$09$00
 	dc.b "ror.","b"+$80,"I0,0",-1
+; ***************************************************** ror.w
+; Method in file '[Not Found]' at line '[Not found]' : ror.w Integer, Integer
  	dc.w L_InRorW,L_NoFlag			//$56$01$09$00
 	dc.b "ror.","w"+$80,"I0,0",-1
+; ***************************************************** ror.l
+; Method in file '[Not Found]' at line '[Not found]' : ror.l Integer, Integer
  	dc.w L_InRorL,L_NoFlag			//$56$01$09$00
 	dc.b "ror.","l"+$80,"I0,0",-1
+; ***************************************************** rol.b
+; Method in file '[Not Found]' at line '[Not found]' : rol.b Integer, Integer
  	dc.w L_InRolB,L_NoFlag			//$56$01$09$00
 	dc.b "rol.","b"+$80,"I0,0",-1
+; ***************************************************** rol.w
+; Method in file '[Not Found]' at line '[Not found]' : rol.w Integer, Integer
  	dc.w L_InRolW,L_NoFlag			//$56$01$09$00
 	dc.b "rol.","w"+$80,"I0,0",-1
+; ***************************************************** rol.l
+; Method in file '[Not Found]' at line '[Not found]' : rol.l Integer, Integer
  	dc.w L_InRolL,L_NoFlag			//$56$01$09$00
 	dc.b "rol.","l"+$80,"I0,0",-1
+; ***************************************************** areg
+; Method in file '+lib.s' at line '4321' : Integer = areg( Integer )
 	dc.w L_InAReg,L_FnAReg			//$2B$1A$08$00
 	dc.b "are","g"+$80,"V00",-1
+; ***************************************************** dreg
+; Method in file '+lib.s' at line '4341' : Integer = dreg( Integer )
 	dc.w L_InDReg,L_FnDReg			//$2B$1A$08$00
 	dc.b "dre","g"+$80,"V00",-1
 
 * Copper
+; ***************************************************** copper on
+; Method in file '+lib.s' at line '11409' : copper on 
 	dc.w L_InCopOn,L_Nul			//$00$01$0D$00
 	dc.b "copper o","n"+$80,"I",-1
+; ***************************************************** copper off
+; Method in file '+lib.s' at line '11416' : copper off 
 	dc.w L_InCopOff,L_Nul			//$00$01$0E$00
 	dc.b "copper of","f"+$80,"I",-1
+; ***************************************************** cop swap
+; Method in file '+lib.s' at line '11425' : cop swap 
 	dc.w L_InCopSwap,L_Nul			//$00$01$0C$00
 	dc.b "cop swa","p"+$80,"I",-1
+; ***************************************************** cop reset
+; Method in file '+lib.s' at line '11435' : cop reset 
 	dc.w L_InCopReset,L_Nul			//$00$01$0D$00
 	dc.b "cop rese","t"+$80,"I",-1
+; ***************************************************** cop wait
+; Method in file '+lib.s' at line '11445' : cop wait Integer, Integer
 	dc.w L_InCopWait2,L_Nul	 		//$00$01$0D$00
 	dc.b "!cop wai","t"+$80,"I0,0",-2
+; ***************************************************** cop wait
+; Method in file '+lib.s' at line '11454' : cop wait Integer, Integer, Integer, Integer
 	dc.w L_InCopWait4,L_Nul			//$2D$01$05$00
 	dc.b $80,"I0,0,0,0",-1
+; ***************************************************** cop movel
+; Method in file '+lib.s' at line '11481' : cop movel Integer, Integer
 	dc.w L_InCopMoveL,L_Nul			//$00$01$0D$00
 	dc.b "cop move","l"+$80,"I0,0",-1
+; ***************************************************** cop move
+; Method in file '+lib.s' at line '11469' : cop move Integer, Integer
 	dc.w L_InCopMove,L_Nul			//$00$01$0C$00
 	dc.b "cop mov","e"+$80,"I0,0",-1
+; ***************************************************** cop logic
+; Method in file '+lib.s' at line '11493' : Integer = cop logic()
 	dc.w L_Nul,L_FnCopLogic			//$01$00$0D$00
 	dc.b "cop logi","c"+$80,"0",-1
 
 * Instructions programmes/accessoires
+; ***************************************************** prg first$
+; Method in file '+lib.s' at line '7316' : String = prg first$( String )
 	dc.w L_Nul,L_FnPrgFirst			//$01$00$0E$00
 	dc.b "prg first","$"+$80,"22",-1
+; ***************************************************** dir next$
+; Method in file '+lib.s' at line '7367' : String = dir next$()
 	dc.w L_Nul,L_FnFillNext			//$01$00$0D$00
 	dc.b "prg next","$"+$80,"2",-1
+; ***************************************************** psel$
+; Method in file '+lib.s' at line '8576' : String = psel$( String )
 	dc.w L_Nul,L_FnPSel			//$01$00$0A$00
 	dc.b "!psel","$"+$80,"22",-2
+; ***************************************************** psel$
+; Method in file '+lib.s' at line '8576' : String = psel$( String )
 	dc.w L_Nul,L_FnPSel			//$01$19$05$00
 	dc.b $80,"22,2",-2
+; ***************************************************** psel$
+; Method in file '+lib.s' at line '8576' : String = psel$( String )
 	dc.w L_Nul,L_FnPSel			//$01$19$05$00
 	dc.b $80,"22,2,2",-2
+; ***************************************************** psel$
+; Method in file '+lib.s' at line '8576' : String = psel$( String )
 	dc.w L_Nul,L_FnPSel			//$01$19$05$00
 	dc.b $80,"22,2,2,2",-1
+; ***************************************************** prun
+; Method in file '[Not Found]' at line '[Not found]' : prun String
 	dc.w L_InPRun,L_Nul			//$00$01$08$00
 	dc.b "pru","n"+$80,"I2",-1
+; ***************************************************** bgrab
+; Method in file '+lib.s' at line '3876' : bgrab Integer
 	dc.w L_InBGrab,L_Nul			//$00$01$09$00
 	dc.b "bgra","b"+$80,"I0",-1
 	
 * En dernier!
+; ***************************************************** put
+; Method in file '+lib.s' at line '7097' : put Integer, Integer
 	dc.w L_InPut,L_Nul			//$00$01$07$00
 	dc.b "pu","t"+$80,"I0,0",-1
+; ***************************************************** get
+; Method in file '+lib.s' at line '7063' : get Integer, Integer
 	dc.w L_InGet,L_Nul			//$00$01$07$00
 	dc.b "ge","t"+$80,"I0,0",-1
+; ***************************************************** system
+; Method in file '[Not Found]' at line '[Not found]' : system 
 	dc.w L_InSystem,L_Nul			//$00$01$0A$00
 	dc.b "syste","m"+$80,"I",-1
+; ***************************************************** multi wait
+; Method in file '+lib.s' at line '3669' : multi wait 
 	dc.w L_InMWait,L_Nul			//$00$01$0E$00
 	dc.b "multi wai","t"+$80,"I",-1
+; ***************************************************** i bob
+; Method in file '+lib.s' at line '14382' : Integer = i bob( Integer )
 	dc.w L_Nul,L_FnIBob			//$01$00$09$00
 	dc.b "i bo","b"+$80,"00",-1
+; ***************************************************** i sprite
+; Method in file '+lib.s' at line '14393' : Integer = i sprite( Integer )
 	dc.w L_Nul,L_FnISprite			//$01$00$0C$00
 	dc.b "i sprit","e"+$80,"00",-1
+; ***************************************************** priority reverse on
+; Method in file '+lib.s' at line '13796' : priority reverse on 
 	dc.w L_InPriorityReverseOn,L_Nul	//$00$01$17$00
 	dc.b "priority reverse o","n"+$80,"I",-1
+; ***************************************************** priority reverse off
+; Method in file '+lib.s' at line '13804' : priority reverse off 
 	dc.w L_InPriorityReverseOff,L_Nul	//$00$01$18$00
 	dc.b "priority reverse of","f"+$80,"I",-1
+; ***************************************************** dev first$
+; Method in file '+lib.s' at line '7324' : String = dev first$( String )
 	dc.w L_Nul,L_FnDevFirst			//$01$00$0E$00
 	dc.b "dev first","$"+$80,"22",-1
+; ***************************************************** dir next$
+; Method in file '+lib.s' at line '7367' : String = dir next$()
 	dc.w L_Nul,L_FnFillNext			//$01$00$0D$00
 	dc.b "dev next","$"+$80,"2",-1
+; ***************************************************** hrev block
+; Method in file '+lib.s' at line '13383' : hrev block Integer
 	dc.w L_InHRevBlock,L_Nul		//$00$01$0E$00
 	dc.b "hrev bloc","k"+$80,"I0",-1
+; ***************************************************** vrev block
+; Method in file '+lib.s' at line '13390' : vrev block Integer
 	dc.w L_InVRevBlock,L_Nul		//$00$01$0E$00
 	dc.b "vrev bloc","k"+$80,"I0",-1
+; ***************************************************** hrev
+; Method in file '+lib.s' at line '15131' : Integer = hrev( Integer )
 	dc.w L_Nul,L_FnHRev			//$01$00$08$00
 	dc.b "hre","v"+$80,"00",-1
+; ***************************************************** vrev
+; Method in file '+lib.s' at line '15138' : Integer = vrev( Integer )
 	dc.w L_Nul,L_FnVRev			//$01$00$08$00
 	dc.b "vre","v"+$80,"00",-1
+; ***************************************************** rev
+; Method in file '+lib.s' at line '15145' : Integer = rev( Integer )
 	dc.w L_Nul,L_FnRev			//$01$00$07$00
 	dc.b "re","v"+$80,"00",-1
+; ***************************************************** bank swap
+; Method in file '+lib.s' at line '3800' : bank swap Integer, Integer
 	dc.w L_InBankSwap,L_Nul			//$00$01$0D$00
 	dc.b "bank swa","p"+$80,"I0,0",-1
+; ***************************************************** amos to front
+; Method in file '+lib.s' at line '13516' : amos to front 
 	dc.w L_InAmosToFront,L_Nul		//$00$01$11$00
 	dc.b "amos to fron","t"+$80,"I",-1
+; ***************************************************** amos to back
+; Method in file '+lib.s' at line '13523' : amos to back 
 	dc.w L_InAmosToBack,L_Nul		//$00$01$10$00
 	dc.b "amos to bac","k"+$80,"I",-1
+; ***************************************************** amos here
+; Method in file '+lib.s' at line '13530' : Integer = amos here()
 	dc.w L_Nul,L_FnAmosHere			//$01$00$0D$00
 	dc.b "amos her","e"+$80,"0",-1
+; ***************************************************** amos lock
+; Method in file '+lib.s' at line '13538' : amos lock 
 	dc.w L_InAmosLock,L_Nul			//$10$01$0D$00
 	dc.b "amos loc","k"+$80,"I",-1
+; ***************************************************** amos unlock
+; Method in file '+lib.s' at line '13546' : amos unlock 
 	dc.w L_InAmosUnlock,L_Nul		//$00$01$0F$00
 	dc.b "amos unloc","k"+$80,"I",-1
+; ***************************************************** display height
+; Method in file '+lib.s' at line '10682' : Integer = display height()
 	dc.w L_Nul,L_FnDisplayHeight		//$01$00$12$00
 	dc.b "display heigh","t"+$80,"0",-1
+; ***************************************************** ntsc
+; Method in file '+lib.s' at line '10690' : Integer = ntsc()
 	dc.w L_Nul,L_FnNTSC			//$01$00$08$00
 	dc.b "nts","c"+$80,"0",-1
+; ***************************************************** laced
+; Method in file '+lib.s' at line '11077' : Integer = laced()
 	dc.w L_Nul,L_FnLaced			//$01$00$09$00
 	dc.b "lace","d"+$80,"0",-1
+; ***************************************************** prg state
+; Method in file '[Not Found]' at line '[Not found]' : Integer = prg state()
 	dc.w L_Nul,L_FnPrgState			//$01$00$0D$00
 	dc.b "prg stat","e"+$80,"0",-1
+; ***************************************************** command line$
+; Method in file '+lib.s' at line '9704' : String = command line$()
 	dc.w L_InCommandLine,L_FnCommandLine	//$2B$1A$11$00
 	dc.b "command line","$"+$80,"V2",-1
+; ***************************************************** disc info$
+; Method in file '+lib.s' at line '6738' : String = disc info$( String )
 	dc.w L_Nul,L_FnDiscInfo			//$01$00$0E$00
 	dc.b "disc info","$"+$80,"22",-1
 ; Nouvelles fonctions AMOSPro
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ***************************************************** follow off
+; Method in file '+lib.s' at line '15391' : follow off 
 	dc.w L_Syntax,L_Syntax			//$01$01$14$00
 	dc.b "\\\\\\\\\\\\\\\","/"+$80,"I",-1
+; ***************************************************** end if 
+; Method in file '[Not Found]' at line '[Not found]' : end if  
 	dc.w L_InNull,L_Nul			//$24$01$11$00
 	dc.b "set accessor","y"+$80,"I",-1
+; ***************************************************** @_apml_@
+; Method in file '[Not Found]' at line '[Not found]' : @_apml_@ 
 	dc.w L_In_apml_,L_Nul			//$55$01$0C$00
 	dc.b "@_apml_","@"+$80,"I",-1
+; ***************************************************** trap
+; Method in file '[Not Found]' at line '[Not found]' : trap 
 	dc.w L_InTrap,L_Nul			//$25$01$08$00
 	dc.b "tra","p"+$80,"I",-1
+; ***************************************************** else 
+; Method in file '[Not Found]' at line '[Not found]' : else  
 	dc.w L_InElse,L_Nul			//$3C$02$0C$12
 	dc.b "else if"," "+$80,-1
 	dc.w L_Nul,L_Nul			//$29$01$0B$00
 	dc.b "includ","e"+$80,"I2",-1
+; ***************************************************** array
+; Method in file '[Not Found]' at line '[Not found]' : Integer = array( 3 )
 	dc.w L_NoFlag,L_FnArray			//$01$0E$09$00
 	dc.b "arra","y"+$80,"03",-1
 
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormLoad2		//$01$00$0F$00
 	dc.b "!frame loa","d"+$80,"00t0",-2
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormLoad3		//$01$19$05$00
 	dc.b $80,"00t0,0",-1
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormPlay2		//$01$00$0F$00
 	dc.b "!frame pla","y"+$80,"00,0",-2
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormPlay3		//$01$19$05$00
 	dc.b $80,"00,0,0",-1
+; ***************************************************** if 
+; Method in file '+lib.s' at line '6257' : if  
 	dc.w L_InIffAnim2,L_Nul			//$29$01$0D$00
 	dc.b "!iff ani","m"+$80,"I2t0",-2
+; ***************************************************** if 
+; Method in file '+lib.s' at line '6257' : if  
 	dc.w L_InIffAnim3,L_Nul			//$29$01$05$00
 	dc.b $80,"I2t0,0",-1
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormLength1		//$01$00$11$00
 	dc.b "!frame lengt","h"+$80,"00",-2
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormLength2		//$01$19$05$00
 	dc.b $80,"00,0",-1
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormSkip1		//$01$00$0F$00
 	dc.b "!frame ski","p"+$80,"00",-2
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormSkip2		//$01$19$05$00
 	dc.b $80,"00,0",-1
+; ***************************************************** for 
+; Method in file '+lib.s' at line '6331' : for  
 	dc.w L_Nul,L_FnFormParam		//$01$00$10$00
 	dc.b "!frame para","m"+$80,"0",-1
+; ***************************************************** call
+; Method in file '[Not Found]' at line '[Not found]' : call 
 	dc.w L_InCallEditor1,L_Nul		//$29$01$10$00
 	dc.b "!call edito","r"+$80,"I0",-2
+; ***************************************************** call
+; Method in file '[Not Found]' at line '[Not found]' : call 
 	dc.w L_InCallEditor2,L_Nul		//$2A$01$05$00
 	dc.b $80,"I0,0",-2
+; ***************************************************** call
+; Method in file '[Not Found]' at line '[Not found]' : call 
 	dc.w L_InCallEditor3,L_Nul		//$2A$01$05$00
 	dc.b $80,"I0,0,2",-1
+; ***************************************************** ask editor
+; Method in file '[Not Found]' at line '[Not found]' : ask editor Integer
 	dc.w L_InAskEditor1,L_Nul		//$29$01$0F$00
 	dc.b "!ask edito","r"+$80,"I0",-2
+; ***************************************************** ask editor
+; Method in file '[Not Found]' at line '[Not found]' : ask editor Integer, Integer
 	dc.w L_InAskEditor2,L_Nul		//$2A$01$05$00
 	dc.b $80,"I0,0",-2
+; ***************************************************** ask editor
+; Method in file '[Not Found]' at line '[Not found]' : ask editor Integer, Integer, String
 	dc.w L_InAskEditor3,L_Nul		//$2A$01$05$00
 	dc.b $80,"I0,0,2",-1
+; ***************************************************** erase
+; Method in file '+lib.s' at line '3790' : erase Integer
 	dc.w L_InEraseTemp,L_Nul		//$29$01$0E$00
 	dc.b "erase tem","p"+$80,"I",-1
+; ***************************************************** erase
+; Method in file '+lib.s' at line '3790' : erase Integer
 	dc.w L_InEraseAll,L_Nul			//$29$01$0D$00
 	dc.b "erase al","l"+$80,"I",-1
 ; Dialogues
+; ***************************************************** dialog box
+; Method in file '+lib.s' at line '17310' : Integer = dialog box( 3 )
 	dc.w L_Nul,L_FnDialogBox1		//$01$25$0F$00
 	dc.b "!dialog bo","x"+$80,"03",-2
+; ***************************************************** dialog box
+; Method in file '+lib.s' at line '17321' : Integer = dialog box( 3, Integer )
 	dc.w L_Nul,L_FnDialogBox2		//$01$25$05$00
 	dc.b $80,"03,0",-2
+; ***************************************************** dialog box
+; Method in file '+lib.s' at line '17331' : Integer = dialog box( 3, Integer, String )
 	dc.w L_Nul,L_FnDialogBox3		//$01$25$05$00
 	dc.b $80,"03,0,2",-2
+; ***************************************************** dialog box
+; Method in file '+lib.s' at line '17340' : Integer = dialog box( 3, Integer, String, Integer, Integer )
 	dc.w L_Nul,L_FnDialogBox5		//$01$25$05$00
 	dc.b $80,"03,0,2,0,0",-1
+; ***************************************************** dialog open
+; Method in file '+lib.s' at line '16939' : dialog open Integer, 3
 	dc.w L_InDialogOpen2,L_Nul		//$50$01$10$00
 	dc.b "!dialog ope","n"+$80,"I0,3",-2
+; ***************************************************** dialog open
+; Method in file '+lib.s' at line '16948' : dialog open Integer, 3, Integer
 	dc.w L_InDialogOpen3,L_Nul		//$50$01$05$00
 	dc.b $80,"I0,3,0",-2
+; ***************************************************** dialog open
+; Method in file '+lib.s' at line '16956' : dialog open Integer, 3, Integer, Integer
 	dc.w L_InDialogOpen4,L_Nul		//$50$01$05$00
 	dc.b $80,"I0,3,0,0",-1
+; ***************************************************** dialog close
+; Method in file '+lib.s' at line '17018' : dialog close 
 	dc.w L_InDialogClose0,L_Nul		//$50$01$11$00
 	dc.b "!dialog clos","e"+$80,"I",-2
+; ***************************************************** dialog close
+; Method in file '+lib.s' at line '17025' : dialog close Integer
 	dc.w L_InDialogClose1,L_Nul		//$50$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** dialog run
+; Method in file '+lib.s' at line '17139' : Integer = dialog run( Integer )
 	dc.w L_Nul,L_FnDialogRun1		//$01$25$0F$00
 	dc.b "!dialog ru","n"+$80,"00",-2
+; ***************************************************** dialog run
+; Method in file '+lib.s' at line '17149' : Integer = dialog run( Integer, Integer )
 	dc.w L_Nul,L_FnDialogRun2		//$01$25$05$00
 	dc.b $80,"00,0",-2
+; ***************************************************** dialog run
+; Method in file '+lib.s' at line '17158' : Integer = dialog run( Integer, Integer, Integer, Integer )
 	dc.w L_Nul,L_FnDialogRun4		//$01$25$05$00
 	dc.b $80,"00,0,0,0",-1
+; ***************************************************** dialog
+; Method in file '+lib.s' at line '17183' : Integer = dialog( Integer )
 	dc.w L_Nul,L_FnDialog			//$01$25$0A$00
 	dc.b "dialo","g"+$80,"00",-1
+; ***************************************************** vdialog
+; Method in file '+lib.s' at line '17229' : Integer = vdialog( Integer, Integer )
 	dc.w L_InVDialog,L_FnVDialog		//$2C$1A$0B$00
 	dc.b "vdialo","g"+$80,"V00,0",-1
+; ***************************************************** vdialog
+; Method in file '+lib.s' at line '17229' : Integer = vdialog( Integer, Integer )
 	dc.w L_InVDialogD,L_FnVDialogD		//$2C$1A$0C$00
 	dc.b "vdialog","$"+$80,"V20,0",-1
+; ***************************************************** rdialog
+; Method in file '+lib.s' at line '17243' : Integer = rdialog( Integer, Integer )
 	dc.w L_Nul,L_FnRDialog2			//$01$25$0C$00
 	dc.b "!rdialo","g"+$80,"00,0",-2
+; ***************************************************** rdialog
+; Method in file '+lib.s' at line '17251' : Integer = rdialog( Integer, Integer, Integer )
 	dc.w L_Nul,L_FnRDialog3			//$01$25$05$00
 	dc.b $80,"00,0,0",-1
+; ***************************************************** rdialog$
+; Method in file '+lib.s' at line '17270' : String = rdialog$( Integer, Integer )
 	dc.w L_Nul,L_FnRDialogD2		//$01$25$0D$00
 	dc.b "!rdialog","$"+$80,"20,0",-2
+; ***************************************************** rdialog$
+; Method in file '+lib.s' at line '17278' : String = rdialog$( Integer, Integer, Integer )
 	dc.w L_Nul,L_FnRDialogD3		//$01$25$05$00
 	dc.b $80,"20,0,0",-1
+; ***************************************************** edialog
+; Method in file '+lib.s' at line '17008' : Integer = edialog()
 	dc.w L_Nul,L_FnEDialog			//$01$25$0B$00
 	dc.b "edialo","g"+$80,"0",-1
+; ***************************************************** dialog clr
+; Method in file '+lib.s' at line '17038' : dialog clr Integer
 	dc.w L_InDialogClr,L_Nul		//$50$01$0E$00
 	dc.b "dialog cl","r"+$80,"I0",-1
+; ***************************************************** dialog update
+; Method in file '+lib.s' at line '17095' : dialog update Integer, Integer
 	dc.w L_InDialogUpdate2,L_Nul		//$50$01$12$00
 	dc.b "!dialog updat","e"+$80,"I0,0",-2
+; ***************************************************** dialog update
+; Method in file '+lib.s' at line '17105' : dialog update Integer, Integer, 3
 	dc.w L_InDialogUpdate3,L_Nul		//$50$01$05$00
 	dc.b $80,"I0,0,3",-2
+; ***************************************************** dialog update
+; Method in file '+lib.s' at line '17114' : dialog update Integer, Integer, 3, Integer
 	dc.w L_InDialogUpdate4,L_Nul		//$50$01$05$00
 	dc.b $80,"I0,0,3,0",-2
+; ***************************************************** dialog update
+; Method in file '+lib.s' at line '17122' : dialog update Integer, Integer, 3, Integer, Integer
 	dc.w L_InDialogUpdate5,L_Nul		//$50$01$05$00
 	dc.b $80,"I0,0,3,0,0",-1
+; ***************************************************** dialog freeze
+; Method in file '+lib.s' at line '17051' : dialog freeze 
 	dc.w L_InDialogFreeze0,L_Nul		//$50$01$12$00
 	dc.b "!dialog freez","e"+$80,"I",-2
+; ***************************************************** dialog freeze
+; Method in file '+lib.s' at line '17059' : dialog freeze Integer
 	dc.w L_InDialogFreeze1,L_Nul		//$50$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** freeze
+; Method in file '+lib.s' at line '17081' : freeze 
 	dc.w L_InDialogUnFreeze0,L_Nul		//$50$01$14$00
 	dc.b "!dialog unfreez","e"+$80,"I",-2
+; ***************************************************** freeze
+; Method in file '+lib.s' at line '17081' : freeze 
 	dc.w L_InDialogUnFreeze1,L_Nul		//$50$01$05$00
 	dc.b $80,"I0",-1
 	
+; ***************************************************** poke
+; Method in file '+lib.s' at line '4469' : poke Integer, Integer
 	dc.w L_InPokeD,L_Nul			//$29$01$09$00
 	dc.b "poke","$"+$80,"I0,2",-1
+; ***************************************************** peek
+; Method in file '+lib.s' at line '4492' : Integer = peek( Integer )
 	dc.w L_Nul,L_FnPeekD2			//$01$00$0A$00
 	dc.b "!peek","$"+$80,"20,0",-2
+; ***************************************************** peek
+; Method in file '+lib.s' at line '4492' : Integer = peek( Integer )
 	dc.w L_Nul,L_FnPeekD3			//$01$19$05$00
 	dc.b $80,"20,0,2",-1
+; ***************************************************** resource bank
+; Method in file '+lib.s' at line '17612' : resource bank Integer
 	dc.w L_InResourceBank,L_Nul		//$50$01$11$00
 	dc.b "resource ban","k"+$80,"I0",-1
+; ***************************************************** resource$
+; Method in file '[Not Found]' at line '[Not found]' : String = resource$( Integer )
 	dc.w L_Nul,L_FnResource			//$01$25$0D$00
 	dc.b "resource","$"+$80,"20",-1
+; ***************************************************** resource screen open
+; Method in file '+lib.s' at line '17589' : resource screen open Integer, Integer, Integer, Integer
 	dc.w L_InResourceScreenOpen,L_Nul	//$50$01$18$00
 	dc.b "resource screen ope","n"+$80,"I0,0,0,0",-1
+; ***************************************************** resource unpack
+; Method in file '+lib.s' at line '17679' : resource unpack Integer, Integer, Integer
 	dc.w L_InResourceUnpack,L_Nul		//$50$01$13$00
 	dc.b "resource unpac","k"+$80,"I0,0,0",-1
+; ***************************************************** read 
+; Method in file '+lib.s' at line '17419' : read  
 	dc.w L_InReadText1,L_Nul		//$50$01$0D$00
 	dc.b "read tex","t"+$80,"I2",-2
+; ***************************************************** read 
+; Method in file '+lib.s' at line '17419' : read  
 	dc.w L_InReadText3,L_Nul		//$50$01$05$00
 	dc.b $8C,"I2,0,0",-1
+; ***************************************************** err$
+; Method in file '+lib.s' at line '3246' : String = err$( Integer )
 	dc.w L_Nul,L_FnErrD			//$01$00$08$00
 	dc.b "err","$"+$80,"20",-1
+; ***************************************************** assign
+; Method in file '+lib.s' at line '7410' : assign String to String
 	dc.w L_InAssign,L_Nul			//$29$01$0A$00
 	dc.b "assig","n"+$80,"I2t2",-1
+; ***************************************************** errtrap
+; Method in file '[Not Found]' at line '[Not found]' : Integer = errtrap()
 	dc.w L_Nul,L_FnErrTrap			//$01$00$0B$00
 	dc.b "errtra","p"+$80,"0",-1
+; ***************************************************** dev open
+; Method in file '+lib.s' at line '4958' : dev open Integer, String, Integer, Integer, Integer
 	dc.w L_InDevOpen,L_Nul			//$29$01$0C$00
 	dc.b "dev ope","n"+$80,"I0,2,0,0,0",-1
+; ***************************************************** dev close
+; Method in file '+lib.s' at line '4982' : dev close 
 	dc.w L_InDevClose0,L_Nul		//$29$01$0E$00
 	dc.b "!dev clos","e"+$80,"I",-2
+; ***************************************************** dev close
+; Method in file '+lib.s' at line '4991' : dev close Integer
 	dc.w L_InDevClose1,L_Nul		//$2A$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** dev base
+; Method in file '+lib.s' at line '5002' : Integer = dev base( Integer )
 	dc.w L_Nul,L_FnDevBase			//$01$00$0C$00
 	dc.b "dev bas","e"+$80,"00",-1
+; ***************************************************** dev do
+; Method in file '+lib.s' at line '5014' : dev do Integer, Integer
 	dc.w L_InDevDo,L_Nul			//$29$01$0A$00
 	dc.b "dev d","o"+$80,"I0,0",-1
+; ***************************************************** dev send
+; Method in file '+lib.s' at line '5026' : dev send Integer, Integer
 	dc.w L_InDevSend,L_Nul			//$29$01$0C$00
 	dc.b "dev sen","d"+$80,"I0,0",-1
+; ***************************************************** dev abort
+; Method in file '+lib.s' at line '5038' : dev abort Integer
 	dc.w L_InDevAbort,L_Nul			//$29$01$0D$00
 	dc.b "dev abor","t"+$80,"I0",-1
+; ***************************************************** dev check
+; Method in file '+lib.s' at line '5049' : Integer = dev check( Integer )
         dc.w L_Nul,L_FnDevCheck			//$29$00$0D$00
         dc.b "dev chec","k"+$80,"00",-1
+; ***************************************************** lib open
+; Method in file '+lib.s' at line '4623' : lib open Integer, String, Integer
 	dc.w L_InLibOpen,L_Nul			//$29$01$0C$00
 	dc.b "lib ope","n"+$80,"I0,2,0",-1
+; ***************************************************** lib close
+; Method in file '+lib.s' at line '4659' : lib close 
 	dc.w L_InLibClose0,L_Nul		//$29$01$0E$00
 	dc.b "!lib clos","e"+$80,"I",-2
+; ***************************************************** lib close
+; Method in file '+lib.s' at line '4665' : lib close Integer
 	dc.w L_InLibClose1,L_Nul		//$2A$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** lib call
+; Method in file '+lib.s' at line '4675' : Integer = lib call( Integer, Integer )
 	dc.w L_Nul,L_FnLibCall			//$01$00$0C$00
 	dc.b "lib cal","l"+$80,"00,0",-1
+; ***************************************************** lib base
+; Method in file '+lib.s' at line '4690' : Integer = lib base( Integer )
 	dc.w L_Nul,L_FnLibBase			//$01$00$0C$00
 	dc.b "lib bas","e"+$80,"00",-1
+; ***************************************************** equ
+; Method in file '[Not Found]' at line '[Not found]' : Integer = equ( String )
 	dc.w L_NoFlag,L_FnEqu			//$01$0C$07$10
 	dc.b "eq","u"+$80,"02",-1
+; ***************************************************** equ
+; Method in file '[Not Found]' at line '[Not found]' : Integer = equ( String )
 	dc.w L_NoFlag,L_FnEqu			//$01$10$07$10
         dc.b "lv","o"+$80,"02",-1
+; ***************************************************** struc
+; Method in file '[Not Found]' at line '[Not found]' : Integer = struc( Integer, String )
 	dc.w L_InStruc,L_NoFlag			//$26$11$09$10
 	dc.b "stru","c"+$80,"V00,2",-1
+; ***************************************************** struc
+; Method in file '[Not Found]' at line '[Not found]' : Integer = struc( Integer, String )
 	dc.w L_InStrucD,L_NoFlag		//$27$12$0A$10
 	dc.b "struc","$"+$80,"V20,2",-1
+; ***************************************************** bstart
+; Method in file '+lib.s' at line '3838' : Integer = bstart( Integer )
 	dc.w L_Nul,L_FnBStart			//$01$00$0A$00
 	dc.b "bstar","t"+$80,"00",-1
+; ***************************************************** blength
+; Method in file '+lib.s' at line '3853' : Integer = blength( Integer )
 	dc.w L_Nul,L_FnBLength			//$01$00$0B$00
 	dc.b "blengt","h"+$80,"00",-1
+; ***************************************************** bsend
+; Method in file '+lib.s' at line '3906' : bsend Integer
 	dc.w L_InBSend,L_Nul			//$29$01$09$00
 	dc.b "bsen","d"+$80,"I0",-1
+; ***************************************************** bank shrink
+; Method in file '+lib.s' at line '4065' : bank shrink Integer to Integer
 	dc.w L_InBankSchrink,L_Nul		//$29$01$0F$00
 	dc.b "bank shrin","k"+$80,"I0t0",-1
+; ***************************************************** prg under
+; Method in file '[Not Found]' at line '[Not found]' : Integer = prg under()
 	dc.w L_Nul,L_FnPrgUnder			//$01$00$0D$00
 	dc.b "prg unde","r"+$80,"0",-1
+; ***************************************************** arexx open
+; Method in file '+lib.s' at line '17724' : arexx open String
 	dc.w L_InArexxOpen,L_Nul		//$29$01$0E$00
 	dc.b "arexx ope","n"+$80,"I2",-1
+; ***************************************************** arexx close
+; Method in file '+lib.s' at line '17783' : arexx close 
 	dc.w L_InArexxClose,L_Nul		//$29$01$0F$00
 	dc.b "arexx clos","e"+$80,"I",-1
+; ***************************************************** arexx exist
+; Method in file '+lib.s' at line '17708' : Integer = arexx exist( String )
 	dc.w L_Nul,L_FnArexxExist		//$01$00$0F$00
 	dc.b "arexx exis","t"+$80,"02",-1
+; ***************************************************** arexx
+; Method in file '+lib.s' at line '17797' : Integer = arexx()
 	dc.w L_Nul,L_FnArexx			//$01$00$09$00
 	dc.b "arex","x"+$80,"0",-1
+; ***************************************************** arexx
+; Method in file '+lib.s' at line '17797' : Integer = arexx()
 	dc.w L_Nul,L_FnArexxD			//$01$00$0A$00
 	dc.b "arexx","$"+$80,"20",-1
+; ***************************************************** arexx wait
+; Method in file '+lib.s' at line '17770' : arexx wait 
 	dc.w L_InArexxWait,L_Nul		//$29$01$0E$00
 	dc.b "arexx wai","t"+$80,"I",-1
+; ***************************************************** arexx answer
+; Method in file '+lib.s' at line '17829' : arexx answer Integer
 	dc.w L_InArexxAnswer1,L_Nul		//$29$01$11$00
 	dc.b "!arexx answe","r"+$80,"I0",-2
+; ***************************************************** arexx answer
+; Method in file '+lib.s' at line '17837' : arexx answer Integer, String
 	dc.w L_InArexxAnswer2,L_Nul		//$2A$01$05$00
 	dc.b $80,"I0,2",-1
+; ***************************************************** exec
+; Method in file '+lib.s' at line '5063' : exec String
 	dc.w L_InExec,L_Nul			//$29$01$08$00
 	dc.b "exe","c"+$80,"I2",-1
+; ***************************************************** monitor
+; Method in file '[Not Found]' at line '[Not found]' : monitor 
 	dc.w L_InMonitor,L_Nul			//$29$01$0B$00
 	dc.b "monito","r"+$80,"I",-1
+; ***************************************************** screen
+; Method in file '+lib.s' at line '11065' : screen Integer
 	dc.w L_Nul,L_FnScreenMode		//$01$00$0F$00
 	dc.b "screen mod","e"+$80,"0",-1
 * Constante double precision!
+; ***************************************************** arexx answer
+; Method in file '[Not Found]' at line '[Not found]' : C = arexx answer( 3 )
 	dc.w L_Nul,L_FnCstDFl			//$01$16$05$11
 	dc.b $80,"C3",-1
+; ***************************************************** kill
+; Method in file '+lib.s' at line '6635' : kill String
 	dc.w L_InKillEditor,L_Nul		//$29$01$0F$00
 	dc.b "kill edito","r"+$80,"I",-1
+; ***************************************************** end if 
+; Method in file '[Not Found]' at line '[Not found]' : end if  
 	dc.w L_InNull,L_Nul     		//$04$01$18$00
 	dc.b "set double precisio","n"+$80,"I",-1
+; ***************************************************** set buffer
+; Method in file '[Not Found]' at line '[Not found]' : set buffer 
 	dc.w L_InSetBuffer,L_Nul		//$05$01$0D$00
 	dc.b "set stac","k"+$80,"I",-1
+; ***************************************************** get sprite palette
+; Method in file '+lib.s' at line '11174' : get sprite palette 
 	dc.w L_InGetSpritePalette0,L_Nul	//$29$01$14$00
 	dc.b "!get bob palett","e"+$80,"I",-2
+; ***************************************************** get sprite palette
+; Method in file '+lib.s' at line '11181' : get sprite palette Integer
 	dc.w L_InGetSpritePalette1,L_Nul	//$2A$01$05$00
 	dc.b $80,"I0",-1
+; ***************************************************** set buffer
+; Method in file '[Not Found]' at line '[Not found]' : set buffer 
 	dc.w L_InSetBuffer,L_Nul		//$29$01$13$00
 	dc.b "set equate ban","k"+$80,"I0",-1
+; ***************************************************** zdialog
+; Method in file '+lib.s' at line '17295' : Integer = zdialog( Integer, Integer, Integer )
 	dc.w L_Nul,L_FnZDialog			//$01$00$0B$00
 	dc.b "zdialo","g"+$80,"00,0,0",-1
+; ***************************************************** ||apcmp||
+; Method in file '[Not Found]' at line '[Not found]' : ||apcmp|| 
 	dc.w L_InAPCmp,L_Nul			//$57$01$0D$00
 	dc.b "||apcmp|","|"+$80,"I",-1
+; *ENDREADTOKENS*  // 2019.11.03 Added for the AMOS Commenter tool
 	dc.w 0
 
 ;	TOKEN_END
@@ -1713,6 +3229,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ERRN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** errn
+; Method : Integer = errn()
 	Lib_Par FnErrn
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -1723,6 +3241,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=ERR$(b)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** err$
+; Method : String = err$( Integer )
 	Lib_Par	FnErrD
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -1735,6 +3255,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SGN (fmath)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sgn
+; Method : Integer = sgn( 4 )
 	Lib_Par FnSgn			Integer
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -1751,6 +3273,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=STR$ (fmath)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** str$
+; Method : String = str$( 4 )
 	Lib_Par FnStrE			ENTIER
 ; - - - - - - - - - - - - -
 	move.l 	d3,d2
@@ -1776,6 +3300,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ABS (FMath)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** abs
+; Method : 4 = abs( 4 )
 	Lib_Par FnAbs			Integer
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -1791,6 +3317,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					INT (FMath)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** int
+; Method : 4 = int( 4 )
 	Lib_Par FnInt			Integer
 ; - - - - - - - - - - - - -
 	rts
@@ -1803,6 +3331,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					TAN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** tan
+; Method : Float = tan( 5 )
 	Lib_Par	FnTan
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPTan,d2		Float + DFloat
@@ -1811,6 +3341,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SQR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sqr
+; Method : Float = sqr( Float )
 	Lib_Par	FnSqr
 ; - - - - - - - - - - - - -	
 	Rjsrt	L_FlPos
@@ -1820,6 +3352,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Log10
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** log
+; Method : Float = log( Float )
 	Lib_Par	FnLog
 ; - - - - - - - - - - - - -	
 	Rjsrt	L_FlPos
@@ -1829,6 +3363,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Ln
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ln
+; Method : Float = ln( Float )
 	Lib_Par	FnLn
 ; - - - - - - - - - - - - -	
 	Rjsrt	L_FlPos
@@ -1838,6 +3374,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					EXP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** exp
+; Method : Float = exp( Float )
 	Lib_Par	FnExp
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPExp,d2
@@ -1846,6 +3384,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SIN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sin
+; Method : Float = sin( 5 )
 	Lib_Par	FnSin
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPSin,d2
@@ -1854,6 +3394,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cos
+; Method : Float = cos( 5 )
 	Lib_Par	FnCos
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPCos,d2
@@ -1862,6 +3404,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ASIN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** asin
+; Method : Float = asin( Float )
 	Lib_Par	FnASin
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPAsin,d2
@@ -1870,6 +3414,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ACOS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** acos
+; Method : Float = acos( Float )
 	Lib_Par	FnACos
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPAcos,d2
@@ -1878,6 +3424,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ATAN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** atan
+; Method : Float = atan( Float )
 	Lib_Par	FnATan
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPAtan,d2
@@ -1886,6 +3434,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HSIN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hsin
+; Method : Float = hsin( 5 )
 	Lib_Par	FnHSin
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPSinh,d2
@@ -1894,6 +3444,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HCOS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hcos
+; Method : Float = hcos( 5 )
 	Lib_Par	FnHCos
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPCosh,d2
@@ -1902,6 +3454,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HTAN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** htan
+; Method : Float = htan( 5 )
 	Lib_Par	FnHTan
 ; - - - - - - - - - - - - -	
 	moveq	#_LVOSPTanh,d2
@@ -1910,6 +3464,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RADIUS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** radian
+; Method : radian 
 	Lib_Par InRadian
 ; - - - - - - - - - - - - -	
 	clr.w	Angle(a5)
@@ -1918,6 +3474,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEGREE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** degree
+; Method : degree 
 	Lib_Par InDegree
 ; - - - - - - - - - - - - -	
 	move.w	#-1,Angle(a5)
@@ -1926,6 +3484,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FIX
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** fix
+; Method : fix Integer
 	Lib_Par	InFix
 ; - - - - - - - - - - - - -	
         tst.l 	d3
@@ -1944,6 +3504,8 @@ C_Lib
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RND
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** rnd
+; Method : Integer = rnd( Integer )
 	Lib_Par	FnRnd
 ; - - - - - - - - - - - - -	
 	tst.l	d3
@@ -2009,6 +3571,8 @@ RRnd:	movem.l	d2-d3,-(sp)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RANDOMIZE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** randomize
+; Method : randomize Integer
 	Lib_Par	InRandom
 ; - - - - - - - - - - - - -
 	move.l	d3,Seed(a5)
@@ -2017,6 +3581,8 @@ RRnd:	movem.l	d2-d3,-(sp)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					TIMER=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** timer
+; Method : Integer = timer()
 	Lib_Par	InTimer
 ; - - - - - - - - - - - - -
 	move.l	d3,T_VblTimer(a5)
@@ -2024,6 +3590,8 @@ RRnd:	movem.l	d2-d3,-(sp)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=TIMER
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** timer
+; Method : Integer = timer()
 	Lib_Par	FnTimer
 ; - - - - - - - - - - - - -
 	move.l	T_VblTimer(a5),d3
@@ -2032,6 +3600,8 @@ RRnd:	movem.l	d2-d3,-(sp)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=PI#
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pi#
+; Method : Float = pi#()
 	Lib_Par FnPi
 ; - - - - - - - - - - - - -
 	move.l	ValPi(a5),d3
@@ -2041,6 +3611,8 @@ RRnd:	movem.l	d2-d3,-(sp)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WAIT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wait
+; Method : wait Integer
 	Lib_Par	InWait
 ; - - - - - - - - - - - - -
 InWait	tst.l	d3
@@ -2092,6 +3664,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Multi Wait
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** multi wait
+; Method : multi wait 
 	Lib_Par InMWait
 ; - - - - - - - - - - - - -
 	Rjsr	L_Sys_WaitMul
@@ -2101,6 +3675,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Wait VBL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wait vbl
+; Method : wait vbl 
 	Lib_Par InWtVbl
 ; - - - - - - - - - - - - -
 	SyCall	WaitVbl
@@ -2110,6 +3686,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Wait Key
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wait key
+; Method : wait key 
 	Lib_Par InWtKy
 ; - - - - - - - - - - - - -
 .Loop	SyCall	Inkey
@@ -2133,6 +3711,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					KEY SPEED delai,vitesse
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** key speed
+; Method : key speed Integer, Integer
 	Lib_Par	InKeySpeed
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -2146,6 +3726,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PARAM string
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** param$
+; Method : String = param$()
 	Lib_Par FnParamS
 ; - - - - - - - - - - - - -
 	move.l	ParamC(a5),d3
@@ -2153,6 +3735,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PARAM entier
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** param
+; Method : Integer = param()
 	Lib_Par FnParamE
 ; - - - - - - - - - - - - -
 	move.l	ParamE(a5),d3
@@ -2162,6 +3746,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LISTBANK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** list bank
+; Method : list bank 
 	Lib_Par InListBank
 ; - - - - - - - - - - - - -
 	moveq	#0,d5			Valeur minimum du numero
@@ -2178,6 +3764,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ERASE n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** erase
+; Method : erase Integer
 	Lib_Par	InErase
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -2187,6 +3775,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ERASE TEMP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** erase
+; Method : erase Integer
 	Lib_Par InEraseTemp
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.EffTemp
@@ -2195,6 +3785,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ERASE ALL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** erase
+; Method : erase Integer
 	Lib_Par InEraseAll
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.EffAll
@@ -2203,6 +3795,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BANK SWAP a,b
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bank swap
+; Method : bank swap Integer, Integer
 	Lib_Par	InBankSwap
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0		Banque "b"
@@ -2239,6 +3833,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=BSTART()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bstart
+; Method : Integer = bstart( Integer )
 	Lib_Par	FnBStart
 ; - - - - - - - - - - - - -
 	Rjsr	L_Bnk.PrevProgram
@@ -2252,6 +3848,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=BLENGTH()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** blength
+; Method : Integer = blength( Integer )
 	Lib_Par	FnBLength
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -2273,6 +3871,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BGRAB
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bgrab
+; Method : bgrab Integer
 	Lib_Par	InBGrab
 ; - - - - - - - - - - - - -
 ; Efface la banque destination
@@ -2301,6 +3901,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BSEND bank
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bsend
+; Method : bsend Integer
 	Lib_Par	InBSend
 ; - - - - - - - - - - - - -
 ; Efface la banque destination
@@ -2329,6 +3931,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					INS BOB / INS SPRITE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ins sprite
+; Method : ins sprite Integer
 	Lib_Par	InInsSprite
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.GetBobs
@@ -2342,6 +3946,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					INS ICON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ins icon
+; Method : ins icon Integer
 	Lib_Par	InInsIcon
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.GetIcons
@@ -2355,11 +3961,15 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEL ICON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** del icon
+; Method : del icon Integer
 	Lib_Par	InDelIcon1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	Rbra	L_InDelIcon2
 ; - - - - - - - - - - - - -
+; ***************************************************** del icon
+; Method : del icon Integer to Integer
 	Lib_Par	InDelIcon2
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.GetIcons
@@ -2368,11 +3978,15 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEL SPRITE 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** del sprite
+; Method : del sprite Integer
 	Lib_Par	InDelSprite1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	Rbra	L_InDelSprite2
 ; - - - - - - - - - - - - -
+; ***************************************************** del sprite
+; Method : del sprite Integer to Integer
 	Lib_Par	InDelSprite2
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.GetBobs
@@ -2393,6 +4007,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RESERVE AS WORK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** reserve as work
+; Method : reserve as work Integer, Integer
 	Lib_Par	InResWork
 ; - - - - - - - - - - - - -
 	Rlea	L_BkWrk,0
@@ -2401,6 +4017,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RESERVE AS CHIP WORK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** reserve as chip work
+; Method : reserve as chip work Integer, Integer
 	Lib_Par	InResChipWork
 ; - - - - - - - - - - - - -
 	Rlea	L_BkWrk,0
@@ -2409,6 +4027,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RESERVE AS DATA
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** reserve as data
+; Method : reserve as data Integer, Integer
 	Lib_Par	InResData
 ; - - - - - - - - - - - - -
 	Rlea	L_BkDat,0
@@ -2417,6 +4037,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RESERVE AS CHIPDATA
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** reserve as chip data
+; Method : reserve as chip data Integer, Integer
 	Lib_Par	InResChipData
 ; - - - - - - - - - - - - -
 	Rlea	L_BkDat,0
@@ -2438,6 +4060,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BANK SCHRINK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bank shrink
+; Method : bank shrink Integer to Integer
 	Lib_Par	InBankSchrink
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -2449,6 +4073,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=START()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** start
+; Method : Integer = start( Integer )
 	Lib_Par	FnStart
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -2459,6 +4085,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=LENGTH()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** length
+; Method : Integer = length( Integer )
 	Lib_Par	FnLength
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -2478,6 +4106,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CHIPFREE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** chip free
+; Method : Integer = chip free()
 	Lib_Par FnChipFree
 ; - - - - - - - - - - - - -
 	move.l	#Chip,d1
@@ -2485,6 +4115,8 @@ InWait	tst.l	d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=FASTFREE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** fast free
+; Method : Integer = fast free()
 	Lib_Par FnFastFree
 ; - - - - - - - - - - - - -
 	move.l	#Fast,d1
@@ -2594,6 +4226,8 @@ triup	lsr.l 	#2,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COPY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** copy
+; Method : copy Integer, Integer to Integer
 	Lib_Par	InCopy
 ; - - - - - - - - - - - - -
 	move.l	d3,a1
@@ -2607,6 +4241,8 @@ triup	lsr.l 	#2,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FILL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** fill
+; Method : fill Integer to Integer, Integer
 	Lib_Par	InFill
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -2640,6 +4276,8 @@ fil4:  	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HUNT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hunt
+; Method : Integer = hunt( Integer to Integer, String )
 	Lib_Par	FnHunt
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -2669,6 +4307,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=AREG=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** areg
+; Method : Integer = areg( Integer )
 	Lib_Par	InAReg
 ; - - - - - - - - - - - - -
 	moveq	#7,d0
@@ -2676,6 +4316,8 @@ ht4	Ret_Int
 	move.l	(a3)+,d2
 	Rbra	L_IReg
 ; - - - - - - - - - - - - -
+; ***************************************************** areg
+; Method : Integer = areg( Integer )
 	Lib_Par	FnAReg
 ; - - - - - - - - - - - - -
 	moveq	#7,d0
@@ -2685,6 +4327,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DREG=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dreg
+; Method : Integer = dreg( Integer )
 	Lib_Par	InDReg
 ; - - - - - - - - - - - - -
 	moveq	#8,d0
@@ -2692,6 +4336,8 @@ ht4	Ret_Int
 	move.l	(a3)+,d2
 	Rbra	L_IReg
 ; - - - - - - - - - - - - -
+; ***************************************************** dreg
+; Method : Integer = dreg( Integer )
 	Lib_Par	FnDReg
 ; - - - - - - - - - - - - -
 	moveq	#8,d0
@@ -2726,12 +4372,16 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					POKEDOKELOKE ameliores
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** poke
+; Method : poke Integer, Integer
 	Lib_Par	InPoke
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,a0
 	move.b	d3,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** doke
+; Method : doke Integer, Integer
 	Lib_Par	InDoke
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0
@@ -2745,6 +4395,8 @@ ht4	Ret_Int
 	move.b	d3,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** loke
+; Method : loke Integer, Integer
 	Lib_Par	InLoke
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0
@@ -2766,6 +4418,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PEEKDEEKLEEK ameliores
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** peek
+; Method : Integer = peek( Integer )
 	Lib_Par	FnPeek
 ; - - - - - - - - - - - - -
 	move.l	d3,a0
@@ -2773,6 +4427,8 @@ ht4	Ret_Int
 	move.b	(a0),d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** deek
+; Method : Integer = deek( Integer )
 	Lib_Par	FnDeek
 ; - - - - - - - - - - - - -
 	move.l	d3,a0
@@ -2787,6 +4443,8 @@ ht4	Ret_Int
 	move.b	(a0),d3
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** leek
+; Method : Integer = leek( Integer )
 	Lib_Par	FnLeek
 ; - - - - - - - - - - - - -
 	move.l	d3,a0
@@ -2806,6 +4464,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					POKE$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** poke
+; Method : poke Integer, Integer
 	Lib_Par	InPokeD
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -2820,11 +4480,15 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=PEEK$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** peek
+; Method : Integer = peek( Integer )
 	Lib_Par	FnPeekD2
 ; - - - - - - - - - - - - -
 	moveq	#-1,d2
 	Rbra	L_FPeekD
 ; - - - - - - - - - - - - -
+; ***************************************************** peek
+; Method : Integer = peek( Integer )
 	Lib_Par	FnPeekD3
 ; - - - - - - - - - - - - -
 	moveq	#-1,d2
@@ -2923,21 +4587,29 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					EXEDOSINTGFXCALL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** execall
+; Method : Integer = execall( Integer )
 	Lib_Par	FnExeCall
 ; - - - - - - - - - - - - -
 	move.l	$4.W,a0
 	Rbra	L_Lib.Call
 ; - - - - - - - - - - - - -
+; ***************************************************** gfxcall
+; Method : Integer = gfxcall( Integer )
 	Lib_Par	FnGfxCall
 ; - - - - - - - - - - - - -
 	move.l	T_GfxBase(a5),a0
 	Rbra	L_Lib.Call
 ; - - - - - - - - - - - - -
+; ***************************************************** doscall
+; Method : Integer = doscall( Integer )
 	Lib_Par	FnDosCall
 ; - - - - - - - - - - - - -
 	move.l	DosBase(a5),a0
 	Rbra	L_Lib.Call
 ; - - - - - - - - - - - - -
+; ***************************************************** intcall
+; Method : Integer = intcall( Integer )
 	Lib_Par	FnIntCall
 ; - - - - - - - - - - - - -
 	move.l	T_IntBase(a5),a0
@@ -2946,6 +4618,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LIB OPEN canal,"lib",flags
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** lib open
+; Method : lib open Integer, String, Integer
 	Lib_Par	InLibOpen
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,a2
@@ -2980,10 +4654,14 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LIB CLOSE [n]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** lib close
+; Method : lib close 
 	Lib_Par InLibClose0
 ; - - - - - - - - - - - - -
 	Rbra	L_Lib.Close
 ; - - - - - - - - - - - - -
+; ***************************************************** lib close
+; Method : lib close Integer
 	Lib_Par	InLibClose1
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -2992,6 +4670,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=LIB CALL lib,function
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** lib call
+; Method : Integer = lib call( Integer, Integer )
 	Lib_Par	FnLibCall
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0
@@ -3005,6 +4685,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=LIB BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** lib base
+; Method : Integer = lib base( Integer )
 	Lib_Par	FnLibBase
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3271,6 +4953,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEVICE OPEN c,n$,l,unit,flags
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev open
+; Method : dev open Integer, String, Integer, Integer, Integer
 	Lib_Par	InDevOpen
 ; - - - - - - - - - - - - -
 	move.l	2*4(a3),a2		Chaine
@@ -3293,6 +4977,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEVICE CLOSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev close
+; Method : dev close 
 	Lib_Par InDevClose0
 ; - - - - - - - - - - - - -
 	Rbra	L_Dev.Close
@@ -3300,6 +4986,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEVICE CLOSE D
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev close
+; Method : dev close Integer
 	Lib_Par	InDevClose1
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3309,6 +4997,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DEV BASE(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev base
+; Method : Integer = dev base( Integer )
 	Lib_Par	FnDevBase
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3319,6 +5009,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEV DO dev,command
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev do
+; Method : dev do Integer, Integer
 	Lib_Par	InDevDo
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0
@@ -3329,6 +5021,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEV SEND dev,command
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev send
+; Method : dev send Integer, Integer
 	Lib_Par	InDevSend
 ; - - - - - - - - - - - - -	
 	move.l	(a3)+,d0
@@ -3339,6 +5033,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEV ABORT dev
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev abort
+; Method : dev abort Integer
 	Lib_Par	InDevAbort
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3348,6 +5044,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DEV CHECK(dev)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dev check
+; Method : Integer = dev check( Integer )
 	Lib_Par	FnDevCheck
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3360,6 +5058,8 @@ ht4	Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					EXEC "Program Name"
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** exec
+; Method : exec String
 	Lib_Par	InExec
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -3797,6 +5497,8 @@ AskD:	move.l	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SAVE "Banque", n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** save
+; Method : save String, Integer
 	Lib_Par	InSave2
 ; - - - - - - - - - - - - -
 ; Ouvre le fichier / Mode NEW
@@ -3816,6 +5518,8 @@ AskD:	move.l	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SAVE "banques"
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** save
+; Method : save String
 	Lib_Par	InSave1
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -3985,6 +5689,8 @@ SB_Out	movem.l	(sp)+,a2/a3/d2-d4
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Load "Banque",n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** load
+; Method : load String
 	Lib_Par	InLoad1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -3993,6 +5699,8 @@ SB_Out	movem.l	(sp)+,a2/a3/d2-d4
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Load "Banque"
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** load
+; Method : load String, Integer
 	Lib_Par	InLoad2
 ; - - - - - - - - - - - - -
 	cmp.l	#$10000,d3
@@ -4222,6 +5930,8 @@ LB_Out	movem.l	(sp)+,a2/a3/d2-d7
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PLOAD "prog",banque
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pload
+; Method : pload String, Integer
 	Lib_Par	InPLoad
 ; - - - - - - - - - - - - -
 	clr.w	-(sp)
@@ -4275,6 +5985,8 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BLOAD "fichier",adresse
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bload
+; Method : bload String, Integer
 	Lib_Par	InBload
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -4307,6 +6019,8 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BSAVE  "fichier",ad to fin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bsave
+; Method : bsave String, Integer to Integer
 	Lib_Par	InBSave
 ; - - - - - - - - - - - - -
 	move.l	d3,-(sp)
@@ -4333,6 +6047,8 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					IFF MASK a%
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mask iff
+; Method : mask iff Integer
 	Lib_Par	InMaskIff
 ; - - - - - - - - - - - - -
 	move.l	d3,IffMask(a5)
@@ -4340,6 +6056,8 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=PICTURE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pi#
+; Method : Float = pi#()
 	Lib_Par	FnPicture
 ; - - - - - - - - - - - - -
 	moveq	#%1111111,d3
@@ -4348,6 +6066,8 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LOAD IFF "fichier"
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** load iff
+; Method : load iff String
 	Lib_Par	InLoadIff1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -4356,6 +6076,8 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LOAD IFF "nom",param
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** load iff
+; Method : load iff String, Integer
 	Lib_Par	InLoadIff2
 ; - - - - - - - - - - - - -
 	Rbsr	L_IffInit
@@ -4380,12 +6102,16 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;				=FORM LOAD(N To Ad[banque][,NForms])
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormLoad2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#1,d3
 	Rbra	L_FnFormLoad3
 ; - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormLoad3
 ; - - - - - - - - - - - - -
 	tst.l	Patch_Errors(a5)		Monitor present?
@@ -4426,12 +6152,16 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=FORM LENGTH(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormLength1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#1,d3
 	Rbra	L_FnFormLength2
 ; - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormLength2
 ; - - - - - - - - - - - - -
 	tst.l	Patch_Errors(a5)	Monitor present?
@@ -4454,12 +6184,16 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;					=Form Play(Ad,Number[,param])
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormPlay2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#EntNul,d3
 	Rbra	L_FnFormPlay3
 ; - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormPlay3
 ; - - - - - - - - - - - - -
 	tst.l	Patch_Errors(a5)		Monitor present?
@@ -4480,12 +6214,16 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=FORM SKIP(ad,[number])
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormSkip1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#1,d3
 	Rbra	L_FnFormSkip2
 ; - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormSkip2
 ; - - - - - - - - - - - - -
 	tst.l	Patch_Errors(a5)		Monitor present?
@@ -4506,12 +6244,16 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					IFF ANIM "name",screen[,ntimes]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** if 
+; Method : if  
 	Lib_Par	InIffAnim2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#1,d3
 	Rbra	L_InIffAnim3
 ; - - - - - - - - - - - - -
+; ***************************************************** if 
+; Method : if  
 	Lib_Par	InIffAnim3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(sp)
@@ -4584,6 +6326,8 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=FRAME PARAM
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** for 
+; Method : for  
 	Lib_Par	FnFormParam
 ; - - - - - - - - - - - - -
 	move.l	IffReturn(a5),d3
@@ -4592,12 +6336,16 @@ GetH	move.l	Buffer(a5),d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SAVE IFF a$,comp
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** save iff
+; Method : save iff String
 	Lib_Par	InSaveIff1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)	
 	moveq	#1,d3
 	Rbra	L_InSaveIff2
 ; - - - - - - - - - - - - -
+; ***************************************************** save iff
+; Method : save iff String, Integer
 	Lib_Par	InSaveIff2
 ; - - - - - - - - - - - - -
 	tst.l	ScOnAd(a5)
@@ -4650,6 +6398,8 @@ Ficl	clr.b	(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET INPUT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set input
+; Method : set input Integer, Integer
 	Lib_Par	InSetInput
 ; - - - - - - - - - - - - -
 	lsl.w	#8,d3
@@ -4663,6 +6413,8 @@ Ficl	clr.b	(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=INPUT$(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** input$
+; Method : String = input$( Integer )
 	Lib_Par	FnInputD1
 ; - - - - - - - - - - - - -
 	Rbsr	L_AskD3
@@ -4683,6 +6435,8 @@ FInp1b:	Ret_String
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=INPUT$(#1,2)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** input$
+; Method : String = input$( Integer, Integer )
 	Lib_Par	FnInputD2
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0
@@ -4796,6 +6550,8 @@ EByE	movem.l	(sp)+,a0/a1/d1-d4
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DIR$=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dir$
+; Method : String = dir$()
 	Lib_Par	InDirD
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -4814,6 +6570,8 @@ EByE	movem.l	(sp)+,a0/a1/d1-d4
 	Rbsr	L_CopyPath
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** dir$
+; Method : String = dir$()
 	Lib_Par	FnDirD
 ; - - - - - - - - - - - - -
 	moveq	#126,d3
@@ -4846,6 +6604,8 @@ FDi2	move.l	a1,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PARENT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** parent
+; Method : parent 
 	Lib_Par	InParent
 ; - - - - - - - - - - - - -
 	move.l	PathAct(a5),a0
@@ -4870,6 +6630,8 @@ FDi2	move.l	a1,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					KILL a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** kill
+; Method : kill String
 	Lib_Par	InKill
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -4883,6 +6645,8 @@ FDi2	move.l	a1,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RENAME a$ TO b$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** rename
+; Method : rename String to String
 	Lib_Par	InRename
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -4903,6 +6667,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					MAKEDIR a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mkdir
+; Method : mkdir String
 	Lib_Par	InMkDir
 ; - - - - - - - - - - - - -
 	Rbsr	L_LockFree
@@ -4919,6 +6685,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DRIVE(a$)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** drive
+; Method : Integer = drive( String )
 	Lib_Par	FnDrive
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -4937,6 +6705,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DFREE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dfree
+; Method : Integer = dfree()
 	Lib_Par	FnDFree
 ; - - - - - - - - - - - - -
 	move.l	PathAct(a5),a0
@@ -4963,6 +6733,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DISC INFO$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** disc info$
+; Method : String = disc info$( String )
 	Lib_Par	FnDiscInfo
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -5018,6 +6790,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PORT(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** port
+; Method : Integer = port( Integer )
 	Lib_Par	FnPort
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -5046,6 +6820,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					OPEN PORT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** open port
+; Method : open port Integer, String
 	Lib_Par	InOpenPort
 ; - - - - - - - - - - - - -
 	move.w	#%111,-(sp)
@@ -5054,6 +6830,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					OPEN OUT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** open out
+; Method : open out Integer, String
 	Lib_Par	InOpenOut
 ; - - - - - - - - - - - - -
 	move.w	#%001,-(sp)
@@ -5062,6 +6840,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					OPEN IN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** open in
+; Method : open in Integer, String
 	Lib_Par	InOpenIn
 ; - - - - - - - - - - - - -
 	move.w	#%010,-(sp)
@@ -5104,6 +6884,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=LOF(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** lof
+; Method : Integer = lof( Integer )
 	Lib_Par	FnLof
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -5120,6 +6902,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=POF(n)=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pof
+; Method : Integer = pof( Integer )
 	Lib_Par	InPof
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d0
@@ -5132,6 +6916,8 @@ IRen1	move.b	(a0)+,(a1)+
 	Rbmi	L_DiskError
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** pof
+; Method : Integer = pof( Integer )
 	Lib_Par	FnPof
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -5145,6 +6931,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					EOF(n) illegal a refaire
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** eof
+; Method : Integer = eof( Integer )
 	Lib_Par	FnEof
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -5174,6 +6962,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLOSE [n]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** close
+; Method : close Integer
 	Lib_Par	InClose1
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -5182,6 +6972,8 @@ IRen1	move.b	(a0)+,(a1)+
 	Rbsr	L_Cloa1
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** close
+; Method : close 
 	Lib_Par	InClose0
 ; - - - - - - - - - - - - -
 	Rbsr	L_CloAll
@@ -5217,6 +7009,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					OPEN RANDOM
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** randomize
+; Method : randomize Integer
 	Lib_Par	InOpenRandom
 ; - - - - - - - - - - - - -
 	move.w	#$80,d0
@@ -5225,6 +7019,8 @@ IRen1	move.b	(a0)+,(a1)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					APPEND canal,nom
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** append
+; Method : append Integer, String
 	Lib_Par	InAppend
 ; - - - - - - - - - - - - -
 	move.w	#%001,d0
@@ -5262,6 +7058,8 @@ IOpr1	move.l	d0,FhA(a2)		* Handle!
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET #n,vv
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get
+; Method : get Integer, Integer
 	Lib_Par	InGet
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetPut
@@ -5294,6 +7092,8 @@ IGet2	move.l	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PUT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** put
+; Method : put Integer, Integer
 	Lib_Par	InPut
 ; - - - - - - - - - - - - -
  	Rbsr	L_GetPut
@@ -5480,6 +7280,8 @@ Ip3:	movem.l	(sp)+,a0-a2/d2-d7
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET DIR A,[a$]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set dir
+; Method : set dir Integer, String
 	Lib_Par	InSetDir2
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -5493,6 +7295,8 @@ Ip3:	movem.l	(sp)+,a0-a2/d2-d7
 .Skip	move.l	(a3)+,d3
 	Rbra	L_InSetDir1
 ; - - - - - - - - - - - - -
+; ***************************************************** set dir
+; Method : set dir Integer
 	Lib_Par	InSetDir1
 ; - - - - - - - - - - - - -
 	cmp.l	#EntNul,d3
@@ -5507,12 +7311,16 @@ Ip3:	movem.l	(sp)+,a0-a2/d2-d7
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DEV FIRST$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** prg first$
+; Method : String = prg first$( String )
 	Lib_Par	FnPrgFirst
 ; - - - - - - - - - - - - -
 	Rlea	L_FillDev,0
 	move.l	a0,-(sp)
 	Rbra	L_DevAcc
 ; - - - - - - - - - - - - -
+; ***************************************************** dev first$
+; Method : String = dev first$( String )
 	Lib_Par	FnDevFirst
 ; - - - - - - - - - - - - -
 	Rlea	L_FillDev,0
@@ -5534,6 +7342,8 @@ Ip3:	movem.l	(sp)+,a0-a2/d2-d7
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=DIR FIRST("filter")
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dir first$
+; Method : String = dir first$( String )
 	Lib_Par	FnDirFirst
 ; - - - - - - - - - - - - -
 	tst.l	Patch_Errors(a5)		Monitor present?
@@ -5552,6 +7362,8 @@ Ip3:	movem.l	(sp)+,a0-a2/d2-d7
 ;					=ACC NEXT$
 ;					=DEV NEXT$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dir next$
+; Method : String = dir next$()
 	Lib_Par	FnFillNext
 ; - - - - - - - - - - - - -
 	tst.l	Patch_Errors(a5)		Monitor present?
@@ -5593,6 +7405,8 @@ FDirV	Rbsr	L_FillFFree
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ASSIGN "name" TO "pathname"
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** assign
+; Method : assign String to String
 	Lib_Par	InAssign
 ; - - - - - - - - - - - - -
 	tst.w	WB2.0(a5)
@@ -5701,6 +7515,8 @@ FDirV	Rbsr	L_FillFFree
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=EXIST("name")
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** exist
+; Method : Integer = exist( String )
 	Lib_Par	FnExist
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -5761,11 +7577,15 @@ FExF	moveq	#0,d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DIR/W LDIR/W
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ldir/w
+; Method : ldir/w 
 	Lib_Par InLDirW0
 ; - - - - - - - - - - - - -
 	move.w	#1,ImpFlg(a5)
 	Rbra	L_DirW0a
 ; - - - - - - - - - - - - -
+; ***************************************************** dir/w
+; Method : dir/w 
 	Lib_Par InDirW0
 ; - - - - - - - - - - - - -
 	clr.w	ImpFlg(a5)
@@ -5782,11 +7602,15 @@ FExF	moveq	#0,d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DIR/w LDIR/W a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ldir/w
+; Method : ldir/w String
 	Lib_Par	InLDirW1
 ; - - - - - - - - - - - - -
 	move.w	#1,ImpFlg(a5)
 	Rbra	L_DirW1a
 ; - - - - - - - - - - - - -
+; ***************************************************** dir/w
+; Method : dir/w String
 	Lib_Par	InDirW1
 ; - - - - - - - - - - - - -
 	clr.w	ImpFlg(a5)
@@ -5810,11 +7634,15 @@ FExF	moveq	#0,d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DIR / LDIR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ldir
+; Method : ldir 
 	Lib_Par InLDir0
 ; - - - - - - - - - - - - -
 	move.w	#1,ImpFlg(a5)
 	Rbra	L_Dir0a
 ; - - - - - - - - - - - - -
+; ***************************************************** dir
+; Method : dir 
 	Lib_Par InDir0
 ; - - - - - - - - - - - - -
 	clr.w	ImpFlg(a5)
@@ -5831,11 +7659,15 @@ FExF	moveq	#0,d3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DIR/LDIR a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ldir
+; Method : ldir String
 	Lib_Par	InLDir1
 ; - - - - - - - - - - - - -
 	move.w	#1,ImpFlg(a5)
 	Rbra	L_Dir1a
 ; - - - - - - - - - - - - -
+; ***************************************************** dir
+; Method : dir String
 	Lib_Par	InDir1
 ; - - - - - - - - - - - - -
 	clr.w	ImpFlg(a5)
@@ -6739,6 +8571,8 @@ JokOUI:	moveq	#1,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PSEL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** psel$
+; Method : String = psel$( String )
 	Lib_Par	FnPSel
 ; - - - - - - - - - - - - -
 	rts
@@ -6746,6 +8580,8 @@ JokOUI:	moveq	#1,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FSEL(a$,b$,c$,d$)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** fsel$
+; Method : String = fsel$( String )
 	Lib_Par	FnFileSelector1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -6754,6 +8590,8 @@ JokOUI:	moveq	#1,d0
 	move.l	d3,-(a3)
 	Rbra	L_FnFileSelector4
 ; - - - - - - - - - - - - -
+; ***************************************************** fsel$
+; Method : String = fsel$( String, String )
 	Lib_Par	FnFileSelector2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -6761,12 +8599,16 @@ JokOUI:	moveq	#1,d0
 	move.l	d3,-(a3)
 	Rbra	L_FnFileSelector4
 ; - - - - - - - - - - - - -
+; ***************************************************** fsel$
+; Method : String = fsel$( String, String, String )
 	Lib_Par	FnFileSelector3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	ChVide(a5),d3
 	Rbra	L_FnFileSelector4
 ; - - - - - - - - - - - - -
+; ***************************************************** fsel$
+; Method : String = fsel$( String, String, String, String )
 	Lib_Par	FnFileSelector4
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -7835,6 +9677,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	COMMAND LINE$=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** command line$
+; Method : String = command line$()
 	Lib_Par	InCommandLine
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -7855,6 +9699,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	=COMMAND LINE$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** command line$
+; Method : String = command line$()
 	Lib_Par	FnCommandLine
 ; - - - - - - - - - - - - -
 	move.l	Buffer(a5),a2
@@ -8655,16 +10501,22 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					TRUE / FALSE / ONE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** true
+; Method : Integer = true()
 	Lib_Par FnTrue		
 ; - - - - - - - - - - - - -
 	moveq	#-1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** on 
+; Method : on  
 	Lib_Par FnOne
 ; - - - - - - - - - - - - -
 	moveq	#1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** false
+; Method : Integer = false()
 	Lib_Par FnFalse
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -8678,6 +10530,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEFAULT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** default
+; Method : default 
 	Lib_Par	InDefault
 ; - - - - - - - - - - - - -
 	Rjsr	L_DefRun1
@@ -8690,6 +10544,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cls
+; Method : cls 
 	Lib_Par	InCls0
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -8697,6 +10553,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	WiCall	ClsWi
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** cls
+; Method : cls Integer
 	Lib_Par	InCls1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -8706,6 +10564,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	move.w	d4,d0
 	Rbra	L_Cls5a
 ; - - - - - - - - - - - - -
+; ***************************************************** cls
+; Method : cls Integer, Integer, Integer to Integer, Integer
 	Lib_Par	InCls5
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -8726,6 +10586,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN HEIGHT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen height
+; Method : Integer = screen height()
 	Lib_Par	FnScreenHeight0
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetScreen0
@@ -8733,6 +10595,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	move.w	EcTy(a0),d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** screen height
+; Method : Integer = screen height( Integer )
 	Lib_Par	FnScreenHeight1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -8746,6 +10610,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN WIDTH
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen width
+; Method : Integer = screen width()
 	Lib_Par	FnScreenWidth0
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetScreen0
@@ -8753,6 +10619,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	move.w	EcTx(a0),d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** screen width
+; Method : Integer = screen width( Integer )
 	Lib_Par	FnScreenWidth1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -8766,6 +10634,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen base
+; Method : Integer = screen base()
 	Lib_Par	FnScreenBase
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetScreen0
@@ -8774,6 +10644,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN COLOUR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen colour
+; Method : Integer = screen colour()
 	Lib_Par	FnScreenColour
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetScreen0
@@ -8786,6 +10658,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN MODE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen
+; Method : screen Integer
 	Lib_Par	FnScreenMode
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetScreen0
@@ -8803,12 +10677,16 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DISPLAY INFOS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** display height
+; Method : Integer = display height()
 	Lib_Par	FnDisplayHeight
 ; - - - - - - - - - - - - -
 	EcCall	MaxRaw
 	move.l	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** ntsc
+; Method : Integer = ntsc()
 	Lib_Par	FnNTSC
 ; - - - - - - - - - - - - -
 	EcCall	CopForce
@@ -8819,6 +10697,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=LOG BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** logbase
+; Method : Integer = logbase( Integer )
 	Lib_Par	FnLogBase
 ; - - - - - - - - - - - - -
 	move.l	ScOnAd(a5),d0
@@ -8832,6 +10712,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=PHY BASE(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** phybase
+; Method : Integer = phybase( Integer )
 	Lib_Par	FnPhyBase
 ; - - - - - - - - - - - - -
 	move.l	ScOnAd(a5),d0
@@ -8846,6 +10728,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DOUBLE BUFFER
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** double buffer
+; Method : double buffer 
 	Lib_Par	InDoubleBuffer
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -8857,6 +10741,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN SWAP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** swap 
+; Method : swap  
 	Lib_Par	InScreenSwap0
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -8865,6 +10751,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	Rbne	L_EcWiErr
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** swap 
+; Method : swap  
 	Lib_Par	InScreenSwap1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -8876,6 +10764,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DUAL PLAYFIELD n,m
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dual playfield
+; Method : dual playfield Integer, Integer
 	Lib_Par	InDualPlayfield
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -8890,6 +10780,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DUAL PRIORITY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dual priority
+; Method : dual priority Integer, Integer
 	Lib_Par	InDualPriority
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -8904,6 +10796,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN CLONE n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen clone
+; Method : screen clone Integer
 	Lib_Par	InScreenClone
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -8917,6 +10811,8 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN OPEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen open
+; Method : screen open Integer, Integer, Integer, Integer, Integer
 	Lib_Par	InScreenOpen
 ; - - - - - - - - - - - - -
 	Rbsr	L_SaveRegs
@@ -8971,6 +10867,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN CLOSE n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen close
+; Method : screen close Integer
 	Lib_Par	InScreenClose
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -8992,6 +10890,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN DISPLAY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen display
+; Method : screen display Integer, Integer, Integer, Integer, Integer
 	Lib_Par	InScreenDisplay
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -9007,6 +10907,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN OFFSET
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen offset
+; Method : screen offset Integer, Integer, Integer
 	Lib_Par	InScreenOffset
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9021,11 +10923,15 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN SHOW [n]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen show
+; Method : screen show 
 	Lib_Par	InScreenShow0
 ; - - - - - - - - - - - - -
 	moveq	#0,d2
 	Rbra	L_ScShHi0
 ; - - - - - - - - - - - - -
+; ***************************************************** screen show
+; Method : screen show Integer
 	Lib_Par	InScreenShow1
 ; - - - - - - - - - - - - -
 	moveq	#0,d2
@@ -9033,6 +10939,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN HIDE [n]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen hide
+; Method : screen hide 
 	Lib_Par	InScreenHide0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d2
@@ -9046,6 +10954,8 @@ ScOo4	Rbsr	L_LoadRegs
 	subq.w	#1,d3
 	Rbra	L_ScShHi
 ; - - - - - - - - - - - - -
+; ***************************************************** screen hide
+; Method : screen hide Integer
 	Lib_Par	InScreenHide1
 ; - - - - - - - - - - - - -
 	moveq	#-1,d2
@@ -9062,11 +10972,15 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					AUTO VIEW
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** auto view on
+; Method : auto view on 
 	Lib_Par	InAutoViewOn
 ; - - - - - - - - - - - - -
 	bset	#BitEcrans,ActuMask(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** auto view off
+; Method : auto view off 
 	Lib_Par	InAutoViewOff
 ; - - - - - - - - - - - - -
 	bclr	#BitEcrans,ActuMask(a5)
@@ -9075,6 +10989,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					VIEW
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** view
+; Method : view 
 	Lib_Par	InView
 ; - - - - - - - - - - - - -
 	EcCall	CopMake
@@ -9084,6 +11000,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN TO FRONT [n]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen to front
+; Method : screen to front 
 	Lib_Par	InScreenToFront0
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -9092,6 +11010,8 @@ ScOo4	Rbsr	L_LoadRegs
 	subq.w	#1,d3
 	Rbra	L_InScreenToFront1
 ; - - - - - - - - - - - - -
+; ***************************************************** screen to front
+; Method : screen to front Integer
 	Lib_Par	InScreenToFront1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9103,6 +11023,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN TO BACK [n]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen to back
+; Method : screen to back 
 	Lib_Par	InScreenToBack0
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -9111,6 +11033,8 @@ ScOo4	Rbsr	L_LoadRegs
 	subq.w	#1,d3
 	Rbra	L_InScreenToBack1
 ; - - - - - - - - - - - - -
+; ***************************************************** screen to back
+; Method : screen to back Integer
 	Lib_Par InScreenToBack1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9122,6 +11046,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen
+; Method : screen Integer
 	Lib_Par InScreen
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9134,6 +11060,8 @@ ScOo4	Rbsr	L_LoadRegs
 	move.l	a0,ScOnAd(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** screen
+; Method : screen Integer
 	Lib_Par FnScreen
 ; - - - - - - - - - - - - -
 	move.w	ScOn(a5),d3
@@ -9144,16 +11072,22 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Fonctions resolutions
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** laced
+; Method : Integer = laced()
 	Lib_Par FnLaced
 ; - - - - - - - - - - - - -
 	moveq	#4,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** hires
+; Method : Integer = hires()
 	Lib_Par FnHires
 ; - - - - - - - - - - - - -
 	move.l	#%1000000000000000,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** lowres
+; Method : Integer = lowres()
 	Lib_Par FnLowres
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -9176,6 +11110,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COLOUR n,xxx
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** colour
+; Method : colour Integer, Integer
 	Lib_Par InColour
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9186,6 +11122,8 @@ ScOo4	Rbsr	L_LoadRegs
 	Rbne	L_EcWiErr
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** colour
+; Method : colour Integer, Integer
 	Lib_Par FnColour
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9199,6 +11137,8 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COLOUR BACK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** colour back
+; Method : colour back Integer
 	Lib_Par InColourBack
 ; - - - - - - - - - - - - -
 	move.w	d3,ColBack(a5)
@@ -9209,11 +11149,15 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET ICON PALETTE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** palette
+; Method : palette 
 	Lib_Par InGetIconPalette0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d3
 	Rbra	L_InGetIconPalette1
 ; - - - - - - - - - - - - -
+; ***************************************************** palette
+; Method : palette 
 	Lib_Par InGetIconPalette1
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.GetIcons
@@ -9225,11 +11169,15 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET SPRITE PALETTE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get sprite palette
+; Method : get sprite palette 
 	Lib_Par InGetSpritePalette0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d3
 	Rbra	L_InGetSpritePalette1
 ; - - - - - - - - - - - - -
+; ***************************************************** get sprite palette
+; Method : get sprite palette Integer
 	Lib_Par InGetSpritePalette1
 ; - - - - - - - - - - - - -
 	Rbsr	L_Bnk.GetBobs
@@ -9241,12 +11189,16 @@ ScOo4	Rbsr	L_LoadRegs
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET PALETTE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get palette
+; Method : get palette Integer
 	Lib_Par InGetPalette1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#-1,d3
 	Rbra	L_InGetPalette2
 ; - - - - - - - - - - - - -
+; ***************************************************** get palette
+; Method : get palette Integer, Integer
 	Lib_Par InGetPalette2
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d1
@@ -9282,6 +11234,8 @@ PalR2:	addq.l	#2,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FLASH OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** flash off
+; Method : flash off 
 	Lib_Par InFlashOff
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9291,6 +11245,8 @@ PalR2:	addq.l	#2,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FLASH n,xxx
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** flash
+; Method : flash Integer, String
 	Lib_Par InFlash
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9307,6 +11263,8 @@ PalR2:	addq.l	#2,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SHIFT OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** shift off
+; Method : shift off 
 	Lib_Par InShiftOff
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9316,11 +11274,15 @@ PalR2:	addq.l	#2,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SHIFT UP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** shift up
+; Method : shift up Integer, Integer, Integer, Integer
 	Lib_Par InShiftUp
 ; - - - - - - - - - - - - -
 	moveq	#0,d0
 	Rbra	L_ShD1
 ; - - - - - - - - - - - - -
+; ***************************************************** shift down
+; Method : shift down Integer, Integer, Integer, Integer
 	Lib_Par InShiftDown
 ; - - - - - - - - - - - - -
 	moveq	#1,d0
@@ -9347,12 +11309,16 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET RAINBOW
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set rainbow
+; Method : set rainbow Integer, Integer, Integer, String, String, String
 	Lib_Par InSetRainbow6
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#0,d3
 	Rbra	L_InSetRainbow7
 ; - - - - - - - - - - - - -
+; ***************************************************** set rainbow
+; Method : set rainbow Integer, Integer, Integer, String, String, String, Integer
 	Lib_Par InSetRainbow7
 ; - - - - - - - - - - - - -
 	Rbsr	L_SaveRegs
@@ -9379,6 +11345,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RAINBOW
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** rainbow
+; Method : rainbow Integer, Integer, Integer, Integer
 	Lib_Par InRainbow
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -9391,11 +11359,15 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RAINBOW DEL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** rainbow del
+; Method : rainbow del 
 	Lib_Par InRainbowDel0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d3
 	Rbra	L_InRainbowDel1
 ; - - - - - - - - - - - - -
+; ***************************************************** rainbow del
+; Method : rainbow del Integer
 	Lib_Par InRainbowDel1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9405,6 +11377,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=RAIN=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** rain
+; Method : Integer = rain( Integer, Integer )
 	Lib_Par InRain
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d2
@@ -9415,6 +11389,8 @@ ShD3:	move.l	(a3)+,d2
 	move.w	d3,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** rain
+; Method : Integer = rain( Integer, Integer )
 	Lib_Par FnRain
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -9428,11 +11404,15 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COPPER ON/OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** copper on
+; Method : copper on 
 	Lib_Par InCopOn
 ; - - - - - - - - - - - - -
 	EcCalD	CopOnOff,-1
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** copper off
+; Method : copper off 
 	Lib_Par InCopOff
 ; - - - - - - - - - - - - -
 	EcCalD	CopOnOff,0
@@ -9440,6 +11420,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COPPER SWAP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cop swap
+; Method : cop swap 
 	Lib_Par InCopSwap
 ; - - - - - - - - - - - - -
 	EcCall	CopSwap
@@ -9448,6 +11430,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COP RESET
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cop reset
+; Method : cop reset 
 	Lib_Par InCopReset
 ; - - - - - - - - - - - - -
 	EcCall	CopReset
@@ -9456,6 +11440,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COP WAIT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cop wait
+; Method : cop wait Integer, Integer
 	Lib_Par InCopWait2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -9463,6 +11449,8 @@ ShD3:	move.l	(a3)+,d2
 	move.l	d3,-(a3)
 	Rbra	L_InCopWait4
 ; - - - - - - - - - - - - -
+; ***************************************************** cop wait
+; Method : cop wait Integer, Integer, Integer, Integer
 	Lib_Par InCopWait4
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -9476,6 +11464,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COP MOVE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cop move
+; Method : cop move Integer, Integer
 	Lib_Par InCopMove
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -9486,6 +11476,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					COP MOVEL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cop movel
+; Method : cop movel Integer, Integer
 	Lib_Par InCopMoveL
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -9496,6 +11488,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=COP LOGIC
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cop logic
+; Method : Integer = cop logic()
 	Lib_Par FnCopLogic
 ; - - - - - - - - - - - - -
 	EcCall	CopBase
@@ -9507,6 +11501,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					AUTOBACK n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** autoback
+; Method : autoback Integer
 	Lib_Par InAutoback
 ; - - - - - - - - - - - - -
 	cmp.l	#3,d3
@@ -9521,6 +11517,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PLOT x,y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** plot
+; Method : plot Integer, Integer
 	Lib_Par InPlot2
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9532,6 +11530,8 @@ ShD3:	move.l	(a3)+,d2
 	Rbsr	L_GfxFunc
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** plot
+; Method : plot Integer, Integer, Integer
 	Lib_Par InPlot3
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9554,6 +11554,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=POINT(x,y)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** point
+; Method : Integer = point( Integer, Integer )
 	Lib_Par FnPoint
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9576,6 +11578,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DRAW 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** draw to
+; Method : draw to Integer, Integer
 	Lib_Par InDrawTo
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9585,6 +11589,8 @@ ShD3:	move.l	(a3)+,d2
 	Rbsr	L_GfxFunc	
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** draw
+; Method : draw Integer, Integer to Integer, Integer
 	Lib_Par InDraw
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d2
@@ -9600,6 +11606,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CIRCLE x,y,n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** circle
+; Method : circle Integer, Integer, Integer
 	Lib_Par InCircle
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -9614,6 +11622,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ELIPSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ellipse
+; Method : ellipse Integer, Integer, Integer, Integer
 	Lib_Par InEllipse
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -9638,6 +11648,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 				XCURS / YCURS		
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** xgr
+; Method : Integer = xgr()
 	Lib_Par FnXGr
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9647,6 +11659,8 @@ ShD3:	move.l	(a3)+,d2
 	move.w	36(a0),d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** ygr
+; Method : Integer = ygr()
 	Lib_Par FnYGr
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9658,6 +11672,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Gr Locate
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** gr locate
+; Method : gr locate Integer, Integer
 	Lib_Par InGrLocate
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9670,6 +11686,8 @@ ShD3:	move.l	(a3)+,d2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BOX x,y TO x,y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** box
+; Method : box Integer, Integer to Integer, Integer
 	Lib_Par InBox
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9702,6 +11720,8 @@ IBx1	moveq	#4,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Fonctions CLIP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** clip
+; Method : clip 
 	Lib_Par InClip0
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9710,6 +11730,8 @@ IBx1	moveq	#4,d0
 	Rbne	L_FonCall
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** clip
+; Method : clip Integer, Integer to Integer, Integer
 	Lib_Par InClip4
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -9726,6 +11748,8 @@ IBx1	moveq	#4,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET ROM FONTS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get rom fonts
+; Method : get rom fonts 
 	Lib_Par InGetRomFonts
 ; - - - - - - - - - - - - -
 	moveq	#1,d1
@@ -9733,6 +11757,8 @@ IBx1	moveq	#4,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET DISC FONTS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get disc fonts
+; Method : get disc fonts 
 	Lib_Par InGetDiscFonts
 ; - - - - - - - - - - - - -
 	moveq	#2,d1
@@ -9740,6 +11766,8 @@ IBx1	moveq	#4,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET FONTS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get fonts
+; Method : get fonts 
 	Lib_Par InGetFonts
 ; - - - - - - - - - - - - -
 	moveq	#3,d1
@@ -9755,6 +11783,8 @@ IBx1	moveq	#4,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=FONT$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** font$
+; Method : String = font$( Integer )
 	Lib_Par FnFont
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -9803,6 +11833,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET FONT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set font
+; Method : set font Integer
 	Lib_Par InSetFont
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9817,6 +11849,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					TEXT x,y,a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** text
+; Method : text Integer, Integer, String
 	Lib_Par InText
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9835,6 +11869,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=TEXT BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** text base
+; Method : Integer = text base()
 	Lib_Par FnTextBase
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9847,6 +11883,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=TEXT LENGTH
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** text length
+; Method : Integer = text length( String )
 	Lib_Par FnTextLength
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9864,6 +11902,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=TEXT STYLES
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** text styles
+; Method : Integer = text styles()
 	Lib_Par FnTextStyle
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)	
@@ -9876,6 +11916,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET TEXT n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set text
+; Method : set text Integer
 	Lib_Par InSetText
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9887,6 +11929,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET PATTERN n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set pattern
+; Method : set pattern Integer
 	Lib_Par InSetPattern
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9898,6 +11942,8 @@ FtDisc:	dc.b	"Disc",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET PAINT n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set paint
+; Method : set paint Integer
 	Lib_Par InSetPaint
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9914,12 +11960,16 @@ ISpt:	move.w	d0,32(a1)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PAINT x,y[,mode]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** paint
+; Method : paint Integer, Integer
 	Lib_Par InPaint2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#-1,d3
 	Rbra	L_InPaint3
 ; - - - - - - - - - - - - -
+; ***************************************************** paint
+; Method : paint Integer, Integer, Integer
 	Lib_Par InPaint3
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9943,6 +11993,8 @@ ISpt:	move.w	d0,32(a1)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BAR x,y TO x,y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bar
+; Method : bar Integer, Integer to Integer, Integer
 	Lib_Par InBar
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -9965,6 +12017,8 @@ ISpt:	move.w	d0,32(a1)
 ; 					SET TEMPRAS n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; - - - - - - - - - - - - -
+; ***************************************************** set tempras
+; Method : set tempras Integer
 	Lib_Par InSetTempras1
 ; - - - - - - - - - - - - -
 	cmp.l	#65536,d3
@@ -9974,11 +12028,15 @@ ISpt:	move.w	d0,32(a1)
 	move.w	d3,RasSize(a5)
 	Rbra	L_InSetTempras0
 ; - - - - - - - - - - - - -
+; ***************************************************** set tempras
+; Method : set tempras 
 	Lib_Par InSetTempras0
 ; - - - - - - - - - - - - -
 	clr.l	RasLock(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** set tempras
+; Method : set tempras Integer, Integer
 	Lib_Par InSetTempras2
 ; - - - - - - - - - - - - -
 	clr.l	RasLock(a5)
@@ -10053,6 +12111,8 @@ FriRY:	move.l	RasLock(a5),a1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					INK a,b,c
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ink
+; Method : ink Integer
 	Lib_Par InInk1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -10060,12 +12120,16 @@ FriRY:	move.l	RasLock(a5),a1
 	move.l	d3,-(a3)
 	Rbra	L_InInk3
 ; - - - - - - - - - - - - -
+; ***************************************************** ink
+; Method : ink Integer, Integer
 	Lib_Par InInk2
 ; - - - - - - - - - - - - -	
 	move.l	d3,-(a3)
 	move.l	#EntNul,d3
 	Rbra	L_InInk3
 ; - - - - - - - - - - - - -
+; ***************************************************** ink
+; Method : ink Integer, Integer, Integer
 	Lib_Par InInk3
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10087,6 +12151,8 @@ Iik2:	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GR WRITING n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** gr writing
+; Method : gr writing Integer
 	Lib_Par InGrWriting
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10100,6 +12166,8 @@ Iik2:	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET LINE 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set line
+; Method : set line Integer
 	Lib_Par InSetLine
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10111,6 +12179,8 @@ Iik2:	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SLIDER
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hslider
+; Method : hslider Integer, Integer to Integer, Integer, Integer, Integer, Integer
 	Lib_Par InHSlider
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetSli
@@ -10119,6 +12189,8 @@ Iik2:	rts
 	Rbsr	L_LoadRegs
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** vslider
+; Method : vslider Integer, Integer to Integer, Integer, Integer, Integer, Integer
 	Lib_Par InVSlider
 ; - - - - - - - - - - - - -
 	Rbsr	L_GetSli
@@ -10152,6 +12224,8 @@ Iik2:	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET SLIDER
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set slider
+; Method : set slider Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer
 	Lib_Par InSetSlider
 ; - - - - - - - - - - - - -
 	Rbsr	L_SaveRegs
@@ -10171,6 +12245,8 @@ Iik2:	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEF SCROLL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** def scroll
+; Method : def scroll Integer, Integer, Integer to Integer, Integer, Integer, Integer
 	Lib_Par InDefScroll
 ; - - - - - - - - - - - - -
 	Rbsr	L_SaveRegs
@@ -10189,6 +12265,8 @@ Iik2:	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCROLL n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** scroll
+; Method : scroll Integer
 	Lib_Par InScroll
 ; - - - - - - - - - - - - -
 	subq.l	#1,d3
@@ -10249,12 +12327,16 @@ ScNoDef	moveq	#28,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCREEN COPY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** screen copy
+; Method : screen copy Integer to Integer
 	Lib_Par InScreenCopy2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#$CC,d3
 	Rbra	L_InScreenCopy3
 ; - - - - - - - - - - - - -
+; ***************************************************** screen copy
+; Method : screen copy Integer to IntegerInteger
 	Lib_Par InScreenCopy3
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d1
@@ -10277,12 +12359,16 @@ ScNoDef	moveq	#28,d0
 	movem.l	(sp)+,d5-d7	
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** screen copy
+; Method : screen copy Integer, Integer, Integer, Integer, Integer to Integer, Integer, Integer
 	Lib_Par InScreenCopy8
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#$CC,d3
 	Rbra	L_InScreenCopy9
 ; - - - - - - - - - - - - -
+; ***************************************************** screen copy
+; Method : screen copy Integer, Integer, Integer, Integer, Integer to Integer, Integer, Integer, Integer
 	Lib_Par InScreenCopy9
 ; - - - - - - - - - - - - -
 * Adresse ecran 2
@@ -10406,11 +12492,15 @@ ScoX	movem.l	(sp)+,a3/a6
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=PHYSIC
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** physic
+; Method : Integer = physic()
 	Lib_Par FnPhysic0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** physic
+; Method : Integer = physic( Integer )
 	Lib_Par FnPhysic1
 ; - - - - - - - - - - - - -
 	bset	#31,d3
@@ -10419,12 +12509,16 @@ ScoX	movem.l	(sp)+,a3/a6
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=LOGIC
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** logic
+; Method : Integer = logic()
 	Lib_Par FnLogic0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d3
 	bclr	#30,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** logic
+; Method : Integer = logic( Integer )
 	Lib_Par FnLogic1
 ; - - - - - - - - - - - - -
 	bset	#31,d3
@@ -10434,12 +12528,16 @@ ScoX	movem.l	(sp)+,a3/a6
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					APPEAR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** appear
+; Method : appear Integer to Integer, Integer
 	Lib_Par InAppear3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#0,d3
 	Rbra	L_InAppear4
 ; - - - - - - - - - - - - -
+; ***************************************************** appear
+; Method : appear Integer to Integer, Integer, Integer
 	Lib_Par InAppear4
 ; - - - - - - - - - - - - -
 	Rbsr	L_SaveRegs
@@ -10528,6 +12626,8 @@ LApp6	movem.l	(sp)+,a3-a6
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ZOOM
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** zoom
+; Method : zoom Integer, Integer, Integer, Integer, Integer to Integer, Integer, Integer, Integer, Integer
 	Lib_Par InZoom
 ; - - - - - - - - - - - - -
 		RsReset
@@ -10740,6 +12840,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					X HARD / YHARD
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x hard
+; Method : Integer = x hard( Integer )
 	Lib_Par FnXHard1
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10748,6 +12850,8 @@ ZooZ3	move.w	#-1,(a0)+
 	moveq	#0,d3
 	Rbra	L_XHr1
 ; - - - - - - - - - - - - -
+; ***************************************************** x hard
+; Method : Integer = x hard( Integer, Integer )
 	Lib_Par FnXHard2
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -10766,6 +12870,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=YHARD
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** y hard
+; Method : Integer = y hard( Integer )
 	Lib_Par FnYHard1
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10774,6 +12880,8 @@ ZooZ3	move.w	#-1,(a0)+
 	moveq	#0,d3
 	Rbra	L_YHr1
 ; - - - - - - - - - - - - -
+; ***************************************************** y hard
+; Method : Integer = y hard( Integer, Integer )
 	Lib_Par FnYHard2
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -10792,6 +12900,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=X SCREEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x screen
+; Method : Integer = x screen( Integer )
 	Lib_Par FnXScreen1
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10800,6 +12910,8 @@ ZooZ3	move.w	#-1,(a0)+
 	moveq	#0,d3
 	Rbra	L_XSc1
 ; - - - - - - - - - - - - -
+; ***************************************************** x screen
+; Method : Integer = x screen( Integer, Integer )
 	Lib_Par FnXScreen2
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -10818,6 +12930,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=YSCREEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** y screen
+; Method : Integer = y screen( Integer )
 	Lib_Par FnYScreen1
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10826,6 +12940,8 @@ ZooZ3	move.w	#-1,(a0)+
 	moveq	#0,d3
 	Rbra	L_YSc1
 ; - - - - - - - - - - - - -
+; ***************************************************** y screen
+; Method : Integer = y screen( Integer, Integer )
 	Lib_Par FnYScreen2
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -10844,6 +12960,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=X TEXT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x text
+; Method : Integer = x text( Integer )
 	Lib_Par FnXText
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10856,6 +12974,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=YTEXT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** y text
+; Method : Integer = y text( Integer )
 	Lib_Par FnYText
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10869,6 +12989,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					XYGRAPHIC
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x graphic
+; Method : Integer = x graphic( Integer )
 	Lib_Par FnXGraphic
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10879,6 +13001,8 @@ ZooZ3	move.w	#-1,(a0)+
 	move.l	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** y graphic
+; Method : Integer = y graphic( Integer )
 	Lib_Par FnYGraphic
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -10892,11 +13016,15 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RESERVE ZONES
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** reserve zone
+; Method : reserve zone 
 	Lib_Par InReserveZone0
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
 	Rbra	L_InReserveZone1
 ; - - - - - - - - - - - - -
+; ***************************************************** reserve zone
+; Method : reserve zone Integer
 	Lib_Par InReserveZone1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -10909,11 +13037,15 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					RESET ZONE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** reset zone
+; Method : reset zone 
 	Lib_Par InResetZone0
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
 	Rbra	L_InResetZone1
 ; - - - - - - - - - - - - -
+; ***************************************************** reset zone
+; Method : reset zone Integer
 	Lib_Par InResetZone1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -10929,6 +13061,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET ZONE 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set zone
+; Method : set zone Integer, Integer, Integer to Integer, Integer
 	Lib_Par InSetZone
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -10946,6 +13080,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=ZONE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** zone
+; Method : Integer = zone( Integer, Integer )
 	Lib_Par FnZone2
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -10953,6 +13089,8 @@ ZooZ3	move.w	#-1,(a0)+
 	moveq	#-1,d3
 	Rbra	L_FZo
 ; - - - - - - - - - - - - -
+; ***************************************************** zone
+; Method : Integer = zone( Integer, Integer, Integer )
 	Lib_Par FnZone3
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -10975,6 +13113,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=HZONE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hzone
+; Method : Integer = hzone( Integer, Integer )
 	Lib_Par FnHZone2
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -10982,6 +13122,8 @@ ZooZ3	move.w	#-1,(a0)+
 	moveq	#-1,d3
 	Rbra	L_FHZo
 ; - - - - - - - - - - - - -
+; ***************************************************** hzone
+; Method : Integer = hzone( Integer, Integer, Integer )
 	Lib_Par FnHZone3
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -11004,6 +13146,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SCIn
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** scin
+; Method : Integer = scin( Integer, Integer )
 	Lib_Par FnScIn2
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -11011,6 +13155,8 @@ ZooZ3	move.w	#-1,(a0)+
 	moveq	#-1,d3
 	Rbra	L_ScIn
 ; - - - - - - - - - - - - -
+; ***************************************************** scin
+; Method : Integer = scin( Integer, Integer, Integer )
 	Lib_Par FnScIn3
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -11032,6 +13178,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=MOUSE SCREEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mouse screen
+; Method : Integer = mouse screen()
 	Lib_Par FnMouseScreen
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -11045,6 +13193,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=MOUSEZONE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mouse zone
+; Method : Integer = mouse zone()
 	Lib_Par FnMouseZone
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -11059,6 +13209,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET CBLOCK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get cblock
+; Method : get cblock Integer, Integer, Integer, Integer, Integer
 	Lib_Par InGetCBlock
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -11076,6 +13228,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PUT CBLOCK n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** put cblock
+; Method : put cblock Integer
 	Lib_Par InPutCBlock1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -11083,6 +13237,8 @@ ZooZ3	move.w	#-1,(a0)+
 	move.l	d3,-(a3)
 	Rbra	L_InPutCBlock3
 ; - - - - - - - - - - - - -
+; ***************************************************** put cblock
+; Method : put cblock Integer, Integer, Integer
 	Lib_Par InPutCBlock3
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -11098,11 +13254,15 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEL CBLOCK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** del cblock
+; Method : del cblock 
 	Lib_Par InDelCBlock0
 ; - - - - - - - - - - - - -
 	EcCall	CBlRaz
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** del cblock
+; Method : del cblock Integer
 	Lib_Par InDelCBlock1
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -11116,12 +13276,16 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET BLOCK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get block
+; Method : get block Integer, Integer, Integer, Integer, Integer
 	Lib_Par InGetBlock5
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#0,d3
 	Rbra	L_InGetBlock6	
 ; - - - - - - - - - - - - -
+; ***************************************************** get block
+; Method : get block Integer, Integer, Integer, Integer, Integer, Integer
 	Lib_Par InGetBlock6
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -11143,6 +13307,8 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PUT BLOCK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** put block
+; Method : put block Integer
 	Lib_Par InPutBlock1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -11152,6 +13318,8 @@ ZooZ3	move.w	#-1,(a0)+
 	move.l	d3,-(a3)
 	Rbra	L_InPutBlock5
 ; - - - - - - - - - - - - -
+; ***************************************************** put block
+; Method : put block Integer, Integer, Integer
 	Lib_Par InPutBlock3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -11159,12 +13327,16 @@ ZooZ3	move.w	#-1,(a0)+
 	move.l	d3,-(a3)
 	Rbra	L_InPutBlock5
 ; - - - - - - - - - - - - -
+; ***************************************************** put block
+; Method : put block Integer, Integer, Integer, Integer
 	Lib_Par InPutBlock4
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#EntNul,d3
 	Rbra	L_InPutBlock5
 ; - - - - - - - - - - - - -
+; ***************************************************** put block
+; Method : put block Integer, Integer, Integer, Integer, Integer
 	Lib_Par InPutBlock5
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -11184,11 +13356,15 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DEL BLOC
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** del block
+; Method : del block 
 	Lib_Par InDelBlock0
 ; - - - - - - - - - - - - -
 	EcCall	BlRaz
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** del block
+; Method : del block Integer
 	Lib_Par InDelBlock1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -11202,11 +13378,15 @@ ZooZ3	move.w	#-1,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Bloc Reverse
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hrev block
+; Method : hrev block Integer
 	Lib_Par InHRevBlock
 ; - - - - - - - - - - - - -
 	move.w	#%1000000000000000,d2
 	Rbra	L_Rev
 ; - - - - - - - - - - - - -
+; ***************************************************** vrev block
+; Method : vrev block Integer
 	Lib_Par InVRevBlock
 ; - - - - - - - - - - - - -
 	move.w	#%0100000000000000,d2
@@ -11320,6 +13500,8 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLOSE WORKBENCH
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** close workbench
+; Method : close workbench 
 	Lib_Par InCloseWorkbench
 ; - - - - - - - - - - - - -
 	tst.b	PI_AllowWB(a5)
@@ -11329,28 +13511,38 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					AMOS TO FRONT / BACK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** amos to front
+; Method : amos to front 
 	Lib_Par InAmosToFront
 ; - - - - - - - - - - - - -
 	EcCalD	AMOS_WB,1
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** amos to back
+; Method : amos to back 
 	Lib_Par InAmosToBack
 ; - - - - - - - - - - - - -
 	EcCalD	AMOS_WB,0
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** amos here
+; Method : Integer = amos here()
 	Lib_Par FnAmosHere
 ; - - - - - - - - - - - - -
 	EcCalD	AMOS_WB,-1
 	move.l	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** amos lock
+; Method : amos lock 
 	Lib_Par InAmosLock
 ; - - - - - - - - - - - - -
 	EcCalD	AMOS_WB,1
 	move.w	#-1,T_NoFlip(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** amos unlock
+; Method : amos unlock 
 	Lib_Par InAmosUnlock
 ; - - - - - - - - - - - - -
 	clr.w	T_NoFlip(a5)
@@ -11393,6 +13585,8 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					ERROR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** error
+; Method : error Integer
 	Lib_Par InError
 ; - - - - - - - - - - - - -
 	cmp.l	#256,d3
@@ -11420,18 +13614,24 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Update et assimiles
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** update off
+; Method : update off 
 	Lib_Par InUpdateOff
 ; - - - - - - - - - - - - -
 	bclr	#5,ActuMask(a5)
 	bclr	#6,ActuMask(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** update on
+; Method : update on 
 	Lib_Par InUpdateOn
 ; - - - - - - - - - - - - -
 	bset	#5,ActuMask(a5)
 	bset	#6,ActuMask(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** update
+; Method : update 
 	Lib_Par InUpdate
 ; - - - - - - - - - - - - -
 	movem.l	a3-a6,-(sp)		* Bobs
@@ -11446,16 +13646,22 @@ GtE4	add.l	#EcPhysic,d0
 	movem.l	(sp)+,a3-a6
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** bob update off
+; Method : bob update off 
 	Lib_Par InBobUpdateOff
 ; - - - - - - - - - - - - -
 	bclr	#5,ActuMask(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** bob update on
+; Method : bob update on 
 	Lib_Par InBobUpdateOn
 ; - - - - - - - - - - - - -
 	bset	#5,ActuMask(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** bob update
+; Method : bob update 
 	Lib_Par InBobUpdate
 ; - - - - - - - - - - - - -
 	movem.l	a3-a6,-(sp)		* Bobs
@@ -11466,16 +13672,22 @@ GtE4	add.l	#EcPhysic,d0
 	movem.l	(sp)+,a3-a6
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** sprite update off
+; Method : sprite update off 
 	Lib_Par InSpriteUpdateOff
 ; - - - - - - - - - - - - -
 	bclr	#6,ActuMask(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** sprite update on
+; Method : sprite update on 
 	Lib_Par InSpriteUpdateOn
 ; - - - - - - - - - - - - -
 	bset	#6,ActuMask(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** sprite update
+; Method : sprite update 
 	Lib_Par InSpriteUpdate
 ; - - - - - - - - - - - - -
 	movem.l	a3-a6,-(sp)
@@ -11487,6 +13699,8 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					UPDATE EVERY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** update every
+; Method : update every Integer
 	Lib_Par InUpdateEvery
 ; - - - - - - - - - - - - -
 	cmp.l	#65536,d3
@@ -11497,6 +13711,8 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BOB CLEAR / DRAW
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bob clear
+; Method : bob clear 
 	Lib_Par InBobClear
 ; - - - - - - - - - - - - -
 	movem.l	a3-a6,-(sp)
@@ -11504,6 +13720,8 @@ GtE4	add.l	#EcPhysic,d0
 	movem.l	(sp)+,a3-a6
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** bob draw
+; Method : bob draw 
 	Lib_Par InBobDraw
 ; - - - - - - - - - - - - -
 	movem.l	a3-a6,-(sp)
@@ -11515,6 +13733,8 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LIMIT BOB
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** limit bob
+; Method : limit bob 
 	Lib_Par InLimitBob0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d1
@@ -11526,6 +13746,8 @@ GtE4	add.l	#EcPhysic,d0
 	Rbne	L_FonCall
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** limit bob
+; Method : limit bob Integer, Integer to Integer, Integer
 	Lib_Par InLimitBob4
 ; - - - - - - - - - - - - -
 	moveq	#-1,d1
@@ -11537,6 +13759,8 @@ GtE4	add.l	#EcPhysic,d0
 	Rbne	L_FonCall
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** limit bob
+; Method : limit bob Integer, Integer, Integer to Integer, Integer
 	Lib_Par InLimitBob5
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -11551,24 +13775,32 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PRIORITY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** priority on
+; Method : priority on 
 	Lib_Par InPriorityOn
 ; - - - - - - - - - - - - -
 	moveq	#1,d1
 	moveq	#-1,d2
 	Rbra	L_Prooo
 ; - - - - - - - - - - - - -
+; ***************************************************** priority off
+; Method : priority off 
 	Lib_Par InPriorityOff
 ; - - - - - - - - - - - - -
 	moveq	#0,d1
 	moveq	#-1,d2
 	Rbra	L_Prooo
 ; - - - - - - - - - - - - -
+; ***************************************************** priority reverse on
+; Method : priority reverse on 
 	Lib_Par InPriorityReverseOn
 ; - - - - - - - - - - - - -
 	moveq	#-1,d1
 	moveq	#1,d2
 	Rbra	L_Prooo
 ; - - - - - - - - - - - - -
+; ***************************************************** priority reverse off
+; Method : priority reverse off 
 	Lib_Par InPriorityReverseOff
 ; - - - - - - - - - - - - -
 	moveq	#-1,d1
@@ -11585,6 +13817,8 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=AMAL ERR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** amalerr
+; Method : Integer = amalerr()
 	Lib_Par FnAmalerr
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -11594,11 +13828,15 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FREEZE / UNFREEZE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** freeze
+; Method : freeze 
 	Lib_Par InFreeze
 ; - - - - - - - - - - - - -
 	SyCall	AMALFrz
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** freeze
+; Method : freeze 
 	Lib_Par InUnFreeze
 ; - - - - - - - - - - - - -
 	SyCall	AMALUFrz
@@ -11606,6 +13844,8 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SYNCHRO ON / OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** synchro on
+; Method : synchro on 
 	Lib_Par InSynchroOn
 ; - - - - - - - - - - - - -
 	moveq	#0,d1
@@ -11613,6 +13853,8 @@ GtE4	add.l	#EcPhysic,d0
 	SyCall	SetSync
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** synchro off
+; Method : synchro off 
 	Lib_Par InSynchroOff
 ; - - - - - - - - - - - - -
 	moveq	#-1,d1
@@ -11620,6 +13862,8 @@ GtE4	add.l	#EcPhysic,d0
 	SyCall	SetSync
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** synchro
+; Method : synchro 
 	Lib_Par InSynchro
 ; - - - - - - - - - - - - -
 	SyCall	Synchro
@@ -11628,54 +13872,72 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					AMAL/MOVE/ANIM on/off/freeze
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** amal on
+; Method : amal on 
 	Lib_Par InAmalOn0
 ; - - - - - - - - - - - - -
 	moveq	#%0001,d2
 	moveq	#1,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** amal off
+; Method : amal off 
 	Lib_Par InAmalOff0
 ; - - - - - - - - - - - - -
 	moveq	#%0001,d2
 	moveq	#-1,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** amal freeze
+; Method : amal freeze 
 	Lib_Par InAmalFreeze0
 ; - - - - - - - - - - - - -
 	moveq	#%0001,d2
 	moveq	#0,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** move on
+; Method : move on 
 	Lib_Par InMoveOn0
 ; - - - - - - - - - - - - -
 	moveq	#%1100,d2
 	moveq	#1,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** anim on
+; Method : anim on 
 	Lib_Par InAnimOn0
 ; - - - - - - - - - - - - -
 	moveq	#%0010,d2
 	moveq	#1,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** move off
+; Method : move off 
 	Lib_Par InMoveOff0
 ; - - - - - - - - - - - - -
 	moveq	#%1100,d2
 	moveq	#-1,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** anim off
+; Method : anim off 
 	Lib_Par InAnimOff0
 ; - - - - - - - - - - - - -
 	moveq	#%0010,d2
 	moveq	#-1,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** move freeze
+; Method : move freeze 
 	Lib_Par InMoveFreeze0
 ; - - - - - - - - - - - - -
 	moveq	#%1100,d2
 	moveq	#0,d3
 	Rbra	L_MvOnOf0
 ; - - - - - - - - - - - - -
+; ***************************************************** anim freeze
+; Method : anim freeze 
 	Lib_Par InAnimFreeze0
 ; - - - - - - - - - - - - -
 	moveq	#%0010,d2
@@ -11689,54 +13951,72 @@ GtE4	add.l	#EcPhysic,d0
 	rts
 
 ; - - - - - - - - - - - - -
+; ***************************************************** amal on
+; Method : amal on Integer
 	Lib_Par InAmalOn1
 ; - - - - - - - - - - - - -
 	moveq	#%0001,d2
 	moveq	#1,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** amal off
+; Method : amal off Integer
 	Lib_Par InAmalOff1
 ; - - - - - - - - - - - - -
 	moveq	#%0001,d2
 	moveq	#-1,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** amal freeze
+; Method : amal freeze Integer
 	Lib_Par InAmalFreeze1
 ; - - - - - - - - - - - - -
 	moveq	#%0001,d2
 	moveq	#0,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** move on
+; Method : move on Integer
 	Lib_Par InMoveOn1
 ; - - - - - - - - - - - - -
 	moveq	#%1100,d2
 	moveq	#1,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** anim on
+; Method : anim on Integer
 	Lib_Par InAnimOn1
 ; - - - - - - - - - - - - -
 	moveq	#%0010,d2
 	moveq	#1,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** move off
+; Method : move off Integer
 	Lib_Par InMoveOff1
 ; - - - - - - - - - - - - -
 	moveq	#%1100,d2
 	moveq	#-1,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** anim off
+; Method : anim off Integer
 	Lib_Par InAnimOff1
 ; - - - - - - - - - - - - -
 	moveq	#%0010,d2
 	moveq	#-1,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** move freeze
+; Method : move freeze Integer
 	Lib_Par InMoveFreeze1
 ; - - - - - - - - - - - - -
 	moveq	#%1100,d2
 	moveq	#0,d0
 	Rbra	L_MvOnOf1
 ; - - - - - - - - - - - - -
+; ***************************************************** anim freeze
+; Method : anim freeze Integer
 	Lib_Par InAnimFreeze1
 ; - - - - - - - - - - - - -
 	moveq	#%0010,d2
@@ -11753,21 +14033,29 @@ GtE4	add.l	#EcPhysic,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					MOVE X/Y etc...
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** move x
+; Method : move x Integer, String to Integer
 	Lib_Par InMoveX3
 ; - - - - - - - - - - - - -
 	moveq	#2,d0
 	Rbra	L_AMm3
 ; - - - - - - - - - - - - -
+; ***************************************************** move y
+; Method : move y Integer, String to Integer
 	Lib_Par InMoveY3
 ; - - - - - - - - - - - - -
 	moveq	#3,d0
 	Rbra	L_AMm3
 ; - - - - - - - - - - - - -
+; ***************************************************** anim freeze
+; Method : anim freeze Integer, String to Integer
 	Lib_Par InAnim3
 ; - - - - - - - - - - - - -
 	moveq	#1,d0
 	Rbra	L_AMm3
 ; - - - - - - - - - - - - -
+; ***************************************************** amal
+; Method : amal Integer, String to Integer
 	Lib_Par InAmal3
 ; - - - - - - - - - - - - -
 	moveq	#0,d0
@@ -11780,21 +14068,29 @@ GtE4	add.l	#EcPhysic,d0
 	move.l	(a3)+,d3
 	Rbra	L_MvA3
 ; - - - - - - - - - - - - -
+; ***************************************************** move x
+; Method : move x Integer, 3
 	Lib_Par InMoveX2
 ; - - - - - - - - - - - - -
 	moveq	#2,d0
 	Rbra	L_MvA
 ; - - - - - - - - - - - - -
+; ***************************************************** move y
+; Method : move y Integer, 3
 	Lib_Par InMoveY2
 ; - - - - - - - - - - - - -
 	moveq	#3,d0
 	Rbra	L_MvA
 ; - - - - - - - - - - - - -
+; ***************************************************** amal
+; Method : amal Integer, 3
 	Lib_Par InAmal2
 ; - - - - - - - - - - - - -
 	moveq	#0,d0
 	Rbra	L_MvA
 ; - - - - - - - - - - - - -
+; ***************************************************** anim
+; Method : anim Integer, 3
 	Lib_Par InAnim2
 ; - - - - - - - - - - - - -
 	moveq	#1,d0
@@ -11890,6 +14186,8 @@ IAmE:	move.w	a0,PAmalE(a5)		* Offset de l'erreur
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=MOVON =CHANAM etc...
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** movon
+; Method : Integer = movon( Integer )
 	Lib_Par FnMovon
 ; - - - - - - - - - - - - -
 	Rbsr	L_FnAm1
@@ -11899,6 +14197,8 @@ IAmE:	move.w	a0,PAmalE(a5)		* Offset de l'erreur
 	move.l	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** chanan
+; Method : Integer = chanan( Integer )
 	Lib_Par FnChanAn
 ; - - - - - - - - - - - - -
 	Rbsr	L_FnAm1
@@ -11908,6 +14208,8 @@ IAmE:	move.w	a0,PAmalE(a5)		* Offset de l'erreur
 	move.l	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** chanmv
+; Method : Integer = chanmv( Integer )
 	Lib_Par FnChanMv
 ; - - - - - - - - - - - - -
 	Rbsr	L_FnAm1
@@ -11928,6 +14230,8 @@ IAmE:	move.w	a0,PAmalE(a5)		* Offset de l'erreur
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=AMREG(n,[n])=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** amreg
+; Method : Integer = amreg( Integer )
 	Lib_Par InAmreg1
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -11935,11 +14239,15 @@ IAmE:	move.w	a0,PAmalE(a5)		* Offset de l'erreur
 	move.l	#EntNul,d1
 	Rbra	L_IAmR
 ; - - - - - - - - - - - - -
+; ***************************************************** amreg
+; Method : Integer = amreg( Integer )
 	Lib_Par FnAmreg1
 ; - - - - - - - - - - - - -
 	move.l	#EntNul,d1
 	Rbra	L_FAmR
 ; - - - - - - - - - - - - -
+; ***************************************************** amreg
+; Method : Integer = amreg( Integer, Integer )
 	Lib_Par InAmreg2
 ; - - - - - - - - - - - - -
 	move.l	d3,d5
@@ -11947,6 +14255,8 @@ IAmE:	move.w	a0,PAmalE(a5)		* Offset de l'erreur
 	move.l	(a3)+,d1
 	Rbra	L_IAmR
 ; - - - - - - - - - - - - -
+; ***************************************************** amreg
+; Method : Integer = amreg( Integer, Integer )
 	Lib_Par FnAmreg2
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d1
@@ -11985,6 +14295,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					AMPLAY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** amplay
+; Method : amplay Integer, Integer
 	Lib_Par InAmPlay2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -11992,6 +14304,8 @@ IAmRb:	SyCall	AMALReg
 	moveq	#63,d3
 	Rbra	L_InAmPlay4
 ; - - - - - - - - - - - - -
+; ***************************************************** amplay
+; Method : amplay Integer, Integer, Integer to Integer
 	Lib_Par InAmPlay4
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -12009,6 +14323,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=X BOB
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x bob
+; Method : Integer = x bob( Integer )
 	Lib_Par FnXBob
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12019,6 +14335,8 @@ IAmRb:	SyCall	AMALReg
 	ext.l	d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** y bob
+; Method : Integer = y bob( Integer )
 	Lib_Par FnYBob
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12032,6 +14350,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=XY SPRITE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x sprite
+; Method : Integer = x sprite( Integer )
 	Lib_Par FnXSprite
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12042,6 +14362,8 @@ IAmRb:	SyCall	AMALReg
 	ext.l	d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** y sprite
+; Method : Integer = y sprite( Integer )
 	Lib_Par FnYSprite
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12055,6 +14377,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=IBOB = ISPRITE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** i bob
+; Method : Integer = i bob( Integer )
 	Lib_Par FnIBob
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12064,6 +14388,8 @@ IAmRb:	SyCall	AMALReg
 	ext.l	d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** i sprite
+; Method : Integer = i sprite( Integer )
 	Lib_Par FnISprite
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12076,6 +14402,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					= XY MOUSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x mouse
+; Method : Integer = x mouse()
 	Lib_Par InXMouse
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12083,6 +14411,8 @@ IAmRb:	SyCall	AMALReg
 	SyCall	SetM
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** x mouse
+; Method : Integer = x mouse()
 	Lib_Par FnXMouse
 ; - - - - - - - - - - - - -
 	SyCall	XyMou
@@ -12090,6 +14420,8 @@ IAmRb:	SyCall	AMALReg
 	ext.l	d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** y mouse
+; Method : Integer = y mouse()
 	Lib_Par InYMouse
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -12097,6 +14429,8 @@ IAmRb:	SyCall	AMALReg
 	SyCall	SetM
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** y mouse
+; Method : Integer = y mouse()
 	Lib_Par FnYMouse
 ; - - - - - - - - - - - - -
 	SyCall	XyMou
@@ -12107,6 +14441,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=MOUSEKEY / CLICK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mouse key
+; Method : Integer = mouse key()
 	Lib_Par FnMouseKey
 ; - - - - - - - - - - - - -
 	SyCall	MouseKey
@@ -12114,6 +14450,8 @@ IAmRb:	SyCall	AMALReg
 	move.w	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** mouse click
+; Method : Integer = mouse click()
 	Lib_Par FnMouseClick
 ; - - - - - - - - - - - - -
 	SyCall	MouRel
@@ -12124,11 +14462,15 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HIDE ON HIDE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hide
+; Method : hide 
 	Lib_Par InHide
 ; - - - - - - - - - - - - -
 	SyCalD	Hide,0
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** hide on
+; Method : hide on 
 	Lib_Par InHideOn
 ; - - - - - - - - - - - - -
 	SyCalD	Hide,-1
@@ -12136,11 +14478,15 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SHOW SHOW ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** show
+; Method : show 
 	Lib_Par InShow
 ; - - - - - - - - - - - - -
 	SyCalD	Show,0
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** show on
+; Method : show on 
 	Lib_Par InShowOn
 ; - - - - - - - - - - - - -
 	SyCalD	Show,-1
@@ -12149,11 +14495,15 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LIMIT MOUSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** limit mouse
+; Method : limit mouse 
 	Lib_Par InLimitMouse0
 ; - - - - - - - - - - - - -
 	moveq	#0,d1
 	Rbra	L_LimMX
 ; - - - - - - - - - - - - -
+; ***************************************************** limit mouse
+; Method : limit mouse Integer
 	Lib_Par InLimitMouse1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12169,6 +14519,8 @@ IAmRb:	SyCall	AMALReg
 	Rbne	L_EcWiErr
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** limit mouse
+; Method : limit mouse Integer, Integer to Integer, Integer
 	Lib_Par InLimitMouse4
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -12182,6 +14534,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CHANGE MOUSE n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** change mouse
+; Method : change mouse Integer
 	Lib_Par InChangeMouse
 ; - - - - - - - - - - - - -
 	subq.l	#1,d3
@@ -12193,6 +14547,8 @@ IAmRb:	SyCall	AMALReg
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET BOB n,back,plane,minterm
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set bob
+; Method : set bob Integer, Integer, Integer, Integer
 	Lib_Par InSetBob
 ; - - - - - - - - - - - - -
 	Rbsr	L_SaveRegs
@@ -12223,6 +14579,8 @@ IStb3	tst.w	ScOn(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BOB n,x,y,a
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bob
+; Method : bob Integer, Integer, Integer, Integer
 	Lib_Par InBob
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -12244,11 +14602,15 @@ IStb3	tst.w	ScOn(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BOB OFF x
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bob off
+; Method : bob off 
 	Lib_Par InBobOff0
 ; - - - - - - - - - - - - -
 	SyCall	OffBobS
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** bob off
+; Method : bob off Integer
 	Lib_Par InBobOff1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12258,6 +14620,8 @@ IStb3	tst.w	ScOn(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET SPRITE BUFFER
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set sprite buffer
+; Method : set sprite buffer Integer
 	Lib_Par InSetSpriteBuffer
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12270,6 +14634,8 @@ IStb3	tst.w	ScOn(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SPRITE PRIORITY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sprite priority
+; Method : sprite priority Integer
 	Lib_Par InSpritePriority
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -12283,6 +14649,8 @@ IStb3	tst.w	ScOn(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SPRITE n,x,y,a
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sprite
+; Method : sprite Integer, Integer, Integer, Integer
 	Lib_Par InSprite
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -12297,12 +14665,16 @@ IStb3	tst.w	ScOn(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SPRITE OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sprite off
+; Method : sprite off 
 	Lib_Par InSpriteOff0
 ; - - - - - - - - - - - - -
 	SyCall	OffHs
 	bset	#6,T_Actualise(a5)	
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** sprite off
+; Method : sprite off Integer
 	Lib_Par InSpriteOff1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12314,6 +14686,8 @@ IStb3	tst.w	ScOn(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					Collision hard
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set hardcol
+; Method : set hardcol Integer, Integer
 	Lib_Par InSetHardcol
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d2
@@ -12321,6 +14695,8 @@ IStb3	tst.w	ScOn(a5)
 	SyCall	SetHCol
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** hardcol
+; Method : Integer = hardcol( Integer )
 	Lib_Par FnHardcol
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -12335,6 +14711,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=BOB SPRITE COL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bobsprite col
+; Method : Integer = bobsprite col( Integer )
 	Lib_Par FnBobSpriteCol1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12346,6 +14724,8 @@ FHc1	move.w	d3,d1
 	move.l	d0,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** bobsprite col
+; Method : Integer = bobsprite col( Integer, Integer to Integer )
 	Lib_Par FnBobSpriteCol3
 ; - - - - - - - - - - - - -
 	cmp.l	#63,d3
@@ -12362,6 +14742,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=BOB COL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bob col
+; Method : Integer = bob col( Integer )
 	Lib_Par FnBobCol1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12372,6 +14754,8 @@ FHc1	move.w	d3,d1
 	move.l	d0,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** bob col
+; Method : Integer = bob col( Integer, Integer to Integer )
 	Lib_Par FnBobCol3
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -12387,6 +14771,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SPRITEBOBCOL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** spritebob col
+; Method : Integer = spritebob col( Integer )
 	Lib_Par FnSpriteBobCol1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12398,6 +14784,8 @@ FHc1	move.w	d3,d1
 	move.l	d0,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** spritebob col
+; Method : Integer = spritebob col( Integer, Integer to Integer )
 	Lib_Par FnSpriteBobCol3
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -12414,6 +14802,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SPRITE COL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sprite col
+; Method : Integer = sprite col( Integer )
 	Lib_Par FnSpriteCol1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12424,6 +14814,8 @@ FHc1	move.w	d3,d1
 	move.l	d0,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** sprite col
+; Method : Integer = sprite col( Integer, Integer to Integer )
 	Lib_Par FnSpriteCol3
 ; - - - - - - - - - - - - -
 	cmp.l	#63,d3
@@ -12439,6 +14831,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=COL(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** col
+; Method : Integer = col( Integer )
 	Lib_Par FnCol
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12449,6 +14843,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					MASK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** make icon mask
+; Method : make icon mask 
 	Lib_Par InMakeIconMask0
 ; - - - - - - - - - - - - -
 	moveq	#1,d1
@@ -12457,6 +14853,8 @@ FHc1	move.w	d3,d1
 	subq.w	#1,d5
 	Rbra	L_MkMa1
 ; - - - - - - - - - - - - -
+; ***************************************************** make icon mask
+; Method : make icon mask Integer
 	Lib_Par InMakeIconMask1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12465,6 +14863,8 @@ FHc1	move.w	d3,d1
 	moveq	#0,d5
 	Rbra	L_MkMa1
 ; - - - - - - - - - - - - -
+; ***************************************************** no icon mask
+; Method : no icon mask 
 	Lib_Par InNoIconMask0
 ; - - - - - - - - - - - - -
 	moveq	#1,d1
@@ -12473,6 +14873,8 @@ FHc1	move.w	d3,d1
 	subq.w	#1,d5
 	Rbra	L_NoMa1
 ; - - - - - - - - - - - - -
+; ***************************************************** no icon mask
+; Method : no icon mask Integer
 	Lib_Par InNoIconMask1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12481,6 +14883,8 @@ FHc1	move.w	d3,d1
 	moveq	#0,d5
 	Rbra	L_NoMa1
 ; - - - - - - - - - - - - -
+; ***************************************************** make mask
+; Method : make mask 
 	Lib_Par InMakeMask0
 ; - - - - - - - - - - - - -
 	moveq	#1,d1
@@ -12489,6 +14893,8 @@ FHc1	move.w	d3,d1
 	subq.w	#1,d5
 	Rbra	L_MkMa1
 ; - - - - - - - - - - - - -
+; ***************************************************** make mask
+; Method : make mask Integer
 	Lib_Par InMakeMask1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12508,6 +14914,8 @@ FHc1	move.w	d3,d1
 	rts
 
 ; - - - - - - - - - - - - -
+; ***************************************************** no mask
+; Method : no mask 
 	Lib_Par InNoMask0
 ; - - - - - - - - - - - - -
 	moveq	#1,d1
@@ -12516,6 +14924,8 @@ FHc1	move.w	d3,d1
 	subq.w	#1,d5
 	Rbra	L_NoMa1
 ; - - - - - - - - - - - - -
+; ***************************************************** no mask
+; Method : no mask Integer
 	Lib_Par InNoMask1
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12541,12 +14951,16 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HOT SPOT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hot spot
+; Method : hot spot Integer, Integer, Integer
 	Lib_Par InHotSpot3
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d2
 	moveq	#0,d1
 	Rbra	L_HotSp
 ; - - - - - - - - - - - - -
+; ***************************************************** hot spot
+; Method : hot spot Integer, Integer
 	Lib_Par InHotSpot2
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12567,6 +14981,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET SPRITE / BOB [sc],n,x,y to x,y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get sprite
+; Method : get sprite Integer, Integer, Integer, Integer to Integer, Integer
 	Lib_Par InGetSprite6
 ; - - - - - - - - - - - - -
 	move.l	4*4(a3),d1
@@ -12579,6 +14995,8 @@ FHc1	move.w	d3,d1
 	addq.l	#4,a3
 	Rbra	L_GS
 ; - - - - - - - - - - - - -
+; ***************************************************** get sprite
+; Method : get sprite Integer, Integer, Integer to Integer, Integer
 	Lib_Par InGetSprite5
 ; - - - - - - - - - - - - -
 	move.l	ScOnAd(a5),a0	
@@ -12617,6 +15035,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					GET ICON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** get icon
+; Method : get icon Integer, Integer, Integer, Integer to Integer, Integer
 	Lib_Par InGetIcon6
 ; - - - - - - - - - - - - -
 	move.l	4*4(a3),d1
@@ -12629,6 +15049,8 @@ FHc1	move.w	d3,d1
 	addq.l	#4,a3
 	Rbra	L_GI
 ; - - - - - - - - - - - - -
+; ***************************************************** get icon
+; Method : get icon Integer, Integer, Integer to Integer, Integer
 	Lib_Par InGetIcon5
 ; - - - - - - - - - - - - -
 	move.l	ScOnAd(a5),a0	
@@ -12691,6 +15113,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PUT BOB n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** put bob
+; Method : put bob Integer
 	Lib_Par InPutBob
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12702,16 +15126,22 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FONCTIONS RETOURNEMENT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hrev
+; Method : Integer = hrev( Integer )
 	Lib_Par FnHRev
 ; - - - - - - - - - - - - -
 	bset	#15,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** vrev
+; Method : Integer = vrev( Integer )
 	Lib_Par FnVRev
 ; - - - - - - - - - - - - -
 	bset	#14,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** rev
+; Method : Integer = rev( Integer )
 	Lib_Par FnRev
 ; - - - - - - - - - - - - -
 	bset	#15,d3
@@ -12721,6 +15151,8 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PASTE BOB x,y,n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** paste bob
+; Method : paste bob Integer, Integer, Integer
 	Lib_Par InPasteBob
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12731,6 +15163,8 @@ FHc1	move.w	d3,d1
 	moveq	#24,d0			Paste bob error
 	Rbra	L_EcWiErr
 ; - - - - - - - - - - - - -
+; ***************************************************** paste icon
+; Method : paste icon Integer, Integer, Integer
 	Lib_Par InPasteIcon
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -12760,11 +15194,15 @@ FHc1	move.w	d3,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SPRITE / ICON BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sprite base
+; Method : Integer = sprite base( Integer )
 	Lib_Par FnSpriteBase
 ; - - - - - - - - - - - - -
 	Rlea	L_AdBob,0
 	Rbra	L_Sb
 ; - - - - - - - - - - - - -
+; ***************************************************** icon base
+; Method : Integer = icon base( Integer )
 	Lib_Par FnIconBase
 ; - - - - - - - - - - - - -
 	Rlea	L_AdIcon,0
@@ -12941,11 +15379,15 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 	moveq 	#24,d0
 	Rbra 	L_GoError
 ; - - - - - - - - - - - - -
+; ***************************************************** follow off
+; Method : follow off 
 	Lib_Par	Syntax
 ; - - - - - - - - - - - - -
 	moveq 	#22,d0
 	Rbra 	L_GoError
 ; - - - - - - - - - - - - -
+; ***************************************************** follow off
+; Method : follow off 
 	Lib_Par	Syntax2
 ; - - - - - - - - - - - - -
 	Rbra	L_Syntax
@@ -13010,6 +15452,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 	moveq	#SpEBase,d0
 	Rbra	L_GoError
 ; - - - - - - - - - - - - -
+; ***************************************************** stop
+; Method : stop 
 	Lib_Par InStop
 ; - - - - - - - - - - - - -
 	moveq	#9,d0
@@ -13028,6 +15472,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WINDOPEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wind open
+; Method : wind open Integer, Integer, Integer, Integer, Integer
 	Lib_Par InWindopen5
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -13035,12 +15481,16 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 	move.l	d3,-(a3)
 	Rbra	L_InWindopen7
 ; - - - - - - - - - - - - -
+; ***************************************************** wind open
+; Method : wind open Integer, Integer, Integer, Integer, Integer, Integer
 	Lib_Par InWindopen6
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#0,d3
 	Rbra	L_InWindopen7
 ; - - - - - - - - - - - - -
+; ***************************************************** wind open
+; Method : wind open Integer, Integer, Integer, Integer, Integer, Integer, Integer
 	Lib_Par InWindopen7
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13064,6 +15514,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WINDSAVE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wind save
+; Method : wind save 
 	Lib_Par InWindsave
 ; - - - - - - - - - - - - -
 	move.l	ScOnAd(a5),d0
@@ -13075,6 +15527,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WINDMODE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wind move
+; Method : wind move Integer, Integer
 	Lib_Par InWindmove
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13090,6 +15544,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WINDSIZE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wind size
+; Method : wind size Integer, Integer
 	Lib_Par InWindsize
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13105,6 +15561,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WINDCLOSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wind close
+; Method : wind close 
 	Lib_Par InWindclose
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13116,6 +15574,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WINDOW n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** window
+; Method : window Integer
 	Lib_Par InWindow
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13128,6 +15588,8 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=WINDON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** windon
+; Method : Integer = windon()
 	Lib_Par FnWindon
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13139,12 +15601,16 @@ ErDisk:	dc.w 203,204,205,210,213,214,216,218
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					WRITING
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** writing
+; Method : writing Integer
 	Lib_Par InWriting1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#0,d3
 	Rbra	L_InWriting2
 ; - - - - - - - - - - - - -
+; ***************************************************** writing
+; Method : writing Integer, Integer
 	Lib_Par InWriting2
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -13165,6 +15631,8 @@ ChWrt:	dc.b 	27,"W0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					BORDER n,paper,n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** border
+; Method : border Integer, Integer, Integer
 	Lib_Par InBorder
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13178,6 +15646,8 @@ ChWrt:	dc.b 	27,"W0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					TITLE TOP a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** title top
+; Method : title top String
 	Lib_Par InTitleTop
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -13189,6 +15659,8 @@ ChWrt:	dc.b 	27,"W0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					TITLE BOTTOM
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** title bottom
+; Method : title bottom String
 	Lib_Par InTitleBottom
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -13209,6 +15681,8 @@ ChWrt:	dc.b 	27,"W0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=XYCURS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x curs
+; Method : Integer = x curs()
 	Lib_Par FnXCurs
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13217,6 +15691,8 @@ ChWrt:	dc.b 	27,"W0",0
 	move.l	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** y curs
+; Method : Integer = y curs()
 	Lib_Par FnYCurs
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13229,6 +15705,8 @@ ChWrt:	dc.b 	27,"W0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET CURS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set curs
+; Method : set curs Integer, Integer, Integer, Integer, Integer, Integer, Integer, Integer
 	Lib_Par InSetCurs
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -13244,6 +15722,8 @@ WnSCu1:	move.l	(a3)+,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LOCATE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** locate
+; Method : locate Integer, Integer
 	Lib_Par InLocate
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13257,6 +15737,8 @@ WnSCu1:	move.l	(a3)+,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CENTRE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** centre
+; Method : centre String
 	Lib_Par InCentre
 ; - - - - - - - - - - - - -
 	tst.w	ScOn(a5)
@@ -13272,6 +15754,8 @@ WnSCu1:	move.l	(a3)+,d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CMOVE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cmove
+; Method : cmove Integer, Integer
 	Lib_Par InCmove
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -13298,6 +15782,8 @@ ChCMv:	dc.b 27,"N0",27,"O0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CURSPEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** curs pen
+; Method : curs pen Integer
 	Lib_Par InCursPen
 ; - - - - - - - - - - - - -
 	lea	ChCPe(pc),a1
@@ -13306,6 +15792,8 @@ ChCPe	dc.b 27,"D0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PAPER
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** paper
+; Method : paper Integer
 	Lib_Par InPaper
 ; - - - - - - - - - - - - -
 	lea	ChPap(pc),a1
@@ -13314,6 +15802,8 @@ ChPap	dc.b 27,"B0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pen
+; Method : pen Integer
 	Lib_Par InPen
 ; - - - - - - - - - - - - -
 	lea	ChPen(pc),a1
@@ -13330,6 +15820,8 @@ ChPen:	dc.b 27,"P0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLW
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** clw
+; Method : clw 
 	Lib_Par InClw
 ; - - - - - - - - - - - - -
 	lea	ChClw(pc),a1
@@ -13338,6 +15830,8 @@ ChClw:	dc.b 	25,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HOME
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** home
+; Method : home 
 	Lib_Par InHome
 ; - - - - - - - - - - - - -
 	lea	ChHom(pc),a1
@@ -13346,6 +15840,8 @@ ChHom:	dc.b 	12,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLEFT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cleft
+; Method : cleft 
 	Lib_Par InCleft
 ; - - - - - - - - - - - - -
 	lea	ChCLf(pc),a1
@@ -13354,6 +15850,8 @@ ChCLf:	dc.b 	29,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CRIGHT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cright
+; Method : cright 
 	Lib_Par InCright
 ; - - - - - - - - - - - - -
 	lea	ChCRt(pc),a1
@@ -13362,6 +15860,8 @@ ChCRt:	dc.b 	28,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CUP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cup
+; Method : cup 
 	Lib_Par InCup
 ; - - - - - - - - - - - - -
 	lea	ChCUp(pc),a1
@@ -13370,6 +15870,8 @@ ChCUp:	dc.b 	30,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CDOWN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cdown
+; Method : cdown 
 	Lib_Par InCdown
 ; - - - - - - - - - - - - -
 	lea	ChCDn(pc),a1
@@ -13378,6 +15880,8 @@ ChCDn:	dc.b 	31,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CURSOFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** curs off
+; Method : curs off 
 	Lib_Par InCursOff
 ; - - - - - - - - - - - - -
 	lea	ChCOf(pc),a1
@@ -13386,6 +15890,8 @@ ChCOf:	dc.b 	27,"C0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CURSON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** curs on
+; Method : curs on 
 	Lib_Par InCursOn
 ; - - - - - - - - - - - - -
 	lea	ChCOn(pc),a1
@@ -13394,6 +15900,8 @@ ChCOn:	dc.b 	27,"C1",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					INVERSE ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** inverse on
+; Method : inverse on 
 	Lib_Par InInverseOn
 ; - - - - - - - - - - - - -
 	lea	ChIOn(pc),a1
@@ -13402,6 +15910,8 @@ ChIOn:	dc.b 	27,"I1",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					INVERSE OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** inverse off
+; Method : inverse off 
 	Lib_Par InInverseOff
 ; - - - - - - - - - - - - -
 	lea	ChIOf(pc),a1
@@ -13410,6 +15920,8 @@ ChIOf:	dc.b 	27,"I0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					UNDER ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** under on
+; Method : under on 
 	Lib_Par InUnderOn
 ; - - - - - - - - - - - - -
 	lea	ChUOn(pc),a1
@@ -13418,6 +15930,8 @@ ChUOn:	dc.b 	27,"U1",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					UNDER OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** under off
+; Method : under off 
 	Lib_Par InUnderOff
 ; - - - - - - - - - - - - -
 	lea	ChUOf(pc),a1
@@ -13426,6 +15940,8 @@ ChUOf:	dc.b 	27,"U0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCROLLING ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** scroll on
+; Method : scroll on 
 	Lib_Par InScrollOn
 ; - - - - - - - - - - - - -
 	lea	ChScOn(pc),a1
@@ -13434,6 +15950,8 @@ ChScOn:	dc.b 	27,"V1",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SCROLLING OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** scroll off
+; Method : scroll off 
 	Lib_Par InScrollOff
 ; - - - - - - - - - - - - -
 	lea	ChScOf(pc),a1
@@ -13442,6 +15960,8 @@ ChScOf:	dc.b 	27,"V0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SHADE ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** shade on
+; Method : shade on 
 	Lib_Par InShadeOn
 ; - - - - - - - - - - - - -
 	lea	ChSOn(pc),a1
@@ -13450,6 +15970,8 @@ ChSOn:	dc.b 	27,"S1",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SHADE OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** shade off
+; Method : shade off 
 	Lib_Par InShadeOff
 ; - - - - - - - - - - - - -
 	lea	ChSOf(pc),a1
@@ -13458,6 +15980,8 @@ ChSOf:	dc.b 	27,"S0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLEAR LINE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cline
+; Method : cline 
 	Lib_Par InCline0
 ; - - - - - - - - - - - - -
 	lea	ChCll(pc),a1
@@ -13466,6 +15990,8 @@ ChCll:	dc.b 26,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					MEMORIZE X
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** memorize x
+; Method : memorize x 
 	Lib_Par InMemorizeX
 ; - - - - - - - - - - - - -
 	lea	ChMx1(pc),a1
@@ -13474,6 +16000,8 @@ ChMx1:	dc.b 	27,"M0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					MEMORIZE Y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** memorize y
+; Method : memorize y 
 	Lib_Par InMemorizeY
 ; - - - - - - - - - - - - -
 	lea	ChMy1(pc),a1
@@ -13482,6 +16010,8 @@ ChMy1:	dc.b 	27,"M2",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					REMEMBER X
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** remember x
+; Method : remember x 
 	Lib_Par InRememberX
 ; - - - - - - - - - - - - -
 	lea	ChMx2(pc),a1
@@ -13490,6 +16020,8 @@ ChMx2:	dc.b 	27,"M1",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					REMEMBER Y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** remember y
+; Method : remember y 
 	Lib_Par InRememberY
 ; - - - - - - - - - - - - -
 	lea	ChMy2(pc),a1
@@ -13498,6 +16030,8 @@ ChMy2:	dc.b 	27,"M3",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLEAR LINE 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cline
+; Method : cline Integer
 	Lib_Par InCline1
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -13512,6 +16046,8 @@ ChCln:	dc.b 	27,"Q0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					HSCROLL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hscroll
+; Method : hscroll Integer
 	Lib_Par InHScroll
 ; - - - - - - - - - - - - -
 	lea	ChHSc(pc),a1
@@ -13520,6 +16056,8 @@ ChHSc:	dc.b 	16,0,17,0,18,0,19,0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					VSCROLL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** vscroll
+; Method : vscroll Integer
 	Lib_Par InVScroll
 ; - - - - - - - - - - - - -
 	lea	ChVSc(pc),a1
@@ -13540,6 +16078,8 @@ Hv3	Rbra	L_GoWn
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					SET TAB
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set tab
+; Method : set tab Integer
 	Lib_Par InSetTab
 ; - - - - - - - - - - - - -
 	cmp.l	#255-48,d3
@@ -13568,6 +16108,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					FREE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** free
+; Method : Integer = free()
 	Lib_Par FnFree
 ; - - - - - - - - - - - - -
 	moveq	#-100,d3
@@ -13579,6 +16121,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=INKEY$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** inkey$
+; Method : String = inkey$()
 	Lib_Par FnInkey
 ; - - - - - - - - - - - - -
 	SyCall	Inkey
@@ -13599,6 +16143,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SCANCODE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** scancode
+; Method : Integer = scancode()
 	Lib_Par FnScancode
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -13608,6 +16154,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SCANSHIFT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** scanshift
+; Method : Integer = scanshift()
 	Lib_Par FnScanshift
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -13617,6 +16165,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=KEY STATE(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** key state
+; Method : Integer = key state( Integer )
 	Lib_Par FnKeyState
 ; - - - - - - - - - - - - -
 	cmp.l	#128,d3
@@ -13628,6 +16178,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=KEY SHIFT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** key shift
+; Method : Integer = key shift()
 	Lib_Par FnKeyShift
 ; - - - - - - - - - - - - -
 	SyCall	Shifts
@@ -13637,6 +16189,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=JOY(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** joy
+; Method : Integer = joy( Integer )
 	Lib_Par FnJoy
 ; - - - - - - - - - - - - -
 	cmp.l	#1,d3
@@ -13646,6 +16200,8 @@ ChSTa:	dc.b 27,"T0",0
 	move.l	d1,d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** jup
+; Method : Integer = jup( Integer )
 	Lib_Par FnJup
 ; - - - - - - - - - - - - -
 	Rbsr	L_FJ
@@ -13653,6 +16209,8 @@ ChSTa:	dc.b 27,"T0",0
 	Rbeq	L_FnFalse
 	Rbra	L_FnTrue
 ; - - - - - - - - - - - - -
+; ***************************************************** jdown
+; Method : Integer = jdown( Integer )
 	Lib_Par FnJdown
 ; - - - - - - - - - - - - -
 	Rbsr	L_FJ
@@ -13660,6 +16218,8 @@ ChSTa:	dc.b 27,"T0",0
 	Rbeq	L_FnFalse
 	Rbra	L_FnTrue
 ; - - - - - - - - - - - - -
+; ***************************************************** jleft
+; Method : Integer = jleft( Integer )
 	Lib_Par FnJleft
 ; - - - - - - - - - - - - -
 	Rbsr	L_FJ
@@ -13667,6 +16227,8 @@ ChSTa:	dc.b 27,"T0",0
 	Rbeq	L_FnFalse
 	Rbra	L_FnTrue
 ; - - - - - - - - - - - - -
+; ***************************************************** jright
+; Method : Integer = jright( Integer )
 	Lib_Par FnJright
 ; - - - - - - - - - - - - -
 	Rbsr	L_FJ
@@ -13674,6 +16236,8 @@ ChSTa:	dc.b 27,"T0",0
 	Rbeq	L_FnFalse
 	Rbra	L_FnTrue
 ; - - - - - - - - - - - - -
+; ***************************************************** fire
+; Method : Integer = fire( Integer )
 	Lib_Par FnFire
 ; - - - - - - - - - - - - -
 	Rbsr	L_FJ
@@ -13692,6 +16256,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					PUTKEY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** put key
+; Method : put key String
 	Lib_Par InPutKey
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -13705,6 +16271,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					CLEARKEY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** clear key
+; Method : clear key 
 	Lib_Par InClearKey
 ; - - - - - - - - - - - - -
 	SyCall	ClearKey
@@ -13712,6 +16280,8 @@ ChSTa:	dc.b 27,"T0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					KEY$()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** key$
+; Method : String = key$( Integer )
 	Lib_Par InKeyD
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -13725,6 +16295,8 @@ ChSTa:	dc.b 27,"T0",0
 	SyCall	SetFunk
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** key$
+; Method : String = key$( Integer )
 	Lib_Par FnKeyD
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -13767,12 +16339,16 @@ SGkX:	movem.l	(sp)+,d0-d2/a0-a2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SCAN$()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** scan$
+; Method : String = scan$( Integer )
 	Lib_Par FnScan1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#0,d3
 	Rbra	L_FnScan2
 ; - - - - - - - - - - - - -
+; ***************************************************** scan$
+; Method : String = scan$( Integer, Integer )
 	Lib_Par FnScan2
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -13795,6 +16371,8 @@ SGkX:	movem.l	(sp)+,d0-d2/a0-a2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=INSTR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** instr
+; Method : Integer = instr( String, String )
 	Lib_Par FnInstr2
 ; - - - - - - - - - - - - -
         moveq 	#0,d2
@@ -13807,6 +16385,8 @@ SGkX:	movem.l	(sp)+,d0-d2/a0-a2
 	Rbsr 	L_InstrFind
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** instr
+; Method : Integer = instr( String, String, Integer )
 	Lib_Par FnInstr3
 ; - - - - - - - - - - - - -
         move.l 	d3,d4
@@ -13863,6 +16443,8 @@ SGkX:	movem.l	(sp)+,d0-d2/a0-a2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=FLIP$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** flip$
+; Method : String = flip$( String )
 	Lib_Par FnFlip
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -13880,6 +16462,8 @@ Flp1:   move.b 	-(a2),(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					LEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** len
+; Method : Integer = len( String )
 	Lib_Par FnLen
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -13890,6 +16474,8 @@ Flp1:   move.b 	-(a2),(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=SPACE$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** space$
+; Method : String = space$( Integer )
 	Lib_Par FnSpace
 ; - - - - - - - - - - - - -
         move.w 	#$2020,d1
@@ -13897,6 +16483,8 @@ Flp1:   move.b 	-(a2),(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=STRING$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** string$
+; Method : String = string$( String, Integer )
 	Lib_Par FnString
 ; - - - - - - - - - - - - -
         move.l 	(a3)+,a2
@@ -13927,6 +16515,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=CHR$()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** chr$
+; Method : String = chr$( Integer )
 	Lib_Par FnChr
 ; - - - - - - - - - - - - -
 	move.l 	d3,d2
@@ -13936,6 +16526,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=TAB$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** tab$
+; Method : String = tab$()
 	Lib_Par FnTab
 ; - - - - - - - - - - - - -
 	moveq	#9,d2
@@ -13943,6 +16535,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=Cleft$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cleft$
+; Method : String = cleft$()
 	Lib_Par FnCleft
 ; - - - - - - - - - - - - -
 	moveq	#29,d2
@@ -13950,6 +16544,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=Cright
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cright$
+; Method : String = cright$()
 	Lib_Par FnCright
 ; - - - - - - - - - - - - -
 	moveq	#28,d2
@@ -13957,6 +16553,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=Cup
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cup$
+; Method : String = cup$()
 	Lib_Par FnCup
 ; - - - - - - - - - - - - -
 	moveq	#30,d2
@@ -13964,6 +16562,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=Cdown
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cdown$
+; Method : String = cdown$()
 	Lib_Par FnCdown
 ; - - - - - - - - - - - - -
 	moveq	#31,d2
@@ -13983,6 +16583,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=PAPER$=PEN$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** pen$
+; Method : String = pen$( Integer )
 	Lib_Par FnPenD
 ; - - - - - - - - - - - - -
 	lea	L144a(pc),a2
@@ -13990,6 +16592,8 @@ L89c:   move.l 	a0,HiChaine(a5)
 L144a	dc.b 	27,"P0",0
 	even
 ; - - - - - - - - - - - - -
+; ***************************************************** paper$
+; Method : String = paper$( Integer )
 	Lib_Par FnPaperD
 ; - - - - - - - - - - - - -
 	lea	L145a(pc),a2
@@ -14014,6 +16618,8 @@ L145a	dc.b 	27,"B0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					AT(x,y)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** at
+; Method : String = at( Integer, Integer )
 	Lib_Par FnAt
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -14027,6 +16633,8 @@ L145a	dc.b 	27,"B0",0
 	move.w	d2,d1
 	moveq	#3,d3
 	bset	#1,d4
+; ***************************************************** at
+; Method : String = at( Integer, Integer )
 FnAt1:	moveq	#0,d0
 	move.l	(a3)+,d2
 	cmp.l	#EntNul,d2
@@ -14036,6 +16644,8 @@ FnAt1:	moveq	#0,d0
 	move.w	d2,d0
 	addq.l	#3,d3
 	bset	#0,d4
+; ***************************************************** at
+; Method : String = at( Integer, Integer )
 FnAt2:	tst.w	d4
 	Rbeq	L_Ret_ChVide
 	Rjsr	L_Demande
@@ -14046,17 +16656,23 @@ FnAt2:	tst.w	d4
 	move.b	#27,(a0)+
 	move.b	#"X",(a0)+
 	move.b	d0,(a0)+
+; ***************************************************** at
+; Method : String = at( Integer, Integer )
 FnAt3:	btst	#1,d4
 	beq.s	FnAt4
 	add.w	#"0",d1
 	move.b	#27,(a0)+
 	move.b	#"Y",(a0)+
 	move.b	d1,(a0)+
+; ***************************************************** at
+; Method : String = at( Integer, Integer )
 FnAt4:	Rbra	L_FinBin
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=CMOVE$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** cmove$
+; Method : String = cmove$( Integer, Integer )
 	Lib_Par FnCMoveD
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -14107,6 +16723,8 @@ FnCMv4:	Rbra	L_FinBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=REPEAT$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** repeat$
+; Method : String = repeat$( String, Integer )
 	Lib_Par FnRepeat
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -14121,6 +16739,8 @@ ChRpt:	dc.b 	27,"R0",0,27,"R0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=BORDER$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** border$
+; Method : String = border$( String, Integer )
 	Lib_Par FnBorderD
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -14135,6 +16755,8 @@ ChSur:	dc.b 	27,"E0",0,27,"E0",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=ZONE$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** zone$
+; Method : String = zone$( String, Integer )
 	Lib_Par FnZoneD
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -14178,6 +16800,8 @@ FnR3:	move.b	(a3)+,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=LOWER$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** lower$
+; Method : String = lower$( String )
 	Lib_Par FnLower
 ; - - - - - - - - - - - - -	
 	move.l	d3,a2
@@ -14201,6 +16825,8 @@ fnup2:  move.b 	d0,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=UPPER$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** upper$
+; Method : String = upper$( String )
 	Lib_Par FnUpper
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -14224,6 +16850,8 @@ fnlw2:  move.b 	d0,(a0)+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=ASC
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** asc
+; Method : Integer = asc( String )
 	Lib_Par FnAsc
 ; - - - - - - - - - - - - -
 	move.l 	d3,a2
@@ -14236,6 +16864,8 @@ L91a:   Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=BIN$()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bin$
+; Method : String = bin$( Integer )
 	Lib_Par FnBin1
 ; - - - - - - - - - - - - -
 	move.l 	d3,d1
@@ -14243,6 +16873,8 @@ L91a:   Ret_Int
         moveq 	#33,d3
 	Rbra 	L_BinHex
 ; - - - - - - - - - - - - -
+; ***************************************************** bin$
+; Method : String = bin$( Integer, Integer )
 	Lib_Par FnBin2
 ; - - - - - - - - - - - - -
     	move.l 	d3,d2
@@ -14253,6 +16885,8 @@ L91a:   Ret_Int
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=HEX$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** hex$
+; Method : String = hex$( Integer )
 	Lib_Par FnHex1
 ; - - - - - - - - - - - - -
         move.l 	d3,d1
@@ -14260,6 +16894,8 @@ L91a:   Ret_Int
         moveq 	#9,d3
 	Rbra 	L_BinHex
 ; - - - - - - - - - - - - -
+; ***************************************************** hex$
+; Method : String = hex$( Integer, Integer )
 	Lib_Par FnHex2
 ; - - - - - - - - - - - - -
         move.l 	d3,d2
@@ -14298,6 +16934,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		DIALOG OPEN channel,programmes[,variable,buffer]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog open
+; Method : dialog open Integer, 3
 	Lib_Par InDialogOpen2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -14305,12 +16943,16 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	#1024,d3
 	Rbra	L_InDialogOpen4
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog open
+; Method : dialog open Integer, 3, Integer
 	Lib_Par InDialogOpen3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#1024,d3
 	Rbra	L_InDialogOpen4
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog open
+; Method : dialog open Integer, 3, Integer, Integer
 	Lib_Par InDialogOpen4
 ; - - - - - - - - - - - - -
 ; Adresse de la banque puzzle
@@ -14361,6 +17003,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=Edialog: position de la derniere erreur
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** edialog
+; Method : Integer = edialog()
 	Lib_Par FnEDialog
 ; - - - - - - - - - - - - -
 	move.l	IDia_Error(a5),d3
@@ -14369,11 +17013,15 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		DIALOG CLOSE [n]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog close
+; Method : dialog close 
 	Lib_Par InDialogClose0
 ; - - - - - - - - - - - - -
 	Rjsr	L_Dia_CloseChannels
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog close
+; Method : dialog close Integer
 	Lib_Par InDialogClose1
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -14385,6 +17033,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		DIALOG CLR c
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog clr
+; Method : dialog clr Integer
 	Lib_Par InDialogClr
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -14396,12 +17046,16 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		DIALOG FREEZE [c]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog freeze
+; Method : dialog freeze 
 	Lib_Par InDialogFreeze0
 ; - - - - - - - - - - - - -
 	moveq	#-1,d1
 	Rjsr	L_Dia_FreezeChannels
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog freeze
+; Method : dialog freeze Integer
 	Lib_Par InDialogFreeze1
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -14414,12 +17068,16 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		DIALOG UNFREEZE [c]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** freeze
+; Method : freeze 
 	Lib_Par InDialogUnFreeze0
 ; - - - - - - - - - - - - -
 	moveq	#0,d1
 	Rjsr	L_Dia_FreezeChannels
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** freeze
+; Method : freeze 
 	Lib_Par InDialogUnFreeze1
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -14432,6 +17090,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		DIALOG UPDATE n,z,[value]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog update
+; Method : dialog update Integer, Integer
 	Lib_Par InDialogUpdate2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -14440,6 +17100,8 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,-(a3)
 	Rbra	L_InDialogUpdate5
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog update
+; Method : dialog update Integer, Integer, 3
 	Lib_Par InDialogUpdate3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -14447,12 +17109,16 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,-(a3)
 	Rbra	L_InDialogUpdate5
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog update
+; Method : dialog update Integer, Integer, 3, Integer
 	Lib_Par InDialogUpdate4
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#EntNul,d3
 	Rbra	L_InDialogUpdate5
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog update
+; Method : dialog update Integer, Integer, 3, Integer, Integer
 	Lib_Par InDialogUpdate5
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -14468,6 +17134,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		=DIALOG RUN( channel[,label][,x,y] )
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog run
+; Method : Integer = dialog run( Integer )
 	Lib_Par FnDialogRun1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -14476,6 +17144,8 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,-(a3)
 	Rbra	L_FnDialogRun4
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog run
+; Method : Integer = dialog run( Integer, Integer )
 	Lib_Par FnDialogRun2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -14483,6 +17153,8 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,-(a3)
 	Rbra	L_FnDialogRun4
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog run
+; Method : Integer = dialog run( Integer, Integer, Integer, Integer )
 	Lib_Par FnDialogRun4
 ; - - - - - - - - - - - - -
 ;	move.l	(a3)+,d3
@@ -14506,6 +17178,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		=DIALOG(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog
+; Method : Integer = dialog( Integer )
 	Lib_Par FnDialog
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -14518,6 +17192,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		=VDIALOG(n,n)=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** vdialog
+; Method : Integer = vdialog( Integer, Integer )
 	Lib_Par InVDialog
 ; - - - - - - - - - - - - -
 ;	move.l	(a3)+,d3
@@ -14528,6 +17204,8 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** vdialog
+; Method : Integer = vdialog( Integer, Integer )
 	Lib_Par FnVDialog
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -14540,10 +17218,14 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		=VDIALOG$()=
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** vdialog
+; Method : Integer = vdialog( Integer, Integer )
 	Lib_Par InVDialogD
 ; - - - - - - - - - - - - -
 	Rbra	L_InVDialog
 ; - - - - - - - - - - - - -
+; ***************************************************** vdialog
+; Method : Integer = vdialog( Integer, Integer )
 	Lib_Par FnVDialogD
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -14556,12 +17238,16 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		=RDIALOG(n,n[,n])
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** rdialog
+; Method : Integer = rdialog( Integer, Integer )
 	Lib_Par FnRDialog2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#1,d3
 	Rbra	L_FnRDialog3
 ; - - - - - - - - - - - - -
+; ***************************************************** rdialog
+; Method : Integer = rdialog( Integer, Integer, Integer )
 	Lib_Par FnRDialog3
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -14579,12 +17265,16 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					=RDIALOG$()
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** rdialog$
+; Method : String = rdialog$( Integer, Integer )
 	Lib_Par FnRDialogD2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	moveq	#1,d3
 	Rbra	L_FnRDialogD3
 ; - - - - - - - - - - - - -
+; ***************************************************** rdialog$
+; Method : String = rdialog$( Integer, Integer, Integer )
 	Lib_Par FnRDialogD3
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -14600,6 +17290,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		=ZDIALOG(channel,x,y)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** zdialog
+; Method : Integer = zdialog( Integer, Integer, Integer )
 	Lib_Par	FnZDialog
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -14613,6 +17305,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		=DIALOG BOX(a$[,v][,v$][,x,y])
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** dialog box
+; Method : Integer = dialog box( 3 )
 	Lib_Par FnDialogBox1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)		a$
@@ -14622,6 +17316,8 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,-(a3)		x
 	Rbra	L_FnDialogBox5
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog box
+; Method : Integer = dialog box( 3, Integer )
 	Lib_Par FnDialogBox2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)		v
@@ -14630,6 +17326,8 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,-(a3)		x
 	Rbra	L_FnDialogBox5
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog box
+; Method : Integer = dialog box( 3, Integer, String )
 	Lib_Par FnDialogBox3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)		v$
@@ -14637,6 +17335,8 @@ hx3:    Rjsr 	L_LongToBin
 	move.l	d3,-(a3)		x
 	Rbra	L_FnDialogBox5
 ; - - - - - - - - - - - - -
+; ***************************************************** dialog box
+; Method : Integer = dialog box( 3, Integer, String, Integer, Integer )
 	Lib_Par FnDialogBox5
 ; - - - - - - - - - - - - -
 	tst.l	Patch_Errors(a5)		Monitor present?
@@ -14675,6 +17375,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		READ TEXT a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** read 
+; Method : read  
 	Lib_Par InReadText1	
 ; - - - - - - - - - - - - -
 ; Nom de fichier
@@ -14712,6 +17414,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	Trois parametres: titre,adresse,longueur
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** read 
+; Method : read  
 	Lib_Par InReadText3
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -14880,6 +17584,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		RESOURCE SCREEN OPEN n,sx,sy,flash
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** resource screen open
+; Method : resource screen open Integer, Integer, Integer, Integer
 	Lib_Par InResourceScreenOpen
 ; - - - - - - - - - - - - -
 	Rbsr	L_Dia_GetPuzzle
@@ -14901,6 +17607,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		RESOURCE BANK n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** resource bank
+; Method : resource bank Integer
 	Lib_Par InResourceBank
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -14966,6 +17674,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	RESOURCE UNPACK n,x,y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** resource unpack
+; Method : resource unpack Integer, Integer, Integer
 	Lib_Par InResourceUnpack
 ; - - - - - - - - - - - - -
 	Rbsr	L_Dia_GetPuzzle
@@ -14993,6 +17703,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		=AREXX EXISTS("port")
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** arexx exist
+; Method : Integer = arexx exist( String )
 	Lib_Par FnArexxExist
 ; - - - - - - - - - - - - -
 	move.l	d3,a2
@@ -15007,6 +17719,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		AREXX OPEN "PORT_NAME"
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** arexx open
+; Method : arexx open String
 	Lib_Par InArexxOpen
 ; - - - - - - - - - - - - -
 ; Chaine port-name
@@ -15032,6 +17746,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		=AREXX
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** arexx
+; Method : Integer = arexx()
 	Lib_Par FnArexx	
 ; - - - - - - - - - - - - -
 	Rbsr	L_Arx_Message
@@ -15049,6 +17765,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		AREXX WAIT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** arexx wait
+; Method : arexx wait 
 	Lib_Par InArexxWait	
 ; - - - - - - - - - - - - -
 .Loop	Rjsr	L_Sys_WaitMul
@@ -15060,6 +17778,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		AREXX CLOSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** arexx close
+; Method : arexx close 
 	Lib_Par InArexxClose
 ; - - - - - - - - - - - - -
 	tst.l	Arx_Answer(a5)
@@ -15072,6 +17792,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		=AREXX$(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** arexx
+; Method : Integer = arexx()
 	Lib_Par FnArexxD
 ; - - - - - - - - - - - - -
 	cmp.l	#16,d3
@@ -15102,12 +17824,16 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 		AREXX ANSWER error [,"answer"]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** arexx answer
+; Method : arexx answer Integer
 	Lib_Par InArexxAnswer1
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	ChVide(a5),d3
 	Rbra	L_InArexxAnswer2
 ; - - - - - - - - - - - - -
+; ***************************************************** arexx answer
+; Method : arexx answer Integer, String
 	Lib_Par InArexxAnswer2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -15323,6 +18049,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	ON MENU ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** on menu on
+; Method : on menu on 
 	Lib_Par InOnMenuOn	
 ; - - - - - - - - - - - - -
 	tst.w	OMnNb(a5)
@@ -15332,6 +18060,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	ON MENU ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** on menu off
+; Method : on menu off 
 	Lib_Par InOnMenuOff
 ; - - - - - - - - - - - - -
 	tst.w	OMnNb(a5)
@@ -15343,6 +18073,8 @@ hx3:    Rjsr 	L_LongToBin
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	ON MENU DEL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** on menu del
+; Method : on menu del 
 	Lib_Par InOnMenuDel
 ; - - - - - - - - - - - - -
 	Rbsr	L_OMnEff
@@ -15369,6 +18101,8 @@ OMnEx:	movem.l	(sp)+,d0/a1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MENU TO BANK n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** menu to bank
+; Method : menu to bank Integer
 	Lib_Par InMenuToBank
 ; - - - - - - - - - - - - -
 * Taille de l'arbre de menu
@@ -15462,6 +18196,8 @@ MnLgRX	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	BANK TO MENU n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bank to menu
+; Method : bank to menu Integer
 	Lib_Par InBankToMenu
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnRaz
@@ -15560,6 +18296,8 @@ MnTmRX	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	MENU ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** menu on
+; Method : menu on 
 	Lib_Par InMenuOn
 ; - - - - - - - - - - - - -
 	tst.l	MnBase(a5)
@@ -15571,6 +18309,8 @@ MnTmRX	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	MENU OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** menu off
+; Method : menu off 
 	Lib_Par InMenuOff
 ; - - - - - - - - - - - - -
 	bclr	#BitMenu,ActuMask(a5)
@@ -15579,11 +18319,15 @@ MnTmRX	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	MENU MOUSE ON/OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** menu mouse on
+; Method : menu mouse on 
 	Lib_Par InMenuMouseOn
 ; - - - - - - - - - - - - -
 	move.w	#1,MnMouse(a5)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu mouse off
+; Method : menu mouse off 
 	Lib_Par InMenuMouseOff
 ; - - - - - - - - - - - - -
 	clr.w	MnMouse(a5)
@@ -15592,6 +18336,8 @@ MnTmRX	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	MENU BASE x,y
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** menu base
+; Method : menu base Integer, Integer
 	Lib_Par InMenuBase
 ; - - - - - - - - - - - - -
 	move.l	MnBase(a5),d0
@@ -15613,6 +18359,8 @@ Imnbs2	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	=MENU X(,,,)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** x menu
+; Method : Integer = x menu( Integer )
 	Lib_Par FnXMenu
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
@@ -15622,6 +18370,8 @@ Imnbs2	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	=MENU Y(,,,)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** y menu
+; Method : Integer = y menu( Integer )
 	Lib_Par FnYMenu
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
@@ -15632,6 +18382,8 @@ Imnbs2	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	=CHOICE(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** choice
+; Method : Integer = choice()
 	Lib_Par FnChoice0
 ; - - - - - - - - - - - - -
 	move.w	MnChoice(a5),d3
@@ -15639,6 +18391,8 @@ Imnbs2	rts
 	ext.l	d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** choice
+; Method : Integer = choice( Integer )
 	Lib_Par FnChoice1
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -15650,12 +18404,16 @@ Imnbs2	rts
 	move.w	-2(a0,d3.w),d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** menu bar
+; Method : menu bar Integer
 	Lib_Par InMenuBar
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bset	#MnBar,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu line
+; Method : menu line Integer
 	Lib_Par InMenuLine
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
@@ -15663,6 +18421,8 @@ Imnbs2	rts
 	bclr	#MnTotal,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu tline
+; Method : menu tline Integer
 	Lib_Par InMenuTline
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
@@ -15670,60 +18430,80 @@ Imnbs2	rts
 	bset	#MnTotal,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu movable
+; Method : menu movable Integer
 	Lib_Par InMenuMovable
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bset	#MnTBouge,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu static
+; Method : menu static Integer
 	Lib_Par InMenuStatic
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bclr	#MnTBouge,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu item movable
+; Method : menu item movable Integer
 	Lib_Par InMenuItemMovable
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bset	#MnBouge,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu item static
+; Method : menu item static Integer
 	Lib_Par InMenuItemStatic
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bclr	#MnBouge,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu active
+; Method : menu active Integer
 	Lib_Par InMenuActive
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bclr	#MnOff,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu inactive
+; Method : menu inactive Integer
 	Lib_Par InMenuInactive
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bset	#MnOff,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu separate
+; Method : menu separate Integer
 	Lib_Par InMenuSeparate
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bset	#MnSep,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu link
+; Method : menu link Integer
 	Lib_Par InMenuLink
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	bclr	#MnSep,(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu called
+; Method : menu called Integer
 	Lib_Par InMenuCalled
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
 	move.b	#-1,MnFlag+1(a2)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** menu on
+; Method : menu on 
 	Lib_Par InMenuOnce
 ; - - - - - - - - - - - - -
 	Rjsr	L_MnDim
@@ -15733,6 +18513,8 @@ Imnbs2	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	MENU CALCULATE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** menu calc
+; Method : menu calc 
 	Lib_Par InMenuCalc
 ; - - - - - - - - - - - - -
 	tst.l	MnBase(a5)

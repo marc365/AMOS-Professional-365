@@ -380,138 +380,266 @@ C_Off
 C_Tk:	dc.w 	1,0
 	dc.b 	$80,-1
 
+; *STARTREADTOKENS* // 2019.11.03 Added for the AMOS Commenter tool
 ; Now the real tokens...
+; ***************************************************** mubase
+; Method in file '+Music.s' at line '4089' : Integer = mubase()
 	dc.w	L_Nul,L_FnMusicBase
 	dc.b	"mubas","e"+$80,"0",-1
+; ***************************************************** vumeter
+; Method in file '+Music.s' at line '4073' : Integer = vumeter( Integer )
 	dc.w	L_Nul,L_FnVuMeter
 	dc.b	"vumete","r"+$80,"00",-1
+; ***************************************************** voice
+; Method in file '+Music.s' at line '3928' : voice Integer
 	dc.w	L_InVoice,L_Nul
 	dc.b	"voic","e"+$80,"I0",-1
+; ***************************************************** music off
+; Method in file '+Music.s' at line '3856' : music off 
 	dc.w	L_InMusicOff,L_Nul
 	dc.b	"music of","f"+$80,"I",-1
+; ***************************************************** music stop
+; Method in file '+Music.s' at line '3871' : music stop 
 	dc.w	L_InMusicStop,L_Nul
 	dc.b	"music sto","p"+$80,"I",-1
+; ***************************************************** tempo
+; Method in file '+Music.s' at line '4056' : tempo Integer
 	dc.w	L_InTempo,L_Nul
 	dc.b	"temp","o"+$80,"I0",-1
+; ***************************************************** music
+; Method in file '+Music.s' at line '3991' : music Integer
 	dc.w	L_InMusic,L_Nul
 	dc.b	"musi","c"+$80,"I0",-1
 
+; ***************************************************** noise to
+; Method in file '+Music.s' at line '3239' : noise to Integer
 	dc.w	L_InNoiseTo,L_Nul
 	dc.b	"noise t","o"+$80,"I0",-1
+; ***************************************************** boom
+; Method in file '+Music.s' at line '2820' : boom 
 	dc.w	L_InBoom,L_Nul
 	dc.b 	"boo","m"+$80,"I",-1
+; ***************************************************** shoot
+; Method in file '+Music.s' at line '2833' : shoot 
 	dc.w	L_InShoot,L_Nul
 	dc.b	"shoo","t"+$80,"I",-1
+; ***************************************************** sam bank
+; Method in file '+Music.s' at line '3170' : sam bank Integer
 	dc.w	L_InSamBank,L_Nul
 	dc.b	"sam ban","k"+$80,"I0",-1
+; ***************************************************** sam loop on
+; Method in file '+Music.s' at line '3192' : sam loop on 
 	dc.w	L_InSamLoopOn0,L_Nul
 	dc.b	"!sam loop o","n"+$80,"I",-2
+; ***************************************************** sam loop on
+; Method in file '+Music.s' at line '3184' : sam loop on 
 	dc.w	L_InSamLoopOn1,L_Nul
 	dc.b	$80,"I",-1
+; ***************************************************** sam loop off
+; Method in file '+Music.s' at line '3211' : sam loop off 
 	dc.w	L_InSamLoopOff0,L_Nul
 	dc.b	"sam loop of","f"+$80,"I",-2
+; ***************************************************** sam loop on
+; Method in file '+Music.s' at line '3203' : sam loop on Integer
 	dc.w	L_InSamLoopOff1,L_Nul
 	dc.b	$80,"I0",-1
+; ***************************************************** sample
+; Method in file '+Music.s' at line '3250' : sample Integer to Integer
 	dc.w	L_InSampleTo,L_Nul
 	dc.b	"sampl","e"+$80,"I0t0",-1
+; ***************************************************** sam play
+; Method in file '+Music.s' at line '3278' : sam play Integer
 	dc.w 	L_InSamPlay1,L_Nul
 	dc.b 	"!sam pla","y"+$80,"I0",-2
+; ***************************************************** sam play
+; Method in file '+Music.s' at line '3287' : sam play Integer, Integer
 	dc.w	L_InSamPlay2,L_Nul
 	dc.b	$80,"I0,0",-2
+; ***************************************************** sam play
+; Method in file '+Music.s' at line '3296' : sam play Integer, Integer, Integer
 	dc.w 	L_InSamPlay3,L_Nul
 	dc.b	$80,"I0,0,0",-1 
+; ***************************************************** sam raw
+; Method in file '+Music.s' at line '3313' : sam raw Integer, Integer, Integer, Integer
 	dc.w 	L_InSamRaw,L_Nul
 	dc.b 	"sam ra","w"+$80,"I0,0,0,0",-1	
+; ***************************************************** bell
+; Method in file '+Music.s' at line '2795' : bell 
 	dc.w	L_InBell0,L_Nul
 	dc.b 	"!bel","l"+$80,"I",-2
+; ***************************************************** bell
+; Method in file '+Music.s' at line '2806' : bell Integer
 	dc.w 	L_InBell1,L_Nul
 	dc.b	$80,"I0",-1
+; ***************************************************** play off
+; Method in file '+Music.s' at line '3109' : play off 
 	dc.w	L_InPlayOff0,L_Nul
 	dc.b	"!play of","f"+$80,"I",-2
+; ***************************************************** play off
+; Method in file '+Music.s' at line '3116' : play off Integer
 	dc.w	L_InPlayOff1,L_Nul
 	dc.b	$80,"I0",-1
+; ***************************************************** play
+; Method in file '+Music.s' at line '2930' : play Integer, Integer
 	dc.w 	L_InPlay2,L_Nul
 	dc.b	"!pla","y"+$80,"I0,0",-2
+; ***************************************************** play
+; Method in file '+Music.s' at line '2942' : play Integer, Integer, Integer
 	dc.w	L_InPlay3,L_Nul
 	dc.b	$80,"I0,0,0",-1
+; ***************************************************** set wave
+; Method in file '+Music.s' at line '3549' : set wave Integer, String
 	dc.w 	L_InSetWave,L_Nul
 	dc.b 	"set wav","e"+$80,"I0,2",-1
+; ***************************************************** del wave
+; Method in file '+Music.s' at line '3569' : del wave Integer
 	dc.w	L_InDelWave,L_Nul
 	dc.b	"del wav","e"+$80,"I0",-1
+; ***************************************************** set envel
+; Method in file '+Music.s' at line '3592' : set envel Integer, Integer to Integer, Integer
 	dc.w	L_InSetEnvel,L_Nul
 	dc.b	"set enve","l"+$80,"I0,0t0,0",-1
+; ***************************************************** mvolume
+; Method in file '+Music.s' at line '3892' : mvolume Integer
 	dc.w	L_InMvolume,L_Nul
 	dc.b	"mvolum","e"+$80,"I0",-1
+; ***************************************************** volume
+; Method in file '+Music.s' at line '2861' : volume Integer
 	dc.w 	L_InVolume1,L_Nul
 	dc.b	"!volum","e"+$80,"I0",-2
+; ***************************************************** volume
+; Method in file '+Music.s' at line '2871' : volume Integer, Integer
 	dc.w 	L_InVolume2,L_Nul
 	dc.b	$80,"I0,0",-1
+; ***************************************************** wave
+; Method in file '+Music.s' at line '3533' : wave Integer to Integer
 	dc.w	L_InWave,L_Nul
 	dc.b 	"wav","e"+$80,"I0t0",-1
+; ***************************************************** led on
+; Method in file '+Music.s' at line '4101' : led on 
 	dc.w	L_InLedOn,L_Nul
 	dc.b	"led o","n"+$80,"I",-1
+; ***************************************************** led off
+; Method in file '+Music.s' at line '4108' : led off 
 	dc.w	L_InLedOf,L_Nul
 	dc.b	"led of","f"+$80,"I",-1
+; ***************************************************** say
+; Method in file '+Music.s' at line '2646' : say String
 	dc.w	L_InSay1,L_Nul
 	dc.b	"!sa","y"+$80,"I2",-2
+; ***************************************************** say
+; Method in file '+Music.s' at line '2639' : say String, Integer
 	dc.w	L_InSay2,L_Nul
 	dc.b	$80,"I2,0",-1
+; ***************************************************** set talk
+; Method in file '+Music.s' at line '2729' : set talk Integer, Integer, Integer, Integer
 	dc.w	L_InSetTalk,L_Nul
 	dc.b	"set tal","k"+$80,"I0,0,0,0",-1
+; ***************************************************** sload
+; Method in file '+Music.s' at line '3397' : sload Integer to Integer, Integer
 	dc.w	L_InSload,L_Nul
 	dc.b	"sloa","d"+$80,"I0t0,0",-1
+; ***************************************************** sam swapped
+; Method in file '+Music.s' at line '4243' : Integer = sam swapped( Integer )
 	dc.w	L_Nul,L_FnSamSwapped
 	dc.b	"sam swappe","d"+$80,"00",-1
+; ***************************************************** sam swap
+; Method in file '+Music.s' at line '4270' : sam swap Integer to Integer, Integer
 	dc.w	L_InSamSwap,L_Nul
 	dc.b	"sam swa","p"+$80,"I0t0,0",-1
+; ***************************************************** sam stop
+; Method in file '+Music.s' at line '4295' : sam stop 
 	dc.w 	L_InSamStop0,L_Nul
 	dc.b	"!sam sto","p"+$80,"I",-2
+; ***************************************************** sam stop
+; Method in file '+Music.s' at line '4302' : sam stop Integer
 	dc.w	L_InSamStop1,L_Nul
 	dc.b	$80,"I0",-1
 
+; ***************************************************** track stop
+; Method in file '+Music.s' at line '4427' : track stop 
 	dc.w	L_InTrackStop,L_Nul
 	dc.b	"track sto","p"+$80,"I",-1
+; ***************************************************** track loop on
+; Method in file '+Music.s' at line '4451' : track loop on 
 	dc.w	L_InTrackLoopOn,L_Nul
 	dc.b	"track loop o","n"+$80,"I",-1
+; ***************************************************** track loop of
+; Method in file '+Music.s' at line '4459' : track loop of 
 	dc.w	L_InTrackLoopOff,L_Nul
 	dc.b	"track loop o","f"+$80,"I",-1
+; ***************************************************** track play
+; Method in file '+Music.s' at line '4470' : track play 
 	dc.w	L_InTrackPlay0,L_Nul
 	dc.b	"!track pla","y"+$80,"I",-2
+; ***************************************************** track play
+; Method in file '+Music.s' at line '4477' : track play Integer
 	dc.w	L_InTrackPlay1,L_Nul
 	dc.b	$80,"I0",-2
+; ***************************************************** track play
+; Method in file '+Music.s' at line '4485' : track play Integer, Integer
 	dc.w	L_InTrackPlay2,L_Nul
 	dc.b	$80,"I0,0",-1
+; ***************************************************** track load
+; Method in file '+Music.s' at line '4316' : track load String, Integer
 	dc.w	L_InTrackLoad,L_Nul
 	dc.b	"track loa","d"+$80,"I2,0",-1
 	
+; ***************************************************** mouth width
+; Method in file '+Music.s' at line '2768' : Integer = mouth width()
 	dc.w	L_Nul,L_FnMouthWidth
 	dc.b	"mouth widt","h"+$80,"0",-1
+; ***************************************************** mouth height
+; Method in file '+Music.s' at line '2778' : Integer = mouth height()
 	dc.w	L_Nul,L_FnMouthHeight
 	dc.b	"mouth heigh","t"+$80,"0",-1
+; ***************************************************** mouth read
+; Method in file '+Music.s' at line '4580' : mouth read 
 	dc.w	L_InMouthRead,L_Nul
 	dc.b	"mouth rea","d"+$80,"I",-1
+; ***************************************************** talk stop
+; Method in file '+Music.s' at line '2903' : talk stop 
 	dc.w	L_InTalkStop,L_Nul
 	dc.b	"talk sto","p"+$80,"I",-1
+; ***************************************************** talk misc
+; Method in file '+Music.s' at line '4609' : talk misc Integer, Integer
 	dc.w	L_InTalkMisc,L_Nul
 	dc.b	"talk mis","c"+$80,"I0,0",-1
 
+; ***************************************************** ssave
+; Method in file '+Music.s' at line '4640' : ssave Integer, Integer to Integer
 	dc.w	L_InSsave,L_Nul
 	dc.b	"ssav","e"+$80,"I0,0t0",-1
 
+; ***************************************************** med load
+; Method in file '+Music.s' at line '4672' : med load String, Integer
 	dc.w	L_InMedLoad,L_Nul
 	dc.b	"med loa","d"+$80,"I2,0",-1
+; ***************************************************** med play
+; Method in file '+Music.s' at line '4823' : med play 
 	dc.w	L_InMedPlay0,L_Nul
 	dc.b	"!med pla","y"+$80,"I",-2
+; ***************************************************** med play
+; Method in file '+Music.s' at line '4830' : med play Integer
 	dc.w	L_InMedPlay1,L_Nul
 	dc.b	$80,"I0",-2
+; ***************************************************** med play
+; Method in file '+Music.s' at line '4838' : med play Integer, Integer
 	dc.w	L_InMedPlay2,L_Nul
 	dc.b	$80,"I0,0",-1
+; ***************************************************** med stop
+; Method in file '+Music.s' at line '4806' : med stop 
 	dc.w	L_InMedStop,L_Nul
 	dc.b	"med sto","p"+$80,"I",-1
+; ***************************************************** med cont
+; Method in file '+Music.s' at line '4960' : med cont 
 	dc.w	L_InMedCont,L_Nul
 	dc.b	"med con","t"+$80,"I",-1
+; ***************************************************** med midi on
+; Method in file '+Music.s' at line '4928' : med midi on 
 	dc.w	L_InMedMidiOn,L_Nul
 	dc.b	"med midi o","n"+$80,"I",-1
+; *ENDREADTOKENS*  // 2019.11.03 Added for the AMOS Commenter tool
 
 ;	+++ You must also leave this keyword untouched, just before the zeros.
 ;	TOKEN_END
@@ -2506,11 +2634,15 @@ NoNar	move.w	#7+178,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAY a$[,multi]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** say
+; Method : say String, Integer
 	Lib_Par	InSay2
 ; - - - - - - - - - - - - -
 	Rbsr	L_OpNar
 	Rbra	L_Say
 ; - - - - - - - - - - - - -
+; ***************************************************** say
+; Method : say String
 	Lib_Par	InSay1
 ; - - - - - - - - - - - - -
 	Rbsr	L_OpNar
@@ -2592,6 +2724,8 @@ ISayA	move.b	#1,66(a1)		Generer des mouths!
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SET TALK sex,mode,pitch,rate
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set talk
+; Method : set talk Integer, Integer, Integer, Integer
 	Lib_Par	InSetTalk		
 ; - - - - - - - - - - - - -
 	Rbsr	L_OpNar
@@ -2629,6 +2763,8 @@ IRd4	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Narrator READ lips
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mouth width
+; Method : Integer = mouth width()
 	Lib_Par FnMouthWidth		
 ; - - - - - - - - - - - - -
 	Dlea	ReadIo,a0
@@ -2637,6 +2773,8 @@ IRd4	rts
 	ext.l	d3
 	Ret_Int
 ; - - - - - - - - - - - - -
+; ***************************************************** mouth height
+; Method : Integer = mouth height()
 	Lib_Par FnMouthHeight
 ; - - - - - - - - - - - - -
 	Dlea	ReadIo,a0
@@ -2652,6 +2790,8 @@ IRd4	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	BELL
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** bell
+; Method : bell 
 	Lib_Par	InBell0		
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -2661,6 +2801,8 @@ IRd4	rts
 	Dlea	EnvBell,a0
 	Rbra	L_GoBel
 ; - - - - - - - - - - - - -
+; ***************************************************** bell
+; Method : bell Integer
 	Lib_Par	InBell1	
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -2673,6 +2815,8 @@ IRd4	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	BOOM
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** boom
+; Method : boom 
 	Lib_Par	InBoom		
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -2684,6 +2828,8 @@ IRd4	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	SHOOT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** shoot
+; Method : shoot 
 	Lib_Par InShoot		
 ; - - - - - - - - - - - - -
 	moveq	#0,d3
@@ -2710,6 +2856,8 @@ Shot	movem.l	d0-d7/a0,-(sp)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	VOLUME n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** volume
+; Method : volume Integer
 	Lib_Par	InVolume1	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -2718,6 +2866,8 @@ Shot	movem.l	d0-d7/a0,-(sp)
 	Rbsr	L_MVol
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** volume
+; Method : volume Integer, Integer
 	Lib_Par	InVolume2		
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -2748,6 +2898,8 @@ Vol2	lea	EnvLong(a0),a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Stops Narrator if it was playing in multitask mode!
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** talk stop
+; Method : talk stop 
 	Lib_Par	InTalkStop	
 ; - - - - - - - - - - - - -
 	movem.l	a3/a6,-(sp)
@@ -2773,6 +2925,8 @@ Vol2	lea	EnvLong(a0),a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PLAY [voice]note,length
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** play
+; Method : play Integer, Integer
 	Lib_Par	InPlay2	
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -2783,6 +2937,8 @@ Vol2	lea	EnvLong(a0),a0
 	sub.l	a0,a0
 	Rbra	L_GoBel
 ; - - - - - - - - - - - - -
+; ***************************************************** play
+; Method : play Integer, Integer, Integer
 	Lib_Par InPlay3	
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -2948,11 +3104,15 @@ VPl4	bset	d1,Noise-MB(a3)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PLAY OFF (voice)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** play off
+; Method : play off 
 	Lib_Par	InPlayOff0	
 ; - - - - - - - - - - - - -
 	moveq	#%1111,d0
 	Rbra	L_PlOf
 ; - - - - - - - - - - - - -
+; ***************************************************** play off
+; Method : play off Integer
 	Lib_Par InPlayOff1	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3005,6 +3165,8 @@ VPl4	bset	d1,Noise-MB(a3)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAM BANK n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam bank
+; Method : sam bank Integer
 	Lib_Par	InSamBank	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3017,12 +3179,16 @@ VPl4	bset	d1,Noise-MB(a3)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAMLOOP ON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam loop on
+; Method : sam loop on 
 	Lib_Par	InSamLoopOn1	
 ; - - - - - - - - - - - - -
 	moveq	#0,d0
 	move.l	d3,d1
 	Rbra	L_SL0
 ; - - - - - - - - - - - - -
+; ***************************************************** sam loop on
+; Method : sam loop on 
 	Lib_Par InSamLoopOn0	
 ; - - - - - - - - - - - - -
 	moveq	#0,d0
@@ -3032,12 +3198,16 @@ VPl4	bset	d1,Noise-MB(a3)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAMLOOP OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam loop on
+; Method : sam loop on Integer
 	Lib_Par InSamLoopOff1	
 ; - - - - - - - - - - - - -
 	moveq	#-1,d0
 	move.l	d3,d1
 	Rbra	L_SL0
 ; - - - - - - - - - - - - -
+; ***************************************************** sam loop off
+; Method : sam loop off 
 	Lib_Par InSamLoopOff0	
 ; - - - - - - - - - - - - -
 	moveq	#-1,d0
@@ -3064,6 +3234,8 @@ Sl2	lea	Sami_intl(a0),a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	NOISE TO voice
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** noise to
+; Method : noise to Integer
 	Lib_Par	InNoiseTo	
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -3073,6 +3245,8 @@ Sl2	lea	Sami_intl(a0),a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAMPLE n TO voice
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sample
+; Method : sample Integer to Integer
 	Lib_Par	InSampleTo	
 ; - - - - - - - - - - - - -
 	move.l	(a3),d0
@@ -3099,6 +3273,8 @@ ISmt2	addq.l	#2,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAM PLAY [voice],number,[frequency]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam play
+; Method : sam play Integer
 	Lib_Par	InSamPlay1		
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3106,6 +3282,8 @@ ISmt2	addq.l	#2,a0
 	moveq	#%1111,d1
 	Rbra	L_GoSam
 ; - - - - - - - - - - - - -
+; ***************************************************** sam play
+; Method : sam play Integer, Integer
 	Lib_Par	InSamPlay2		
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3113,6 +3291,8 @@ ISmt2	addq.l	#2,a0
 	move.l	(a3)+,d1
 	Rbra	L_GoSam
 ; - - - - - - - - - - - - -
+; ***************************************************** sam play
+; Method : sam play Integer, Integer, Integer
 	Lib_Par InSamPlay3		
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -3128,6 +3308,8 @@ ISmt2	addq.l	#2,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAM RAW voice,ad,length,freq
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam raw
+; Method : sam raw Integer, Integer, Integer, Integer
 	Lib_Par	InSamRaw		
 ; - - - - - - - - - - - - -
 	cmp.l	#500,d3
@@ -3210,6 +3392,8 @@ ISpX
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	SLOAD file,adress,length
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sload
+; Method : sload Integer to Integer, Integer
 	Lib_Par	InSload
 ; - - - - - - - - - - - - -
 	tst.l	d3			Length
@@ -3344,6 +3528,8 @@ dv1:    roxl.l 	#1,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	WAVE n TO n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** wave
+; Method : wave Integer to Integer
 	Lib_Par	InWave
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -3358,6 +3544,8 @@ dv1:    roxl.l 	#1,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SET WAVE n,a$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set wave
+; Method : set wave Integer, String
 	Lib_Par	InSetWave
 ; - - - - - - - - - - - - -
 	move.l	d3,a1
@@ -3376,6 +3564,8 @@ dv1:    roxl.l 	#1,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	DEL WAVE 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** del wave
+; Method : del wave Integer
 	Lib_Par	InDelWave
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -3397,6 +3587,8 @@ dv1:    roxl.l 	#1,d0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SET ENVEL n,n TO n,v
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** set envel
+; Method : set envel Integer, Integer to Integer, Integer
 	Lib_Par	InSetEnvel	
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -3659,6 +3851,8 @@ MuIntS	bset	d1,d5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MUSIC OFF-> Stops all musics
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** music off
+; Method : music off 
 	Lib_Par	InMusicOff	
 ; - - - - - - - - - - - - -
 	movem.l	a0-a3/d0-d1,-(sp)
@@ -3672,6 +3866,8 @@ MuIntS	bset	d1,d5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MUSIC STOP-> Stops current music
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** music stop
+; Method : music stop 
 	Lib_Par	InMusicStop	
 ; - - - - - - - - - - - - -
 	movem.l	a0-a3/d0-d1,-(sp)
@@ -3691,6 +3887,8 @@ IStp	movem.l	(sp)+,a0-a3/d0-d1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MUSIC VOLUME
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mvolume
+; Method : mvolume Integer
 	Lib_Par	InMvolume
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3725,6 +3923,8 @@ MVol3	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	VOICE ON/OFF Voices
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** voice
+; Method : voice Integer
 	Lib_Par	InVoice	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3786,6 +3986,8 @@ VooX	movem.l	(sp)+,d0-d5/a0-a3
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MUSIC n
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** music
+; Method : music Integer
 	Lib_Par	InMusic	
 ; - - - - - - - - - - - - -
 	tst.l	d3
@@ -3849,6 +4051,8 @@ NoEffect2
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Tempo T
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** tempo
+; Method : tempo Integer
 	Lib_Par	InTempo	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3864,6 +4068,8 @@ ITemp	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;		=VU METRE(v)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** vumeter
+; Method : Integer = vumeter( Integer )
 	Lib_Par FnVuMeter		
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -3878,6 +4084,8 @@ ITemp	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=MU BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mubase
+; Method : Integer = mubase()
 	Lib_Par	FnMusicBase	
 ; - - - - - - - - - - - - -
 	Dload	a0
@@ -3888,11 +4096,15 @@ ITemp	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	LED INSTRUCTION
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** led on
+; Method : led on 
 	Lib_Par	InLedOn		
 ; - - - - - - - - - - - - -
 	bclr	#1,$BFE001
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** led off
+; Method : led off 
 	Lib_Par	InLedOf		
 ; - - - - - - - - - - - - -
 	bset	#1,$BFE001
@@ -4026,6 +4238,8 @@ Sami_start
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=SAM SWAPPED(V)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam swapped
+; Method : Integer = sam swapped( Integer )
 	Lib_Par	FnSamSwapped	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -4051,6 +4265,8 @@ Sami_start
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAM SWAP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam swap
+; Method : sam swap Integer to Integer, Integer
 	Lib_Par	InSamSwap	
 ; - - - - - - - - - - - - -
 	move.l	d3,d4
@@ -4074,11 +4290,15 @@ Sami_start
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SAM STOP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** sam stop
+; Method : sam stop 
 	Lib_Par	InSamStop0	
 ; - - - - - - - - - - - - -
 	moveq	#%1111,d3
 	Rbra	L_InSamStop1
 ; - - - - - - - - - - - - -
+; ***************************************************** sam stop
+; Method : sam stop Integer
 	Lib_Par InSamStop1	
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -4091,6 +4311,8 @@ Sami_start
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	TRACK LOAD "nom",banque
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** track load
+; Method : track load String, Integer
 	Lib_Par	InTrackLoad	
 ; - - - - - - - - - - - - -
 	cmp.l	#$10000,d3
@@ -4200,6 +4422,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	TRACK STOP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** track stop
+; Method : track stop 
 	Lib_Par	InTrackStop	
 ; - - - - - - - - - - - - -
 	move.l	a0,-(sp)
@@ -4222,12 +4446,16 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	TRACK LOOP ON/OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** track loop on
+; Method : track loop on 
 	Lib_Par	InTrackLoopOn
 ; - - - - - - - - - - - - -
 	Dload	a0
 	move.b	#1,Track_Loop-MB(a0)
 	rts
 ; - - - - - - - - - - - - -
+; ***************************************************** track loop of
+; Method : track loop of 
 	Lib_Par InTrackLoopOff
 ; - - - - - - - - - - - - -
 	Dload	a0
@@ -4237,17 +4465,23 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	TRACK PLAY [Bank],[Pattern]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** track play
+; Method : track play 
 	Lib_Par	InTrackPlay0	
 ; - - - - - - - - - - - - -
 	move.l	#EntNul,d3
 	Rbra	L_InTrackPlay1
 ; - - - - - - - - - - - - -
+; ***************************************************** track play
+; Method : track play Integer
 	Lib_Par	InTrackPlay1	
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#EntNul,d3
 	Rbra	L_InTrackPlay2
 ; - - - - - - - - - - - - -
+; ***************************************************** track play
+; Method : track play Integer, Integer
 	Lib_Par	InTrackPlay2	
 ; - - - - - - - - - - - - -
 	cmp.l	#EntNul,(a3)		D3=pattern, not supported in this version
@@ -4341,6 +4575,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Ask narrator's lips...
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** mouth read
+; Method : mouth read 
 	Lib_Par	InMouthRead		
 ; - - - - - - - - - - - - -
 	Dload	a2
@@ -4368,6 +4604,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	TALK MISC volume,freq
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** talk misc
+; Method : talk misc Integer, Integer
 	Lib_Par	InTalkMisc		
 ; - - - - - - - - - - - - -
 	Rbsr	L_OpNar
@@ -4397,6 +4635,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SSAVE 	File, adress to end
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** ssave
+; Method : ssave Integer, Integer to Integer
 	Lib_Par	InSsave		
 ; - - - - - - - - - - - - -
 	move.l	(a3)+,d2		Start Adress (d3=start ad)
@@ -4427,6 +4667,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MED LOAD "name",bank
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** med load
+; Method : med load String, Integer
 	Lib_Par	InMedLoad	
 ; - - - - - - - - - - - - -
 	Rbsr	L_MedOpen
@@ -4559,6 +4801,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MED STOP
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** med stop
+; Method : med stop 
 	Lib_Par	InMedStop	
 ; - - - - - - - - - - - - -
 	movem.l	a0-a2/a6/d0-d2,-(sp)
@@ -4574,17 +4818,23 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MED PLAY [Bank],[Song]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** med play
+; Method : med play 
 	Lib_Par	InMedPlay0	
 ; - - - - - - - - - - - - -
 	move.l	#EntNul,d3
 	Rbra	L_InMedPlay1
 ; - - - - - - - - - - - - -
+; ***************************************************** med play
+; Method : med play Integer
 	Lib_Par	InMedPlay1	
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
 	move.l	#EntNul,d3
 	Rbra	L_InMedPlay2
 ; - - - - - - - - - - - - -
+; ***************************************************** med play
+; Method : med play Integer, Integer
 	Lib_Par	InMedPlay2	
 ; - - - - - - - - - - - - -
 	Dload	a2			
@@ -4673,6 +4923,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MED MIDI ON / OFF
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** med midi on
+; Method : med midi on 
 	Lib_Par	InMedMidiOn	
 ; - - - - - - - - - - - - -
 	Dlea	Med_Midi,a0
@@ -4703,6 +4955,8 @@ BkTrack	dc.b	"Tracker "
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	MED CONT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+; ***************************************************** med cont
+; Method : med cont 
 	Lib_Par	InMedCont	
 ; - - - - - - - - - - - - -
 	movem.l	a0-a2/a6/d0-d2,-(sp)

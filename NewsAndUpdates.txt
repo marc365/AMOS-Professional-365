@@ -1,0 +1,11 @@
+Here is an history of the changes I've done to the original AMOSProfessional source code forked from marc365 repository :
+
+********************************************************************
+2019.11.03 : Original updates
+
+- Restart from AMOSProfessional original source code from marc365 repository.
+- Updated +lib.s from my AMOSCommenter JAVA tool.
+- Added +lib_mList.s containing all the AMOS commands definition from +lib.s
+- Updated extensions +Compact.s, +IO_Ports.s, +Music.s, and +Request.s from my AMOSCommenter JAVA Tool.
+- Added +Compact_mList.s, +IO_Ports_mList.s, +Music_mList.s and +Request_mList.s containing the plugin AMOS commands definitions
+- Updated my own extensions/Personal-1.1a library to be compilable like others files.
