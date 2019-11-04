@@ -68,6 +68,7 @@ Pot1Dat:	equ $14
 BplCon0:	equ $100
 BplCon1:	equ $102
 BplCon2:	equ $104
+BplCon3:    equ $106 ; // 2019.11.04 Added for Dual Playfield 2nd field color palette shifting + Sprites Res + Color palette
 Bpl1PtH:	equ $0e0
 Bpl1PtL:	equ $0e2
 Bpl1Mod:	equ $108

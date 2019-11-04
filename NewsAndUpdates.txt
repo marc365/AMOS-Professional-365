@@ -1,7 +1,7 @@
 Here is an history of the changes I've done to the original AMOSProfessional source code forked from marc365 repository :
 
 ********************************************************************
-2019.11.03 : Original updates
+2019.11.03-15.23 : Original updates
 
 - Restart from AMOSProfessional original source code from marc365 repository.
 - Updated +lib.s from my AMOSCommenter JAVA tool.
@@ -9,3 +9,22 @@ Here is an history of the changes I've done to the original AMOSProfessional sou
 - Updated extensions +Compact.s, +IO_Ports.s, +Music.s, and +Request.s from my AMOSCommenter JAVA Tool.
 - Added +Compact_mList.s, +IO_Ports_mList.s, +Music_mList.s and +Request_mList.s containing the plugin AMOS commands definitions
 - Updated my own extensions/Personal-1.1a library to be compilable like others files.
+
+********************************************************************
+2019.11.03-23:42 : New Branch Dual-Playfield
+
+- Updated +W.s/Duale method to handle 2x16 colors lowres dual playfields
+- Updated +W.s to handle 6 new error messages for Duale method
+- Updated +W.s/Duale method to output errors using the 6 new error messages.
+- Updated +Editor_Config.s file to contains the 6 new error messages ( Edt204-209 )
+- execute aData to update Editor_Config
+- execute aw to update Amos.library
+
+
+********************************************************************
+2019.11.04-22:30 : New Branch Dual-Playfield
+
+- Updated +W.s/EcCopHo method by inserting BplCon3 register to allow 2nd Dual Playfield Screen to use colors 16-31 [Temporar change]
+- execute aData to update Editor_Config
+- execute aw to update Amos.library
+- Updated the new DualPlayfield scrolling test demo.

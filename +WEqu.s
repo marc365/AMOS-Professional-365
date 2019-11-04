@@ -325,7 +325,7 @@ FFkLong		equ 	24
 *************** Compteur FakeEvent
 		Rw	FakeEventCpt,1
 
-*************** Sauvegarde de l'ecran
+*************** Sauvegarde de l''ecran
 		Rb	EcSave,64
 
 *************** REQUESTER

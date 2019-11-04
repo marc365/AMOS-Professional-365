@@ -23,12 +23,11 @@ ExtNb		equ	3-1
 ;		Include the files automatically calculated by
 ;		Library_Digest.AMOS
 ;---------------------------------------------------------------------
-; *STARTREADTOKENS* // 2019.11.03 Added for the AMOS Commenter tool
 		Include	"+Request_Size.s"
 		Include	"+Request_Labels.s"
  		Include	"+AMOS_Includes.s"
 		Include	"+Version.s"
-; *ENDREADTOKENS*  // 2019.11.03 Added for the AMOS Commenter tool
+
 Start		dc.l	C_Tk-C_Off
 		dc.l	C_Lib-C_Tk
 		dc.l	C_Title-C_Lib

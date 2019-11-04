@@ -1854,7 +1854,7 @@ Mas3:	add.l	d2,a0
 Mas4:	move.w	d0,(a2)+
 	addq.l	#2,a1
 	dbra	d5,Mas2
-* Pas d'erreur
+* Pas d''erreur
 	movem.l	(sp)+,d1-d7/a0-a2
 	moveq	#0,d0
 	rts
@@ -2541,8 +2541,8 @@ EcIn:	bra	EcRaz		;Raz:
 	bra	SliVer		;- VerSli:		Slider vertical
 	bra	SliHor		;- HorSli:		Slider horizontal
 	bra	SliSet		;- SetSli:		Set slider params
-	bra	StaMn		;- MnStart:	Sauve l'ecran 
-	bra	StoMn		;- MnStop:		Remet l'ecran
+	bra	StaMn		;- MnStart:	Sauve l''ecran 
+	bra	StoMn		;- MnStop:		Remet l''ecran
 	bra	TRDel		;- RainDel:	Delete RAINBOW
 	bra	TRSet		;- RainSet:	Set RAINBOW
 	bra	TRDo		;- RainDo:		Do RAINBOW
@@ -2779,63 +2779,76 @@ EcDbE	moveq	#0,d1
 	bra	EcE1
 
 	IFEQ	EZFlag
-******* Dual Playfield D1,D2
-*	D1= Ecran 1
-*	D2= Ecran 2
-Duale:	movem.l	d1-d7/a1-a6,-(sp)
-	cmp.w	d1,d2
-	beq	EcE26
-	move.w	d2,d7
-	addq.w	#1,d7
-	exg	d1,d2
-	bsr	EcGet
-	beq	EcE3
-	move.l	d0,a1
-	move.w	d2,d1
-	bsr	EcGet
-	beq	EcE3
-	move.l	d0,a0
-	tst.w	EcDual(a0)		* Pas deja dual!
-	bne	EcE26
-	tst.w	EcDual(a1)
-	bne	EcE26
-	moveq	#3,d2
-	move.w	EcCon0(a0),d0		* Meme resolution!
-	bpl.s	EcDu1
-	moveq	#2,d2
-EcDu1:	and.w	#%1000111111111111,d0
-	move.w	EcCon0(a1),d1
-	and.w	#%1000111111111111,d1
-	cmp.w	d0,d1
-	bne	EcE26
-	move.w	EcNPlan(a0),d3
-	move.w	EcNPlan(a1),d4
-	cmp.w	d2,d3
-	bhi	EcE26
-	cmp.w	d2,d4
-	bhi	EcE26
-	move.w	d3,d2			* Nombre total de plans
-	add.w	d4,d2
-	cmp.w	d3,d4			* Combinaisons autorisees?
-	beq.s	EcDu2
-	addq.w	#1,d4
-	cmp.w	d3,d4
-	bne	EcE26
-EcDu2:	moveq	#12,d1
-	lsl.w	d1,d2
-	or.w	d2,d0
-	bset	#10,d0			* Mode DUAL PLAYFIELD!
-	move.w	d0,EcCon0(a0)
-	move.w	EcCon2(a0),d0		* Priorites sprites-> 2 ieme plan!
-	and.w	#%111,d0
-	lsl.w	#3,d0
-	or.w	d0,EcCon2(a0)
-	and.w	#%111111,EcCon2(a0)
-	bset	#BitHide,EcFlags(a1)	* Cache le deuxieme
-	move.w	d7,EcDual(a0)		* Met les flags!
-	neg.w	d7
-	move.w	d7,EcDual(a1)
-	bra	EcTout
+********************************************* Dual Playfield D1, D2 / 2019.11.03 Update
+*    D1= Ecran 1
+*    D2= Ecran 2
+	dc.b	"AmiDARK_Duale", 0
+Duale:    movem.l    d1-d7/a1-a6,-(sp)
+
+    cmp.w    d1,d2             ; Compare D1 & D2 Screens
+    beq    EcE160              ; If screens are the same -> Error cannot set DPF
+    move.w    d2,d7            ; D7 = Screen 2
+    addq.w    #1,d7            ; D7 = Screen2 + 1; Why ? I dont' understand
+    exg    d1,d2               ; exchange register so : D1 = Screen 2, D2 = Screen 1
+    bsr    EcGet               ; Will return D1 screen 2 structure pointer -> D0
+    beq    EcE3                ; if = 0 -> Error Screen does not exists
+    move.l    d0,a1            ; A1 = Screen 2 structure pointer
+    move.w    d2,d1            ; D1 = Screen 1
+    bsr    EcGet               ; Will return D1 screen 1 structure pointer -> D0
+    beq    EcE3                ; if = 0 -> Error Screen does not exists
+    move.l    d0,a0            ; A0 = Screen 1 structure pointer
+    tst.w    EcDual(a0)        ; Check if screen 1 is already in Dual Playfield mode with any existing screen
+    bne    EcE161              ; If = 0, then screen 1 is not already in Dual Playfield, we can continue
+    tst.w    EcDual(a1)        ; Check if screen 2 is already in Dual Playfield mode with any existing screen
+    bne    EcE162              ; If = 0, then screen 2 is not already in Dual Playfield, we can continue
+    moveq    #4,d2
+    move.w    EcCon0(a0),d0    * Meme resolution!
+    bpl.s    EcDu1
+    moveq    #4,d2
+EcDu1:
+    and.w    #%1000111111101111,d0 ; 2019.11.01 Enable BPU3, set D0 for resolution informations without planar ones
+    move.w    EcCon0(a1),d1     ; Get Screen 2 BplCon0 value -> D0
+    and.w    #%1000111111101111,d1 ; 2019.11.01 Enable BPU3, set D1 for resolution informations without planar ones
+    cmp.w    d0,d1             ; Verify that both screen uses the same resolutions ( 15/Hires, 07/UHRes, 06/SHRes, 02/Lace )
+    bne    EcE26               ; if not equals, -> Cannot set Dual Playfield mode
+    move.w    EcNPlan(a0),d3   ; d3 = Screen 1 Amount of bitplanes
+    move.w    EcNPlan(a1),d4   ; d4 = Screen 2 Amount of bitplanes
+    cmp.w    d2,d3             ; if screen 1 contains more than 4 bitplanes
+    bhi    EcE163              ;   -> Error cannot set Dual Playfield
+    cmp.w    d2,d4             ; if screen 2 contains more than 4 bitplanes
+    bhi    EcE164              ;   -> Error cannot set Dual Playfield
+    move.w    d3,d2            ; D2 = Screen 1 bitplanes amount
+    add.w    d4,d2             ; d2 = d4 + d2 = total amount of bitplanes cumulated on 2 screens
+    cmp.w    d3,d4             ; If Screen 1 and Screen 2 contains the same amount of bitplanes
+    beq.s    EcDu2             ;   -> Directly jump to EcDu2 (next step of Dual Playfield setting)
+    addq.w    #1,d4            ; Screen 2 bitplanes + 1
+    cmp.w    d3,d4             ; if Screen 1 and Screen 2 does not contains the same amount of bitplanes
+    bne    EcE165              ;   -> Error cannot set Dual Playfield
+EcDu2:
+;    moveq    #12,d1             ; 2019.11.03 : Originally these two lines roll by 12 bytes to the left, the content of D2 to make
+;    lsl.w    d1,d2           ; Bitplanes amount become BPU0-2 (Bytes 12-14) settings. But as BPU3 is byte 4, I must upgrade
+    cmp.w    #8,d2             ; If 8 bitplanes are requested, we directly set byte #4 of d2
+    blt     sevenOrLowerDPF ; Less than 8 bitplanes, jump to classical way of shifting bytes to set BPU0-2
+heightBitPlanesDPF:
+    move.w #16,d2             ; Set byte 04 ( BPU3 ) to 1 and others (BPU0-2) to 0 to define 8 bitplanes
+    bra.s continueDPF
+sevenOrLowerDPF:            ; if less thab 8 bitplanes are requested, we use the default Amos calculation as it fit
+    lsl.w    #8,d2           ;  in BPU0-1-2 bytes 12-13-14 in BPLCON0 16 bits register
+    lsl.w    #4,d2             ; As lsl.w handle max of 8, to shift by 12 AMOS must to 2 Lsl.w calls.
+continueDPF:                ; 2019.11.03 End of upgrade to handle BPU3 for 8 Bitplanes mode.
+    or.w    d2,d0             ; Merge BPU0-3 settings inside BplCon0 value stores in D0
+    bset    #10,d0            ; Set Dual Playfield mode = ON
+    move.w    d0,EcCon0(a0)     ; Save D0 inside Screen 1 structure bplCon0 register
+    move.w    EcCon2(a0),d0     ; Set sprites priorites -> 2nd layer
+    and.w    #%111,d0
+    lsl.w    #3,d0
+    or.w    d0,EcCon2(a0)
+    and.w    #%111111,EcCon2(a0)
+    bset    #BitHide,EcFlags(a1)    * Cache le deuxieme
+    move.w    d7,EcDual(a0)        * Met les flags!
+    neg.w    d7
+    move.w    d7,EcDual(a1)
+    bra    EcTout
 	
 ******* DUAL PRIORITY n,m
 DualP:	movem.l	d1-d7/a1-a6,-(sp)
@@ -3135,6 +3148,20 @@ EcE26:	moveq	#26,d0			* Can't set dual-playfield
 	bra.s	EcOut
 EcE27:	moveq	#27,d0			* Screen not dual playfield
 	bra.s	EcOut
+; 2019.11.03 Aded 6 new Error messages for Dual PLayfield command
+EcE160:	move.l	#160,d0			<first and second screen are the same> 
+	bra.s	EcOut
+EcE161:	move.l	#161,d0			<First entered screen is already in dual playfield mode>
+	bra.s	EcOut
+EcE162:	move.l	#162,d0			<Second entered screen is already in dual playfield mode>
+	bra.s	EcOut
+EcE163:	move.l	#163,d0			<First screen contains more than 4 bitplanes>
+	bra.s	EcOut
+EcE164:	move.l	#164,d0			<Second screen contains more than 4 bitplanes>
+	bra.s	EcOut
+EcE165:	move.l	#165,d0			<Unknown error when trying to set dual playfield mode> 
+	bra.s	EcOut
+; 2019.11.03 End of 6 new error messages for Dual Playfield command
 EcE2:	moveq	#2,d0			* 2 : SCREEN ALREADY OPENED
 * Sortie erreur ecrans
 EcOut:	movem.l	(sp)+,d1-d7/a1-a6
@@ -6261,10 +6288,10 @@ RainD7	move.w	RnFY(a0),d7
 RainD9	bclr	#31,d3
 	bra	RainD0
 
-******* Creation de la ligne COPPER de definition d'un ecran!
+************************************************************************** Creation de la ligne COPPER de definition d'un ecran!
 *	D0=	Y ecran
 *	A0= 	Adresse de l'ecran
-EcCopHo	
+EcCopHo:
 * Decalage PHYSIQUE dans la fenetre
 	move.w	d0,d1
 	sub.w	EcWY(a0),d1
@@ -6277,23 +6304,24 @@ MkC4a
 	move.w	d0,d2
 	sub.w	#EcYBase,d2
 	bsr	WaitD2
-* Preparation image
-	move.w	#DmaCon,(a1)+		;Arret DMA
-	move.w	#$0100,(a1)+
-* Debut de la palette
+* Prepare view
+	move.w	#DmaCon,(a1)+		; Send data to DMACON register
+	move.w	#$0100,(a1)+ 		; Stop All DMA except Bit Plane DMA
+* Beginning of the color palette
 	move.l	a1,-(sp)
-	moveq	#PalMax-1,d3
-	move.w	#Color00,d2
-	lea	EcPal(a0),a4
-MkC5:	move.w	d2,(a1)+
-	addq.w	#2,d2
-	move.w	(a4)+,(a1)+
-	dbra	d3,MkC5
+	moveq	#PalMax-1,d3 		; D3 = Amount of colors to copy to the copper list
+	move.w	#Color00,d2 		; D2 = 1st Color Register ( Color #00 )
+	lea	EcPal(a0),a4 			; A4 = Screen color table pointer
+MkC5: 							; Loop to put then entire screen palette in the copper list
+	move.w	d2,(a1)+			; Insert color register DFF180-DFF1BE into copper
+	addq.w	#2,d2 				; Go to next color register
+	move.w	(a4)+,(a1)+ 		; Copy color data from screen palette inside copper list
+	dbra	d3,MkC5 			; End of color copy into copper list loop.
 
 	IFEQ	EZFlag
 * Dual playfield???
-	move.w	EcDual(a0),d2
-	bne	CreeDual
+	move.w	EcDual(a0),d2 		; If screen is attached to another in DualPlayfield mode
+	bne	CreeDual 				; -> Then jump to 2nd screen copper list definition.
 PluDual:
 	ENDC
 
@@ -6428,9 +6456,10 @@ MkC3:	move.w	d6,d5
 	move.w	EcTx(a0),d2
 	lsr.w	#3,d2
 	add.w	d2,d4
-MkCi1	move.w	#Bpl1Mod,(a1)+
+MkCi1:
+	move.w	#Bpl1Mod,(a1)+
 	move.w	d4,(a1)+
-	move.w	#Bpl2Mod,(a1)+
+	move.w	#Bpl2Mod,(a1)+                            ; Bpl2Mod
 	move.w	d4,(a1)+
 * Registres de controle
 	move.w	#BplCon0,(a1)+
@@ -6440,6 +6469,8 @@ MkCi1	move.w	#Bpl1Mod,(a1)+
 	move.w	d5,(a1)+
 	move.w	#BplCon2,(a1)+
 	move.w	EcCon2(a0),(a1)+
+    move.w  #BplCon3,(a1)+ 							; 2019.11.04 Added BplCon3 to support dual playfield 2x16 colors
+    move.w  #%1000000000000,(a1)+                   ; Value to handle 2x16 colors in DPF
 * Reactive le DMA au debut de la fenetre
 FiniCop	move.l	(sp)+,d4
 	addq.w	#1,d0
@@ -6485,7 +6516,13 @@ MkC10:	tst.l	(a4)+
 	rts
 
 	IFEQ	EZFlag
-******* Creation liste copper pour ecrans DUAL PLAYFIED!
+
+
+; *********************************************** Creation liste copper pour ecrans DUAL PLAYFIED! ************************* ICI A TRAVAILLER !!!!
+; This method is reached from method EcCopHo (L=6291) that create copper list for a screen and check for dual playfield mode with the screen
+*	D0=	Y Screen position
+*   A0 = 1st screen structure pointer. Screen already inserted in the CopperList from the method that call CreeDual
+*   D2 = 2nd screen structure pointer. Screen that must be handled there.
 CreeDual:
 * Adresse du deuxieme ecran
 	move.l	a2,-(sp)
@@ -6496,13 +6533,25 @@ CreeDual:
 	move.l	(sp)+,a2
 	clr.w	EcDual(a0)		* Transforme en ecran simple!
 	move.w	EcCon0(a0),d2
-	and.w	#%1000101111111111,d2
+	and.w	#%1000101111101111,d2 ; // 2019.11.04 Update to handle Bit 4 BPU3
 	move.w	EcNPlan(a0),d7
-	lsl.w	#8,d7
-	lsl.w	#4,d7
+	; 2019.11.04 Update this part to handle 2x16 colors in Dual Playfield mode.
+;	lsl.w	#8,d7              ; These 2 lines were the original ones to calcule BPU0-2 with a  maximum of 2x8colors per field
+;	lsl.w	#4,d7              ; Now, we put them as comment and update the method to handle 2x16 colors per field and BPU3 byte.
+    cmp.w    #8,d7             ; If 8 bitplanes are requested, we directly set byte #4 (=BPU3) of d2
+    blt     sevenOrLowerDPFcop ; Less than 8 bitplanes, jump to classical way of shifting bytes to set BPU0-2
+heightBitPlanesDPFcop:
+    move.w 	 #16,d7              ; Set byte 04 ( BPU3 ) to 1 and others (BPU0-2) to 0 to define 8 bitplanes
+    bra.s continueDPFcop
+sevenOrLowerDPFcop:            ; if less thab 8 bitplanes are requested, we use the default Amos calculation as it fit
+    lsl.w    #8,d7             ;  in BPU0-1-2 bytes 12-13-14 in BPLCON0 16 bits register
+    lsl.w    #4,d7             ; As lsl.w handle max of 8, to shift by 12 AMOS must to 2 Lsl.w calls.
+continueDPFcop:                ; 2019.11.04 End of upgrade to handle BPU3 for 8 Bitplanes mode.
 	or.w	d7,d2
 	move.w	d2,EcCon0(a0)
-	bra	PluDual
+	bra	PluDual 				; -> Now, we come back to the screen creation
+
+
 CrDu1:	move.l	d2,a2
 * Adresses bitplanes PAIRS!
 	move.w	d1,-(sp)
@@ -6514,7 +6563,8 @@ CrDu1:	move.l	d2,a2
 	add.w	d2,d1
 	move.l	a1,d3
 	moveq	#EcPhysic,d2
-	move.w	EcNPlan(a0),d6
+	move.w	EcNPlan(a0),d6    ; Here we get the amount of bitplanes stored in first screen of the DualPlayfield (in Duale, updated of EcNPlan forces cumulate 2 screens)
+	; // This loop put all BplxPth/BplxPtl registers in the copper list
 	subq.w	#1,d6
 	move.w	#Bpl1PtH,d7
 MkDC1:	move.l	0(a0,d2.w),d5
@@ -6554,7 +6604,7 @@ MrkDC2	move.w	(sp)+,d1
 	moveq	#EcPhysic,d2
 	move.w	EcNPlan(a2),d6
 	subq.w	#1,d6
-	move.w	#Bpl1PtH+4,d7
+	move.w	#Bpl1PtH+4,d7      ; Now we put odd bitplanes pointers
 MkdC12:	move.l	0(a2,d2.w),d5
 	add.l	d1,d5
 	move.w	d7,(a1)+
@@ -6692,7 +6742,7 @@ MkdC3:	lsl.w	#4,d7
 	move.w	d2,(a1)+
 	move.w	#Bpl1Mod,(a1)+
 	move.w	d4,(a1)+
-	move.w	#Bpl2Mod,(a1)+
+	move.w	#Bpl2Mod,(a1)+                      ; BPl2Mod à fixer/améliorer pour le 2nd écran.
 	move.w	d5,(a1)+
 * Registres de controle
 	move.w	#BplCon0,(a1)+

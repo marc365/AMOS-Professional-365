@@ -79,190 +79,100 @@ C_Off
 C_Tk
 		dc.w 	1,0
 		dc.b 	$80,-1
-; *STARTREADTOKENS* // 2019.11.03 Added for the AMOS Commenter tool
-; ***************************************************** serial open
-; Method in file '+IO_Ports.s' at line '361' : serial open Integer, Integer
 		dc.w	L_InSerialOpen2,L_Nul
 		dc.b	"!serial ope","n"+$80,"I0,0",-2
-; ***************************************************** serial open
-; Method in file '+IO_Ports.s' at line '371' : serial open Integer, Integer, Integer, Integer, Integer
 		dc.w	L_InSerialOpen5,L_Nul
 		dc.b	$80,"I0,0,0,0,0",-1
-; ***************************************************** serial close
-; Method in file '+IO_Ports.s' at line '429' : serial close 
 		dc.w	L_InSerialClose0,L_Nul
 		dc.b	"!serial clos","e"+$80,"I",-2
-; ***************************************************** serial close
-; Method in file '+IO_Ports.s' at line '421' : serial close Integer
 		dc.w	L_InSerialClose1,L_Nul
 		dc.b	$80,"I0",-1
-; ***************************************************** serial speed
-; Method in file '+IO_Ports.s' at line '540' : serial speed Integer, Integer
 		dc.w	L_InSerialSpeed,L_Nul
 		dc.b	"serial spee","d"+$80,"I0,0",-1
-; ***************************************************** serial check
-; Method in file '+IO_Ports.s' at line '670' : Integer = serial check( Integer )
 		dc.w	L_Nul,L_FnSerialCheck
 		dc.b	"serial chec","k"+$80,"00",-1
-; ***************************************************** serial send
-; Method in file '+IO_Ports.s' at line '443' : serial send Integer, String
 		dc.w 	L_InSerialSend,L_Nul
 		dc.b	"serial sen","d"+$80,"I0,2",-1
-; ***************************************************** serial speed
-; Method in file '+IO_Ports.s' at line '540' : serial speed Integer, Integer
 		dc.w 	L_InSerialSpeed,L_Nul
 		dc.b	"serial spee","d"+$80,"I0,0",-1
-; ***************************************************** serial bits
-; Method in file '+IO_Ports.s' at line '553' : serial bits Integer, Integer, Integer
 		dc.w 	L_InSerialBits,L_Nul
 		dc.b	"serial bit","s"+$80,"I0,0,0",-1
-; ***************************************************** serial x
-; Method in file '+IO_Ports.s' at line '610' : serial x Integer, Integer
 		dc.w 	L_InSerialX,L_Nul
 		dc.b	"serial ","x"+$80,"I0,0",-1
-; ***************************************************** serial buf
-; Method in file '+IO_Ports.s' at line '627' : serial buf Integer, Integer
 		dc.w 	L_InSerialBuf,L_Nul
 		dc.b	"serial bu","f"+$80,"I0,0",-1
-; ***************************************************** serial parity
-; Method in file '+IO_Ports.s' at line '569' : serial parity Integer, Integer
 		dc.w 	L_InSerialParity,L_Nul
 		dc.b	"serial parit","y"+$80,"I0,0",-1
-; ***************************************************** serial get
-; Method in file '+IO_Ports.s' at line '480' : Integer = serial get( Integer )
 		dc.w	L_Nul,L_FnSerialGet
 		dc.b	"serial ge","t"+$80,"00",-1
-; ***************************************************** serial input$
-; Method in file '+IO_Ports.s' at line '504' : String = serial input$( Integer )
 		dc.w	L_Nul,L_FnSerialInput
 		dc.b	"serial input","$"+$80,"20",-1
-; ***************************************************** serial fast
-; Method in file '+IO_Ports.s' at line '640' : serial fast Integer
 		dc.w	L_InSerialFast,L_Nul
 		dc.b	"serial fas","t"+$80,"I0",-1
-; ***************************************************** serial slow
-; Method in file '+IO_Ports.s' at line '658' : serial slow Integer
 		dc.w	L_InSerialSlow,L_Nul
 		dc.b	"serial slo","w"+$80,"I0",-1
-; ***************************************************** serial error
-; Method in file '+IO_Ports.s' at line '685' : Integer = serial error( Integer )
 		dc.w	L_Nul,L_FnSerialError
 		dc.b	"serial erro","r"+$80,"00",-1
-; ***************************************************** serial out
-; Method in file '+IO_Ports.s' at line '462' : serial out Integer, Integer, Integer
 		dc.w	L_InSerialOut,L_Nul
 		dc.b	"serial ou","t"+$80,"I0,0,0",-1
-; ***************************************************** serial status
-; Method in file '+IO_Ports.s' at line '698' : Integer = serial status( Integer )
 		dc.w	L_Nul,L_FnSerialStatus
 		dc.b	"serial statu","s"+$80,"00",-1
-; ***************************************************** serial base
-; Method in file '+IO_Ports.s' at line '714' : Integer = serial base( Integer )
 		dc.w	L_Nul,L_FnSerialBase
 		dc.b	"serial bas","e"+$80,"00",-1
-; ***************************************************** serial abort
-; Method in file '+IO_Ports.s' at line '726' : serial abort Integer
 		dc.w	L_InSerialAbort,L_Nul
 		dc.b	"serial abor","t"+$80,"I0",-1
 	
 ; Printer commands
 ; ~~~~~~~~~~~~~~~~
-; ***************************************************** printer open
-; Method in file '+IO_Ports.s' at line '788' : printer open 
 		dc.w   	L_InPrinterOpen,L_Nul
 		dc.b	"printer ope","n"+$80,"I",-1
-; ***************************************************** printer close
-; Method in file '+IO_Ports.s' at line '819' : printer close 
 		dc.w	L_InPrinterClose,L_Nul
 		dc.b	"printer clos","e"+$80,"I",-1
-; ***************************************************** printer send
-; Method in file '+IO_Ports.s' at line '857' : printer send String
 		dc.w	L_InPrinterSend,L_Nul
 		dc.b	"printer sen","d"+$80,"I2",-1
-; ***************************************************** printer out
-; Method in file '+IO_Ports.s' at line '875' : printer out Integer, Integer
 		dc.w	L_InPrinterOut,L_Nul
 		dc.b	"printer ou","t"+$80,"I0,0",-1
-; ***************************************************** printer dump
-; Method in file '+IO_Ports.s' at line '925' : printer dump 
 		dc.w	L_InPrinterDump0,L_Nul
 		dc.b	"!printer dum","p"+$80,"I",-2	
-; ***************************************************** printer dump
-; Method in file '+IO_Ports.s' at line '938' : printer dump Integer, Integer to Integer, Integer
 		dc.w	L_InPrinterDump4,L_Nul
 		dc.b	$80,"I0,0t0,0",-2 
-; ***************************************************** printer dump
-; Method in file '+IO_Ports.s' at line '989' : printer dump Integer, Integer to Integer, Integer, Integer, Integer, Integer
 		dc.w	L_InPrinterDump7,L_Nul
 		dc.b	$80,"I0,0t0,0,0,0,0",-1	
-; ***************************************************** printer abort
-; Method in file '+IO_Ports.s' at line '892' : printer abort 
 		dc.w	L_InPrinterAbort,L_Nul
 		dc.b	"printer abor","t"+$80,"I",-1
-; ***************************************************** printer check
-; Method in file '+IO_Ports.s' at line '774' : Integer = printer check()
 		dc.w	L_Nul,L_FnPrinterCheck
 		dc.b 	"printer chec","k"+$80,"0",-1
-; ***************************************************** printer online
-; Method in file '+IO_Ports.s' at line '902' : Integer = printer online()
 		dc.w	L_Nul,L_FnPrinterOnline
 		dc.b	"printer onlin","e"+$80,"0",-1
-; ***************************************************** printer base
-; Method in file '+IO_Ports.s' at line '762' : Integer = printer base()
 		dc.w	L_Nul,L_FnPrinterBase
 		dc.b	"printer bas","e"+$80,"0",-1
-; ***************************************************** printer error
-; Method in file '+IO_Ports.s' at line '844' : Integer = printer error()
 		dc.w	L_Nul,L_FnPrinterError
 		dc.b	"printer erro","r"+$80,"0",-1
 
 ; Parallel commands
 ; ~~~~~~~~~~~~~~~~~
-; ***************************************************** parallel open
-; Method in file '+IO_Ports.s' at line '1154' : parallel open 
 		dc.w   	L_InParallelOpen,L_Nul
 		dc.b	"parallel ope","n"+$80,"I",-1
-; ***************************************************** parallel close
-; Method in file '+IO_Ports.s' at line '1172' : parallel close 
 		dc.w	L_InParallelClose,L_Nul
 		dc.b	"parallel clos","e"+$80,"I",-1
-; ***************************************************** parallel send
-; Method in file '+IO_Ports.s' at line '1182' : parallel send String
 		dc.w	L_InParallelSend,L_Nul
 		dc.b	"parallel sen","d"+$80,"I2",-1
-; ***************************************************** parallel out
-; Method in file '+IO_Ports.s' at line '1200' : parallel out Integer, Integer
 		dc.w	L_InParallelOut,L_Nul
 		dc.b	"parallel ou","t"+$80,"I0,0",-1
-; ***************************************************** parallel abort
-; Method in file '+IO_Ports.s' at line '1217' : parallel abort 
 		dc.w	L_InParallelAbort,L_Nul
 		dc.b	"parallel abor","t"+$80,"I",-1
-; ***************************************************** parallel check
-; Method in file '+IO_Ports.s' at line '1140' : Integer = parallel check()
 		dc.w	L_Nul,L_FnParallelCheck
 		dc.b 	"parallel chec","k"+$80,"0",-1
-; ***************************************************** parallel status
-; Method in file '+IO_Ports.s' at line '1227' : Integer = parallel status()
 		dc.w	L_Nul,L_FnParallelStatus
 		dc.b	"parallel statu","s"+$80,"0",-1
-; ***************************************************** parallel base
-; Method in file '+IO_Ports.s' at line '1128' : Integer = parallel base()
 		dc.w	L_Nul,L_FnParallelBase
 		dc.b	"parallel bas","e"+$80,"0",-1
-; ***************************************************** parallel error
-; Method in file '+IO_Ports.s' at line '1243' : Integer = parallel error()
 		dc.w	L_Nul,L_FnParallelError
 		dc.b	"parallel erro","r"+$80,"0",-1
-; ***************************************************** parallel input$
-; Method in file '+IO_Ports.s' at line '1258' : String = parallel input$( Integer )
 		dc.w	L_Nul,L_FnParallelInput1
 		dc.b	"!parallel input","$"+$80,"20",-2
-; ***************************************************** parallel input$
-; Method in file '+IO_Ports.s' at line '1268' : String = parallel input$( Integer, Integer )
 		dc.w	L_Nul,L_FnParallelInput2
 		dc.b	$80,"20,0",-2
-; *ENDREADTOKENS*  // 2019.11.03 Added for the AMOS Commenter tool
 ;		TOKEN_END
 		dc.w 	0
 		dc.l	0			Important!
@@ -356,8 +266,6 @@ ParName		dc.b	"parallel.device",0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SERIAL OPEN logicnumber,physicnumber[,shared,xdisabled,7wires]	
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial open
-; Method : serial open Integer, Integer
 	Lib_Par	InSerialOpen2
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -366,8 +274,6 @@ ParName		dc.b	"parallel.device",0
 	move.l	d3,-(a3)
 	Rbra	L_InSerialOpen5
 ; - - - - - - - - - - - - -
-; ***************************************************** serial open
-; Method : serial open Integer, Integer, Integer, Integer, Integer
 	Lib_Par	InSerialOpen5	
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -416,16 +322,12 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serclose [N]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial close
-; Method : serial close Integer
 	Lib_Par	InSerialClose1	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
 	Rbsr	L_GetSerial
 	Rjmp	L_Dev.CloseA2
 ; - - - - - - - - - - - - -
-; ***************************************************** serial close
-; Method : serial close 
 	Lib_Par	InSerialClose0	
 ; - - - - - - - - - - - - -
 	Dlea	SerialIO,a2
@@ -438,8 +340,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Send ser,A$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial send
-; Method : serial send Integer, String
 	Lib_Par	InSerialSend	
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -457,8 +357,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Out ser,address,length
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial out
-; Method : serial out Integer, Integer, Integer
 	Lib_Par	InSerialOut	
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -475,8 +373,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=Serial Get(ser)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial get
-; Method : Integer = serial get( Integer )
 	Lib_Par	FnSerialGet	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -499,8 +395,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=Serial Input$(Ser) 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial input$
-; Method : String = serial input$( Integer )
 	Lib_Par	FnSerialInput	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -535,8 +429,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Speed ser,baud
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial speed
-; Method : serial speed Integer, Integer
 	Lib_Par	InSerialSpeed		
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -548,8 +440,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Bit ser,number,stop
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial bits
-; Method : serial bits Integer, Integer, Integer
 	Lib_Par	InSerialBits	
 ; - - - - - - - - - - - - -
 	move.l	d3,d2
@@ -564,8 +454,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Parity ser,on/off/odd/even/mspon
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial parity
-; Method : serial parity Integer, Integer
 	Lib_Par	InSerialParity	
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -605,8 +493,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial X ser,value
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial x
-; Method : serial x Integer, Integer
 	Lib_Par	InSerialX
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -622,8 +508,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Buf ser,length
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial buf
-; Method : serial buf Integer, Integer
 	Lib_Par	InSerialBuf
 ; - - - - - - - - - - - - -
 	move.l	d3,d1
@@ -635,8 +519,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Fast ser
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial fast
-; Method : serial fast Integer
 	Lib_Par	InSerialFast
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -653,8 +535,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	Serial Slow Ser
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial slow
-; Method : serial slow Integer
 	Lib_Par	InSerialSlow	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -665,8 +545,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=Serial Check(N)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial check
-; Method : Integer = serial check( Integer )
 	Lib_Par	FnSerialCheck	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -680,8 +558,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=Serial Error(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial error
-; Method : Integer = serial error( Integer )
 	Lib_Par	FnSerialError		
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -693,8 +569,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=Serial Status(n)
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial status
-; Method : Integer = serial status( Integer )
 	Lib_Par	FnSerialStatus
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -709,8 +583,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=SERIAL BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial base
-; Method : Integer = serial base( Integer )
 	Lib_Par	FnSerialBase	
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -721,8 +593,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	SERIAL ABORT channel
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** serial abort
-; Method : serial abort Integer
 	Lib_Par	InSerialAbort
 ; - - - - - - - - - - - - -
 	move.l	d3,d0
@@ -757,8 +627,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PRINTER BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer base
-; Method : Integer = printer base()
 	Lib_Par	FnPrinterBase	
 ; - - - - - - - - - - - - -
 	Dlea	PrinterIO,a2
@@ -769,8 +637,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PRINTER CHECK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer check
-; Method : Integer = printer check()
 	Lib_Par	FnPrinterCheck
 ; - - - - - - - - - - - - -
 	Dlea	PrinterIO,a2
@@ -783,8 +649,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PRINTER OPEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer open
-; Method : printer open 
 	Lib_Par	InPrinterOpen	
 ; - - - - - - - - - - - - -
 	Rjsr	L_PRT_Close	Ferme LPRINT
@@ -814,8 +678,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PRINTER CLOSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer close
-; Method : printer close 
 	Lib_Par	InPrinterClose	
 ; - - - - - - - - - - - - -
 	Dload	a2		
@@ -839,8 +701,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PRINTER ERROR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer error
-; Method : Integer = printer error()
 	Lib_Par	FnPrinterError
 ; - - - - - - - - - - - - -
 	Dlea	PrinterIO,a2
@@ -852,8 +712,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PRINTER SEND A$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer send
-; Method : printer send String
 	Lib_Par	InPrinterSend	
 ; - - - - - - - - - - - - -
 	Dlea	PrinterIO,a2
@@ -870,8 +728,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PRINTER OUT ad,lenght
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer out
-; Method : printer out Integer, Integer
 	Lib_Par	InPrinterOut	
 ; - - - - - - - - - - - - -
 	Dlea	PrinterIO,a2
@@ -887,8 +743,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PRINTER ABORT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer abort
-; Method : printer abort 
 	Lib_Par	InPrinterAbort
 ; - - - - - - - - - - - - -
 	Dlea	PrinterIO,a2
@@ -897,8 +751,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PRINTER ONLINE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer online
-; Method : Integer = printer online()
 	Lib_Par	FnPrinterOnline
 ; - - - - - - - - - - - - -
 	Dlea	PrinterIO,a2
@@ -920,8 +772,6 @@ SerOpC	Dlea	SerName,a0
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PRINTER DUMP [parameters!]
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** printer dump
-; Method : printer dump 
 	Lib_Par	InPrinterDump0
 ; - - - - - - - - - - - - -
 	Dload	a2
@@ -933,8 +783,6 @@ SerOpC	Dlea	SerName,a0
 	move.w	#$8c,special-DT(a2)	; ASPECT | FULLROWS | FULLCOLS
 	Rbra	L_Dump
 ; - - - - - - - - - - - - -
-; ***************************************************** printer dump
-; Method : printer dump Integer, Integer to Integer, Integer
 	Lib_Par	InPrinterDump4
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -984,8 +832,6 @@ SerOpC	Dlea	SerName,a0
 	Rbra 	L_Dump
 
 ; - - - - - - - - - - - - -
-; ***************************************************** printer dump
-; Method : printer dump Integer, Integer to Integer, Integer, Integer, Integer, Integer
 	Lib_Par	InPrinterDump7
 ; - - - - - - - - - - - - -
 	move.l	d3,-(a3)
@@ -1123,8 +969,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PARALLEL BASE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel base
-; Method : Integer = parallel base()
 	Lib_Par	FnParallelBase	
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1135,8 +979,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PARALLEL CHECK
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel check
-; Method : Integer = parallel check()
 	Lib_Par	FnParallelCheck
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1149,8 +991,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PARALLEL OPEN
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel open
-; Method : parallel open 
 	Lib_Par	InParallelOpen	
 ; - - - - - - - - - - - - -
 	Rjsr	L_PRT_Close
@@ -1167,8 +1007,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PARALLEL CLOSE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel close
-; Method : parallel close 
 	Lib_Par	InParallelClose
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1177,8 +1015,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PARALLEL SEND A$
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel send
-; Method : parallel send String
 	Lib_Par	InParallelSend	
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1195,8 +1031,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PARALLEL OUT ad,lenght
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel out
-; Method : parallel out Integer, Integer
 	Lib_Par	InParallelOut
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1212,8 +1046,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	PARALLEL ABORT
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel abort
-; Method : parallel abort 
 	Lib_Par	InParallelAbort
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1222,8 +1054,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PARALLEL STATUS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel status
-; Method : Integer = parallel status()
 	Lib_Par	FnParallelStatus
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1238,8 +1068,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PARALLEL ERROR
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel error
-; Method : Integer = parallel error()
 	Lib_Par	FnParallelError
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1253,8 +1081,6 @@ cl5
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ;	=PARALLEL INPUT$(long[,stop])
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; ***************************************************** parallel input$
-; Method : String = parallel input$( Integer )
 	Lib_Par	FnParallelInput1
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
@@ -1263,8 +1089,6 @@ cl5
 	move.l	d3,-(a3)
 	Rbra	L_ParInput
 ; - - - - - - - - - - - - -
-; ***************************************************** parallel input$
-; Method : String = parallel input$( Integer, Integer )
 	Lib_Par	FnParallelInput2
 ; - - - - - - - - - - - - -
 	Dlea	ParallelIO,a2
