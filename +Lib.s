@@ -8887,6 +8887,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	Rbne	L_EcWiErr
 	rts
 
+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DUAL PRIORITY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -9003,6 +9004,8 @@ ScOo4	Rbsr	L_LoadRegs
 	Rbsr	L_CheckScreenNumber
 	EcCall	AView
 	Rbne	L_EcWiErr
+	SyCall	WaitVbl 				; 2019.11.06 Added to be sure that a following call to "Dual Playfield"
+	Rjsr	L_Test_Normal 			; will not cause garbage as Screen display registers are not finished to be updated.
 	rts
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

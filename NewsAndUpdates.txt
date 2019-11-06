@@ -3,6 +3,23 @@ To Do :
 Add a new command to select 2nd dual playfield screen color shifting.
 5773 -> Start the copper update/creation process.
 
+Official Improvements :
+FIX : "Screen Display" does not more cause display issue when "Dual PLayfield" is called just after
+UPDATE : "Dual Playfield" now preserve Second screen color palette.
+
+TO DO :
+- Update demo to use SCREEN HIDE/SHOW to now display IFF/ILBM loading times.
+- Add a new command : Aga Colour REG, RGB32
+- Add a new function : RGB32 = Aga Colour( REG )
+- Added new command : Extended Dual Playfield SCREEN1, SCREEN2
+
+********************************************************************
+2019.11.06 : Branch : Dual-Playfield
+
+- Added method +W.s/getScr2Color to copy colors 0-15 from screen 1 into colors 16-31 of color 0 in Dual Playfield mode.
+- Updated +W.s/Duale to call +W.s/getScr2Color when Dual Playfield is created.
+- Updated +Lib.s/InScreenDisplay to call WaitVbl once screen values were updated to fix a bug with "Dual Playfield" command
+
 
 ********************************************************************
 2019.11.05 : Branch : Dual-Playfield
@@ -22,6 +39,7 @@ Add a new command to select 2nd dual playfield screen color shifting.
 - Updates +W.s/EcCree to handle 8 bitplanes with BPU3 field in standard screens (non DPF)
 - Updated DualPlayfields AMOS sample to contains WAIT VBL calls after "Screen Display" calls (as they require this to work)
 
+
 ********************************************************************
 2019.11.04-22:30 : Branch : Dual-Playfield
 
@@ -29,6 +47,7 @@ Add a new command to select 2nd dual playfield screen color shifting.
 - execute aData to update Editor_Config
 - execute aw to update Amos.library
 - Updated the new DualPlayfield scrolling test demo.
+
 
 ********************************************************************
 2019.11.03-23:42 : New Branch Dual-Playfield
@@ -40,6 +59,7 @@ Add a new command to select 2nd dual playfield screen color shifting.
 - execute aData to update Editor_Config
 - execute aw to update Amos.library
 
+
 ********************************************************************
 2019.11.03-15.23 : Original updates
 
@@ -49,4 +69,3 @@ Add a new command to select 2nd dual playfield screen color shifting.
 - Updated extensions +Compact.s, +IO_Ports.s, +Music.s, and +Request.s from my AMOSCommenter JAVA Tool.
 - Added +Compact_mList.s, +IO_Ports_mList.s, +Music_mList.s and +Request_mList.s containing the plugin AMOS commands definitions
 - Updated my own extensions/Personal-1.1a library to be compilable like others files.
-

@@ -2787,6 +2787,8 @@ EcDbE	moveq	#0,d1
 *    D2= Ecran 2
 Duale:    movem.l    d1-d7/a1-a6,-(sp)
 
+	SyCall	WaitVbl 			; 2019.11.06 Forces WaitVbl to ensure any "Screen Display" call cannot trash data.
+
     cmp.w    d1,d2             ; Compare D1 & D2 Screens
     beq    EcE160              ; If screens are the same -> Error cannot set DPF
     move.w    d2,d7            ; D7 = Screen 2
@@ -2846,7 +2848,23 @@ continueDPF:                ; 2019.11.03 End of upgrade to handle BPU3 for 8 Bit
     lsl.w    #3,d0
     or.w    d0,EcCon2(a0)
 
-    ; 2019.11.05 Update for clean BplCon3 support
+
+; **************************************** 2019.11.06 Dual Playfield : Copy Screen 1 color following Screen 0 colors.
+getScr2Color:
+	move.w 	EcNbCol(a0),d4 				; d4 = nombre de couleurs écran 0
+	lsl.w 	#1,d4 						; d4 = word aligned color position
+	add.w 	#EcPal,d4 					; d4 = pointer to the 1st color to modify in Screen 0
+	move.w 	#EcPal,d5 	 				; d5 = point to 1st color to get in screen 1
+	move.w 	EcNbCol(a1),d6				; d6 = Maximum amount of color to copy from screen 1 into screen 0
+	sub.w 	#1,d6 						; d6 = colour count -1 to get -1 result when copy is finished.
+gsc1:
+	move.w  (a1,d5),(a0,d4) 			; Copy from Screen 1 palette to screen 0
+	add.w 	#2,d4 						; Move to the next Screen 0 color to update
+	add.w 	#2,d5 						; Move to the next Screen 1 color to update
+	sub.w 	#1,d6 						; Decreast copy counter
+	bpl 	gsc1 						; Loop to gsc1 while d6 is positive.
+
+; ****************************************2019.11.05 Update for clean BplCon3 support
     move.w 	EcCon3(a0),d0
     and.w	#%1110001111111111,d0 ; To modify only bytes for PF2OF0-PF2OF2 fields
     move.w  dpf2cshift(a0),d3     ; Read current parameters for colors shifting.
@@ -2864,6 +2882,7 @@ continueDPF:                ; 2019.11.03 End of upgrade to handle BPU3 for 8 Bit
     move.w    d7,EcDual(a1)
     bra    EcTout
 	
+
 ******* DUAL PRIORITY n,m
 DualP:	movem.l	d1-d7/a1-a6,-(sp)
 	cmp.w	d1,d2
