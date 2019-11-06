@@ -104,7 +104,7 @@ EcMax:		equ 	12
 		Rl	EcAdr,EcMax
 
 *************** Table de priorite
-		Rl	EcPri,EcMax+1
+		Rl	EcPri,EcMax+1 				; Screen priorities list.
 
 *************** FLASHEUR
 FlMax:		equ 	16	
@@ -129,11 +129,11 @@ LShift:		equ 	2+2+4+2+2+2
 *		GESTION COPPER
 ***************************************************************
 EcTCop		equ  	1024
-		Rl	EcCop,1
+		Rl	EcCop,1 			; Screens for copper list.
 		Rw	Cop255,1
 		Rl	CopLogic,1
 		Rl	CopPhysic,1
-		Rw	CopON,1
+		Rw	CopON,1 			; data to handle enabling/disabling AMOS auto copper list support
 		Rl	CopPos,1
 		Rl	CopLong,1
 

@@ -8939,9 +8939,10 @@ ScOo1:	cmp.l	d1,d6
 	beq.s	ScOo2
 	lsl.w	#1,d1
 	addq.w	#1,d4
-	cmp.w	#7,d4
+	cmp.w	#EcMaxPlans+1,d4 		; 2019.11.05 Updated to handle directly max amount of planes allowed (original was = #7)
 	bcs.s	ScOo1
-IlNCo:	moveq	#5,d0			* Illegal number of colours
+IlNCo:
+	moveq	#5,d0			* Illegal number of colours
 	Rbra	L_EcWiErr
 ScOo2:	move.l	(a3)+,d3		* TY
 	move.l	(a3)+,d2		* TX

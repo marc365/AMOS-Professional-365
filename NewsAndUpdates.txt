@@ -1,14 +1,34 @@
 Here is an history of the changes I've done to the original AMOSProfessional source code forked from marc365 repository :
+To Do :
+Add a new command to select 2nd dual playfield screen color shifting.
+5773 -> Start the copper update/creation process.
+
 
 ********************************************************************
-2019.11.03-15.23 : Original updates
+2019.11.05 : Branch : Dual-Playfield
 
-- Restart from AMOSProfessional original source code from marc365 repository.
-- Updated +lib.s from my AMOSCommenter JAVA tool.
-- Added +lib_mList.s containing all the AMOS commands definition from +lib.s
-- Updated extensions +Compact.s, +IO_Ports.s, +Music.s, and +Request.s from my AMOSCommenter JAVA Tool.
-- Added +Compact_mList.s, +IO_Ports_mList.s, +Music_mList.s and +Request_mList.s containing the plugin AMOS commands definitions
-- Updated my own extensions/Personal-1.1a library to be compilable like others files.
+- Updated +W.s/EcCopHo method to handle bplCon3 value from Screen structure data instead of a direct value.
+- Updated +W.s/Duale method to insert color shifting value inside the BplCon3 screen structure data.
+- Updated +W.s/EcCree method to setup the default color shifting value a screen will force to use different color palette.
+- Updated +Lib.s/L_InScreenOpen to uses #EcMaxPlans+1 instead of direct #7 value.
+- Added comments to +W.s/EcOffs (Screen Offset)
+- Added comments to +W.s/EcView (Screen display)
+- Added comments to +Equ.s concerning Screen strcture offsets/display data
+- Created +W.s/CLPopulate reference to point to a particular position in the Copper refresh (where the copper list will be populated)
+- Added comments to +W.s/CLPopulate to explain how copper list are populated with screens, rainbows, etc.
+- Updated +Equ.s with BplCon3gl rs.w for default BplCon3 values concerning Sprites & special registers values.
+- Updated +W.s/EcCopBa method to reset BplCon3 (be sure that Dual Playfield are correctly closed and palette to 0.)
+- Added many comments to +W.s/EcForceCop method (unfinished)
+- Updates +W.s/EcCree to handle 8 bitplanes with BPU3 field in standard screens (non DPF)
+- Updated DualPlayfields AMOS sample to contains WAIT VBL calls after "Screen Display" calls (as they require this to work)
+
+********************************************************************
+2019.11.04-22:30 : Branch : Dual-Playfield
+
+- Updated +W.s/EcCopHo method by inserting BplCon3 register to allow 2nd Dual Playfield Screen to use colors 16-31 [Temporar change]
+- execute aData to update Editor_Config
+- execute aw to update Amos.library
+- Updated the new DualPlayfield scrolling test demo.
 
 ********************************************************************
 2019.11.03-23:42 : New Branch Dual-Playfield
@@ -20,11 +40,13 @@ Here is an history of the changes I've done to the original AMOSProfessional sou
 - execute aData to update Editor_Config
 - execute aw to update Amos.library
 
-
 ********************************************************************
-2019.11.04-22:30 : New Branch Dual-Playfield
+2019.11.03-15.23 : Original updates
 
-- Updated +W.s/EcCopHo method by inserting BplCon3 register to allow 2nd Dual Playfield Screen to use colors 16-31 [Temporar change]
-- execute aData to update Editor_Config
-- execute aw to update Amos.library
-- Updated the new DualPlayfield scrolling test demo.
+- Restart from AMOSProfessional original source code from marc365 repository.
+- Updated +lib.s from my AMOSCommenter JAVA tool.
+- Added +lib_mList.s containing all the AMOS commands definition from +lib.s
+- Updated extensions +Compact.s, +IO_Ports.s, +Music.s, and +Request.s from my AMOSCommenter JAVA Tool.
+- Added +Compact_mList.s, +IO_Ports_mList.s, +Music_mList.s and +Request_mList.s containing the plugin AMOS commands definitions
+- Updated my own extensions/Personal-1.1a library to be compilable like others files.
+

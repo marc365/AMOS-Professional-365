@@ -29,7 +29,7 @@ EZFlag		equ 	0
 
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Version	MACRO
-	dc.b	0,"$VER: 2.00",0
+	dc.b	0,"$VER: 2.01",0
 	even
 	ENDM
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,7 +39,7 @@ WDebut	bra	Startall	Cold start
 	dc.l	L_Trappe	Length of data zone
 	bra	IceStart	Access of System functions
 	bra	IceEnd		Stop access of system functions
-	dc.b	"P110"		Version Pro 1.10
+	dc.b	"P111"		Version Pro 1.11 // Updated as new commands will appear with development.
 
 BugBug	movem.l	d0-d2/a0-a2,-(sp)
 .Ll	move.w	#$FF0,$DFF180
@@ -526,7 +526,7 @@ SbColN:	move.l	BbNext(a1),d0
 	bra	BbColX
 
 ***********************************************************
-*	=COLL(n) ramene la collision d'un bob/sprite
+*	=COLL(n) ramene la collision d''un bob/sprite
 GetCol:	lea	T_TColl(a5),a0
 	tst.l	d1
 	bmi.s	GetC2
@@ -627,7 +627,7 @@ GetBob:	movem.l	d1-d7/a0-a6,-(sp)
 	move.w	d6,d1
 	mulu	d5,d1
 	mulu	d7,d1
-******* Efface l'ancien???
+******* Efface l''ancien???
 	move.l	(a2),d0
 	beq.s	GtBb1
 	move.l	d0,a1			* Efface le bob
@@ -742,7 +742,7 @@ GtBc3:	bsr	BlitWait
 	dbra	d0,GtBc2
 	dbra	d7,GtBc1
 
-******* FINI! Pas d'erreur
+******* FINI! Pas d''erreur
 GtBbX:	bsr	DOwnBlit
 	movem.l	(sp)+,d1-d7/a0-a6
 	moveq	#0,d0
@@ -823,7 +823,7 @@ TPatch
 	move.w	d1,d0
 	and.w	#$C000,d0
 	bsr	Retourne
-* Parametres de l'ecran courant
+* Parametres de l''ecran courant
 	move.l	T_EcCourant(a5),a0	* Calculssss
 	move.w	EcClipX0(a0),d0
 	and.w	#$FFF0,d0
@@ -845,7 +845,7 @@ Patch1	move.w	d4,BbACon(a4)
 	bset	#31,d3			* Flag PAS POINT CHAUD!
 	bsr	BobCalc
 	bne.s	PatchO
-* Gestion de l'autoback
+* Gestion de l''autoback
 	move.l	T_EcCourant(a5),a0
 	tst.w	EcAuto(a0)
 	beq.s	Patch2
@@ -860,7 +860,7 @@ Patch2	bsr	PBobA
 PatchO	moveq	#0,d0
 	movem.l	(sp)+,d1-d7/a0-a6
 	rts
-* Appelle la routine d'affichage
+* Appelle la routine d''affichage
 PBobA	lea	Circuits,a6
 	bsr	OwnBlit
 	move.w	BbASize(a4),d2
@@ -879,7 +879,7 @@ PBobA	lea	Circuits,a6
 	bra	DOwnBlit
 
 ***********************************************************
-*	CREATION / CHANGEMENT D'UN BOB
+*	CREATION / CHANGEMENT D''UN BOB
 *	D1= Numero du CANAL
 *	D2= X
 *	D3= Y
@@ -892,7 +892,7 @@ BobSet:
 	cmp.w	T_BbMax(a5),d1
 	bcc	CreBbS
 
-******* Ecris sur l'ancienne - SI PRESENT -
+******* Ecris sur l''ancienne - SI PRESENT -
 	move.l	a1,a0
 	move.l	T_BbDeb(a5),d0
 	beq.s	CreBb1
@@ -1095,7 +1095,7 @@ TPri3	moveq	#0,d0
 	rts
 
 ***********************************************************
-*	ENLEVE LES BOBS D'UN ECRAN!
+*	ENLEVE LES BOBS D''UN ECRAN!
 *	A0= Ecran
 BbEcOff:
 ********
@@ -1123,7 +1123,7 @@ BbEO3:	move.l	BbNext(a1),d0
 DelBob:	movem.l	d0-d7/a0-a2,-(sp)
 	move.l	a1,a2
 
-* Enleve les buffers de decor, s'il y en a!
+* Enleve les buffers de decor, s''il y en a!
 	moveq	#0,d0
 	move.w	BbDLBuf(a2),d0
 	beq.s	DBo1
@@ -1136,7 +1136,7 @@ DBo1:	moveq	#0,d0
 	lsl.l	#1,d0
 	move.l	BbDABuf+Decor(a2),a1
 	bsr	FreeMm
-* Enleve le canal d'animation
+* Enleve le canal d''animation
 DBo2:	lea	BbAct(a2),a0	
 	bsr	DAdAMAL
 * Enleve le bob
@@ -1159,7 +1159,7 @@ DBo5:	move.l	a2,a1
 	rts
 
 ***********************************************************
-*	ADRESSE D'UN BOB: D1= Numero!
+*	ADRESSE D''UN BOB: D1= Numero!
 BobAd:
 *******
 	move.l	T_BbDeb(a5),d0
@@ -1202,13 +1202,13 @@ BbS0:	move.l	d0,a4
 	move.w	BbDCur1(a4),BbDCur2(a4)
 	move.w	d4,BbDCur1(a4)
 * Bob modifie?
-	tst.w	BbECpt(a4)		* Si PUT BOB---> Pas d'act!
+	tst.w	BbECpt(a4)		* Si PUT BOB---> Pas d''act!
 	bne.s	BbSDec
 	tst.b	BbAct(a4)
 	beq	BbSDec
 	bmi	BbDel
 	clr.b	BbAct(a4)
-	move.w	BbI(a4),d2		* Pointe l'image
+	move.w	BbI(a4),d2		* Pointe l''image
 	moveq	#0,d3
 	move.w	d2,d3
 	and.w	#$C000,d3
@@ -1253,7 +1253,7 @@ BbSDec:	move.w	BbDecor(a4),d0
 	lsl.l	#1,d0
 	cmp.l	d0,d1			* Taille suffisante?
 	bls.s	BbD5
-* Efface l'ancien buffer?
+* Efface l''ancien buffer?
 	move.l	BbDABuf(a2),a1
 	bsr	FreeMm
 	clr.l	BbDABuf(a2)
@@ -1641,7 +1641,7 @@ RbEnd	rts
 *	A1/D0
 RevTrap	move.l	a1,a0
 	move.l	d1,d0
-******* Retourne un sprite, s'il faut.
+******* Retourne un sprite, s''il faut.
 *	A0---> Descripteur
 *	D0---> Flags seuls
 Retourne
@@ -2608,7 +2608,7 @@ ScSw1:	cmp.w	SwapL-2(a0),d0		* Screen already swapped!
 ScSw2:	move.w	d0,SwapL-2(a0)
 	lsl.w	#6,d0
 	add.w	#CopL1*EcMax,d0
-	lea	T_CopMark(a5),a1	* Garde l'adresse pour la fin!
+	lea	T_CopMark(a5),a1	* Garde l''adresse pour la fin!
 	add.w	d0,a1
 	move.l	a0,a6
 	addq.l	#4,a0
@@ -2661,7 +2661,7 @@ ScSwS2:	move.l	d0,a4
 	move.w	d0,SwapL-2(a0)
 	lsl.w	#6,d0
 	add.w	#CopL1*EcMax,d0
-	lea	T_CopMark(a5),a2	* Garde l'adresse pour la fin!
+	lea	T_CopMark(a5),a2	* Garde l''adresse pour la fin!
 	add.w	d0,a2
 	move.l	a2,d7
 	move.l	a0,a6
@@ -2723,7 +2723,7 @@ EcCT1:	move.b	(a0)+,(a1)+
 	clr.l	EcPat(a4)
 * Pas de fonte
 	clr.w	EcFontFlag(a4)
-* Cree l'ecran dans les tables
+* Cree l''ecran dans les tables
 	bset	#BitClone,EcFlags(a4)
 	move.l	(sp)+,d1
 	move.w	d1,EcNumber(a4)
@@ -2772,17 +2772,19 @@ EcDb2:	move.l	(a0)+,(a1)+
 	bsr	TAbk2
 	bsr	TAbk3
 	bra	EcOk
-* Erreur! Efface l'ecran entier
+* Erreur! Efface l''ecran entier
 EcDbE	moveq	#0,d1
 	move.w	EcNumber(a4),d1
 	bsr	EcDel
 	bra	EcE1
 
 	IFEQ	EZFlag
-********************************************* Dual Playfield D1, D2 / 2019.11.03 Update
+********************************************* Dual Playfield D1, D2 / 2019.11.01-03 Update
+* This method will check both screen involved in a Dual Playfield to see if everything is Ok
+*  to enable Dual Playfield. I updates BplCon0 for both screens for later Copper List rebase/update
+* This method is directly called by the AMOS basic method "Dual Playfield A,B"
 *    D1= Ecran 1
 *    D2= Ecran 2
-	dc.b	"AmiDARK_Duale", 0
 Duale:    movem.l    d1-d7/a1-a6,-(sp)
 
     cmp.w    d1,d2             ; Compare D1 & D2 Screens
@@ -2843,6 +2845,18 @@ continueDPF:                ; 2019.11.03 End of upgrade to handle BPU3 for 8 Bit
     and.w    #%111,d0
     lsl.w    #3,d0
     or.w    d0,EcCon2(a0)
+
+    ; 2019.11.05 Update for clean BplCon3 support
+    move.w 	EcCon3(a0),d0
+    and.w	#%1110001111111111,d0 ; To modify only bytes for PF2OF0-PF2OF2 fields
+    move.w  dpf2cshift(a0),d3     ; Read current parameters for colors shifting.
+    and.w   #%111,d3               ; Values can be 0-7
+    lsl.w   #8,d3                 ; Shift bytes by 10 to the left to read PF2OF0-PF2OF2 fields
+    lsl.w 	#2,d3                 ; Color shifting can be : 0, 2, 4, 8, 16, 32, 64, 128
+    or.w    d3,d0 					; Send color shifting into EcCon3 Save
+    move.w 	d0,EcCon3(a0)			; Send color shifting changes to EcCon3 register in Screen structure
+    ; 2019.11.05 End of Update for clean BplCon3 support concerning Dual Playfield Field 2 color shifting.
+
     and.w    #%111111,EcCon2(a0)
     bset    #BitHide,EcFlags(a1)    * Cache le deuxieme
     move.w    d7,EcDual(a0)        * Met les flags!
@@ -2879,7 +2893,7 @@ EcDup2:	move.w	d1,EcCon2(a0)
 	bra	EcOtoV
 	ENDC
 
-******* Creation de l'ecran
+******* Creation de l''ecran
 *	D1= #
 *	D2= TX
 *	D3= TY
@@ -2909,7 +2923,7 @@ EcCree:	movem.l	d1-d7/a1-a6,-(sp)
 ReEc:	move.l	d1,-(sp)
 	bsr	EcGet
 	beq.s	EcCr0
-; Efface l'ecran deja réserve
+; Efface l''ecran deja réserve
 	move.l	(sp)+,d1
 	bsr	EcDel
 	bra.s	ReEc
@@ -2928,7 +2942,7 @@ EcCr0:	move.l	#EcLong,d0
 	lea	EcPal(a4),a2
 EcCr4:	move.w	(a1)+,(a2)+
 	dbra	d0,EcCr4
-; Taille de l'ecran
+; Taille de l''ecran
 ; ~~~~~~~~~~~~~~~~~
 	move.w	d2,EcTx(a4)
 	move.w	d2,EcTxM(a4)
@@ -2943,14 +2957,35 @@ EcCr4:	move.w	(a1)+,(a2)+
 	move.l	d7,EcTPlan(a4)
 	move.w	d4,EcNPlan(a4)
 
-; 	Parametres d'affichage -1-
+	; 2019.11.05 Setup for default color shifting in case this screen can be 1st screen in eventual DPF mode.
+;	cmp.w 	#3,d4 					; if this screen uses more than 4 bitplanes, it can't be used for DPF
+;	bhi     shift16c			; Then we jump directly to set value 0 for eventual color shifting
+	move.w 	#%11,dpf2cshift(a4)
+;	bra 	endCSsetup
+;shift16c:
+;	move.w 	#%100,dpf2cshift(a4)
+;	bra endCSsetup
+endCSsetup:
+	; 2019.11.05 End of setup for default color shifting in case this screen can be 1st screen in eventual DPF mode.
+
+; 	Parametres d''affichage -1-
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	T_GfxBase(a5),a0	EcCon0
 	move.w	164(a0),d0
 	and.w	#%0000001111111011,d0
 	move.w	d4,d1
-	lsl.w	#8,d1
-	lsl.w	#4,d1
+	; 2019.11.05 Update to handle 8 bitplanes in BplCon0 in normal screen (not dual playfield)
+;	lsl.w	#8,d1 				; Original method to handle 0-6 Bitplanes ( BPU0-2)
+;	lsl.w	#4,d1 				;
+    cmp.w    #8,d1             ; If 8 bitplanes are requested, we directly set byte #4 of d2
+    blt     sevenOrLowerDPFx ; Less than 8 bitplanes, jump to classical way of shifting bytes to set BPU0-2
+heightBitPlanesDPFx:
+    move.w #16,d1             ; Set byte 04 ( BPU3 ) to 1 and others (BPU0-2) to 0 to define 8 bitplanes
+    bra.s continueDPFx
+sevenOrLowerDPFx:            ; if less thab 8 bitplanes are requested, we use the default Amos calculation as it fit
+    lsl.w    #8,d1           ;  in BPU0-1-2 bytes 12-13-14 in BPLCON0 16 bits register
+    lsl.w    #4,d1             ; As lsl.w handle max of 8, to shift by 12 AMOS must to 2 Lsl.w calls.
+continueDPFx:                ; 2019.11.05 End of upgrade to handle BPU3 for 8 Bitplanes mode.
 	or.w	d0,d1
 	or.w	d1,d5
 	move.w	d5,EcCon0(a4)
@@ -2987,7 +3022,7 @@ EcCra:	move.l	d7,d0
 	addq.l	#4,d2
 	dbra	d6,EcCra
 
-;	Ouverture d'un rastport intuition REEL
+;	Ouverture d''un rastport intuition REEL
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	T_LayBase(a5),a6		
 	jsr	_LVONewLayerInfo(a6)		Creation de LayerInfo
@@ -3020,20 +3055,20 @@ EcCra:	move.l	d7,d0
 	clr.l	EcAZones(a4)
 	clr.w	EcNZones(a4)
 
-;	Additionne l'ecran dans les tables
+;	Additionne l''ecran dans les tables
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	(sp),d1
 	lea	Circuits,a6
 	bsr	EcGet
 	move.l	a4,(a0)			Branche
 	move.w	d1,EcNumber(a4)		Un numero!
-	move.l	a4,a0			Devient l'ecran courant
+	move.l	a4,a0			Devient l''ecran courant
 	bsr	Ec_Active
 	move.l	(sp),d1
 	bsr	EcFirst			Et devant les autres
 	bsr	InterPlus		Si entrelace
 
-; 	Parametres d'affichage -2-
+; 	Parametres d''affichage -2-
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.w	T_DefWX(a5),d2		Affichage par defaut
 	move.w	T_DefWY(a5),d3
@@ -3115,56 +3150,77 @@ EcCr8	ext.l	d2
 	move.w	EcTx(a4),EcClipX1(a4)
 	move.w	EcTy(a4),EcClipY1(a4)
 
-; Pas d'erreur
+; Pas d''erreur
 ; ~~~~~~~~~~~~~
 	addq.l	#4,sp
-	move.l	T_EcCourant(a5),a0	* Ramene l'adresse definition
-; Doit recalculer les ecrans
+	move.l	T_EcCourant(a5),a0	* Ramene l''adresse definition
+
+
+; ******************************************************************* Doit recalculer les ecrans
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~
 EcTout:	addq.w	#1,T_EcYAct(a5)
 ; Doit actualiser ECRANS
 ; ~~~~~~~~~~~~~~~~~~~~~~
-EcOtoV:	bset	#BitEcrans,T_Actualise(a5)
-EcOk:	movem.l	(sp)+,d1-d7/a1-a6
+EcOtoV:
+	bset	#BitEcrans,T_Actualise(a5)						; Force la réactualisation des écrans.
+EcOk:
+	movem.l	(sp)+,d1-d7/a1-a6
 	moveq	#0,d0
 	rts
 
-;	Erreur creation d'un ecran
+;	Erreur creation d''un ecran
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EcM1:	move.l	(sp),d1
+EcM1:
+	move.l	(sp),d1
 	bsr	EcDel
 	bra.s	EcEE1
-EcMdd	bsr	EcDDel			* Efface la structure
-EcEE1	addq.l	#4,sp
-EcE1:	moveq	#1,d0
+EcMdd:
+	bsr	EcDDel			* Efface la structure
+EcEE1:
+	addq.l	#4,sp
+EcE1:
+	moveq	#1,d0
 	bra.s	EcOut
-EcE4:	moveq	#4,d0			* Sans effacement
+EcE4:
+	moveq	#4,d0			* Sans effacement
 	bra.s	EcOut
-EcE3:	moveq	#3,d0			* 3 : SCREEN NOT OPENED
+EcE3:
+	moveq	#3,d0			* 3 : SCREEN NOT OPENED
 	bra.s	EcOut
-EcE25:	moveq	#25,d0			* 25: Screen already double buffered
+EcE25:
+	moveq	#25,d0			* 25: Screen already double buffered
 	bra.s	EcOut
-EcE26:	moveq	#26,d0			* Can't set dual-playfield
+EcE26:
+	moveq	#26,d0			* Can't set dual-playfield
 	bra.s	EcOut
-EcE27:	moveq	#27,d0			* Screen not dual playfield
+EcE27:
+	moveq	#27,d0			* Screen not dual playfield
 	bra.s	EcOut
-; 2019.11.03 Aded 6 new Error messages for Dual PLayfield command
-EcE160:	move.l	#160,d0			<first and second screen are the same> 
+	; 2019.11.03 Aded 6 new Error messages for Dual PLayfield command
+EcE160:
+	move.l	#160,d0			<first and second screen are the same> 
 	bra.s	EcOut
-EcE161:	move.l	#161,d0			<First entered screen is already in dual playfield mode>
+EcE161:
+	move.l	#161,d0			<First entered screen is already in dual playfield mode>
 	bra.s	EcOut
-EcE162:	move.l	#162,d0			<Second entered screen is already in dual playfield mode>
+EcE162:
+	move.l	#162,d0			<Second entered screen is already in dual playfield mode>
 	bra.s	EcOut
-EcE163:	move.l	#163,d0			<First screen contains more than 4 bitplanes>
+EcE163:
+	move.l	#163,d0			<First screen contains more than 4 bitplanes>
 	bra.s	EcOut
-EcE164:	move.l	#164,d0			<Second screen contains more than 4 bitplanes>
+EcE164:
+	move.l	#164,d0			<Second screen contains more than 4 bitplanes>
 	bra.s	EcOut
-EcE165:	move.l	#165,d0			<Unknown error when trying to set dual playfield mode> 
-	bra.s	EcOut
-; 2019.11.03 End of 6 new error messages for Dual Playfield command
-EcE2:	moveq	#2,d0			* 2 : SCREEN ALREADY OPENED
+EcE165:
+	move.l	#165,d0			<Unknown error when trying to set dual playfield mode> 
+	bra.s	EcOut               ; I will update it later when I''ll get the error and understand what provoke it.
+	; 2019.11.03 End of 6 new error messages for Dual Playfield command
+EcE2:
+	moveq	#2,d0			* 2 : SCREEN ALREADY OPENED
 * Sortie erreur ecrans
-EcOut:	movem.l	(sp)+,d1-d7/a1-a6
+EcOut:
+	movem.l	(sp)+,d1-d7/a1-a6
 	tst.l	d0
 	rts
 
@@ -3190,7 +3246,7 @@ IntP0	tst.l	(a0)
 	movem.l	(sp)+,d0/a0/a1
 IntPls	rts
 
-;	Sauve les contenu du rasport de l'ecran courant
+;	Sauve les contenu du rasport de l''ecran courant
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ec_Push	movem.l	a0-a1/d0,-(sp)
 	tst.w	T_PaPeek(a5)
@@ -3223,7 +3279,7 @@ Ec_Push	movem.l	a0-a1/d0,-(sp)
 .Pasave	movem.l	(sp)+,a0-a1/d0
 	rts
 	
-;	Restore les modes graphiques de l'ecran courant
+;	Restore les modes graphiques de l''ecran courant
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ec_Pull	movem.l	a0-a2/d0-d3,-(sp)
 	tst.w	T_PaPeek(a5)
@@ -3265,39 +3321,39 @@ Ec_Pull	movem.l	a0-a2/d0-d3,-(sp)
 .Papull	movem.l	(sp)+,a0-a2/d0-d3
 	rts
 
-******* VIEW: change le point de vue d'un ecran
-*	D1= #
-*	D2= WX
-*	D3= WY
-*	D4= WTx
-* 	D5= WTy
+******* VIEW: change le point de vue d''un ecran
+*	D1= ID    ; The current screen ID.
+*	D2= WX    ; Define the X coordinate of the Screen in the current copper list display
+*	D3= WY    ; Define the Y coordinate of the Screen in the current copper list display
+*	D4= WTx   ; Define the 'Width' in pixels, ot the screen view in the current copper list display
+* 	D5= WTy   ; Define the 'Height' in pixels, ot the screen view in the current copper list display
 EcView:	movem.l	d1-d7/a1-a6,-(sp)
-	bsr	EcGet
-	beq	EcE3
-	move.l	d0,a4
+	bsr	EcGet	; Get Screen structure pointer into -> D0
+	beq	EcE3 	; If screen does not exist -> Jump to screen error E3
+	move.l	d0,a4 		; A4 = D0 = current screen structure.
 * WX
 	cmp.l	#EntNul,d2
 	beq.s	EcV2
-	move.w	d2,EcAWX(a4)
+	move.w	d2,EcAWX(a4) 	; Update X Screen position on view
 	bset	#1,EcAW(a4)
 * WTX
 EcV2:	cmp.l	#EntNul,d4
 	beq.s	EcV3
-	move.w	d4,EcAWTx(a4)
+	move.w	d4,EcAWTx(a4)	; Update Y Screen position on view
 	bset	#1,EcAWT(a4)
 * WY
 EcV3:	cmp.l	#EntNul,d3
 	beq.s	EcV4
-	move.w	d3,EcAWY(a4)
+	move.w	d3,EcAWY(a4)	; Update Screen Width on view
 	bset	#2,EcAW(a4)
 * WTy
 EcV4:	cmp.l	#EntNul,d5
 	beq	EcOtoV
-	move.w	d5,EcAWTy(a4)
+	move.w	d5,EcAWTy(a4)	; Update screen height on view
 	bset	#2,EcAWT(a4)
-	bra	EcOtoV
+	bra	EcOtoV				; Force screen recalculation.
 
-******* Fait passer l'ecran D1 en premier
+******* Fait passer l''ecran D1 en premier
 EcFirst:movem.l	d1-d7/a1-a6,-(sp)
 	bsr	EcGet
 	beq	EcE3
@@ -3317,7 +3373,7 @@ EcF2:	addq.l	#4,a1
 	bne.s	EcF1
 EcF3:	bra	EcTout
 
-******* Fait passer l'ecran D1 en dernier
+******* Fait passer l''ecran D1 en dernier
 EcLast:	movem.l	d1-d7/a1-a6,-(sp)
 	bsr	EcGet
 	beq	EcE3
@@ -3341,7 +3397,8 @@ EcL2:	move.l	d0,(a0)+
 EcDDel	movem.l	d1-d7/a1-a6,-(sp)
 	bra.s	EcDD
 
-;	Arret d'un ecran D1
+; *********************************************************************** Close a screen
+;	Arret d''un ecran D1
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~
 EcDel:	movem.l	d1-d7/a1-a6,-(sp)
 	bsr	EcGet
@@ -3404,7 +3461,7 @@ EcDD:	move.l	EcAZones(a4),d0		Les zones
 	bsr	BbEcOff
 
 	move.l	T_EcCourant(a5),d3	
-	move.l	a4,a0			Active l'ecran
+	move.l	a4,a0			Active l''ecran
 	bsr	Ec_Active		Pour les effacements
 	bsr	WiDelA			Toutes les fenetres
 	bsr	FlStop			Animations de couleur
@@ -3426,7 +3483,7 @@ EcDc2:	move.l	(a0)+,d3
 	cmp.w	#8,EcNumber(a1)
 	bcc.s	EcDc2
 	bra.s	EcD3
-EcDc3	lea	T_EcPri(a5),a0		2ieme n'importe!
+EcDc3	lea	T_EcPri(a5),a0		2ieme n''importe!
 EcDc4	move.l	(a0)+,d3
 	bmi.s	EcDc5
 	move.l	d3,a1
@@ -3546,12 +3603,13 @@ EcOffs:	bsr	EcGet
 	move.l	d0,a0
 	cmp.l	#EntNul,d2
 	beq.s	EcO1
-	move.w	d2,EcAVX(a0)
-	bset	#1,EcAV(a0)
-EcO1:	cmp.l	#EntNul,d3
+	move.w	d2,EcAVX(a0)     ; Define X Screen offset (in pixels) from the Left coordinate on X axis
+	bset	#1,EcAV(a0)      ; Bit #1 -> Refresh screen X offset
+EcO1:
+	cmp.l	#EntNul,d3
 	beq.s	EcO2
-	move.w	d3,EcAVY(a0)
-	bset	#2,EcAV(a0)
+	move.w	d3,EcAVY(a0)     ; Define Y screen offset (in pixels) from the top coordinate on Y axis
+	bset	#2,EcAV(a0)      ; Bit #2 -> Refresh screen Y offset
 EcO2:	bra.s	EcTu
 
 ******* HIDE/SHOW ecran D1,d2
@@ -3570,7 +3628,7 @@ EcTu:	bset	#BitEcrans,T_Actualise(a5)
 	rts
 
 ***********************************************************
-*	GESTION DE L'AUTOBACK!
+*	GESTION DE L''AUTOBACK!
 ******* AUTOBACK 1
 TAbk1:	movem.l	a3-a6,-(sp)
 	move.l	W_Base(pc),a5
@@ -3685,7 +3743,7 @@ Cls5i:	cmp.w	d2,d4
 	bls	Cls5x
 	sub.w	d3,d5
 	bls	Cls5x
-* Gestion de l'autoback!
+* Gestion de l''autoback!
 	tst.w	EcAuto(a5)
 	beq.s	Cls5W
 	movem.l	d0-d7/a0-a2,-(sp)
@@ -3702,7 +3760,7 @@ Cls5X:	movem.l	(sp)+,d1-d7/a0/a1/a5/a6
 	moveq	#0,d0
 	rts
 
-* Routine d'effacement!
+* Routine d''effacement!
 ClsR:	lea	Circuits,a6
 	bsr	OwnBlit
 	lea	MCls(pc),a0		* Masques
@@ -3760,7 +3818,8 @@ Cls5m:	dbra	d7,Cls5k
 	bra	DOwnBlit
 
 ******* Table des masques
-MCls:	dc.w	%1111111111111111
+MCls:
+	dc.w	%1111111111111111
 	dc.w 	%0111111111111111
 	dc.w 	%0011111111111111
 	dc.w	%0001111111111111
@@ -3776,7 +3835,8 @@ MCls:	dc.w	%1111111111111111
 	dc.w	%0000000000000111
 	dc.w	%0000000000000011
 	dc.w	%0000000000000001
-MCls2:	dc.w	%0000000000000000
+MCls2:
+	dc.w	%0000000000000000
 	dc.w	%0000000000000001
 	dc.w	%0000000000000011
 	dc.w	%0000000000000111
@@ -3793,7 +3853,7 @@ MCls2:	dc.w	%0000000000000000
 	dc.w 	%0011111111111111
 	dc.w 	%0111111111111111
 
-;	Active l'ecran D1 - si pas ecran CLONE!
+;	Active l''ecran D1 - si pas ecran CLONE!
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 EcMarch	bsr	EcGet
 	beq.s	EcME
@@ -3808,7 +3868,7 @@ EcME	moveq	#3,d0
 EcCl	moveq	#4,d0
 	rts
 
-;	Routine d'activation de l'ecran A0
+;	Routine d''activation de l''ecran A0
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ec_Active
 	move.l	a0,T_EcCourant(a5)
@@ -3954,7 +4014,7 @@ TRDo2	cmp.l	d4,d5
 	move.w	d4,RnI(a0)
 	bset	#0,d0
 TRDo3	move.b	d0,RnAct(a0)
-* Force l'actualisation
+* Force l''actualisation
 RainAct	bset	#BitEcrans,T_Actualise(a5)
 	moveq	#0,d0
 	rts
@@ -3986,7 +4046,7 @@ TRVar	bsr	RainAd
 TRSet	
 	clr.l	T_AMALSp(a5)
 
-* Efface l'ancien
+* Efface l''ancien
 	bsr	RnDel
 	bne	RainEr
 
@@ -4183,7 +4243,7 @@ RnDel1	movem.l	(sp)+,a1
 	rts
 
 ***********************************************************
-*-----*	Ss programme ---> adresse d'un ecran
+*-----*	Ss programme ---> adresse d''un ecran
 EcGet:	move.w	d1,d0
 	lsl.w	#2,d0
 	lea	T_EcAdr(a5),a0
@@ -4261,7 +4321,7 @@ SClipE:	moveq	#1,d0
 	rts
       
 
-;	Change le clip rectangle dans l'ecran
+;	Change le clip rectangle dans l''ecran
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Ec_SetClip 
 	movem.l	d2-d4/a4/a6,-(sp)
@@ -4718,7 +4778,7 @@ PntDb1	rts
 
 ******* SET PATTERN ecran courant!
 SPat:	movem.l	d1-d7/a0-a6,-(sp)
-* Efface l'ancien
+* Efface l''ancien
 	bsr	EffPat
 * Met le nouveau
 	tst.w	d1
@@ -4794,7 +4854,7 @@ SPat8:	move.w	(a0),(a1)+
 	dbra	d3,SPat8
 SPat9:	add.w	d5,a2
 	dbra	d6,SPat7
-* Pas d'erreur
+* Pas d''erreur
 SPatX:	moveq	#0,d0
 SPatex:	movem.l	(sp)+,d1-d7/a0-a6
 	rts
@@ -4802,7 +4862,7 @@ SPatex:	movem.l	(sp)+,d1-d7/a0-a6
 SPatE:	moveq	#1,d0
 	bra.s	SPatex
 
-******* Efface le pattern de l'ecran courant
+******* Efface le pattern de l''ecran courant
 EffPat:	movem.l	a0-a1/d0-d2,-(sp)
 	move.l	T_EcCourant(a5),a0
 	move.l	EcPat(a0),d0
@@ -4927,7 +4987,7 @@ TSFont	bsr	CFont
 	move.w	(a0),d0
 	cmp.w	#1,d0
 	beq.s	.Ram
-; Fonte DISQUE: essaie d'abord en ROM, au cas zou
+; Fonte DISQUE: essaie d''abord en ROM, au cas zou
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	#502,d0			50 Fontes retournées
 	moveq	#1,d1			Fontes RAM
@@ -4967,7 +5027,7 @@ TSFont	bsr	CFont
 	jsr	OpenFont(a6)
 	tst.l	d0
 	beq.s	.Err
-; Change le rastport et marque l'ecran
+; Change le rastport et marque l''ecran
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .Suit	move.l	d0,a0
 	move.l	T_RastPort(a5),a1
@@ -4981,7 +5041,7 @@ TSFont	bsr	CFont
 .Err	moveq	#1,d0
 	bra.s	.X
 
-;	Ferme la fonte de l'ecran courant
+;	Ferme la fonte de l''ecran courant
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CFont:	movem.l	d0-d1/a0-a1/a6,-(sp)
 	move.l	T_EcCourant(a5),d0
@@ -5008,13 +5068,13 @@ CFont:	movem.l	d0-d1/a0-a1/a6,-(sp)
 *	MARCHE / ARRET de menus
 StaMn:	bsr	Ec_Push
 	move.w	#1,T_PaPeek(a5)
-* Branche d'autres zones
+* Branche d''autres zones
 	move.l	T_EcCourant(a5),a0
 	move.l	EcAZones(a0),T_SaveZo(a5)
 	move.w	EcNZones(a0),T_SaveNZo(a5)
 	clr.l	EcAZones(a0)
 	clr.w	EcNZones(a0)
-* Clippe tout l'ecran
+* Clippe tout l''ecran
 	moveq	#0,d0
 	moveq	#0,d1
 	move.w	EcTx(a0),d2
@@ -5103,7 +5163,7 @@ SliVer	movem.l	d1-d7/a4,-(sp)
 	bsr	SliDess
 	bra.s	SlOk
 
-******* Dessine l'interieur du slider
+******* Dessine l''interieur du slider
 *	D0= X
 *	D1= Y
 *	D2= X1
@@ -5280,7 +5340,7 @@ razfl1: clr.b 	(a0)+
         dbra 	d0,razfl1
         rts
 
-; FLASH OFF: arrete les flash de l'ecran active
+; FLASH OFF: arrete les flash de l''ecran active
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FlStop:	move.l	T_EcCourant(a5),d0
 	addq.b	#1,T_NbFlash+1(a5)	Inhibe les interruptions
@@ -5338,7 +5398,7 @@ flshi3: clr.b 	(a2)+
 	move.l	a0,a2
 	move.w	d1,(a2)+		;Numero de la couleur
 	move.w	#1,(a2)+		;Compteur
-        move.l 	d2,(a2)+    		;Adresse de l'ecran
+        move.l 	d2,(a2)+    		;Adresse de l''ecran
 	clr.w	(a2)+			;Position
         moveq 	#-1,d4
 flshi4: move.b	(a1)+,d0
@@ -5376,7 +5436,7 @@ flshi4: move.b	(a1)+,d0
         bra 	flshi4
 flshi5: tst.b 	d0            		;la chaine doit etre finie!
         bne 	flsynt
-        clr.l 	d0            		;pas d'erreur
+        clr.l 	d0            		;pas d''erreur
         bra 	flout
 ; Erreurs flash
 FlToo	moveq	#7,d0			* Too many flash
@@ -5444,7 +5504,7 @@ ShI:	clr.w	(a0)+
 	rts
 
 ***********************************************************
-*	Arret des shifts d'un ecran
+*	Arret des shifts d''un ecran
 ***********************************************************
 ShStop:	move.l	T_EcCourant(a5),d0
 	lea	T_TShift(a5),a0
@@ -5522,7 +5582,7 @@ FadeTOf	clr.w	T_FadeFlag(a5)
 	moveq	#0,d0
 	rts
 ***********************************************************
-*	ARRETE LE FADE DE L'ECRAN COURANT!
+*	ARRETE LE FADE DE L''ECRAN COURANT!
 FaStop	move.l	T_EcCourant(a5),a0
 	lea	EcPal(a0),a0
 	cmp.l	T_FadePal(a5),a0
@@ -5642,7 +5702,7 @@ FadA	tst.w	d4
 	or.w	d1,d0
 	lsl.w	#4,d0
 	or.w	d2,d0
-* Poke dans l'ecran
+* Poke dans l''ecran
 	move.w	d0,0(a1,d5.w)
 * Poke dans les listes copper
 	lsl.w	#1,d5
@@ -5686,7 +5746,7 @@ FlShL	move.w 	(a0)+,d0
 	sub.w 	#1,(a0)			* Compteur
         bne.s 	FlShN
 	lea	2(a0),a1
-	move.l	(a1)+,a2		* Adresse de l'ecran
+	move.l	(a1)+,a2		* Adresse de l''ecran
 	add.w	(a1)+,a1		* Pointe
 	move.w	(a1)+,(a0)
 	bne.s	Flsh4
@@ -5716,123 +5776,150 @@ FlShN	subq.b	#1,d7
 FlShX	subq.b	#1,T_NbFlash+1(a5)	Retabli les interruptions
 FlShXX	rts
 
-***********************************************************
-*	FABRIQUE LA COPPER LISTE A PARTIR DES ECRANS
+
+
+************************************************************	Create copper list from Screens
 *
 ******* ACTUALISATION DES ECRANS
-EcForceCop:				* Entree en forcant le calcul 
+EcForceCop:				; Enforce re-calculation for screens.
 	addq.w	#1,T_EcYAct(a5)
-EcCopper:				* Entree normale
+EcCopper:				; Normal entrance
 	movem.l	d1-d7/a1-a6,-(sp)
 
-* Suite actualisation
-	move.w	T_EcYAct(a5),d7
-	lea	T_EcPri(a5),a0
-	move.l	(a0)+,d0
-	beq	EcA6
-	bmi	EcActX
-EcAct0:	move.l	d0,a1
-* Changement en WY
-	move.b	EcAW(a1),d0
-	beq.s	EcA2
-	btst	#2,d0
-	beq.s	EcAct1
-	move.w	EcAWY(a1),d1
-	add.w	#EcYBase,d1
-	bpl.s	EcAa
-	moveq	#0,d1
-EcAa:	move.w	d1,EcWY(a1)
-	addq.w	#1,d7
-* Changement en WX
-EcAct1:	btst	#1,d0
-	beq.s	EcAct2
-	move.w	EcAWX(a1),d1
-	and.w	#$FFF0,d1
-	move.w	d1,EcWX(a1)
-* Changement en WTY
-EcAct2:	clr.w	EcAW(a1)
-EcA2:	move.b	EcAWT(a1),d0
-	beq.s	EcA4
-	btst	#2,d0
-	beq.s	EcAct3
-	move.w	EcAWTY(a1),d1
-	beq.s	EcAct3
-	cmp.w	EcTY(a1),d1
-	bcs.s	EcAc
-EcAg:	move.w	EcTY(a1),d1
-EcAc:	btst	#2,EcCon0+1(a1)
-	beq.s	EcA2a
-	lsr.w	#1,d1
-EcA2a:	move.w	d1,EcWTy(a1)
-	addq.w	#1,d7
-* Changement en WTX
-EcAct3:	btst	#1,d0
-	beq.s	EcAct4
-	move.w	EcAWTX(a1),d1
-	and.w	#$FFF0,d1
-	beq.s	EcAct4
-	move.w	EcTx(a1),d2
-	tst.w	EcCon0(a1)
-	bpl.s	EcAe
-	lsr.w	#1,d2
-EcAe:	cmp.w	d2,d1
-	bcs.s	EcAf
-	move.w	d2,d1
-EcAf:	move.w	d1,EcWTx(a1)
-* Changement en OY
-EcAct4:	clr.w	EcAWT(a1)
-EcA4:	move.b	EcAV(a1),d0
+; Continue actualisation
+	move.w	T_EcYAct(a5),d7 		; D7 = counter for Y cutting action on screens
+	lea	T_EcPri(a5),a0 				; A0 = Pointer to the 1st screen in the screen priorities list
+	move.l	(a0)+,d0 				; D0 = Current Screen structure address.
+	beq	EcA6 						; if D0 = 0 -> jump to EcA6.
+	bmi	EcActX						; If ScreenID < 0 -> Jump to ExActX (refresh its closure/end ?)
+EcAct0:								; If ScreenID > 0 refresh its opening
+	move.l	d0,a1 					; A1 = D0 = current Screen Structure
+
+******************** Check for changes on Y Position
+	move.b	EcAW(a1),d0 			; D0 = Current view update settings (flags)
+	beq.s	EcA2 					; if no changes -> Jump to EcAa
+	btst	#2,d0 					; Check if Y changes are required or not
+	beq.s	EcAct1 					; if no Y Changes -> Jump to ExAct1 ( Check for X position changes )
+	move.w	EcAWY(a1),d1 			; D1 = requested Y position
+	add.w	#EcYBase,d1 			; D1 + EcYBase
+	bpl.s	EcAa 					; if positif -> Jump to EcAa
+	moveq	#0,d1 					; if negative, clear D1.
+EcAa:
+	move.w	d1,EcWY(a1) 			; Save final Y position on EcWY register of current screen structure
+	addq.w	#1,d7 					; increase D7+1 counter
+
+******************** Check for changes on X Position
+EcAct1:
+	btst	#1,d0 					; Check if X changes are requires or not
+	beq.s	EcAct2					; If no changes on X -> Jump to ExAct2
+	move.w	EcAWX(a1),d1 			; D1 = Requested X Position
+	and.w	#$FFF0,d1				; Fix D1 to 4 bits alignment.
+	move.w	d1,EcWX(a1) 			; Save final X position on EcWX register of current screen structure
+EcAct2:
+	clr.w	EcAW(a1) 				; Once changes are done, we reset the current screen EcAW flags
+
+******************** Check on changes concerning screen Height display
+EcA2:
+	move.b	EcAWT(a1),d0 			; D0 = Current View sizes update settings (flags)
+	beq.s	EcA4 					; if no changes -> Jump to EcA4
+	btst	#2,d0 					; Check if Height Changes are required or not
+	beq.s	EcAct3 					; if no Height changes -> Jump to EcAct3 ( Check for Width changes )
+	move.w	EcAWTY(a1),d1 			; D1 = Requested Height
+	beq.s	EcAct3 					; If = 0 -> Jump to EcAct3 ( Check for Width changes )
+	cmp.w	EcTY(a1),d1 			; Compare current Height with new one
+	bcs.s	EcAc 					; 
+EcAg:
+	move.w	EcTY(a1),d1 			; D1 = Current screen display Height
+EcAc:
+	btst.b	#2,EcCon0+1(a1) 		; Check for Interlace mode                  // 2019.11.05 Check in .b mode to be sure default is not .w
+	beq.s	EcA2a					; If Not Interlaced -> Jump to EcA2a
+	lsr.w	#1,d1 					; if Interlaced : Height = Height / 2 
+EcA2a:
+	move.w	d1,EcWTy(a1)			; Save final Height D1 to EcWTy
+	addq.w	#1,d7 					; increase D7+1 counter
+
+******************** Check on changes concerning screen Width display
+EcAct3:
+	btst	#1,d0 					; Check if Width changes are required or not
+	beq.s	EcAct4 					; if no changes -> Jump to EcAct4
+	move.w	EcAWTX(a1),d1 			; D1 = Requested Width
+	and.w	#$FFF0,d1 				; Fix D1 on 4 bits alignment.
+	beq.s	EcAct4 					; if D1 = 0 -> Jump to EcAct4
+	move.w	EcTx(a1),d2 			; D2 = Current Screen display width
+	tst.w	EcCon0(a1)				; Check current screen BplCon0 save value
+	bpl.s	EcAe 					; if current Screen EcCon0 > 0 (not hires but lowres)  -> Jump to EcAe
+	lsr.w	#1,d2 					; if Hires D2 = D2 / 2
+EcAe:
+	cmp.w	d2,d1 					; Compare calculated Width with requested one
+	bcs.s	EcAf 					; if d2 > d1 jump EcAf
+	move.w	d2,d1 					; D1 = D2
+EcAf:
+	move.w	d1,EcWTx(a1) 			; Save final Width D1 to EcWTx
+
+EcAct4:
+	clr.w	EcAWT(a1)	 			; Once changes are done, we reset the current screen EcAWT flags
+
+******************** Check on changes concerning screen OY. ????
+EcA4:
+	move.b	EcAV(a1),d0
 	beq.s	EcA6
 	btst	#2,d0
 	beq.s	EcAct5
 	move.w	EcAVY(a1),EcVY(a1)
-* Changement en OX
-EcAct5:	btst	#1,d0
+
+******************** Check on changes concerning screen OX. ????
+EcAct5:
+	btst	#1,d0
 	beq.s	EcAct6
 	move.w	EcAVX(a1),EcVX(a1)
-* Encore un ecran?
-EcAct6:	clr.w	EcAV(a1)
-EcA6:	move.l	(a0)+,d0
-	beq.s	EcA6
-	bpl	EcAct0
+EcAct6:
+	clr.w	EcAV(a1)	 			; Once changes are done, we reset the current screen EcAV flags
+
+EcA6:
+	move.l	(a0)+,d0 				; Get next Screen pointer
+	beq.s	EcA6 					; If no more screen are requested -> Jump to EcA6
+	bpl	EcAct0 						; if some screens still un handled, loop to EcAct0 to handle next screen of the list
+
+
+******************** Are there some news Y/TY/Priorities to calculate ?
 EcActX:
+	move.l	T_EcCop(a5),a1 			; A1 = Copper list address.
 
-******* Calcul des nouvelles priorites?
-	move.l	T_EcCop(a5),a1
+	tst.w	d7 						; Check for changes in Y / TY / Priorities
+	beq	PaDecoup 					; if no changes are required -> Jump to PaDecoup (no screens cutting, no calculation)
+	clr.w	T_EcYAct(a5)			; Clear the T_EcYAct register
 
-;-----> Si pas de changement Y/TY/Priorite, pas de calcul
-	tst.w	d7
-	beq	PaDecoup
-	clr.w	T_EcYAct(a5)
-
-;-----> Decoupe les ecrans en tranches
-	lea	T_EcBuf(a5),a3
-	moveq	#0,d2		;Limite en haut
-MkD0:	lea	T_EcPri(a5),a2
-	move.w	#10000,d3		;Limite en bas
+******************** This part will cut screens in parts
+	lea	T_EcBuf(a5),a3 				; A3 = Screen buffers list
+	moveq	#0,d2 					; D2 = Current display raster Y Position
+MkD0:
+	lea	T_EcPri(a5),a2 				; A2 = Screen priority list pointer
+	move.w	#10000,d3				; D3 = Bottom Y Limit
 	moveq	#-1,d5
 	moveq	#0,d1
 
-MkD1:	addq.w	#4,d1
-	move.l	(a2)+,d0
-	bmi.s	MkD3
-	beq.s	MkD1
-	move.l	d0,a0
-	tst.b	EcFlags(a0)
-	bmi.s	MkD1
-	move.w	EcWY(a0),d0
-	subq.w	#1,d0
-	cmp.w	d2,d0
-	bls.s	MkD2
-	cmp.w	d3,d0
-	bcc.s	MkD2
-	move.w	d0,d3
-	move.w	d3,d4
-	add.w	EcWTy(a0),d4
-	addq.w	#1,d4
-	move.w	d1,d5
-	bra.s	MkD1
-MkD2:	add.w	EcWTy(a0),d0
+MkD1:
+	addq.w	#4,d1 					; D1+4
+	move.l	(a2)+,d0 				; Get next Screen Structure pointer from the screen priority list (A2)
+	bmi.s	MkD3 					; if Screen Pointer < 0 ( Negative ) -> Jump to MkD3 (list fully explored)
+	beq.s	MkD1 					; if Screen Pointer = 0 -> Jump to MkD1 ( no more screen to cut)
+	move.l	d0,a0 					; A0 = current Screen Structure Pointer
+	tst.b	EcFlags(a0) 			; Test current screen EcFlags
+	bmi.s	MkD1 					; if EcFlags(a0) <0 (Bit15=%1) then -> Loop to MkD1 to check next screen
+	move.w	EcWY(a0),d0 			; D0 = current screen Window Y position
+	subq.w	#1,d0 					; D0-1
+	cmp.w	d2,d0 					; Compare current screen Y Window position to current raster Y Position
+	bls.s	MkD2 					; if D2 <= D0 -> Jump to MkD2
+	cmp.w	d3,d0 					; Compare Maximum Raster Y Position (#10000 defined upper)
+	bcc.s	MkD2                    ; if d3 > d0 ( no C register c for carrying overtaking, restraint )
+	move.w	d0,d3 					; Update D3 Limits = D0 
+	move.w	d3,d4 					; Copy D3 -> D4
+	add.w	EcWTy(a0),d4 			; D4 + Current Screen Window TY
+	addq.w	#1,d4 					; D4+1
+	move.w	d1,d5 					; D5 = D1
+	bra.s	MkD1 					; Jump to MkD1
+MkD2:
+	add.w	EcWTy(a0),d0
 	addq.w	#1,d0
 	cmp.w	d2,d0
 	bls.s	MkD1
@@ -5843,13 +5930,14 @@ MkD2:	add.w	EcWTy(a0),d0
 	bset 	#15,d5
 	bra.s	MkD1
 
-MkD3:	cmp.w	#-1,d5			;Fini?
+MkD3:
+	cmp.w	#-1,d5			;Fini?
 	beq.s	MkD5
-	cmp.w	#EcYStrt-1,d2		;Passe le haut de l'ecran?
+	cmp.w	#EcYStrt-1,d2		;Passe le haut de l''ecran?
 	bcc.s	MkD3a
 	cmp.w	#EcYStrt-1,d3
 	bcs.s	MkD3a	
-	move.w	#EcYStrt-1,(a3)+	;Marque le haut de l'ecran
+	move.w	#EcYStrt-1,(a3)+	;Marque le haut de l''ecran
 	clr.w	(a3)+
 	move.w	#$8000,(a3)+
 	
@@ -5858,7 +5946,7 @@ MkD3b:
 	move.w	d3,(a3)+
 	move.w	d4,(a3)+
 	move.w	d5,(a3)+
-; Re-Explore la liste en cas d'egalite SI DEBUT DE FENETRE
+; Re-Explore la liste en cas d''egalite SI DEBUT DE FENETRE
 	and.w	#$7fff,d5
 	lea	T_EcPri(a5),a2
 	moveq	#0,d1
@@ -5900,7 +5988,7 @@ MkA1:	move.w	(a3),d0
 	move.w	2(a3),d1
 	move.w	4(a3),d2
 	bmi	MkA4
-; Debut d'une fenetre: doit-on l'afficher?
+; Debut d''une fenetre: doit-on l''afficher?
 	lea	T_EcBuf(a5),a0
 MkA2:	cmp.l	a3,a0
 	bcc	MkA8
@@ -5915,9 +6003,9 @@ MkA2:	cmp.l	a3,a0
 MkA3:	lea	6(a0),a0
 	bra.s	MkA2
 
-; Fin d'une fenetre: doit-on en reafficher une autre?	
+; Fin d''une fenetre: doit-on en reafficher une autre?	
 MkA4:	and.w	#$7FFF,d2
-	cmp.w	#$100,d2		;Si fin de l'ecran --> marque!
+	cmp.w	#$100,d2		;Si fin de l''ecran --> marque!
 	beq	MkA9a
 
 	clr.w	d3	
@@ -5979,19 +6067,19 @@ MkA9a:	cmp.w	#EcYStrt-1,d0
 ; Passe a une autre
 MkA10:	lea	6(a3),a3
 	bra	MkA1
-; C'est la fin
+; C''est la fin
 MkA11	neg.w	d1
 	move.w	d1,(a1)+
 * Marque la fin des ecrans
 MkAFin:	clr.w	(a1)
 
-*******	Fabrique la liste copper
-* 	Avec RAINBOW ou non!
-* Plus de screen swap
+*******	Populate the Copper list With/Without Rainbows
+CLPopulate:                                ; // 2019.11.05 Useless Reference added for faster search on copper update
+; No screen swap
 	clr.w	T_Cop255(a5)
 	clr.w	T_InterBit(a5)
 	clr.l	T_SwapList(a5)
-* Nettoie les marqueurs
+; Clean markers
 	clr.l	T_CopMark+CopL1*0(a5)
 	clr.l	T_CopMark+CopL1*0+64(a5)
 	clr.l	T_CopMark+CopL1*1(a5)
@@ -6026,36 +6114,39 @@ MkAFin:	clr.w	(a1)
 	clr.l	T_CopMark+CopL1*12+CopL2*7(a5)
 	clr.l	T_CopMark+CopL1*12+CopL2*8(a5)
 	clr.l	T_CopMark+CopL1*12+CopL2*9(a5)
-* Copper manuel???
-	tst.w	T_CopON(a5)
-	beq	PasCop
-* Liste copper logique
-	move.l	T_CopLogic(a5),a1
-	lea	64+4(a1),a1		* Saute les sprites
+
+	; *********************** Is AMOS Copper enabled/disabled ?
+	tst.w	T_CopON(a5)						; Check if AMOS Auto copperlist is enabled or disable
+	beq	PasCop                              ; if AMOS copper is disabled, no new copper calculation.
+
+	; **************** The Logic copper already contains sprites datas 
+	move.l	T_CopLogic(a5),a1 				; send LOGIC copper addres into -> A1 (Work is always donc on logic version, not physic one.)
+	lea	64+4(a1),a1		* Saute les sprites ; Move further in the copper list to not modify the Sprites area
 * Rainbow?
 	tst.w	T_RainBow(a5)
-	bne.s	CopBow
-******* Fabrique NORMAL
-MCop0	move.l	T_EcCop(a5),a2
-MCop1	move.w	(a2)+,d0
-	beq.s	MCopX
-	bmi.s	MCop2
-* Debut d'un ecran
-	move.l	(a2)+,a0
-	bsr	EcCopHo
-	bra.s	MCop1
-* Fin d'un ecran
-MCop2	neg.w	d0
-	bsr	EcCopBa
-	bra.s	MCop1
-* Fin de la liste
+	bne.s	CopBow							; If a RAINBOW is created/active, then jump to Rainbow update
+	; **************** Normal COPPER creation
+MCop0	move.l	T_EcCop(a5),a2 				; Send screen list adress into ->A2
+MCop1	move.w	(a2)+,d0 					; Send screen count ? into ->D0
+	beq.s	MCopX							; if =0 -> No screen -> Jump to MCopX
+	bmi.s	MCop2							; If ScreenID < 0 -> We must add the line that closes the screen (Y End)
+	; **************** A Screen is defined, we must insert it in the CopperList
+	move.l	(a2)+,a0 						; A0 = Current Screen structure adress
+	bsr	EcCopHo								; (Jump with come back) -> Insert the current screen definition line in the AMOS Copper List.
+	bra.s	MCop1							; Once the current screen was added in the copper list -> Loop to NCop1
+	; **************** Now we must insert the closure of a screen
+MCop2	neg.w	d0 							; D0 = 0-ScreenID so we neg it to get the true screen ID.
+	bsr	EcCopBa								; (Jump with come back) -> Method that wait the last line of the current screen and closes it
+	bra.s	MCop1							; Once screen was closed, we loop to NCop1 to check if another screen is defined
+	; **************** We have now reached the end of the Copper list.
 MCopX:	subq.l	#2,a2
 	cmp.l	T_EcCop(a5),a2
 	bne.s	.Skip
 	move.w	T_EcYMax(a5),d0
 	subq.w	#1,d0
 	bsr	EcCopBa	
-.Skip	move.l	#$FFFFFFFE,(a1)+
+.Skip
+	move.l	#$FFFFFFFE,(a1)+				; Insert the last line of the Copper List.
 *******	Swappe les listes
 MCopSw	move.l	T_CopLogic(a5),a0
 	move.l	T_CopPhysic(a5),a1
@@ -6130,7 +6221,7 @@ RainA5	lea	RainLong(a0),a0
 Rain1	move.w	(a2)+,d1
 	beq	Rain3
 	bmi.s	Rain2
-* Debut d'un ecran
+* Debut d''un ecran
 	bsr	Rain
 	move.l	(a2)+,a0
 	movem.l	d0/d3-d7,-(sp)
@@ -6162,7 +6253,7 @@ Rain1b	cmp.w	d0,d1
 	move.w	d5,(a1)+
 	move.w	(a3)+,(a1)+
 	bra.s	Rain1c
-* Fin d'un ecran
+* Fin d''un ecran
 Rain2	neg.w	d1
 	bsr	Rain
 	bsr	EcCopBa
@@ -6222,7 +6313,7 @@ RainNX	tst.l	d3
 	bmi.s	RainN0
 	tst.w	d3			* Si RIEN au dessus
 	bpl.s	Rain0a
-	move.w	#Color00,(a1)+		* Couleur 0 d'office!
+	move.w	#Color00,(a1)+		* Couleur 0 d''office!
 	move.w	T_EcFond(a5),(a1)+
 	bset	#31,d3
 	bra.s	RainN0
@@ -6255,7 +6346,7 @@ RainN4	lea	RainLong(a0),a0
 	beq	RainDX
 	move.l	d7,a0
 	move.w	(a0),d0
-* Debut d'un RainBow
+* Debut d''un RainBow
 RainN5	move.w	d0,d5
 	sub.w	(a0),d5
 	add.w	RnBase(a0),d5
@@ -6288,19 +6379,20 @@ RainD7	move.w	RnFY(a0),d7
 RainD9	bclr	#31,d3
 	bra	RainD0
 
-************************************************************************** Creation de la ligne COPPER de definition d'un ecran!
-*	D0=	Y ecran
-*	A0= 	Adresse de l'ecran
+************************************************************************** Creation de la ligne COPPER de definition d''un ecran!
+;   Insert the screen definition line in the AMOS Copper List.
+*	D0=	 Y Screen POS
+*	A0=  Screen structure address
 EcCopHo:
 * Decalage PHYSIQUE dans la fenetre
-	move.w	d0,d1
-	sub.w	EcWY(a0),d1
+	move.w	d0,d1             ; Move Screen Y Pos from D0 -> D1
+	sub.w	EcWY(a0),d1       ; Substract requires screen Y Pos to D1
 	addq.w	#1,d1
 	btst	#2,EcCon0+1(a0)		* par 2 si entrelace!
 	beq.s	MkC4a
 	lsl.w	#1,d1
 MkC4a	
-* Attend jusqu'a la ligne D0
+* Attend jusqu''a la ligne D0
 	move.w	d0,d2
 	sub.w	#EcYBase,d2
 	bsr	WaitD2
@@ -6324,7 +6416,6 @@ MkC5: 							; Loop to put then entire screen palette in the copper list
 	bne	CreeDual 				; -> Then jump to 2nd screen copper list definition.
 PluDual:
 	ENDC
-
 * Ecran normal!
 	add.w	EcVY(a0),d1		* Decalage ecran
 	mulu	EcTLigne(a0),d1
@@ -6470,7 +6561,8 @@ MkCi1:
 	move.w	#BplCon2,(a1)+
 	move.w	EcCon2(a0),(a1)+
     move.w  #BplCon3,(a1)+ 							; 2019.11.04 Added BplCon3 to support dual playfield 2x16 colors
-    move.w  #%1000000000000,(a1)+                   ; Value to handle 2x16 colors in DPF
+;    move.w  EcCon3(a0),(a1)+                        ; 2019.11.05 Updated to use screen structure data instead of direct value.
+    move.w  #%1000000000000,(a1)+
 * Reactive le DMA au debut de la fenetre
 FiniCop	move.l	(sp)+,d4
 	addq.w	#1,d0
@@ -6518,7 +6610,7 @@ MkC10:	tst.l	(a4)+
 	IFEQ	EZFlag
 
 
-; *********************************************** Creation liste copper pour ecrans DUAL PLAYFIED! ************************* ICI A TRAVAILLER !!!!
+; *********************************************** Creation liste copper pour ecrans DUAL PLAYFIED ***********************************************
 ; This method is reached from method EcCopHo (L=6291) that create copper list for a screen and check for dual playfield mode with the screen
 *	D0=	Y Screen position
 *   A0 = 1st screen structure pointer. Screen already inserted in the CopperList from the method that call CreeDual
@@ -6551,7 +6643,6 @@ continueDPFcop:                ; 2019.11.04 End of upgrade to handle BPU3 for 8 
 	move.w	d2,EcCon0(a0)
 	bra	PluDual 				; -> Now, we come back to the screen creation
 
-
 CrDu1:	move.l	d2,a2
 * Adresses bitplanes PAIRS!
 	move.w	d1,-(sp)
@@ -6563,8 +6654,8 @@ CrDu1:	move.l	d2,a2
 	add.w	d2,d1
 	move.l	a1,d3
 	moveq	#EcPhysic,d2
-	move.w	EcNPlan(a0),d6    ; Here we get the amount of bitplanes stored in first screen of the DualPlayfield (in Duale, updated of EcNPlan forces cumulate 2 screens)
-	; // This loop put all BplxPth/BplxPtl registers in the copper list
+	move.w	EcNPlan(a0),d6    ; Here we get the amount of bitplanes stored in first screen of the DualPlayfield
+	; (in Duale, updated of EcNPlan forces cumulate 2 screens. This loop put all BplxPth/BplxPtl registers in the copper list
 	subq.w	#1,d6
 	move.w	#Bpl1PtH,d7
 MkDC1:	move.l	0(a0,d2.w),d5
@@ -6753,13 +6844,22 @@ MkdC3:	lsl.w	#4,d7
 	move.w	d6,(a1)+
 	move.w	#BplCon2,(a1)+
 	move.w	EcCon2(a0),(a1)+
+
+
+
+
+
 * Fini! Retourne au programme normal
 	move.l	(sp)+,a2
 	bra	FiniCop
 	ENDC
 
+; ************************************************************************** Insert a screen closure (Y End of screen)
 ******* Cree la ligne COPPER de fin de fenetre
-EcCopBa	move.w	d0,d2
+EcCopBa:
+;	move.w 	#BplCon3,(a1)+			; 2019.11.05 Update BplCon3 when closing screen
+;	move.w	#0,(a1)+ 				; Reset everything concerning BplCon3.
+	move.w	d0,d2
 	sub.w	#EcYBase,d2
 	bsr	WaitD2
 	move.w	#DmaCon,(a1)+
@@ -6768,7 +6868,7 @@ EcCopBa	move.w	d0,d2
 	move.w	T_EcFond(a5),(a1)+
 	rts
 
-******* Attente copper jusqu'a la ligne D2
+******* Attente copper jusqu''a la ligne D2
 WaitD2:	cmp.w	#256,d2
 	bcs.s	WCop
 	tst.w	T_Cop255(a5)
@@ -7165,7 +7265,7 @@ TohhE	moveq	#-1,d0
 	rts
 
 	IFEQ	EZFlag
-***************************** FORMAT D'UNE SEQUENCE
+***************************** FORMAT D''UNE SEQUENCE
 NbInterne:	equ 10
 AmPrev:		equ 0
 AmNext:		equ 4
@@ -7212,8 +7312,8 @@ TokAMAL:
 	lea	0(a2,d2.w),a5		* Fin du buffer
 	moveq	#0,d6
 	move.l	d6,a6
-	moveq	#0,d5			* Pas d'autotest
-	moveq	#0,d4			* Pas d'erreur
+	moveq	#0,d5			* Pas d''autotest
+	moveq	#0,d4			* Pas d''erreur
 * Init de la table des labels
 	move.l	a1,a3
 	moveq	#26/2,d0
@@ -7228,7 +7328,7 @@ InA0:	move.l	d1,(a3)+
 	tst.w	d3
 	bne	AniStos
 
-* Boucle d'interpretation
+* Boucle d''interpretation
 AniLoop	cmp.l	a5,a2
 	bcc	AniTrop
 	bsr	AniChr
@@ -7660,7 +7760,7 @@ AniE1:	move.l	W_Base(pc),a5
 	addq.w	#1,d4			* Syntax error
 	move.l	d4,d0
 	movem.l	(sp)+,d1-d7/a1-a6
-	sub.l	a1,a0			* Offset de l'erreur
+	sub.l	a1,a0			* Offset de l''erreur
 	tst.w	d0
 	rts
 
@@ -7876,7 +7976,7 @@ AniEx0:	addq.w	#2,d1
 	beq.s	AniEx1
 	cmp.b	#"!",d0
 	beq.s	AniXor
-* Fin de l'expression
+* Fin de l''expression
 	move.w	$7c/2(a4),(a2)+
 	subq.l	#1,a0
 	rts
@@ -7920,7 +8020,7 @@ Sync:	tst	T_SyncOff(a5)
 Sync1:	rts
 
 ***********************************************************
-*	RAMENE L'ADRESSE UN REGISTRE
+*	RAMENE L''ADRESSE UN REGISTRE
 *	D1= -1-> generaux / # du mouvement
 *	D2= type du mouvement
 *	D3= numero du registre
@@ -7980,13 +8080,13 @@ StPx:	moveq	#0,d0
 	rts
 
 ***********************************************************
-*	CREATION / REMPLACEMENT D'UNE ANIMATION
+*	CREATION / REMPLACEMENT D''UNE ANIMATION
 *	A1=	Chaine a tokeniser
 *	A2/D2=	Buffer de tokenisation
 *	D1=	Buffer variables
 *	D3= 	0-> Amal / 1-> Anim / 2-> X / 3-> Y
 *	D4= 	0-> Sprite / 1-> Bobs / 2-> Ecrans / 3-> Adresse
-*	D5= 	# De l'objet
+*	D5= 	# De l''objet
 *	D6= 	# du Canal
 CreAMAL:
 ********
@@ -8019,7 +8119,7 @@ CreA0:	move.l	a0,d1
 	lsl.w	#2,d2
 	add.w	d3,d2
 
-******* Efface l'ancienne - SI PRESENT -
+******* Efface l''ancienne - SI PRESENT -
 	move.l	a1,a0
 	move.l	T_AmDeb(a5),d0
 	beq.s	CreAm1
@@ -8040,7 +8140,7 @@ CreAm1:	bsr	ResAMAL
 	bne	CreAmE
 	move.l	a0,T_AmDeb(a5)
 	bra.s	CreAm10
-* Remplace l'ancienne chaine
+* Remplace l''ancienne chaine
 CreAm2:	move.l	AmPrev(a1),d6
 	move.l	AmNext(a1),d7
 	moveq	#0,d0
@@ -8076,7 +8176,7 @@ CreAm6:	move.l	d0,a2
 	move.l	AmNext(a2),d3
 	move.l	a0,AmNext(a2)
 CreAm7:	move.l	d3,AmNext(a0)
-******* Pas d'erreur!
+******* Pas d''erreur!
 CreAm10	move.l	T_AmDeb(a5),T_AmChaine(a5)
 	moveq	#0,d0
 	rts
@@ -8113,7 +8213,7 @@ ResDeja	move.w	d2,AmNb(a2)
 	lea	AmStart(a2),a0
 	move.l	a0,AmPos(a2)
 
-* Calcule l'adresse ACT
+* Calcule l''adresse ACT
 ResPas:	move.l	a2,a0
 	cmp.w	#6,d4
 	beq	ResRain
@@ -8205,7 +8305,7 @@ ResAex:	move.l	d0,-(sp)
 	rts
 
 ***********************************************************
-*	ARRET D'UN CANAL avec une adresse ACTUALISATION
+*	ARRET D''UN CANAL avec une adresse ACTUALISATION
 *	A0= Adresse ACTUALISATION
 DAdAMAL:
 ********
@@ -8229,7 +8329,7 @@ DAdAM2:	move.l	AmNext(a1),d5
 	bra	MvOx
 
 ***********************************************************
-*	ADRESSE D'UN CANAL: D1= Numero!
+*	ADRESSE D''UN CANAL: D1= Numero!
 *	D6= AmDeb!
 AdAMAL:
 *******
@@ -8484,7 +8584,7 @@ AmRE:	move.l	d0,a6
 	move.w	AmBit(a6),d4
 	bmi.s	AmL2
 
-******* Boucle de l'autotest
+******* Boucle de l''autotest
 	move.l	AmAuto(a6),d0
 	beq.s	AmL1
 	move.l	d0,a3
@@ -8500,7 +8600,7 @@ AmL1:	move.l	AmPos(a6),d0
 	move.w	(a3)+,d0	
 	jsr	0(a4,d0.w)
 
-******* Appel de l'animation?
+******* Appel de l''animation?
 AmRet:	move.l	AmAJsr(a6),d0
 	beq.s	AmL2
 	move.l	d0,a0
@@ -8704,7 +8804,7 @@ AmPli:	lea	-2(a3),a0
 	bra	AmPl0
 
 ******* ANIM 
-AmAni:	bsr	AmEvalue		* Initialise l'animation!
+AmAni:	bsr	AmEvalue		* Initialise l''animation!
 	move.w	d3,AmACLoop(a6)
 	move.w	#1,AmACpt(a6)
 	lea	2(a3),a0
@@ -8715,7 +8815,7 @@ AmAni:	bsr	AmEvalue		* Initialise l'animation!
 	add.w	(a3),a3
 	move.w	(a3)+,d0
 	jmp	0(a4,d0.w)
-AmDoAni	subq.w	#1,AmACpt(a6)		* Fait l'animation
+AmDoAni	subq.w	#1,AmACpt(a6)		* Fait l''animation
 	bne.s	AmDAX
 	move.l	AmAAd(a6),a3
 AmDA0	tst.w	(a3)
@@ -8957,7 +9057,7 @@ AmREg0:	lea	AmIRegs+NbInterne*2(a6),a0
 	add.w	d0,a0
 	rts
 
-******* EVALUATION D'EXPRESSION
+******* EVALUATION D''EXPRESSION
 AmEvalue:
 	move.w	(a3)+,d0
 	jsr	0(a4,d0.w)
@@ -9163,7 +9263,7 @@ AmM2:	moveq	#0,d2
 	
 ******* OPERATEURS
 
-* Fin de l'evaluation
+* Fin de l''evaluation
 AmSExp:	addq.l	#4,sp
 	rts
 * =
@@ -9225,7 +9325,7 @@ IceStart
 	clr.w	T_WVersion(a5)		Par defaut
 	cmp.l	#"V2.0",d0		Le magic
 	bne.s	.Nomagic
-	move.w	d1,T_WVersion(a5)	La version d'AMOS
+	move.w	d1,T_WVersion(a5)	La version d''AMOS
 .Nomagic
 
 	lea	W_Base(pc),a0
@@ -9273,7 +9373,7 @@ StartAll
 	move.l	a2,-(sp)			Palette par defaut
 	move.l	a0,-(sp)
 	
-; Attend que l'autre AMOS soit arrete! (si v2.0)
+; Attend que l''autre AMOS soit arrete! (si v2.0)
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	cmp.w	#$0200,T_WVersion(a5)
 	bcs.s	.No20_a
@@ -9324,7 +9424,7 @@ StartAll
 	cmp.w	#4,d1
 	bcs	GFatal
 	move.l	a1,T_MouBank(a5)
-; Pointe la palette pour l'ouverture des ecrans
+; Pointe la palette pour l''ouverture des ecrans
 	subq.w	#1,d1
 .MLoop	move.w	(a1)+,d0
 	mulu	(a1)+,d0
@@ -9406,7 +9506,7 @@ StartAll
 	move.l	d0,T_LayBase(a5)
 	beq	GFatal
 
-; Branche l'input.device
+; Branche l''input.device
 ; ~~~~~~~~~~~~~~~~~~~~~~
 	bsr	ClInit
 ; Open Console Device		
@@ -9480,7 +9580,7 @@ StartAll
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	bsr	Wi_MakeFonte
 	bne	GFatal
-; 	Envoie le signal a l'AMOS Switcher
+; 	Envoie le signal a l''AMOS Switcher
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	T_MyTask(a5),a0
 	move.l	a5,$58(a0)
@@ -9496,7 +9596,7 @@ StartAll
 	moveq	#1,d1
 	bsr	TAMOSWb
 .Pafr
-; Pas d'erreur
+; Pas d''erreur
 ; ~~~~~~~~~~~~
 	moveq	#0,d0
 	bra.s	GFini
@@ -9513,7 +9613,7 @@ GFini	move.l	T_GPile(a5),a7
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 EndAll	lea	Circuits,a6
 
-;	Remet l'ecran du workbench
+;	Remet l''ecran du workbench
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	moveq	#0,d1	
 	bsr	TAMOSWb
@@ -9546,7 +9646,7 @@ EndAll	lea	Circuits,a6
 	jsr	-420(a6)			Set function
 .NoLoadView	
 
-;	Debranche l'input.device
+;	Debranche l''input.device
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	tst.w	T_DevHere(a5)
 	beq.s	.skip0
@@ -9594,10 +9694,10 @@ EndAll	lea	Circuits,a6
 	moveq	#0,d0
 	rts
 
-; Fin d'access au fonctions systeme
+; Fin d''access au fonctions systeme
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 IceEnd
-; Relance l'ancien AMOS (si 2.0)
+; Relance l''ancien AMOS (si 2.0)
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	cmp.w	#$0200,T_WVersion(a5)
 	bcs.s	.No20_a
@@ -9617,7 +9717,7 @@ IceEnd
 	bsr	WMemEnd			Plus de memory checking!
 	rts
 
-;	Envoie un signal à l'AMOS_Switcher (D3= signal)
+;	Envoie un signal à l''AMOS_Switcher (D3= signal)
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Send_Switcher
 	lea	Switcher(pc),a1
@@ -9810,7 +9910,7 @@ TAMOSWb
 	move.l 	38(a0),$dff080
 	clr.w	$dff088
 
-; Efface l'ecran si AA
+; Efface l''ecran si AA
 ; ~~~~~~~~~~~~~~~~~~~~
 	btst	#WFlag_LoadView,T_WFlags(a5)
 	beq.s	.PaAA1
@@ -9828,7 +9928,7 @@ TAMOSWb
 .PaAA1
 	clr.b	T_AMOSHere+1(a5)		Flip termine!
 
-; Retourne l'etat actuel
+; Retourne l''etat actuel
 ; ~~~~~~~~~~~~~~~~~~~~~~
 .Return	move.b	T_AMOSHere(a5),d1
 	ext.w	d1
@@ -10014,7 +10114,7 @@ SyIn:	bra 	ClInky			;0 -Inkey:
 	bra	CreAMAL			;41-AMALCre:	 Demarre AMAL
 	bra	MvOAMAL			;42-AMALMvO:	 On/Off/Freeze AMAL
 	bra	DAllAMAL		;43-AMALDAll:	 Enleve TOUT!
-	bra	Animeur			;44-AMAL:	 Un coup d'animation
+	bra	Animeur			;44-AMAL:	 Un coup d''animation
 	bra	RegAMAL			;45-AMALReg:	 Registre!
 	bra	ClrAMAL			;46-AMALClr:	 Clear
 	bra	FrzAMAL			;47-AMALFrz:	 FREEZE all
@@ -10064,7 +10164,7 @@ SyIn:	bra 	ClInky			;0 -Inkey:
 	bra	WMemChipClear		;91-MemChipClear	
 	bra	WMemFast		;92-MemFast		
 	bra	WMemChip		;93-MemChip		
-	bra	WSend_FakeEvent		;94-Send_FakeEvent	Envoi d'un faux event souris
+	bra	WSend_FakeEvent		;94-Send_FakeEvent	Envoi d''un faux event souris
 	bra	WTest_Cyclique		;95-Test_Cyclique	Tests cyclique AMOS
 	bra	WAddFlushRoutine	;96-AddFlushRoutine	Ajoute une routine FLUSH
 	bra	WMemFlush		;97-MemFlush	 	Force un memory FLUSH
@@ -10501,7 +10601,7 @@ SSwp4:	lea	SwapL-4(a0),a0
 	bne.s	SSwp1	
 SSwpX:
 
-* Change l'adresses des sprites hard
+* Change l''adresses des sprites hard
 	move.l	T_HsChange(a5),d0
 	beq.s	VblPaHs
 	clr.l	T_HsChange(a5)
@@ -10899,7 +10999,7 @@ CXyw2:	move.l	d2,d0			D0= Signe
 CXyw3:	move.l	#EntNul,d1
 	bra.s	CXyw2
 
-******* Retourne la souris dans l'ecran de devant
+******* Retourne la souris dans l''ecran de devant
 WMouScrFront	
 	move.l	d4,-(sp)
 	move.w	T_XMouse(a5),d1
@@ -10920,7 +11020,7 @@ WMouScrFront
 .Hors	moveq	#-1,d0
 	bra.s	.Out
 
-******* Recherche l'ecran contenant X/Y
+******* Recherche l''ecran contenant X/Y
 *	D1/D2= X/Y HARD
 *	D3= 1er ecran
 *	D4= Ecran MAX
@@ -10936,7 +11036,7 @@ GSin0:	tst.l	(a2)
 	cmp.l	(a2)+,a0
 	bne.s	GSin0
 	lea	-4(a2),a1
-* Cherche l'ecran dans l'ordre des priorites
+* Cherche l''ecran dans l''ordre des priorites
 GSin1:	move.l	(a1)+,d0
 	bmi.s	GSinX
 	move.l	d0,a0
@@ -11134,7 +11234,7 @@ SyRzz1:	clr.l	(a0)+
 	bra	ZoOk
 
 ***********************************************************
-*	SET ZONE dans l'ecran courant 
+*	SET ZONE dans l''ecran courant 
 *	D1-D2/D3/D4/D5 n-dx/dy/fx/fy
 ***********************************************************
 SySetZ: move.l 	T_EcCourant(a5),a1
@@ -11174,7 +11274,7 @@ SyZoHd:	bsr	EcToD1
 	move.l	a0,a1
 	moveq	#0,d0
 
-******* Regarde si les coordonnees HARD D3/D4 sont dans l'ecran A1!
+******* Regarde si les coordonnees HARD D3/D4 sont dans l''ecran A1!
 ZoEc:	cmp.w	EcNumber(a1),d5
 	bls.s	ZoEcX
 ; Coordonnee en X
@@ -11203,7 +11303,7 @@ ZoEc3:	add.w	EcVx(a1),d1
 ZoEcX:	moveq	#0,d1
 	rts
 
-******* Explore la table de l'ecran A1
+******* Explore la table de l''ecran A1
 GZone:	movem.l	a2/d3,-(sp)
 	cmp.w	EcNumber(a1),d5
 	bls.s	GZo3
@@ -11273,7 +11373,7 @@ HsInit:	movem.l	d1-d7/a1-a6,-(sp)
 	move.w	(sp)+,d0
 	bsr	HsRBuf
 	bne	GFatal
-* Pas d'erreur
+* Pas d''erreur
 HsOk:	movem.l	(sp)+,d1-d7/a1-a6
 	moveq	#0,d0
 	rts
@@ -11370,7 +11470,7 @@ HsEBuf:	tst.l	T_HsBuffer(a5)
 	bsr	FreeMm
 HsEb1:	rts
 
-******* Poke l'adresse D0 dans les listes copper
+******* Poke l''adresse D0 dans les listes copper
 HsPCop:	move.w	T_HsTCol(a5),d1
 	ext.l	d1
 	move.l	T_CopLogic(a5),a0
@@ -11521,7 +11621,7 @@ HsNErr:	moveq	#1,d0
 	rts
 
 **********************************************************
-*	EFFACE DE L'ECRAN TOUS LES SPRITES HARD
+*	EFFACE DE L''ECRAN TOUS LES SPRITES HARD
 HsStAct:moveq	#0,d1
 HsSa1:	bsr	HsUSet
 	addq.w	#1,d1
@@ -11582,7 +11682,7 @@ HsAct3:	clr.w	(a0)
 	bra.s	HsAct1
 
 **********************************************************
-*	POSITIONNEMENT D'UN SPRITE HARD!
+*	POSITIONNEMENT D''UN SPRITE HARD!
 *	D1= Nb
 *	D2= X
 *	D3= Y
@@ -11604,7 +11704,7 @@ HsSet:	movem.l	d1-d7,-(sp)
 	bne.s	HsDm
 	tst.w	T_MouShow(a5)
 	bpl	Hss30
-* Doit recopier l'image?
+* Doit recopier l''image?
 HsDm:	cmp.l	HsImage(a4),a1
 	beq.s	HsD0
 	move.w	2(a1),d0
@@ -11718,7 +11818,7 @@ Hss21:	move.w	HsNext(a3,d7.w),d6
 Hss22:	move.w	d1,HsNext(a3,d7.w)
 	move.w	d7,HsPrev(a3,d1.w)
 	bra.s	Hss30
-* L'insere au milieu
+* L''insere au milieu
 Hss23:	move.w	HsPrev(a3,d7.w),d0
 	move.w	d0,HsPrev(a3,d1.w)
 	move.w	d1,HsPrev(a3,d7.w)
@@ -11731,7 +11831,7 @@ Hss30:	movem.l	(sp)+,a1/a3/a4
 	rts
 
 ***********************************************************
-*	ARRET D'UN SPRITE HARD
+*	ARRET D''UN SPRITE HARD
 HsUSet:	movem.l	a3/a4/d6/d7,-(sp)
 	move.w	d1,d0
 	mulu	#HsLong,d0
@@ -11911,7 +12011,7 @@ HsAd7:	move.l	#-1,(a3)
 ******* 1er sprite
 	move.l	T_HsTable(a5),a4
 	moveq	#-4,d4
-******* Boucle d'affichage
+******* Boucle d''affichage
 HsA3:	lea	T_HsPosition-8(a5),a3	* Passe a la colonne suivante
 HsA4:	lea	8(a3),a3
 HsA4a:	tst.l	(a3)
@@ -12417,7 +12517,7 @@ FnCBl2:	moveq	#1,d0
 ; ****  *  **** ****
 ;-----------------------------------------------------------------
 
-******* Description d'un bloc
+******* Description d''un bloc
 	RsReset
 BlPrev:	rs.l 	1
 BlNext:	rs.l 	1
@@ -12458,7 +12558,7 @@ MakeBloc:
 	add.w	d2,d6
 	cmp.w	EcTx(a0),d6
 	bhi	BlE3
-* Reserve l'espace pour les datas
+* Reserve l''espace pour les datas
 	bsr	FindBloc
 	bne.s	MkBl1
 	moveq	#BlLong,d0
@@ -12472,7 +12572,7 @@ MkBl1:	move.w	d1,BlNb(a1)
 	move.w	#$FFFF,BlAPlan(a1)
 	move.w	d2,BlX(a1)
 	move.w	d3,BlY(a1)
-* Prend l'image
+* Prend l''image
 	exg	a0,a1
 	lea	BlDesc(a0),a2
 	bsr	GetBob
@@ -12579,7 +12679,7 @@ DrawBloc:
 	bne.s	DrBl0
 BlNDef	moveq	#2,d0
 	bra	BlOut
-* Parametres de l'ecran courant
+* Parametres de l''ecran courant
 DrBl0:	move.l	T_EcCourant(a5),a0
 	move.w	EcClipX0(a0),d0
 	and.w	#$FFF0,d0
@@ -12614,7 +12714,7 @@ DrBl4:	move.l	a0,BbEc(a4)
 	lea	BlDesc(a1),a2
 	bsr	BobCalc
 	bne.s	DBlOut
-* Appelle la routine d'affichage
+* Appelle la routine d''affichage
 	lea	Circuits,a6
 	bsr	OwnBlit
 	move.w	BbASize(a4),d2
@@ -12947,7 +13047,7 @@ Cla_Event
 .ClaIX	tst.w	d2
 	movem.l	(sp)+,a0-a1/d0-d3
 	rts
-; Relachement d'une touche
+; Relachement d''une touche
 ; ~~~~~~~~~~~~~~~~~~~~~~~~
 .ClaI2	move.w	d0,d1
 	and.w	#$0007,d0
@@ -12991,7 +13091,7 @@ Cla_Stocke
 .ClSFin	movem.l	(sp)+,a0/d3
 	rts
 
-; Envoi d'un faux event souris au systeme
+; Envoi d''un faux event souris au systeme
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 WSend_FakeEvent
 	movem.l	d0-d1/a1/a6,-(sp)
@@ -13203,7 +13303,7 @@ ClGFFk:	lea	T_TFF1(a5),a0
 	moveq	#0,d0
 	rts
 
-; RETOUR L'ETAT DU FLAG DISC
+; RETOUR L''ETAT DU FLAG DISC
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TGetDisc
 	move.w	T_DiscIn(a5),d0
@@ -13236,7 +13336,7 @@ WTest_Cyclique
 	beq.s	.Noev
 	bsr	WSend_FakeEvent
 .Noev
-; Verifie l'inhibition
+; Verifie l''inhibition
 ; ~~~~~~~~~~~~~~~~~~~~
 	move.l	T_MyTask(a5),a0
 	move.l	10(a0),a0
@@ -13263,7 +13363,7 @@ AMOS_Stopped
 	move.w	#$000F,$Dff096
 ; Change le "S"top en "W"
 	move.b	#"W",(a4)
-; Attend qu'il se retransforme en " "
+; Attend qu''il se retransforme en " "
 .Wait	move.l	T_GfxBase(a5),a6
 	jsr	-270(a6)
 	cmp.b	#"W",(a4)
@@ -13390,7 +13490,7 @@ WiMd0:	move.l	d1,d0
 	beq.s	WiMdX
 	move.l	d0,WiDBuf(a5)
 	move.l	d1,WiTBuf(a5)
-* Copie le contenu de l'ecran!
+* Copie le contenu de l''ecran!
 WiMd1:	move.l	WiDBuf(a5),a3
 	move.w	WiDyR(a5),d0
 	move.w	EcTLigne(a4),d1
@@ -13498,7 +13598,7 @@ WiEf1:	move.w	d5,d4
 	move.w	2(sp),d5
 	bsr	WiClip
 	bne	WiEf4
-* Adresse dans l'ecran
+* Adresse dans l''ecran
 	move.w	d7,d3
 	mulu	EcTLigne(a4),d3
 	add.l	d4,d3
@@ -13766,7 +13866,7 @@ Wo4:	bsr	AdColor
 	moveq	#1,d1			;Scrollings
 	bsr	Scroll
 
-* Stocke (s'il faut!) la fenetre courante
+* Stocke (s''il faut!) la fenetre courante
 	move.l	EcWindow(a4),d0
 	beq.s	Wo5
 	move.l	a5,-(sp)
@@ -13783,7 +13883,7 @@ Wo5:
 	beq.s	PaBor
 	bsr	DesBord
 PaBor:
-* Effacement de l'interieur
+* Effacement de l''interieur
 	bsr	WiInt
 	btst	#0,d6
 	beq.s	.Skip
@@ -13799,7 +13899,7 @@ InCu:	move.b	(a0)+,(a1)+
 	bset	#1,WiSys(a5)
 	bsr	AffCur
 
-* Premiere fenetre de l'ecran / Fenetre courante
+* Premiere fenetre de l''ecran / Fenetre courante
 	move.l	EcWindow(a4),d0
 	move.l	a5,EcWindow(a4)
 	clr.l	WiPrev(a5)
@@ -13872,7 +13972,7 @@ WAdE4:	moveq	#13,d0
 WQWind:	movem.l	d1-d7/a1-a6,-(sp)
 	move.l	T_EcCourant(a5),a4
 	move.l	EcWindow(a4),a5
-; Trouve l'adresse de la fenetre
+; Trouve l''adresse de la fenetre
 	bsr	WindFind
 	bne	WErr1
 ; Deja activee?
@@ -13900,10 +14000,10 @@ QWi1:
 	move.w	WiFyR(a5),d7
 	bsr	WiEff			* Redessine
 	bsr	WiEffBuf		* Plus besoin de buffer
-* Plus d'escape!
+* Plus d''escape!
 	bsr	AffCur
 QWiF	clr.w	WiEsc(a5)
-* Pas d'erreur
+* Pas d''erreur
 WOk:	movem.l	(sp)+,d1-d7/a1-a6
 *	clr.w	T_WiRep(a5)
 	moveq	#0,d0
@@ -14257,7 +14357,7 @@ DesBord:movem.l	d1-d7/a1-a6,-(sp)
 	bsr	Loca
 	bsr	DVert
 
-; Pas d'erreur
+; Pas d''erreur
 	bsr	WiInt
 	bra	WOk
 
@@ -14566,7 +14666,7 @@ ScGLine:move.w	WiY(a5),d0
 	move.w	WiTyCar(a5),d2
 	bra	ScGFin
 ***********************************************************
-*	SCROLLING VERS LA GAUCHE DE TOUT L'ECRAN
+*	SCROLLING VERS LA GAUCHE DE TOUT L''ECRAN
 ***********************************************************
 ScGWi:	move.l	WiAdhgI(a5),d0
 	lea	EcCurrent(a4),a0
@@ -14628,7 +14728,7 @@ ScDLine:move.w	WiY(a5),d0
 	move.w	WiTyCar(a5),d2
 	bra	ScDFin
 ***********************************************************
-*	SCROLLING VERS LA GAUCHE DE TOUT L'ECRAN
+*	SCROLLING VERS LA GAUCHE DE TOUT L''ECRAN
 ***********************************************************
 ScDWi:	move.l	WiAdhgI(a5),d0
 	lea	EcCurrent(a4),a0
@@ -15438,7 +15538,7 @@ WPrint3	movem.l	a4-a6/d2-d7,-(sp)
 	beq.s	.Ok
 	cmp.b	#32,d1
 	bcs.s	.Cont
-; Un code normal, l'imprimer?
+; Un code normal, l''imprimer?
 	subq.w	#1,d2
 	bge.s	.Skip
 	cmp.w	d3,d5
@@ -15618,7 +15718,7 @@ CPrt:	bsr	EffCur
 	bsr	LocaX
 	bra	Prt
 
-*******	Calcul de l'adresse curseur
+*******	Calcul de l''adresse curseur
 AdCurs:	move.w	WiY(a5),d0
 	mulu	WiTLigne(a5),d0
 	move.w	WiTx(a5),d1
@@ -15660,8 +15760,8 @@ Copt2:	addq.l	#1,a0
 BltFini:bra	BlitWait
 
 ***********************************************************
-*		AFFICHAGE D'UN CARACTERE
-*		  DANS L'ECRAN LOGIQUE
+*		AFFICHAGE D''UN CARACTERE
+*		  DANS L''ECRAN LOGIQUE
 *	- D1= caractere
 *	- A6= chips
 *	- A5= window
@@ -15686,9 +15786,9 @@ PaCont
 	lea	EcCurrent(a4),a1
 	move.l	WiAdCur(a5),d3		;Adresse du caractere
 	move.w	EcTLigne(a4),d4
-	ext.l	d4			;Taille d'une ligne
+	ext.l	d4			;Taille d''une ligne
 
-	move.w	WiFlags(a5),d7		;Flags d'ecriture
+	move.w	WiFlags(a5),d7		;Flags d''ecriture
 	bne	YaFlag
 
 *-----* Pas de flag: rapide
@@ -15713,7 +15813,7 @@ CNul:	addq.l	#4,a1
 ; Poke le caractere NORMAL
 CNorm:	move.l	(a1)+,a3
 	add.l	d3,a3
-	REPT	7			;Poke l'octet
+	REPT	7			;Poke l''octet
 	move.b	(a2)+,(a3)
 	add.l	d4,a3
 	ENDR
@@ -15870,7 +15970,7 @@ Esc2:	movem.l	(sp)+,d1-d7/a0-a3
 	rts
 
 ***********************************************************
-*	MESSAGES D'ERREUR
+*	MESSAGES D''ERREUR
 ***********************************************************
 PErr7:	moveq	#16,d0
 	rts
@@ -16218,7 +16318,7 @@ NoAuto	SyCall	Inkey
 	beq.s	ReqYes	
 	cmp.w	#27,d1		* ASCII-> ESC
 	beq.s	ReqNo	
-; Don't you think it is better than this wierd Amiga V and B?
+; Don''t you think it is better than this wierd Amiga V and B?
 ; Sometime I ask myself what they were thinking when they chose such
 ; key combinations!
 	swap	d1
@@ -16281,7 +16381,7 @@ ReqX	bsr	UnMix2
 ReqXX	move.l	T_Req_Pos(a5),(sp)	ReqPos>>> D0
 	movem.l	(sp)+,a0-a6/d0-d7
 	rts
-;	Can't open screen!!!
+;	Can''t open screen!!!
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~
 NoReq	clr.l	-(sp)
 	bra.s	ReqX
@@ -16573,7 +16673,7 @@ TNeg1		dc.b 27,"B4",27,"P3",27,"I0",24,30,30,27,"X"
 XTNeg		dc.b "0",27,"Z0",0
 TNeg2		dc.b 27,"Z2",0
 		even
-; 		Insertion de l'image de fond
+; 		Insertion de l''image de fond
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 RPic_Sx		equ	112
 RPic_Sy		equ	56

@@ -490,14 +490,14 @@ EcAuto:		rs.w 1		*
 
 * Link with AMAL
 EcAW:		rs.w 1
-EcAWX:		rs.w 1
-EcAWY:		rs.w 1
-EcAWT:		rs.w 1
-EcAWTX:		rs.w 1
+EcAWX:		rs.w 1      ; Define the X coordinate of the Screen in the current copper list display
+EcAWY:		rs.w 1      ; Define the Y coordinate of the Screen in the current copper list display
+EcAWT:		rs.w 1      ; Define the 'Width' in pixels, ot the screen view in the current copper list display
+EcAWTX:		rs.w 1      ; Define the 'Height' in pixels, ot the screen view in the current copper list display
 EcAWTY:		rs.w 1
-EcAV:		rs.w 1
-EcAVX:		rs.w 1
-EcAVY:		rs.w 1
+EcAV:		rs.w 1      ; Bit #1 -> Force refresh screen X offset /  Bit #2 -> Force refresh screen Y offset
+EcAVX:		rs.w 1      ; Define X Screen offset (in pixels) from the Left coordinate on X axis
+EcAVY:		rs.w 1      ; Define Y screen offset (in pixels) from the top coordinate on Y axis
 * Zone table
 EcAZones:	rs.l 1
 EcNZones:	rs.w 1
@@ -539,6 +539,10 @@ Ec_Layer	rs.l	1
 Ec_RastPort	rs.l	1
 Ec_Region	rs.l	1
 Ec_BitMap	rs.l	1
+
+; 2019.11.05 Added support for DualPlayfield 2x16colors
+EcCon3		rs.w	1 ; BplCon3 for Dual Playfield color shifting
+dpf2cshift  rs.w    1 ; Value used for the Color shifting of 2nd DPF screen.
 
 ; Length of a screen
 EcLong:		equ __RS
