@@ -12,9 +12,9 @@
 ; 		Versions
 ; ~~~~~~~~~~~~~~~~~~~~~~
 Version		MACRO
-		dc.b	"2.00"
+		dc.b	"2.01"
 		ENDM
-Ver_Number	equ	$0200
+Ver_Number	equ	$0201
 
 ;---------------------------------------------------------------------
 ;   +++  +++  ++   ++ ++++  ++++ ++    ++    ++   ++   ++  +++   +++
@@ -71,7 +71,7 @@ C_Tk	dc.w L_Nul,L_FnNull			//$2F$03$05$00
 	dc.b $80,"C0",-1
 	dc.w L_Nul,L_FnCstFl			//$01$15$05$05
 	dc.b $80,"C1",-1
-* Token d'extension
+* Token d''extension
 	dc.w L_InExtCall,L_FnExtCall 		//$28$06$05$07
 	dc.b $80,-1
 
@@ -1441,7 +1441,7 @@ C_Tk	dc.w L_Nul,L_FnNull			//$2F$03$05$00
 ; Nouvelles fonctions AMOSPro
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	dc.w L_Syntax,L_Syntax			//$01$01$14$00
-	dc.b "\\\\\\\\\\\\\\\","/"+$80,"I",-1
+	dc.b "\\\\\\\\\\\\\\\","/"+$80,"I",-1 ; """
 	dc.w L_InNull,L_Nul			//$24$01$11$00
 	dc.b "set accessor","y"+$80,"I",-1
 	dc.w L_In_apml_,L_Nul			//$55$01$0C$00
@@ -2891,7 +2891,7 @@ ht4	Ret_Int
 	move.l	(sp)+,a6
 .Skip	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					Retourne l'adresse de la librarie
+; 					Retourne l''adresse de la librarie
 ;	D0=	Numero canal
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	Lib.GetA2
@@ -3143,7 +3143,7 @@ ht4	Ret_Int
 	rts
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					Routine: retourne l'adresse IO
+; 					Routine: retourne l''adresse IO
 ;	A2= pointeur device
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	Dev.GetIO
@@ -3751,7 +3751,7 @@ hx5:    move.l 	d0,HiChaine(a5)
 	Ret_String
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-;			Demande l'espace chaine, positionne Hichaine
+;			Demande l''espace chaine, positionne Hichaine
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	AskD3
 ; - - - - - - - - - - - - -
@@ -3927,7 +3927,7 @@ AskD:	move.l	a0,HiChaine(a5)
 	Rbsr	L_D_Write
 	bne.s	SB_Err
 	bra.s	SB_Ok
-;	Sauve une banque d'icones
+;	Sauve une banque d''icones
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SB_Icon	moveq	#4,d0			AmIc
 	bra.s	SB_Sp
@@ -4026,7 +4026,7 @@ SB_Out	movem.l	(sp)+,a2/a3/d2-d4
 ; - - - - - - - - - - - - -
 	movem.l	a2/a3/d2-d7,-(sp)
 	move.l	d0,d5
-; Charge l'entete de la banque (4 octets de debut!)
+; Charge l''entete de la banque (4 octets de debut!)
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	Buffer(a5),d2
 	moveq	#4,d3
@@ -4050,7 +4050,7 @@ SB_Out	movem.l	(sp)+,a2/a3/d2-d4
 	beq	LB_Sprites
 ; Une banque normale
 ; ~~~~~~~~~~~~~~~~~~
-	move.l	Buffer(a5),d2			Charge l'entete
+	move.l	Buffer(a5),d2	;		Charge l''entete
 	move.l	d2,a2
 	moveq	#8,d3
 	Rbsr	L_D_Read
@@ -4083,7 +4083,7 @@ SB_Out	movem.l	(sp)+,a2/a3/d2-d4
 	Rbsr	L_D_Read
 	beq	LB_Ok
 	bra	LB_DErr
-; Charge une banque d'icones
+; Charge une banque d''icones
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~
 LB_Icons
 	moveq	#2,d3			Charge le nombre de sprites
@@ -4170,7 +4170,7 @@ LB_FIcons
 	move.w	6(a3),(a0)		Plus de FLAGS!
 	and.w	#$3FFF,(a0)+
 	move.w	8(a3),(a0)+
-	move.l	a0,d2			Charge l'image
+	move.l	a0,d2			Charge l''image
 	Rbsr	L_D_Read
 	bne	LB_DErr
 .Rien	dbra	d6,.LSLoop
@@ -4406,7 +4406,7 @@ GetH	move.l	Buffer(a5),d2
 	Rbeq	L_FonCall
 	cmp.l	#1024,d6
 	bcc.s	.PaBk
-	move.l	d6,d0		Efface l'ancienne
+	move.l	d6,d0		Efface l''ancienne
 	Rbsr	L_Bnk.Eff
 	Rbsr	L_IffFormSize	Demande la taille
 	move.l	d0,d2		Longueur
@@ -4611,7 +4611,7 @@ GetH	move.l	Buffer(a5),d2
 	move.l	#1006,d2
 	Rbsr	L_D_Open
 	Rbeq	L_DiskError
-* Sauve l'ecran
+* Sauve l''ecran
 	Rbsr	L_IffSaveScreen
 * Ferme
 	Rbsr	L_D_Close
@@ -5405,7 +5405,7 @@ GP1	move.l	(sp),d1
 .Skip	rts	
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					OUVERTURE DE L'IMPRIMANTE
+; 					OUVERTURE DE L''IMPRIMANTE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	PRT_Open
 ; - - - - - - - - - - - - -
@@ -5597,7 +5597,7 @@ FDirV	Rbsr	L_FillFFree
 ; - - - - - - - - - - - - -
 	tst.w	WB2.0(a5)
 	beq.s	.1_3
-; WB2.0, appel direct de l'instruction ASSIGN
+; WB2.0, appel direct de l''instruction ASSIGN
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Rbsr	L_LockFree		Plus de LOCK
 	move.l	d3,a2
@@ -5609,7 +5609,7 @@ FDirV	Rbsr	L_FillFFree
 	Rbsr	L_ChVerBuf2
 	Rbsr	L_Dsk.PathIt
 	Rbsr	L_LockGet
-.Vide	move.l	(a3)+,a2		Prend l'assign
+.Vide	move.l	(a3)+,a2		Prend l''assign
 	move.w	(a2)+,d2
 	Rbeq	L_FonCall
 	cmp.w	#108,d2
@@ -5961,7 +5961,7 @@ TTdiL:	Rjsr	L_Test_PaSaut
 	addq.l	#2,sp
 TTdiX:	moveq	#0,d0
 	rts
-* Boucle d'attente
+* Boucle d''attente
 TTdiW:	Rjsr	L_Test_PaSaut
 	SyCall	Inkey
 	tst.l	d1
@@ -6050,7 +6050,7 @@ FlGNo	movem.l	(sp)+,d1/d2
 	move.l	4(a3),d0
 	lsl.l	#2,d0
 	move.l	d0,a3
-* Boucle d'exploration
+* Boucle d''exploration
 FDev1	tst.l	8(a3)
 	beq.s	FDev5
 
@@ -6123,7 +6123,7 @@ FfDeb	Rbsr	L_FillFFree
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	FillFirst
 ; - - - - - - - - - - - - -
-* Enleve l'ancien buffer -si present-, reserve le nouveau
+* Enleve l''ancien buffer -si present-, reserve le nouveau
 	Rbsr	L_FillFFree
 * Branche la routine sur la liste CLEARVAR
 	movem.l	a0-a2/d0-d1,-(sp)
@@ -6468,7 +6468,7 @@ FssX	movem.l	(sp)+,a0-a4/d0-d7
 
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 				Routine: pointe le debut d'un nom de fichier
+; 				Routine: pointe le debut d''un nom de fichier
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	Dsk.DNom
 ; - - - - - - - - - - - - -
@@ -6629,7 +6629,7 @@ JokA:	cmp.b	#"a",d1
 JokB:	cmp.b	d0,d1
 	beq.s	JokLoop
 	bra.s	ReJok
-* N'importe quelle lettre!
+* N''importe quelle lettre!
 JokC:	cmp.b 	#".",d1
 	bne.s	JokLoop
 	bra.s	ReJok
@@ -6679,7 +6679,7 @@ JokOUI:	moveq	#1,d0
 	jsr	_LVOOpen(a6)
 	move.l	(sp)+,a6
 	move.l	d0,Handle(a5)
-; Branche la routine de nettoyage en cas d'erreur
+; Branche la routine de nettoyage en cas d''erreur
 	move.l	a2,-(sp)
 	lea	.Struc(pc),a1
 	lea	Sys_ErrorRoutines(a5),a2
@@ -6890,7 +6890,7 @@ FsApp3:	cmp.w	d4,d6
 	sub.l	a1,a1
 	moveq	#0,d4
 	moveq	#0,d6
-* Boucle d'exploration
+* Boucle d''exploration
 .Loop	move.l	Buffer(a5),d2
 	moveq	#12,d3
 	Rbsr	L_IffRead
@@ -7120,7 +7120,7 @@ IffBODY
 	addq.l	#8,a3
 	cmp.l	#EntNul,IffParam(a5)
 	beq.s	IffB1
-* Fabrique l'ecran!
+* Fabrique l''ecran!
 	bsr	IffScreen
 	Rbeq	L_IffFor
 	move.l	IffParam(a5),d1
@@ -7150,7 +7150,7 @@ IffB1:	tst.w	ScOn(a5)
 	btst	#0,d7
 	Rbeq	L_FonCall
 	move.l	BufBMHD(a5),a1
-* Regarde si l'image n'est pas + grande que l'ecran!
+* Regarde si l''image n''est pas + grande que l''ecran!
 	move.w	(a1),d5			* Largeur du dessin
 	ext.l	d5
 	cmp.w	EcTx(a2),d5
@@ -7245,7 +7245,7 @@ Bb7:	cmp.w	d5,d4
 FinBody move.l	(sp)+,a3
 	rts
 
-;------ Fabrique l'ecran avec les donnees
+;------ Fabrique l''ecran avec les donnees
 IffScreen:
 * Peut-on fabriquer un ecran?
 	move.l	IffFlag(a5),d7
@@ -7311,9 +7311,9 @@ IfS2:	and.w	#%1000000000000100,d0	* HIRES? INTERLACED?
 IfS5:	moveq	#-1,d0
 	rts
 
-;------ Centre l'ecran IFF dans l'ecran
+;------ Centre l''ecran IFF dans l''ecran
 IffCentre:
-* Prend les parametres de l'IMAGE
+* Prend les parametres de l''IMAGE
 	moveq	#0,d1			* Trouve l'adresse ecran
 	move.w	ScOn(a5),d1
 	subq.w	#1,d1
@@ -7405,7 +7405,7 @@ IffDLTA
 	Rbeq	L_IffFor
 	move.l	BufAMSC(a5),a0
 	cmp.b	#5,(a0)			* Bon mode d'anim?
-	Rbne	L_IffFor		Illegal >> message d'erreur
+	Rbne	L_IffFor		Illegal >> message d''erreur
 	tst.w	ScOn(a5)
 	Rbeq	L_ScNOp
 	move.l	T_EcCourant(a5),a1
@@ -7416,13 +7416,13 @@ IffDLTA
 	moveq	#-1,d3
 	move.l	d2,d4			* Nombre de colonnes
 *	move.b	1(a0),d3		* Masque des plans
-	move.l	14(a0),IffReturn(a5)	* Temps d'attente
-* Adresse dans l'ecran
+	move.l	14(a0),IffReturn(a5)	* Temps d''attente
+* Adresse dans l''ecran
 	mulu	d2,d1
 	lsr.w	#3,d0
 	ext.l	d0
 	add.l	d0,d1
-* Boucle d'appel des routines
+* Boucle d''appel des routines
 	move.l	d6,a4
 	addq.l	#8,a4
 	moveq	#0,d5
@@ -7445,7 +7445,7 @@ IffDLTA
 	movem.l	(sp)+,a4
 	rts
 	
-;------ Decodage d'un bitplane by Jim Kent
+;------ Decodage d''un bitplane by Jim Kent
 *	A0->	source
 *	A2->	bitplane
 *	D2->	Taille ligne
@@ -7464,9 +7464,9 @@ dcp
 dcvclp	clr.w	d1	; clear hi byte of op
 	move.b	(a0)+,d1	; fetch next op
 	bmi.s	dcvskuniq ; if hi-bit set branch to "uniq" decoder
-	beq.s 	dcvsame	; if it's zero branch to "same" decoder
+	beq.s 	dcvsame	; if it''s zero branch to "same" decoder
 
-skip			; otherwise it's just a skip
+skip			; otherwise it''s just a skip
 *	add.w	d1,d1	; use amount to skip as index into word-table
 *	adda.w	0(a3,d1),a1
 	mulu	d2,d1
@@ -7484,7 +7484,7 @@ dcvsame			;here we decode a "vertical same run"
 	add.w	d1,d1
 	neg.w	d1
 	jmp	Ici0(pc,d1) ; why 34?  8*size of tower
-                                         ;instruction pair, but the extra 2's
+                                         ;instruction pair, but the extra 2''s
                                          ;pure voodoo.
 same_tower
 	move.b	d3,(a1)
@@ -7536,7 +7536,7 @@ uniq_tower
 Ici1	dbra	d5,uniq_tower  ; branch back up to "op" loop
 zdcvclp dbra	d0,dcvclp      ; branch back up to "column loop"
 
-	; now we've finished decoding a single column
+	; now we''ve finished decoding a single column
 z1dcp	addq.l	#1,a2  ; so move the dest pointer to next column
 zdcp	dbra	d4,dcp ; and go do it again what say?
 	movem.l	(sp)+,a0-a3/d0-d5
@@ -7546,7 +7546,7 @@ zdcp	dbra	d4,dcp ; and go do it again what say?
 ChCuOff		dc.b	27,"C0",0
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					Sauvegarde d'ecran IFF
+; 					Sauvegarde d''ecran IFF
 ;	D7	Compression
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	IffSaveScreen
@@ -7803,7 +7803,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	rts
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					Sauve jusqu'a A1
+; 					Sauve jusqu''a A1
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	SaveA1
 ; - - - - - - - - - - - - -
@@ -7881,7 +7881,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					TROUVE L'ADRESSE DE LA BANQUE D0
+; 					TROUVE L''ADRESSE DE LA BANQUE D0
 ;	OUT	BEQ Pas trouve, BNE Trouve, D0=Flags / A1=Adresse
 ;	Ne pas changer sans voir GETBOB / GETICON
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -7918,7 +7918,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 .Nof	movem.l	(sp)+,d0/d1
 	rts
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					TROUVE L'ADRESSE BANQUE ICONES
+; 					TROUVE L''ADRESSE BANQUE ICONES
 ;	OUT	D0/A0/A1=	adresse
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	Bnk.GetIcons
@@ -7938,12 +7938,12 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	Lib_Def	Bnk.Eff
 ; - - - - - - - - - - - - -
 	movem.l	d0-d2/a0-a2,-(sp)
-; Trouve l'adresse
+; Trouve l''adresse
 	Rbsr	L_Bnk.GetAdr
 	beq.s	.Out
-; Appelle la routine d'effacement
+; Appelle la routine d''effacement
 	Rbsr	L_Bnk.EffA0
-; Fin de l'effacement des banques
+; Fin de l''effacement des banques
 .Out	movem.l	(sp)+,a0-a2/d0-d2
 	rts
 
@@ -8061,7 +8061,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	rts
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 					TROUVE L'ADRESSE BOB D0>A0
+; 					TROUVE L''ADRESSE BOB D0>A0
 ;	IN	D0	Numero
 ;	OUT	A0/D0	Adresse (BNE)
 ;		D1	Max de bobs
@@ -8166,7 +8166,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	move.l	(a0)+,(a2)+		Nom
 	move.l	(a0)+,(a2)+
 	move.l	a2,a1
-; Recopier l'ancienne banque?
+; Recopier l''ancienne banque?
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.w	d3,(a1)+		Nombre de bobs
 	tst.w	d2			Negatif>>> copie la palette
@@ -8190,7 +8190,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	lsl.w	#3,d0
 	lea	2(a3,d0.w),a0
 	bra.s	.PPal
-; Pas de recopie de l'ancienne banque
+; Pas de recopie de l''ancienne banque
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .PaCopy	lea	DefPal(a5),a0
 	move.l	ScOnAd(a5),d0
@@ -8203,7 +8203,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	moveq	#32-1,d0
 .CPal	move.w	(a0)+,(a1)+
 	dbra	d0,.CPal
-; Efface l'ancienne banque
+; Efface l''ancienne banque
 ; ~~~~~~~~~~~~~~~~~~~~~~~~
 .EBank	tst.w	d2	
 	bmi.s	.Paeff
@@ -8212,7 +8212,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	move.l	d0,a0
 	Rbsr	L_Bnk.EffA0
 .Paeff
-; Pas d'erreur
+; Pas d''erreur
 ; ~~~~~~~~~~~~
 	move.l	a2,a0
 	move.l	a3,a1
@@ -8222,7 +8222,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 ; ~~~~~~~~~~~
 .Err	sub.l	a0,a0
 	moveq	#-1,d0
-; Sortie, envoie l'adresse des bobs à la trappe
+; Sortie, envoie l''adresse des bobs à la trappe
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .Out	movem.l	(sp)+,d2-d7/a2-a3
 	tst.w	d0
@@ -8289,7 +8289,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	movem.l	d2-d4/a2,-(sp)
 	move.l	d0,d3
 	move.l	a0,a1
-; Agrandi la banque d'une unite
+; Agrandi la banque d''une unite
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	moveq	#-1,d0			Garder l'ancienne, ne pas copier
 	move.w	(a1),d1			
@@ -8298,7 +8298,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	Rbsr	L_Bnk.Ric
 	bne.s	.Out	
 	move.l	a1,a2
-; Recopie l'ancienne dans la nouvelle, en faisant un trou!
+; Recopie l''ancienne dans la nouvelle, en faisant un trou!
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	addq.l	#2,a0
 	move.w	(a1)+,d1
@@ -8321,7 +8321,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	bne.s	.Skup
 	move.l	a0,d4
 .Skup
-; Efface l'ancienne
+; Efface l''ancienne
 ; ~~~~~~~~~~~~~~~~~
 	move.l	a2,a0
 	Rbsr	L_Bnk.EffA0
@@ -8489,7 +8489,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	moveq	#0,d5			Taille bobs
 	move.l	Cur_Banks(a5),a1
 	bra.s	.Next
-; Boucle d'exploration
+; Boucle d''exploration
 .Loop	move.l	d1,a1
 	lea	3*8(a1),a0
 	Rbsr	L_Bnk.Length
@@ -8514,7 +8514,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	rts
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 	CALCULE LA TAILLE D'UNE BANQUE
+; 	CALCULE LA TAILLE D''UNE BANQUE
 ;	A0= banque
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Lib_Def	Bnk.Length
@@ -8587,7 +8587,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	Lib_Def	Bnk.List
 ; - - - - - - - - - - - - -
 	movem.l	d1-d4/a2,-(sp)
-; Trouve la bonne banque, dans l'ordre
+; Trouve la bonne banque, dans l''ordre
 	move.l	#65536,d1
 	move.l	Cur_Banks(a5),a0
 	bra.s	.B2
@@ -8887,6 +8887,7 @@ SBc11	move.l	(sp)+,d2		* Debut du chunk
 	Rbne	L_EcWiErr
 	rts
 
+
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 					DUAL PRIORITY
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -8939,9 +8940,10 @@ ScOo1:	cmp.l	d1,d6
 	beq.s	ScOo2
 	lsl.w	#1,d1
 	addq.w	#1,d4
-	cmp.w	#7,d4
+	cmp.w	#EcMaxPlans+1,d4 		; 2019.11.05 Updated to handle directly max amount of planes allowed (original was = #7)
 	bcs.s	ScOo1
-IlNCo:	moveq	#5,d0			* Illegal number of colours
+IlNCo:
+	moveq	#5,d0			* Illegal number of colours
 	Rbra	L_EcWiErr
 ScOo2:	move.l	(a3)+,d3		* TY
 	move.l	(a3)+,d2		* TX
@@ -9002,6 +9004,8 @@ ScOo4	Rbsr	L_LoadRegs
 	Rbsr	L_CheckScreenNumber
 	EcCall	AView
 	Rbne	L_EcWiErr
+	SyCall	WaitVbl 				; 2019.11.06 Added to be sure that a following call to "Dual Playfield"
+	Rjsr	L_Test_Normal 			; will not cause garbage as Screen display registers are not finished to be updated.
 	rts
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
