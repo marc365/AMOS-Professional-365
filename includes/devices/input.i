@@ -1,12 +1,12 @@
 	IFND	DEVICES_INPUT_I
 DEVICES_INPUT_I SET	1
 **
-**	$Filename: devices/input.i $
-**	$Release: 1.3 $
+**	$VER: input.i 36.0 (1.5.90)
+**	Includes Release 40.15
 **
-**	input device command definitions 
+**	input device command definitions
 **
-**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1985-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
 

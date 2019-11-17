@@ -1,12 +1,12 @@
 	IFND	EXEC_PORTS_I
 EXEC_PORTS_I	SET	1
 **
-**	$Filename: exec/ports.i $
-**	$Release: 1.3 $
+**	$VER: ports.i 39.0 (15.10.91)
+**	Includes Release 40.15
 **
-**	
+**	Message ports and Messages.
 **
-**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1985-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
 
@@ -27,27 +27,21 @@ EXEC_PORTS_I	SET	1
 
  STRUCTURE  MP,LN_SIZE
     UBYTE   MP_FLAGS
-    UBYTE   MP_SIGBIT		    * signal bit number
-    APTR    MP_SIGTASK		    * task to be signalled
-    STRUCT  MP_MSGLIST,LH_SIZE	    * message linked list
+    UBYTE   MP_SIGBIT		    ; signal bit number
+    APTR    MP_SIGTASK		    ; object to be signalled
+    STRUCT  MP_MSGLIST,LH_SIZE	    ; message linked list
     LABEL   MP_SIZE
 
 
 *------ unions:
-
 MP_SOFTINT	EQU  MP_SIGTASK
 
 
-*------ flags fields:
-
-PF_ACTION	EQU  3
-
-
-*------ PutMsg actions:
-
-PA_SIGNAL	EQU  0
-PA_SOFTINT	EQU  1
-PA_IGNORE	EQU  2
+*------ MP_FLAGS: Port arrival actions (PutMsg)
+PF_ACTION	EQU  3	; Mask
+PA_SIGNAL	EQU  0	; Signal task in MP_SIGTASK
+PA_SOFTINT	EQU  1	; Signal SoftInt in MP_SOFTINT/MP_SIGTASK
+PA_IGNORE	EQU  2	; Ignore arrival
 
 
 *----------------------------------------------------------------
@@ -57,8 +51,9 @@ PA_IGNORE	EQU  2
 *----------------------------------------------------------------
 
  STRUCTURE  MN,LN_SIZE
-    APTR    MN_REPLYPORT	    * message reply port
-    UWORD   MN_LENGTH		    * message len in bytes
+    APTR    MN_REPLYPORT	; message reply port
+    UWORD   MN_LENGTH		; total message length in bytes
+				; (include MN_SIZE in the length)
     LABEL   MN_SIZE
 
 	ENDC	; EXEC_PORTS_I

@@ -1,17 +1,38 @@
 Here is an history of the changes I've done to the original AMOSProfessional source code forked from marc365 repository :
 To Do :
+
++W.s 9577 StartALL : Cold Start
++W.s 9762 -> CpInit, EcInit, SyInit, VBLInit, WiInit, etc..
++Lib.s -> Call ClsWi method that is faulty on 128 colors.
+
 Add a new command to select 2nd dual playfield screen color shifting.
 5773 -> Start the copper update/creation process.
+Find all the '#40,d' to check if they are related to bitmap size -> replaced those are linked to ~ with 'bm_SIZEOF'
+
 
 Official Improvements :
-FIX : "Screen Display" does not more cause display issue when "Dual PLayfield" is called just after
+FIX : "Screen Display" does not more cause display issue when "Dual Playfield" is called just after
 UPDATE : "Dual Playfield" now preserve Second screen color palette.
+UPDATE : "Dual Playfield" can now uses 16 colors screen (AGA) instead of previous limitation of 8 colors .
 
 TO DO :
+- Add support to change sprites color palette index.
 - Update demo to use SCREEN HIDE/SHOW to now display IFF/ILBM loading times.
 - Add a new command : Aga Colour REG, RGB32
 - Add a new function : RGB32 = Aga Colour( REG )
 - Added new command : Extended Dual Playfield SCREEN1, SCREEN2
+
+********************************************************************
+2019.11.10-17 : Branch : AGA
+
+- Updated to Includes3.1
+- Updated Colour I,R4G4B4 to work with up to 256 colors
+- Updated copper list to define colors 32-255 before screens (just after sprites)
+- Updated Screen creation to uses up to 8 bitplanes ( 256 colors )
+- Updated Created a global aga Palette color for 32-255 colors registers
+- Updated commands Colour ID,RGB & =Colour(ID) to be compatible with up to 256 colors
+
+
 
 ********************************************************************
 2019.11.06 : Branch : Dual-Playfield

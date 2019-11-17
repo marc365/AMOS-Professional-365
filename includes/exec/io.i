@@ -1,12 +1,12 @@
 	IFND	EXEC_IO_I
 EXEC_IO_I	SET	1
 **
-**	$Filename: exec/io.i $
-**	$Release: 1.3 $
+**	$VER: io.i 39.0 (15.10.91)
+**	Includes Release 40.15
 **
-**	
+**	Message structures used for device communication
 **
-**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1985-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
 
@@ -19,102 +19,102 @@ EXEC_IO_I	SET	1
     ENDC	; EXEC_LIBRARIES_I
 
 
-*----------------------------------------------------------------
-*
-*   IO Request Structures
-*
-*----------------------------------------------------------------
+;----------------------------------------------------------------
+;
+;   IO Request Structures
+;
+;----------------------------------------------------------------
 
-*------ Required portion of IO request:
+;------ Required portion of IO request:
 
  STRUCTURE  IO,MN_SIZE
-    APTR    IO_DEVICE			* device node pointer
-    APTR    IO_UNIT			* unit (driver private)
-    UWORD   IO_COMMAND			* device command
-    UBYTE   IO_FLAGS			* special flags
-    BYTE    IO_ERROR			* error or warning code
+    APTR    IO_DEVICE			; device node pointer
+    APTR    IO_UNIT			; unit (driver private)
+    UWORD   IO_COMMAND			; device command
+    UBYTE   IO_FLAGS			; special flags
+    BYTE    IO_ERROR			; error or warning code
     LABEL   IO_SIZE
 
 
-*------ Standard IO request extension:
+;------ Standard IO request extension:
 
-    ULONG   IO_ACTUAL			* actual # of bytes transfered
-    ULONG   IO_LENGTH			* requested # of bytes transfered
-    APTR    IO_DATA			* pointer to data area
-    ULONG   IO_OFFSET			* offset for seeking devices
+    ULONG   IO_ACTUAL			; actual # of bytes transfered
+    ULONG   IO_LENGTH			; requested # of bytes transfered
+    APTR    IO_DATA			; pointer to data area
+    ULONG   IO_OFFSET			; offset for seeking devices
     LABEL   IOSTD_SIZE
 
 
-*------ IO_FLAGS bit definitions:
+;------ IO_FLAGS bit definitions:
 
-    BITDEF  IO,QUICK,0			* complete IO quickly
+    BITDEF  IO,QUICK,0			; complete IO quickly
 
 
-*----------------------------------------------------------------
-*
-*   Standard Device Library Functions
-*
-*----------------------------------------------------------------
+;----------------------------------------------------------------
+;
+;   Standard Device Library Functions
+;
+;----------------------------------------------------------------
 
 	    LIBINIT
 
-	    LIBDEF  DEV_BEGINIO		* process IO request
-	    LIBDEF  DEV_ABORTIO		* abort IO request
+	    LIBDEF  DEV_BEGINIO	; process IO request
+	    LIBDEF  DEV_ABORTIO	; abort IO request
 
 
-*----------------------------------------------------------------
-*
-*   IO Function Macros
-*
-*----------------------------------------------------------------
+;----------------------------------------------------------------
+;
+;   IO Function Macros
+;
+;----------------------------------------------------------------
 
-BEGINIO	    MACRO
+BEGINIO     MACRO
 	    LINKLIB DEV_BEGINIO,IO_DEVICE(A1)
 	    ENDM
 
-ABORTIO	    MACRO
+ABORTIO     MACRO
 	    LINKLIB DEV_ABORTIO,IO_DEVICE(A1)
 	    ENDM
 
 
-*----------------------------------------------------------------
-*
-*   Standard Device Command Definitions
-*
-*----------------------------------------------------------------
+;----------------------------------------------------------------
+;
+;   Standard Device Command Definitions
+;
+;----------------------------------------------------------------
 
-*------ Command definition macro:
-DEVINIT	    MACRO   * [baseOffset]
-	    IFC	    '\1',''
-CMD_COUNT   SET	    CMD_NONSTD
+;------ Command definition macro:
+DEVINIT     MACRO   ; [baseOffset]
+	    IFC     '\1',''
+CMD_COUNT   SET     CMD_NONSTD
 	    ENDC
 	    IFNC    '\1',''
-CMD_COUNT   SET	    \1
+CMD_COUNT   SET     \1
 	    ENDC
 	    ENDM
 
-DEVCMD	    MACRO   * cmdname
-\1	    EQU	    CMD_COUNT
-CMD_COUNT   SET	    CMD_COUNT+1
+DEVCMD	    MACRO   ; cmdname
+\1	    EQU     CMD_COUNT
+CMD_COUNT   SET     CMD_COUNT+1
 	    ENDM
 
 
-*------ Standard device commands:
+;------ Standard device commands:
 
 	    DEVINIT 0
 
-	    DEVCMD  CMD_INVALID		* invalid command
-	    DEVCMD  CMD_RESET		* reset as if just inited
-	    DEVCMD  CMD_READ		* standard read
-	    DEVCMD  CMD_WRITE		* standard write
-	    DEVCMD  CMD_UPDATE		* write out all buffers
-	    DEVCMD  CMD_CLEAR		* clear all buffers
-	    DEVCMD  CMD_STOP		* hold current and queued
-	    DEVCMD  CMD_START		* restart after stop
-	    DEVCMD  CMD_FLUSH		* abort entire queue
+	    DEVCMD  CMD_INVALID	; invalid command
+	    DEVCMD  CMD_RESET		; reset as if just inited
+	    DEVCMD  CMD_READ		; standard read
+	    DEVCMD  CMD_WRITE		; standard write
+	    DEVCMD  CMD_UPDATE		; write out all buffers
+	    DEVCMD  CMD_CLEAR		; clear all buffers
+	    DEVCMD  CMD_STOP		; hold current and queued
+	    DEVCMD  CMD_START		; restart after stop
+	    DEVCMD  CMD_FLUSH		; abort entire queue
 
 
-*------ First non-standard device command value:
+;------ First non-standard device command value:
 
 	    DEVCMD  CMD_NONSTD
 

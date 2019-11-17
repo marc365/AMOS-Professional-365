@@ -22,7 +22,7 @@ Except_Signal	equ	26
 * about the functions of the amos.library.
 ***********************************************************
 * 	Only for multi-lingual readers: half english
-* half french. That's Europe!
+* half french. That''s Europe!
 ***********************************************************
 
 BFORM_ILBM	equ	%00000001
@@ -46,6 +46,7 @@ DmaCon:		equ $96
 DmaConR:	equ $02
 
 Color00:	equ $180
+Color31 	equ $1BE 				; 2019.11.13 Added for AGA Palette copy
 VhPosR:		equ $6
 
 ; Copper
@@ -356,7 +357,7 @@ MemFastClear	equ 90
 MemChipClear	equ 91
 MemFast		equ 92
 MemChip		equ 93
-Send_FakeEvent	equ 94		Envoi d'un faux event clavier
+Send_FakeEvent	equ 94		Envoi d''un faux event clavier
 Test_Cyclique	equ 95		Tests cyclique AMOS
 AddFlushRoutine	equ 96		Ajoute une routine flush
 MemFlush	equ 97		Force un flush memoire
@@ -450,30 +451,19 @@ BbLong:		equ __RS
 BitHide:	equ 7
 BitClone:	equ 6
 BitDble:	equ 5
-EcMaxPlans	equ		6		6 Plans pour le moment!
+EcMaxPlans	equ		8	; 2019.11.11 Updated to 8 bitpales and full "execute aall" done to update all files with changes
 
 		RsReset
 * Bitmap address
-EcLogic:	rs.l 6		* 
-EcPhysic	rs.l 6		* 
-EcCurrent:	rs.l 6		* 
+EcLogic:	rs.l 8		; Define the non displayed bitmaps of the screen (double buffer) or a copy of EcPhysic (single buffer)
+EcPhysic	rs.l 8		; Define the visible bitmaps of the screen
+EcCurrent:	rs.l 8		; Define the current bitmaps of the screen
 
 * Datas!
-EcCon0:		rs.w 1		* 
-EcCon2:		rs.w 1		* 
-EcTx:		rs.w 1		* 
-EcTy:		rs.w 1		* 
-EcNPlan:	rs.w 1		* 
-EcWX:		rs.w 1		* 
-EcWY:		rs.w 1		* 
-EcWTx:		rs.w 1		* 
-EcWTy:		rs.w 1		* 
-EcVX:		rs.w 1		* 
-EcVY:		rs.w 1		* 
-
+EcNPlan:	rs.w 1		; Define the amount of bitplanes available in the Screen 
+EcPal 		rs.w 32     ; Define the screen color palette
 EcColorMap	rs.w 1
 EcNbCol		rs.w 1
-EcPal		rs.w 32
 EcDEcran:	rs.l 1		* 
 
 EcTPlan:	rs.l 1		* 
@@ -530,7 +520,7 @@ EcIInkC:	rs.b 1
 EcFPat:		rs.w 1
 EcIPat:		rs.w 1
 * Cursor saving
-EcCurS:		rs.b 8*6
+EcCurS:		rs.b 8*8 ; Default was 8*6 ...
 
 ;		Donnees ecran intuition
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -540,12 +530,23 @@ Ec_RastPort	rs.l	1
 Ec_Region	rs.l	1
 Ec_BitMap	rs.l	1
 
-; 2019.11.05 Added support for DualPlayfield 2x16colors
-EcCon3		rs.w	1 ; BplCon3 for Dual Playfield color shifting
-dpf2cshift  rs.w    1 ; Value used for the Color shifting of 2nd DPF screen.
+; 2019.11.13 Moved data at the end to check if some datas may cause issue
+EcCon0:		rs.w 1		; Define BplCon0 for this screen
+EcCon2:		rs.w 1		; Define BplCon2 for this screen
+EcTx:		rs.w 1		; Define screen Width in pixels
+EcTy:		rs.w 1		; Define screen Height in pixels.
+EcWX:		rs.w 1		* 
+EcWY:		rs.w 1		* 
+EcWTx:		rs.w 1		* 
+EcWTy:		rs.w 1		* 
+EcVX:		rs.w 1		* 
+EcVY:		rs.w 1		* 
 
+; 2019.11.05 Added support for DualPlayfield 2x16colors
+EcCon3:		rs.w	1;   BplCon3 for Dual Playfield color shifting
+dpf2cshift: rs.w    1;   Value used for the Color shifting of 2nd DPF screen.
 ; Length of a screen
-EcLong:		equ __RS
+EcLong		equ __RS
 
 ; Y Screen base
 EcYBase:	equ $1000
@@ -666,9 +667,10 @@ WiAdhgR:	equ WiAdhg+4
 WiAdhgI:	equ WiAdhgR+4
 WiAdCur:	equ WiAdhgI+4
 WiColor:	equ WiAdCur+4
-WiColFl:	equ WiColor+4*6
-
-WiX:		equ WiColFl+4*6
+; ************* 2019.11.16 Updating the 2 next lines fixed a graphic glitches that happened when opening 128 or 256 color screens.
+WiColFl:	equ WiColor+4*8 						; Replaced from 4*6 to 4*8 to handle 8 bitplanes instead of 6
+WiX:		equ WiColFl+4*8 						; Replaced from 4*6 to 4*8 to handle 8 bitplanes instead of 6
+; ************* 2019.11.16 End of update
 WiY:		equ WiX+2
 WiTx:		equ WiY+2
 WiTy:		equ WiTx+2
@@ -721,6 +723,7 @@ WiSAuto:	equ WiTitH
 ***********************************************************
 *		WINDOW INSTRUCTIONS 
 ***********************************************************
+; These equates are the reflects of the 'bra' calls available in the +W.s file at line 13611
 ChrOut:		equ 0
 Print:		equ 1
 Centre:		equ 2
@@ -840,7 +843,7 @@ BitVBL:		equ 	15
 
 ; __________________________________
 ;
-; 	Definition d'un slider
+; 	Definition d''un slider
 ; __________________________________
 ;
 Sl_FlagVertical	equ 	0
@@ -870,7 +873,7 @@ Sl_Active	rs.w	3+3+2
 Sl_Long		equ	__RS
 ; __________________________________
 ;
-; 	Definition d'un bouton
+; 	Definition d''un bouton
 ; __________________________________
 ;
 Bt_FlagNew	equ	0
@@ -1019,7 +1022,7 @@ Dia_Vars	equ	__RS
 Dia_Source	equ	Dia_LastKey
 Dia_FSource	equ	Dia_Edited
 
-; Entete d'une zone active
+; Entete d''une zone active
 ; ~~~~~~~~~~~~~~~~~~~~~~~~
 		RsReset
 Dia_Ln		rs.w	1		0 Long

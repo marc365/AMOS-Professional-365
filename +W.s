@@ -3,11 +3,10 @@
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ;
 ;		LIBRAIRIE GRAPHIQUE AMOS
-;
-;
+; 
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		OPT	P+
-
+; Docs : http://amigadev.elowar.com/read/ADCD_2.1/Includes_and_Autodocs_3._guide/node0000.html
 ***************************************************************************
 		IFND	EZFlag
 EZFlag		equ 	0
@@ -34,27 +33,33 @@ Version	MACRO
 	ENDM
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-WDebut	bra	Startall	Cold start
-	bra	Endall		End
-	dc.l	L_Trappe	Length of data zone
-	bra	IceStart	Access of System functions
-	bra	IceEnd		Stop access of system functions
-	dc.b	"P111"		Version Pro 1.11 // Updated as new commands will appear with development.
+WDebut;
+	bra		Startall		; (Line=9535) Start from Cold [1st start]
+	bra		Endall			; Close Everything End
+	dc.l	L_Trappe		; Length of data zone
+	bra		IceStart		; Access of System functions
+	bra		IceEnd 			; Stop access of system functions
+	dc.b	"P111"			; Version Pro 1.11 // Updated as new commands will appear with development.
 
-BugBug	movem.l	d0-d2/a0-a2,-(sp)
-.Ll	move.w	#$FF0,$DFF180
+BugBug
+	movem.l	d0-d2/a0-a2,-(sp)
+.Ll
+	move.w	#$FF0,$DFF180
  	btst	#6,$BFE001
 	bne.s	.Ll
 	move.w	#20,d0
-.L0	move.w	#10000,d1
-.L1	move.w	d0,$DFF180
+.L0
+	move.w	#10000,d1
+.L1
+	move.w	d0,$DFF180
 	dbra	d1,.L1
 	dbra	d0,.L0	
 	btst	#6,$BFE001
 	beq.s	.Ill
 	movem.l	(sp)+,d0-d2/a0-a2
 	rts
-.Ill	moveq	#0,d1
+.Ill
+	moveq	#0,d1
 	bsr	TAMOSWb
 	movem.l	(sp)+,d0-d2/a0-a2
 	illegal
@@ -105,14 +110,16 @@ HColGet	lea	T_TColl(a5),a0
 	moveq	#%00000011,d4
 	moveq	#0,d1
 	move.b	(a0)+,d0
-HCol1	bmi.s	HCol2
+HCol1:
+	bmi.s	HCol2
 	btst	d0,d2
 	beq.s	HCol2
 	or.w	d4,d3
 	cmp.w	#$0100,d3
 	bcc.s	HCol2
 	moveq	#-1,d1
-HCol2	lsl.w	#2,d4
+HCol2:
+	lsl.w	#2,d4
 	move.b	(a0)+,d0
 	bne.s	HCol1
 * Ok!
@@ -121,13 +128,16 @@ HCol2	lsl.w	#2,d4
 	moveq	#0,d0
 	rts
 ******* Playfield / Playfield
-HCol3	moveq	#0,d1
+HCol3:
+	moveq	#0,d1
 	btst	#0,d2
 	beq.s	HCol4
 	moveq	#-1,d1
-HCol4	rts
+HCol4:
+	rts
 ******* Table des bits a tester!
-HColT	dc.b	-1,9,10,11,1,5,0,0
+HColT:
+	dc.b	-1,9,10,11,1,5,0,0
 	dc.b	9,-1,12,13,2,6,0,0
 	dc.b	10,12,-1,14,3,7,0,0
 	dc.b	11,13,14,-1,4,8,0,0
@@ -342,7 +352,8 @@ BbColl:	movem.l	a2-a6/d2-d7,-(sp)
 	move.l	T_BbDeb(a0),d0
 	lea	T_TColl(a0),a0
 ******* Explore la table des bobs!
-BbCol1:	move.l	d0,a1
+BbCol1:
+	move.l	d0,a1
 	move.w	BbNb(a1),d0
 	cmp.w	d2,d0
 	bcs.s	BbColN
@@ -369,21 +380,26 @@ BbCol1:	move.l	d0,a1
 	bset	d2,0(a0,d0.w)
 	bset	#31,d7
 	swap	d2
-BbColN:	move.l	BbNext(a1),d0
+BbColN:
+	move.l	BbNext(a1),d0
 	bne.s	BbCol1
 
 ******* Fini!
-BbColX:	bsr	DOwnBlit
+BbColX:
+	bsr	DOwnBlit
 	btst	#31,d7
 	bne.s	BbColT
 	moveq	#0,d0
 	bra.s	BbColXx
-BbColT	moveq	#-1,d0
-BbColXx	movem.l	(sp)+,a2-a6/d2-d7
+BbColT
+	moveq	#-1,d0
+BbColXx
+	movem.l	(sp)+,a2-a6/d2-d7
 	rts
 
 ******* Conversion---> HARD
-GoToSp:	movem.w	d2-d3,-(sp)
+GoToSp:
+	movem.w	d2-d3,-(sp)
 	move.l	d1,a0
 	sub.w	d4,d6
 	sub.w	d5,d7
@@ -404,7 +420,8 @@ GoToSp:	movem.w	d2-d3,-(sp)
 *	D1= Numero du sprite
 *	D2= Debut a explorer
 *	D3= Fin a explorer
-SpColl:	movem.l	a2-a6/d2-d7,-(sp)
+SpColl:
+	movem.l	a2-a6/d2-d7,-(sp)
 	lea	Circuits,a6
 	bsr	OwnBlit
 	lea	T_TColl(a5),a0
@@ -896,7 +913,8 @@ BobSet:
 	move.l	a1,a0
 	move.l	T_BbDeb(a5),d0
 	beq.s	CreBb1
-CreBb0:	move.l	d0,a1
+CreBb0:
+	move.l	d0,a1
 	cmp.w	BbNb(a1),d1
 	beq.s	CreBb5
 	bcs.s	CreBb2
@@ -910,13 +928,15 @@ CreBb0:	move.l	d0,a1
 	move.l	a0,a1
 	bra.s	CreBb5
 * Au tout debut
-CreBb1:	bsr	ResBOB
+CreBb1:
+	bsr	ResBOB
 	bne	CreBbE
 	move.l	a0,T_BbDeb(a5)
 	move.l	a0,a1
 	bra.s	CreBb5
 * Insere la nouvelle
-CreBb2:	bsr	ResBOB
+CreBb2:
+	bsr	ResBOB
 	bne	CreBbE
 	move.l	BbPrev(a1),d0
 	move.l	a0,BbPrev(a1)
@@ -925,39 +945,49 @@ CreBb2:	bsr	ResBOB
 	move.l	T_BbDeb(a5),d1
 	move.l	a0,T_BbDeb(a5)
 	bra.s	CreBb4
-CreBb3:	move.l	d0,a2
+CreBb3:
+	move.l	d0,a2
 	move.l	BbNext(a2),d1
 	move.l	a0,BbNext(a2)
-CreBb4:	move.l	d1,BbNext(a0)
+CreBb4:
+	move.l	d1,BbNext(a0)
 	move.l	a0,a1
 * Poke les coordonnees
-CreBb5:	move.l	#EntNul,d7
+CreBb5:
+	move.l	#EntNul,d7
 	move.b	BbAct(a1),d6
 	bmi.s	CreBb9
 	cmp.l	d7,d2
 	beq.s	CreBb6
 	move.w	d2,BbX(a1)
 	bset	#1,d6
-CreBb6:	cmp.l	d7,d3
+CreBb6:
+	cmp.l	d7,d3
 	beq.s	CreBb7
 	move.w	d3,BbY(a1)
 	bset	#2,d6
-CreBb7:	cmp.l	d7,d4
+CreBb7:
+	cmp.l	d7,d4
 	beq.s	CreBb8
 	move.w	d4,BbI(a1)
 	bset	#0,d6
-CreBb8:	move.b	d6,BbAct(a1)
+CreBb8:
+	move.b	d6,BbAct(a1)
 * Doit actualiser les bob
-CreBb9:	bset	#BitBobs,T_Actualise(a5)
+CreBb9:
+	bset	#BitBobs,T_Actualise(a5)
 	moveq	#0,d0
 	rts
 ******* Erreur!
-CreBbS:	moveq	#1,d0
-CreBbE:	tst.w	d0
+CreBbS:
+	moveq	#1,d0
+CreBbE:
+	tst.w	d0
 	rts
 
 ******* CREATION DE LA TABLE!
-ResBOB:	move.l	#BbLong,d0
+ResBOB:
+	move.l	#BbLong,d0
 	bsr	FastMm
 	beq.s	ResBErr
 	move.l	d0,a0
@@ -2432,16 +2462,16 @@ ACol1	move.l	0(a0,d0.w),d0
 *	DEMARRAGE A FROID DES ECRANS
 *	D0= taille memoire pour liste copper
 ***********************************************************
-EcInit:	
+EcInit:
 * Reserve la memoire pour liste copper ecrans
 	move.l	#EcTCop,d0
-	bsr	FastMm
-	beq	GFatal
+	bsr		FastMm
+	beq		GFatal
 	move.l	d0,T_EcCop(a5)
 * Petit buffer en CHIP pour les operations graphiques
 	move.l	#256,d0
-	bsr	ChipMm
-	beq	GFatal
+	bsr		ChipMm
+	beq		GFatal
 	move.l	d0,T_ChipBuf(a5)
 * Taille affichage par defaut
 	move.w	#311+EcYBase,T_EcYMax(a5)	PAL
@@ -2451,16 +2481,16 @@ EcInit:
 	move.w	#261+EcYBase,T_EcYMax(a5)	NTSC!
 .NoNTSC
 * Autre inits
-	bsr	EcRaz
-	bsr	EcCopper
+	bsr		EcRaz
+	bsr		EcCopper
 	tst.b	T_AMOSHere(a5)
 	beq.s	.Skip
-	lea	Circuits,a6
+	lea		Circuits,a6
 	clr.w	CopJmp1(a6)
 	move.w	#$82A0,DmaCon(a6)
 .Skip
 ; Installe le vecteur
-	lea	EcIn(pc),a0
+	lea		EcIn(pc),a0
 	move.l	a0,T_EcVect(a5)
 	moveq	#0,d0
 	rts
@@ -2787,7 +2817,7 @@ EcDbE	moveq	#0,d1
 *    D2= Ecran 2
 Duale:    movem.l    d1-d7/a1-a6,-(sp)
 
-	SyCall	WaitVbl 			; 2019.11.06 Forces WaitVbl to ensure any "Screen Display" call cannot trash data.
+	SyCall	WaitVbl 		   ; 2019.11.06 HOTFIX : Forces WaitVbl to ensure any "Screen Display" call cannot trash data.
 
     cmp.w    d1,d2             ; Compare D1 & D2 Screens
     beq    EcE160              ; If screens are the same -> Error cannot set DPF
@@ -2912,69 +2942,73 @@ EcDup2:	move.w	d1,EcCon2(a0)
 	bra	EcOtoV
 	ENDC
 
-******* Creation de l''ecran
-*	D1= #
+******************************************* Create a new screen
+*	D1= Screen Number
 *	D2= TX
 *	D3= TY
 *	D4= NB PLANS
 *	D5= MODE
 *	D6= NB COULEURS 
 *	A1= PALETTE
-EcCree:	movem.l	d1-d7/a1-a6,-(sp)
-	
+*******************************************
+EcCree:
+	movem.l	d1-d7/a1-a6,-(sp)
+
 ;	Verifie les parametres
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	and.l	#$FFFFFFF0,d2
+	and.l	#$FFFFFFF0,d2 		; Aligne Screen Width on 16 pixels multiple
 	beq	EcE4
-	cmp.l	#1024,d2
+	cmp.l	#1024,d2 			; If Screen Width > 1024 -> Error
 	bcc	EcE4
 	tst.l	d3
 	beq	EcE4
-	cmp.l	#1024,d3
+	cmp.l	#1024,d3 			; If Screen Height > 1024 -> Error
 	bcc	EcE4
-	tst.l	d4
+	tst.l	d4 					; If Screen Depth = 0 -> Error
 	beq	EcE4
-	cmp.l	#EcMaxPlans,d4
+	cmp.l	#EcMaxPlans,d4 		; If Screen Depth > ExMAxPlans -> Error
 	bhi	EcE4
 
-;	Ecran deja reserve?
+;	Screen Already created/available ?
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~
-ReEc:	move.l	d1,-(sp)
+ReEc:
+	move.l	d1,-(sp)
 	bsr	EcGet
-	beq.s	EcCr0
-; Efface l''ecran deja réserve
+	beq.s	EcCr0 		; if Screen Adress (in D0) = 0 -> Screen not created. -> Jump to EcCr0
+; If screen already exists, we close it before creating it again
 	move.l	(sp)+,d1
-	bsr	EcDel
+	bsr		EcDel 		; Close Screen
 	bra.s	ReEc
 
-;	Reserve la RAM pour la structure
+;	Allocate memory (FastMem) for the Screen Table/Structure
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EcCr0:	move.l	#EcLong,d0
+EcCr0:
+	move.l	#EcLong,d0
 	bsr	FastMm
 	beq	EcEE1
-	move.l	d0,a4
+	move.l	d0,a4 			; A4 = Current Screen data structure
 
-; Couleurs
-; ~~~~~~~~
+;	****** This small loop copy the default AMOS color palette inside current screen one to set it.
 	move.w	d6,EcNbCol(a4)
 	moveq	#31,d0
 	lea	EcPal(a4),a2
-EcCr4:	move.w	(a1)+,(a2)+
+EcCr4:
+	move.w	(a1)+,(a2)+
 	dbra	d0,EcCr4
-; Taille de l''ecran
-; ~~~~~~~~~~~~~~~~~
-	move.w	d2,EcTx(a4)
-	move.w	d2,EcTxM(a4)
-	subq.w	#1,EcTxM(a4)
+
+;	****** This part will save informations concerning screen sizes
+	move.w	d2,EcTx(a4) 		; Save Screen Width in pixels
+	move.w	d2,EcTxM(a4) 		; Save Screen Width in pixels
+	subq.w	#1,EcTxM(a4)		; Width (in pixels) -1
 	move.w	d2,d7
-	lsr.w	#3,d7
-	move.w	d7,EcTLigne(a4)
-	move.w	d3,EcTy(a4)
-	move.w	d3,EcTyM(a4)
-	subq.w	#1,EcTyM(a4)
-	mulu	d3,d7
-	move.l	d7,EcTPlan(a4)
-	move.w	d4,EcNPlan(a4)
+	lsr.w	#3,d7 				; Screen Width / 8 = Screen Widht in bytes
+	move.w	d7,EcTLigne(a4) 	; d7 = 1 line bytes size
+	move.w	d3,EcTy(a4) 		; Save Screen Height
+	move.w	d3,EcTyM(a4)		; Save Screen Height
+	subq.w	#1,EcTyM(a4) 		; Height (in pixels) -1
+	mulu	d3,d7 				; Height * Width(bytes) = Bitplane length in bytes
+	move.l	d7,EcTPlan(a4) 		; Save Bitplane size in bytes
+	move.w	d4,EcNPlan(a4) 		; Save bitplanes amount
 
 	; 2019.11.05 Setup for default color shifting in case this screen can be 1st screen in eventual DPF mode.
 ;	cmp.w 	#3,d4 					; if this screen uses more than 4 bitplanes, it can't be used for DPF
@@ -2987,83 +3021,86 @@ EcCr4:	move.w	(a1)+,(a2)+
 endCSsetup:
 	; 2019.11.05 End of setup for default color shifting in case this screen can be 1st screen in eventual DPF mode.
 
-; 	Parametres d''affichage -1-
+; 	Display Parameters -1-
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	T_GfxBase(a5),a0	EcCon0
-	move.w	164(a0),d0
-	and.w	#%0000001111111011,d0
-	move.w	d4,d1
+	move.w	164(a0),d0 				; Get GfxBase -> BplCon0 copy
+	and.w	#%0000001111111011,d0 	; Filter for bitplanes amount
+	move.w	d4,d1 					; D1 = Bitplanes amount
 	; 2019.11.05 Update to handle 8 bitplanes in BplCon0 in normal screen (not dual playfield)
 ;	lsl.w	#8,d1 				; Original method to handle 0-6 Bitplanes ( BPU0-2)
 ;	lsl.w	#4,d1 				;
-    cmp.w    #8,d1             ; If 8 bitplanes are requested, we directly set byte #4 of d2
-    blt     sevenOrLowerDPFx ; Less than 8 bitplanes, jump to classical way of shifting bytes to set BPU0-2
-heightBitPlanesDPFx:
-    move.w #16,d1             ; Set byte 04 ( BPU3 ) to 1 and others (BPU0-2) to 0 to define 8 bitplanes
-    bra.s continueDPFx
-sevenOrLowerDPFx:            ; if less thab 8 bitplanes are requested, we use the default Amos calculation as it fit
-    lsl.w    #8,d1           ;  in BPU0-1-2 bytes 12-13-14 in BPLCON0 16 bits register
-    lsl.w    #4,d1             ; As lsl.w handle max of 8, to shift by 12 AMOS must to 2 Lsl.w calls.
-continueDPFx:                ; 2019.11.05 End of upgrade to handle BPU3 for 8 Bitplanes mode.
-	or.w	d0,d1
-	or.w	d1,d5
-	move.w	d5,EcCon0(a4)
-	move.w	#%00100100,EcCon2(a4)	EcCon2
+    cmp.w   #8,d1             ; If 8 bitplanes are requested, we directly set byte #4 of d2
+    blt     sevenOrLower ; Less than 8 bitplanes, jump to classical way of shifting bytes to set BPU0-2
+heightBitPlanes:
+    move.w 	#16,d1             ; Set byte 04 ( BPU3 ) to 1 and others (BPU0-2) to 0 to define 8 bitplanes
+    bra.s continue
+sevenOrLower:            ; if less thab 8 bitplanes are requested, we use the default Amos calculation as it fit
+    lsl.w 	#8,d1           ;  in BPU0-1-2 bytes 12-13-14 in BPLCON0 16 bits register
+    lsl.w 	#4,d1             ; As lsl.w handle max of 8, to shift by 12 AMOS must to 2 Lsl.w calls.
+continue:                ; 2019.11.05 End of upgrade to handle BPU3 for 8 Bitplanes mode.
+	or.w	d0,d1 			 ; D1 = BplCon0 filtered || BPU0-3
+	or.w	d1,d5 			 ; D5 = D1 || D5 (Mode (Hires, Lace))
+	move.w	d5,EcCon0(a4) 	 ; Save BplCon0 value for this screen
+	move.w	#%00100100,EcCon2(a4) 	; Save BplCon2 value for this screen
 
-;	Creation de la structure BitMap / Reservation des bitmaps
+;	Create/Initialize the BitMap Structure
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	moveq	#40,d0				bm_SIZEOF
+	moveq	#bm_SIZEOF,d0			bm_SIZEOF
 	bsr	FastMm
 	beq	EcMdd
 	move.l	d0,Ec_BitMap(a4)
-	move.l	d0,a0
+	move.l	d0,a0 					; A0 = bitmap structure pointer
 	move.w	EcNPlan(a4),d0			Creation de BitMap
-	ext.l	d0
+	ext.l	d0 						; D0 = Screen Depth
 	move.w	EcTx(a4),d1
-	ext.l	d1
+	ext.l	d1 						; D1 = Screen Width
 	move.w	EcTy(a4),d2
-	ext.l	d2
+	ext.l	d2 						; D2 = Screen height
 	move.l	T_GfxBase(a5),a6
-	jsr	_LVOInitBitMap(a6)
-; Reserve la RAM
+	jsr	_LVOInitBitMap(a6) 			; Initialise bitmap using
+
+; Allocate memory for all required BitMaps
 ; ~~~~~~~~~~~~~~
-	move.w	d4,d6
+	; **************************** 2019.11.13 Try to allocate the whole screen at once.
+	move.w	EcNPlan(a4),d6 			; 2019.11.12 Directly moves EcNPlan instead of D4 datas
 	subq.w	#1,d6
-	move.l	Ec_BitMap(a4),a1
-	moveq	#0,d2
-EcCra:	move.l	d7,d0
+	move.l	Ec_BitMap(a4),a1 		; a1 = Initialized BitMap Structure
+	moveq	#0,d2 					; D2 start at offset 0
+EcCra:
+	move.l	EcTPlan(a4),d0 			; 2019.11.12 Directly moves ECTPlan in d0 instead of D7 register
 	bsr	ChipMm
 	beq	EcMdd
-	move.l	d0,bm_Planes(a1,d2.w)
-	move.l	d0,EcCurrent(a4,d2.w)
-	move.l	d0,EcLogic(a4,d2.w)
-	move.l	d0,EcPhysic(a4,d2.w)
+	move.l	d0,bm_Planes(a1,d2.w) 	; Save bitmap in previously initialized bitmap structure
+	move.l	d0,EcCurrent(a4,d2.w) 	; Save bitmaps to EcCurrent
+	move.l	d0,EcLogic(a4,d2.w) 	; Save Bitmaps to EcLogic
+	move.l	d0,EcPhysic(a4,d2.w) 	; Save Bitmap To ExPhysic
 	addq.l	#4,d2
 	dbra	d6,EcCra
 
-;	Ouverture d''un rastport intuition REEL
+;	Create the true Intuition Rastport
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	T_LayBase(a5),a6		
 	jsr	_LVONewLayerInfo(a6)		Creation de LayerInfo
 	move.l	d0,Ec_LayerInfo(a4)
 	beq	EcMdd
-	move.l	d0,a0				Creation du layer
-	move.l	Ec_BitMap(a4),a1
-	moveq	#0,d0
-	moveq	#0,d1
+	move.l	d0,a0					; A0 = Layer Info structure
+	move.l	Ec_BitMap(a4),a1 		; D1 = Bitmap Structure
+	moveq	#0,d0 					; D0 = X0 of Upper left hand corner of layer
+	moveq	#0,d1 					; D1 = Y0 of Upper left hand corner of layer
 	move.w	EcTx(a4),d2
-	subq.w	#1,d2
+	subq.w	#1,d2 					; D2 = X1 of lower right hand corner of layer
 	ext.l	d2
 	move.w	EcTy(a4),d3
-	subq.w	#1,d3
+	subq.w	#1,d3 					; D3 = Y1 of lower right hand corner of layer
 	ext.l	d3
-	moveq	#LAYERSIMPLE,d4
-	sub.l	a2,a2
-	jsr	_LVOCreateUpfrontLayer(a6)
-	move.l	d0,Ec_Layer(a4)
+	moveq	#LAYERSIMPLE,d4 		; D4 = Flags
+	sub.l	a2,a2 					; A2 = null ( optional pointer to Super Bitmap )
+	jsr	_LVOCreateUpfrontLayer(a6)	; Call CreateUpFrontLayer
+	move.l	d0,Ec_Layer(a4)         ; Save created layer.
 	beq	EcMdd
-	move.l	d0,a0				Rastport courant
-	move.l	lr_rp(a0),Ec_RastPort(a4)
+	move.l	d0,a0					
+	move.l	lr_rp(a0),Ec_RastPort(a4) : Created layer rastport become current one.
 
 	bsr	BlitWait
 	bsr	WVbl
@@ -3081,11 +3118,11 @@ EcCra:	move.l	d7,d0
 	bsr	EcGet
 	move.l	a4,(a0)			Branche
 	move.w	d1,EcNumber(a4)		Un numero!
-	move.l	a4,a0			Devient l''ecran courant
-	bsr	Ec_Active
+	move.l	a4,a0			; Become current screen
+	bsr		Ec_Active
 	move.l	(sp),d1
-	bsr	EcFirst			Et devant les autres
-	bsr	InterPlus		Si entrelace
+	bsr		EcFirst			; Push over other screens
+	bsr		InterPlus		; Is interlaced ?
 
 ; 	Parametres d''affichage -2-
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3095,18 +3132,22 @@ EcCra:	move.l	d7,d0
 	tst.w	EcCon0(a4)
 	bpl.s	EcCr6
 	lsr.w	#1,d4
-EcCr6	move.w	EcTy(a4),d5
+EcCr6:
+	move.w	EcTy(a4),d5
 	cmp.w	#320+16,d4
 	bcs.s	EcCr7
 	move.w	T_DefWX2(a5),d2
-EcCr7	cmp.w	#256,d5
+EcCr7:
+	cmp.w	#256,d5
 	bcs.s	EcCr8
 	btst	#2,EcCon0+1(a4)
 	beq.s	EcCr7a
 	cmp.w	#256*2,d5
 	bcs.s	EcCr8
-EcCr7a	move.w	T_DefWY2(a5),d3
-EcCr8	ext.l	d2
+EcCr7a:
+	move.w	T_DefWY2(a5),d3
+EcCr8:
+	ext.l	d2
 	ext.l	d3
 	ext.l	d4
 	ext.l	d5
@@ -3116,19 +3157,19 @@ EcCr8	ext.l	d2
 ; 	Cree la fenetre de texte plein ecran
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	clr.l	EcWindow(a4)
-	moveq	#0,d1
-	moveq	#0,d2
-	moveq	#0,d3
+	moveq	#0,d1 				; D1 = Numéro de fenêtre
+	moveq	#0,d2 				; D2 = X Start
+	moveq	#0,d3 				; D3 = Y Start
 	move.w	EcTx(a4),d4
 	lsr.w	#4,d4
-	lsl.w	#1,d4
+	lsl.w	#1,d4 				; D4 = TX
 	move.w	EcTy(a4),d5
-	lsr.w	#3,d5
-	moveq	#1,d6
-	moveq	#0,d7
-	sub.l	a1,a1
-	bsr	WOpen
-	bne	EcM1
+	lsr.w	#3,d5 				; D5 = TY
+	moveq	#1,d6 				; D6 = Flags / 0=Faire un CLW
+	moveq	#0,d7 				; D7 = 0 = no border
+	sub.l	a1,a1 				; A1 = Null ( = optional charset )
+	bsr		WOpen 					; Call Window Open ; ******************************************************************* HERE
+	bne		EcM1
 
 ;	Initialisation des parametres graphiques
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3174,10 +3215,10 @@ EcCr8	ext.l	d2
 	addq.l	#4,sp
 	move.l	T_EcCourant(a5),a0	* Ramene l''adresse definition
 
-
-; ******************************************************************* Doit recalculer les ecrans
+; Doit recalculer les ecrans
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~
 EcTout:	addq.w	#1,T_EcYAct(a5)
+
 ; Doit actualiser ECRANS
 ; ~~~~~~~~~~~~~~~~~~~~~~
 EcOtoV:
@@ -3233,7 +3274,7 @@ EcE164:
 	bra.s	EcOut
 EcE165:
 	move.l	#165,d0			<Unknown error when trying to set dual playfield mode> 
-	bra.s	EcOut               ; I will update it later when I''ll get the error and understand what provoke it.
+	bra.s	EcOut
 	; 2019.11.03 End of 6 new error messages for Dual Playfield command
 EcE2:
 	moveq	#2,d0			* 2 : SCREEN ALREADY OPENED
@@ -3576,12 +3617,12 @@ EcFr3:	move.l	(a2),d0
 EcFr4:	clr.l	(a2)+
 	dbra	d7,EcFr3
 	move.l	(sp)+,a6
-; La structure Bitmap
+; Release memory of the BitMap structure
 ; ~~~~~~~~~~~~~~~~~~~
 	move.l	Ec_BitMap(a4),d0
 	beq.s	.PaBM
 	move.l	d0,a1
-	moveq	#40,d0
+	moveq	#bm_SIZEOF,d0 				; bm_SIZEOF
 	bsr	FreeMm
 .PaBM	
 
@@ -3597,7 +3638,8 @@ PaClon	move.l	a4,a1				La structure AMOS
 ******* Initialisation des ecrans
 EcRaz:	lea	T_EcAdr(a5),a0
 	moveq	#EcMax-1,d0
-EcR1:	clr.l	(a0)+
+EcR1:
+	clr.l	(a0)+
 	dbra	d0,EcR1
 	move.l	#-1,T_EcPri(a5)
 	lea	T_CopMark(a5),a0
@@ -3732,33 +3774,42 @@ TAbk4X:	movem.l	(sp)+,a3-a6
 *	D3= Y
 *	D4= X2
 *	D5= Y2
-EcCls:	movem.l	d1-d7/a0/a1/a5/a6,-(sp)
+EcCls:
+	movem.l	d1-d7/a0/a1/a5/a6,-(sp)
 	move.l	T_EcCourant(a5),a5
 	tst.w	d2
 	bpl.s	Cls5b
 	moveq	#0,d2
-Cls5b:	cmp.w	EcTx(a5),d2
+Cls5b:
+	cmp.w	EcTx(a5),d2
 	bls.s	Cls5c
 	move.w	EcTx(a5),d2
-Cls5c:	tst.w	d3
+Cls5c:
+	tst.w	d3
 	bpl.s	Cls5d
 	moveq	#0,d3
-Cls5d:	cmp.w	EcTy(a5),d3
+Cls5d:
+	cmp.w	EcTy(a5),d3
 	bls.s	Cls5e
 	move.w	EcTy(a5),d3
-Cls5e:	tst.w	d4
+Cls5e:
+	tst.w	d4
 	bpl.s	Cls5f
 	moveq	#0,d4
-Cls5f:	cmp.w	EcTx(a5),d4
+Cls5f:
+	cmp.w	EcTx(a5),d4
 	bls.s	Cls5g
 	move.w	EcTx(a5),d4
-Cls5g:	tst.w	d5
+Cls5g:
+	tst.w	d5
 	bpl.s	Cls5h
 	moveq	#0,d5
-Cls5h:	cmp.w	EcTy(a5),d5
+Cls5h:
+	cmp.w	EcTy(a5),d5
 	bls.s	Cls5i
 	move.w	EcTy(a5),d5
-Cls5i:	cmp.w	d2,d4
+Cls5i:
+	cmp.w	d2,d4
 	bls	Cls5x
 	sub.w	d3,d5
 	bls	Cls5x
@@ -3774,13 +3825,16 @@ Cls5i:	cmp.w	d2,d4
 	bsr	ClsR
 	bsr	TAbk3
 	bra.s	Cls5X
-Cls5W	bsr	ClsR
-Cls5X:	movem.l	(sp)+,d1-d7/a0/a1/a5/a6
+Cls5W:
+	bsr	ClsR
+Cls5X:
+	movem.l	(sp)+,d1-d7/a0/a1/a5/a6
 	moveq	#0,d0
 	rts
 
 * Routine d''effacement!
-ClsR:	lea	Circuits,a6
+ClsR:
+	lea	Circuits,a6
 	bsr	OwnBlit
 	lea	MCls(pc),a0		* Masques
 	move.w	d2,d0
@@ -3796,7 +3850,8 @@ ClsR:	lea	Circuits,a6
 	lsl.w	#1,d0
 	move.w	0(a0,d0.w),d7
 	not.w	d7
-Cls5j:	move.w	d7,BltMaskD(a6)
+Cls5j:
+	move.w	d7,BltMaskD(a6)
 	lsr.w	#4,d2			* Taille en X
 	lsr.w	#4,d4
 	sub.w	d2,d4
@@ -3819,8 +3874,8 @@ Cls5j:	move.w	d7,BltMaskD(a6)
 	move.w	EcNPlan(a5),d7
 	subq.w	#1,d7
 	moveq	#-1,d6
-
-Cls5k:	moveq	#0,d0
+Cls5k:
+	moveq	#0,d0
 	lsr.w	#1,d1
 	subx.w	d0,d0
 	move.w	d0,BltDatB(a6)
@@ -3831,9 +3886,11 @@ Cls5k:	moveq	#0,d0
 	move.l	a1,BltAdC(a6)
 	move.l	a1,BltAdD(a6)
 	move.w	d5,BltSize(a6)
-Cls5l:	bsr	BlitWait
-Cls5m:	dbra	d7,Cls5k
-* Remet le blitter et revient
+Cls5l:
+	bsr	BlitWait
+Cls5m:
+	dbra	d7,Cls5k
+	* Remet le blitter et revient
 	bra	DOwnBlit
 
 ******* Table des masques
@@ -3880,11 +3937,14 @@ EcMarch	bsr	EcGet
 	btst	#BitClone,EcFlags(a0)
 	bne.s	EcCl
 	bsr	Ec_Active
-EcMOk	moveq	#0,d0
+EcMOk
+	moveq	#0,d0
 	rts
-EcME	moveq	#3,d0
+EcME
+	moveq	#3,d0
 	rts
-EcCl	moveq	#4,d0
+EcCl
+	moveq	#4,d0
 	rts
 
 ;	Routine d''activation de l''ecran A0
@@ -3895,7 +3955,7 @@ Ec_Active
 	beq.s	.Skip
 	move.l	Ec_RastPort(a0),T_RastPort(a5)
 	move.l	a1,-(sp)
-	lea	WRastPort(pc),a1
+	lea		WRastPort(pc),a1
 	move.l	Ec_RastPort(a0),(a1)
 	move.l	(sp)+,a1
 .Skip	rts
@@ -3915,33 +3975,92 @@ EcAdres	cmp.w	#8,d1
 	rts
 
 ******* SET COLOUR D1,D2
-EcSCol:	move.l	T_EcCourant(a5),a0
-	and.w	#31,d1
-	lsl.w	#1,d1
-	and.w	#$FFF,d2
-	move.w	d2,EcPal(a0,d1.w)
-* Poke dans le copper
+;   D1 = Color register ( 0-255 )
+;   D2 = Color value ( R4G4B4 )
+EcSCol:
+ 	; ********************************* 2019.11.13 Update Colour ID, R4G4B4 to handle 256 colors in the Screen structure palette
+	move.l	T_EcCourant(a5),a0
+	and.l	#255,d1 					; Remove 32 colours limit (original = #31) for AGA support with 256 colours limit
+	cmp.w 	#31,d1 						; Check if requested color is in range 00-31 (ECS) or 32-255 (AGA Only)
+	bgt 	AGAPaletteColour 			; if color = 32-255 -> AGAPaletteColour
+;	*************************** Setup color 00-31 (Original AmosPRO setup)
+	lsl.w	#1,d1 						; Colour definition is 16 bits, so d1*2 = Color Word index
+	and.l	#$FFF,d2 					; Be sure that only R8G8B8 values are stored
+	lea 	EcPal(a0),a1
+	add.l   d1,a1
+	move.w	d2,(a1) 					; Update screen color in table/structure palette
+; Update the copper by poking directly in it.
 	lsl.w	#1,d1
 	move.w	EcNumber(a0),d0
 	lsl.w	#7,d0
-	lea	T_CopMark(a5),a0
+	lea		T_CopMark(a5),a0
 	add.w	d0,a0
 	cmp.w	#PalMax*4,d1
 	bcs.s	ECol0
-	lea	64(a0),a0
-ECol0:	move.l	(a0)+,d0
+	lea		64(a0),a0 					; ****************************************** CHECKER si le positionnement correspond bien à Color00 ($0180) dans la Copper List.
+ECol0:
+	move.l	(a0)+,d0
 	beq.s	ECol1
 	move.l	d0,a1
 	move.w	d2,2(a1,d1.w)
 	bra.s	ECol0
-ECol1:	moveq	#0,d0
+ECol1:
+	moveq	#0,d0
+	rts
+
+;	*************************** 2019.11.16 Set AGA color 32-255
+;   D1 = Color register ( 32-255 )
+;   D2 = Color value ( R4G4B4 )
+AGAPaletteColour:
+	sub.l 	#32,d1 						; D1 Color palette shifted with -32 to be index 00-223 in globAgaPal ( 224 registers )
+	; ****** Save Aga Color in the global globAgaPal register
+	lea 	T_globAgaPal(a5),a1 		; Storage for AGA colors from 32 to 255 ( 224 registers )
+	move.l 	d1,d3
+	lsl.w 	#1,d3
+	move.w  d2,(a1,d3.w) 				; Save D2 color in his AgaPal(ette) color register
+	; ****** Update copperlist
+	
+	; STORE COPPER START COLOR INTO A1
+	 Move.l 	T_CopPhysic(a5),a1			; A1 = Pointer to the beginning of the current physical copper list.
+	Move.l 	T_CopLogic(a5),a2
+	Add.l 	#72,a1 						; A1 = Pointer to the beginning of the AGA color palette
+	Add.l 	#72,a2 						; A1 = Pointer to the beginning of the AGA color palette
+	Move.l 	d1,d3 						; D3 = true 32-255 Color Indexed at 0-224
+	cmp.w 	#0,d3
+	beq 	noDiv
+	divu 	#32,d3 						; D3 = Palette groupe ID ( from 0 - 6, in reality color range 32-255 cos copper contains only colors 32-255 )
+noDiv:
+	Mulu 	#132,d3 					; D3 = Shift to reach the correct color group in Copper List
+	Add.l 	d3,a1 						; A1 = Pointer to the correct color group
+	Add.l 	d3,a2
+	Add.l 	#6,a1 						; A1 = Pointer to the Color00 in the correct color group ( +#4 for BplCon3 & value +#2 for $180 register )
+	Add.l 	#6,a2
+	and.l 	#$1F,d1  					; D1 = Color register driven in a 00-31 range.
+	Lsl.l 	#2,d1 						; D1 = Color ID * 4 as each color uses .w-> Register + .w-> R4G4B4 Color value
+	Add.l 	d1,a1 						; A1 = Pointer to the adress where color value must be sent.
+	Add.l 	d1,a2
+	Move.w 	d2,(a1) 					; Update color in the copper list.
+	Move.w 	d2,(a2) 					; Update color in the copper list.
+	; ****** End with no error.
+	moveq	#0,d0
 	rts
 
 ******* GET COLOUR D1
-EcGCol:	move.l	T_EcCourant(a5),a0
-	and.l	#31,d1
-	lsl.w	#1,d1
+EcGCol:
+	move.l	T_EcCourant(a5),a0
+	and.w	#255,d1 					; 2019.11.13 Remove 32 colours limit (original = #31) for AGA support with 256 colours limit
+	cmp.w 	#31,d1 						; Check if requested color is in range 00-31 (ECS) or 32-255 (AGA Only)
+	bgt 	getAGAPaletteColour 			; if color = 32-255 -> AGAPaletteColour
+	lsl.w	#1,d1 						; Colour definition is 16 bits, so d1*2 = Color Word index
 	move.w	EcPal(a0,d1.w),d1
+	moveq	#0,d0
+	rts
+
+getAGAPaletteColour
+	Sub.l 	#32,d1
+	lea 	T_globAgaPal(a5),a1 		; Storage for AGA colors from 32 to 255 ( 224 registers )
+	lsl.w 	#1,d1
+	move.w  (a1,d1.w),d1 				; Get colour
 	moveq	#0,d0
 	rts
 
@@ -4716,12 +4835,16 @@ PntCc3	subq.w	#1,d4
 	bne.s	PntCc1
 	bsr	DOwnBlit
 ******* Copper copy!
-PntEnd	moveq	#0,d7
-PntE1	move.l	W_Base(pc),a5
+PntEnd:
+	moveq	#0,d7
+PntE1:
+	move.l	W_Base(pc),a5
 	move.l	T_EcCourant(a5),a5
 	bsr	PntDBuf
-PntE2	addq.l	#8,sp
-NoPaint	move.l	d7,d1
+PntE2:
+	addq.l	#8,sp
+NoPaint:
+	move.l	d7,d1
 	move.l	(sp)+,EcCurs+4(a5)
 	move.l	(sp)+,EcCurs(a5)
 	movem.l	(sp)+,d1-d7/a0-a6
@@ -4751,7 +4874,8 @@ PMsk1	move.w	#-1,BltMaskG(a6)
 	lsr.w	#1,d0
 	bcc.s	PMsk2
 	move.w	d4,d2
-PMsk2	or.w	#%0000110100000000,d2
+PMsk2:
+	or.w	#%0000110100000000,d2
 	move.w	d2,BltCon0(a6)
 	clr.w	BltCon1(a6)
 	move.w	4+4(sp),BltSize(a6)
@@ -4763,7 +4887,8 @@ PMsk2	or.w	#%0000110100000000,d2
 	bra	DOwnBlit
 
 ******* Reserves a new buffer!
-PntNBuf	movem.l	a0/a2/a3,-(sp)
+PntNBuf:
+	movem.l	a0/a2/a3,-(sp)
 	move.l	PntPos(a5),a2
 	move.l	(a2),d0
 	bmi.s	PntMem
@@ -5850,7 +5975,7 @@ EcA2:
 EcAg:
 	move.w	EcTY(a1),d1 			; D1 = Current screen display Height
 EcAc:
-	btst.b	#2,EcCon0+1(a1) 		; Check for Interlace mode                  // 2019.11.05 Check in .b mode to be sure default is not .w
+	btst	#2,EcCon0+1(a1) 		; Check for Interlace mode                  // 2019.11.05 Check in .b mode to be sure default is not .w
 	beq.s	EcA2a					; If Not Interlaced -> Jump to EcA2a
 	lsr.w	#1,d1 					; if Interlaced : Height = Height / 2 
 EcA2a:
@@ -6002,14 +6127,16 @@ PaDecoup:
 	clr.w	T_InterInter(a5)
 	lea	T_EcPri(a5),a2
 	lea	T_EcBuf(a5),a3
-MkA1:	move.w	(a3),d0
+MkA1:
+	move.w	(a3),d0
 	bmi	MkAFin
 	move.w	2(a3),d1
 	move.w	4(a3),d2
 	bmi	MkA4
 ; Debut d''une fenetre: doit-on l''afficher?
 	lea	T_EcBuf(a5),a0
-MkA2:	cmp.l	a3,a0
+MkA2:
+	cmp.l	a3,a0
 	bcc	MkA8
 	tst.w	4(a0)
 	bmi.s	MkA3
@@ -6019,16 +6146,19 @@ MkA2:	cmp.l	a3,a0
 	bcc.s	MkA3
 	cmp.w	4(a0),d2
 	bcc	MkA10
-MkA3:	lea	6(a0),a0
+MkA3:
+	lea	6(a0),a0
 	bra.s	MkA2
 
 ; Fin d''une fenetre: doit-on en reafficher une autre?	
-MkA4:	and.w	#$7FFF,d2
+MkA4:
+	and.w	#$7FFF,d2
 	cmp.w	#$100,d2		;Si fin de l''ecran --> marque!
 	beq	MkA9a
 
 	clr.w	d3	
-MkA4a:	addq.w	#6,d3			;Cherche UN DEBUT devant
+MkA4a:
+	addq.w	#6,d3			;Cherche UN DEBUT devant
 	cmp.w	0(a3,d3.w),d0
 	bne.s	MkA4b
 	tst.w	4(a3,d3.w)
@@ -6036,9 +6166,11 @@ MkA4a:	addq.w	#6,d3			;Cherche UN DEBUT devant
 	lea	0(a3,d3.w),a3		;Va faire le debut!
 	bra	MkA1
 
-MkA4b:	lea	T_EcBuf(a5),a0		;Cherche la fenetre a reafficher
+MkA4b:
+	lea	T_EcBuf(a5),a0		;Cherche la fenetre a reafficher
 	move.w	#1000,d3
-MkA5:	cmp.l	a3,a0
+MkA5:
+	cmp.l	a3,a0
 	bcc.s	MkA7
 	tst.w	4(a0)
 	bmi.s	MkA6
@@ -6049,15 +6181,18 @@ MkA5:	cmp.l	a3,a0
 	cmp.w	4(a0),d3
 	bcs.s	MkA6
 	move.w	4(a0),d3
-MkA6:	lea	6(a0),a0
+MkA6:
+	lea	6(a0),a0
 	bra.s	MkA5
-MkA7:	cmp.w	#1000,d3
+MkA7:
+	cmp.w	#1000,d3
 	beq.s	MkA9
 	cmp.w	d2,d3
 	bls.s	MkA10
 	move.w	d3,d2		
 ; Peut creer la fenetre
-MkA8:	move.l	-4(a2,d2.w),a0
+MkA8:
+	move.l	-4(a2,d2.w),a0
 	move.w	(a3),d0
 	cmp.w	#EcYStrt-1,d0		* Sort en haut?
 	bcs.s	MkA10
@@ -6072,10 +6207,12 @@ MkA8:	move.l	-4(a2,d2.w),a0
 	move.w	#%100,T_InterInter(a5)
 	bra.s	MkA10
 ; Fin normale de la fenetre
-MkA9:	tst.w	d2
+MkA9:
+	tst.w	d2
 	beq.s	MkA10
 	move.w	(a3),d0
-MkA9a:	cmp.w	#EcYStrt-1,d0
+MkA9a:
+	cmp.w	#EcYStrt-1,d0
 	bcs.s	MkA10
 	move.w	T_EcYMax(a5),d1
 	subq.w	#1,d1
@@ -6084,13 +6221,16 @@ MkA9a:	cmp.w	#EcYStrt-1,d0
 	neg.w	d0
 	move.w	d0,(a1)+
 ; Passe a une autre
-MkA10:	lea	6(a3),a3
+MkA10:
+	lea	6(a3),a3
 	bra	MkA1
 ; C''est la fin
-MkA11	neg.w	d1
+MkA11:
+	neg.w	d1
 	move.w	d1,(a1)+
 * Marque la fin des ecrans
-MkAFin:	clr.w	(a1)
+MkAFin:
+	clr.w	(a1)
 
 *******	Populate the Copper list With/Without Rainbows
 CLPopulate:                                ; // 2019.11.05 Useless Reference added for faster search on copper update
@@ -6138,15 +6278,19 @@ CLPopulate:                                ; // 2019.11.05 Useless Reference add
 	tst.w	T_CopON(a5)						; Check if AMOS Auto copperlist is enabled or disable
 	beq	PasCop                              ; if AMOS copper is disabled, no new copper calculation.
 
-	; **************** The Logic copper already contains sprites datas 
+	; **************** The Logic copper already contains sprites datas & 2019.11.16 AGA Palette addon.
 	move.l	T_CopLogic(a5),a1 				; send LOGIC copper addres into -> A1 (Work is always donc on logic version, not physic one.)
-	lea	64+4(a1),a1		* Saute les sprites ; Move further in the copper list to not modify the Sprites area
+;	lea 	64+4(a1),a1
+	Add.l 	#1000,a1						; 2019.11.16 Move further in the copper list to not modify the Sprites ((64+4)=68) area nor Aga Colors (4+(((1+32)*4)*7)+4)=932
+
 * Rainbow?
 	tst.w	T_RainBow(a5)
 	bne.s	CopBow							; If a RAINBOW is created/active, then jump to Rainbow update
 	; **************** Normal COPPER creation
-MCop0	move.l	T_EcCop(a5),a2 				; Send screen list adress into ->A2
-MCop1	move.w	(a2)+,d0 					; Send screen count ? into ->D0
+MCop0:
+	move.l	T_EcCop(a5),a2 				; Send screen list adress into ->A2
+MCop1:
+	move.w	(a2)+,d0 					; Send screen count ? into ->D0
 	beq.s	MCopX							; if =0 -> No screen -> Jump to MCopX
 	bmi.s	MCop2							; If ScreenID < 0 -> We must add the line that closes the screen (Y End)
 	; **************** A Screen is defined, we must insert it in the CopperList
@@ -6154,11 +6298,13 @@ MCop1	move.w	(a2)+,d0 					; Send screen count ? into ->D0
 	bsr	EcCopHo								; (Jump with come back) -> Insert the current screen definition line in the AMOS Copper List.
 	bra.s	MCop1							; Once the current screen was added in the copper list -> Loop to NCop1
 	; **************** Now we must insert the closure of a screen
-MCop2	neg.w	d0 							; D0 = 0-ScreenID so we neg it to get the true screen ID.
+MCop2:
+	neg.w	d0 							; D0 = 0-ScreenID so we neg it to get the true screen ID.
 	bsr	EcCopBa								; (Jump with come back) -> Method that wait the last line of the current screen and closes it
 	bra.s	MCop1							; Once screen was closed, we loop to NCop1 to check if another screen is defined
 	; **************** We have now reached the end of the Copper list.
-MCopX:	subq.l	#2,a2
+MCopX:
+	subq.l	#2,a2
 	cmp.l	T_EcCop(a5),a2
 	bne.s	.Skip
 	move.w	T_EcYMax(a5),d0
@@ -6167,7 +6313,8 @@ MCopX:	subq.l	#2,a2
 .Skip
 	move.l	#$FFFFFFFE,(a1)+				; Insert the last line of the Copper List.
 *******	Swappe les listes
-MCopSw	move.l	T_CopLogic(a5),a0
+MCopSw:
+	move.l	T_CopLogic(a5),a0
 	move.l	T_CopPhysic(a5),a1
 	move.l	a1,T_CopLogic(a5)
 	move.l	a0,T_CopPhysic(a5)
@@ -6177,16 +6324,19 @@ MCopSw	move.l	T_CopLogic(a5),a0
 	move.l	a0,Circuits+Cop1Lc
 	move.w	T_InterInter(a5),T_InterBit(a5)
 * Fini!
-PasCop	movem.l	(sp)+,d1-d7/a1-a6
+PasCop:
+	movem.l	(sp)+,d1-d7/a1-a6
 	moveq	#0,d0
 	rts
 
 ******* Actualise les RAINBOWS
-CopBow	lea	T_RainTable(a5),a0
+CopBow:
+	lea	T_RainTable(a5),a0
 	moveq	#0,d4
 	moveq	#NbRain-1,d6
 	moveq	#0,d5
-RainA1	tst.w	RnLong(a0)
+RainA1:
+	tst.w	RnLong(a0)
 	beq.s	RainA5
 	addq.w	#1,d5
 	tst.w	RnI(a0)
@@ -6202,20 +6352,23 @@ RainA1	tst.w	RnLong(a0)
 	move.w	d0,RnTY(a0)
 	bset	#2,d7
 * Position en Y
-RainA2	bclr	#2,d7
+RainA2:
+	bclr	#2,d7
 	beq.s	RainA4
 	clr.l	RnDY(a0)
 	move.w	RnY(a0),d1
 	cmp.w	#28,d1
 	bcc.s	RainA3
 	moveq	#28,d1
-RainA3	move.w	RnTy(a0),d0
+RainA3:
+	move.w	RnTy(a0),d0
 	add.w	#EcYBase,d1
 	move.w	d1,RnDY(a0)
 	add.w	d0,d1
 	move.w	d1,RnFY(a0)
 * Position de la base
-RainA4	bclr	#1,d7
+RainA4:
+	bclr	#1,d7
 	beq.s	RainA5
 	move.w	RnX(a0),d0
 	lsl.w	#1,d0
@@ -6224,7 +6377,8 @@ RainA4	bclr	#1,d7
 	lsr.w	#1,d0
 	move.w	d0,RnBase(a0)
 * Rainbow suivant
-RainA5	lea	RainLong(a0),a0
+RainA5:
+	lea	RainLong(a0),a0
 	dbra	d6,RainA1
 * Securite!
 	move.w	d5,T_RainBow(a5)
@@ -6237,7 +6391,8 @@ RainA5	lea	RainLong(a0),a0
 	moveq	#-1,d3
 	moveq	#-1,d4
 	moveq	#0,d7
-Rain1	move.w	(a2)+,d1
+Rain1:
+	move.w	(a2)+,d1
 	beq	Rain3
 	bmi.s	Rain2
 * Debut d''un ecran
@@ -6252,20 +6407,24 @@ Rain1	move.w	(a2)+,d1
 	cmp.w	#PalMax*4,d4
 	bcs.s	Rain1d
 	lea	64(a4),a4
-Rain1d	move.l	(a4),a0	
+Rain1d:
+	move.l	(a4),a0	
 	move.w	2(a0,d4.w),d3
 	bclr	#31,d3
-Rain1e	cmp.w	d7,d0
+Rain1e:
+	cmp.w	d7,d0
 	bcc.s	Rain1a
 	move.w	(a3)+,2(a0,d4.w)
 	cmp.l	a6,a3
 	bcs.s	Rain1a
 	move.l	d6,a3
-Rain1a	addq.w	#1,d0
+Rain1a:
+	addq.w	#1,d0
 	move.w	(a2),d1
 	bpl.s	Rain1b
 	neg.w	d1
-Rain1b	cmp.w	d0,d1
+Rain1b:
+	cmp.w	d0,d1
 	beq.s	Rain1
 	cmp.w	d7,d0
 	bcc.s	Rain2a
@@ -6273,7 +6432,8 @@ Rain1b	cmp.w	d0,d1
 	move.w	(a3)+,(a1)+
 	bra.s	Rain1c
 * Fin d''un ecran
-Rain2	neg.w	d1
+Rain2:
+	neg.w	d1
 	bsr	Rain
 	bsr	EcCopBa
 	tst.w	d4
@@ -6282,16 +6442,20 @@ Rain2	neg.w	d1
 	cmp.w	d7,d0
 	bcc.s	Rain2a
 	move.l	a1,a0			* Recherche la couleur
-Rain1z	cmp.w	#$0180,-(a0)
+Rain1z:
+	cmp.w	#$0180,-(a0)
 	bne.s	Rain1z
 	move.w	(a3)+,2(a0)
-Rain1c	cmp.l	a6,a3
+Rain1c:
+	cmp.l	a6,a3
 	bcs.s	Rain2a
 	move.l	d6,a3
-Rain2a	addq.w	#1,d0
+Rain2a:
+	addq.w	#1,d0
 	bra	Rain1
 * Fin des ecrans
-Rain3	subq.l	#2,a2
+Rain3:
+	subq.l	#2,a2
 	cmp.l	T_EcCop(a5),a2
 	bne.s	.Skip
 	move.w	T_EcYMax(a5),d0
@@ -6420,7 +6584,7 @@ MkC4a
 	move.w	#$0100,(a1)+ 		; Stop All DMA except Bit Plane DMA
 * Beginning of the color palette
 	move.l	a1,-(sp)
-	moveq	#PalMax-1,d3 		; D3 = Amount of colors to copy to the copper list
+	moveq	#PalMax-1,d3 		; D3 = Amount of colors to copy to the copper list ( the colors 00-15 only as PalMax=16 )
 	move.w	#Color00,d2 		; D2 = 1st Color Register ( Color #00 )
 	lea	EcPal(a0),a4 			; A4 = Screen color table pointer
 MkC5: 							; Loop to put then entire screen palette in the copper list
@@ -6448,7 +6612,8 @@ PluDual:
 	move.w	EcNPlan(a0),d6
 	subq.w	#1,d6
 	move.w	#Bpl1PtH,d7
-MkC0:	move.l	0(a0,d2.w),d5
+MkC0:
+	move.l	0(a0,d2.w),d5
 	add.l	d1,d5
 	move.w	d7,(a1)+
 	addq.w	#2,d7
@@ -6465,9 +6630,10 @@ MkC0:	move.l	0(a0,d2.w),d5
 	cmp.w	#10,d2			* Si ecran utilisateur!
 	bcc.s	MrkC2
 	lsl.w	#6,d2
-	lea	CopL1*EcMax+T_CopMark(a5),a4
+	lea 	CopL1*EcMax+T_CopMark(a5),a4
 	add.w	d2,a4
-MrkC1	tst.l	(a4)
+MrkC1:
+	tst.l	(a4)
 	addq.l	#8,a4
 	bne.s	MrkC1
 	clr.l	(a4)
@@ -6479,7 +6645,8 @@ MrkC2:
 	tst.w	EcCon0(a0)
 	bpl.s	MkC1c
 	move.w	#465,d3
-MkC1c	move.w	EcWX(a0),d1
+MkC1c:
+	move.w	EcWX(a0),d1
 	addq.w	#1,d1
 	move.w	EcWTx(a0),d2
 	move.w	d1,d6
@@ -6490,11 +6657,13 @@ MkC1c	move.w	EcWX(a0),d1
 	add.w	#16,d6
 	sub.w	d6,d2
 	bra.s	MkC1b
-MkC1a:	cmp.w	#176,d6
+MkC1a:
+	cmp.w	#176,d6
 	bhi.s	MkC1b
 	sub.w	#176,d6
 	sub.w	d6,d1
-MkC1b:	move.w	d1,EcWXr(a0)
+MkC1b:
+	move.w	d1,EcWXr(a0)
 	move.w	d2,EcWTxr(a0)
 * Calcul et poke DIW Start/Stop
 	move.w	#DiwStrt,(a1)+		;DiwStrt Y = 0
@@ -6512,7 +6681,8 @@ MkC1b:	move.w	d1,EcWXr(a0)
 	btst	#7,EcCon0(a0)
 	bne.s	MkC2a
 	lsr.w	#1,d5
-MkC2a:	lsl.w	#1,d5
+MkC2a:
+	lsl.w	#1,d5
 	sub.w	d5,d4
 	bpl.s	MkC2
 	clr.w	d4
@@ -6580,27 +6750,30 @@ MkCi1:
 	move.w	#BplCon2,(a1)+
 	move.w	EcCon2(a0),(a1)+
     move.w  #BplCon3,(a1)+ 							; 2019.11.04 Added BplCon3 to support dual playfield 2x16 colors
-;    move.w  EcCon3(a0),(a1)+                        ; 2019.11.05 Updated to use screen structure data instead of direct value.
     move.w  #%1000000000000,(a1)+
 * Reactive le DMA au debut de la fenetre
-FiniCop	move.l	(sp)+,d4
+FiniCop:
+	move.l	(sp)+,d4
 	addq.w	#1,d0
 	move.w	(a2),d1
 	bpl.s	FiCp1
 	neg.w	d1
-FiCp1	cmp.w	d0,d1
+FiCp1:
+	cmp.w	d0,d1
 	beq.s	MkC9
 	move.w	d0,d2
 	sub.w	#EcYBase,d2
 	bsr	WaitD2
 	move.w	#DmaCon,(a1)+
 	move.w	#$8300,(a1)+
-* Fin de la palette!
+
+* Now AMOS insert colors 16-31
 	move.l	a1,d3
 	moveq	#32-PalMax-1,d1
 	move.w	#Color00+PalMax*2,d2
-	lea	EcPal+PalMax*2(a0),a4
-MkC7:	move.w	d2,(a1)+
+	lea		EcPal+PalMax*2(a0),a4
+MkC7:
+	move.w	d2,(a1)+
 	addq.w	#2,d2
 	move.w	(a4)+,(a1)+ 
 	dbra	d1,MkC7
@@ -6609,7 +6782,8 @@ MkC7:	move.w	d2,(a1)+
 	lsl.w	#7,d2
 	lea	T_CopMark+64(a5),a4
 	add.w	d2,a4
-MkC8:	tst.l	(a4)+
+MkC8:
+	tst.l	(a4)+
 	bne.s	MkC8
 	clr.l	(a4)
 	sub.l	#4*PalMax,d3
@@ -6622,12 +6796,11 @@ MkC9	move.w	EcNumber(a0),d2		* Marque les adresse
 MkC10:	tst.l	(a4)+
 	bne.s	MkC10
 	clr.l	(a4)
-	move.l	d4,-(a4)	
+	move.l	d4,-(a4)
 * Fini!
 	rts
 
 	IFEQ	EZFlag
-
 
 ; *********************************************** Creation liste copper pour ecrans DUAL PLAYFIED ***********************************************
 ; This method is reached from method EcCopHo (L=6291) that create copper list for a screen and check for dual playfield mode with the screen
@@ -6662,22 +6835,38 @@ continueDPFcop:                ; 2019.11.04 End of upgrade to handle BPU3 for 8 
 	move.w	d2,EcCon0(a0)
 	bra	PluDual 				; -> Now, we come back to the screen creation
 
-CrDu1:	move.l	d2,a2
+CrDu1:
+	move.l	d2,a2
 * Adresses bitplanes PAIRS!
 	move.w	d1,-(sp)
 	add.w	EcVY(a0),d1		* Decalage ecran
 	mulu	EcTLigne(a0),d1
 	move.w	EcVx(a0),d2
+	move.w 	d2,d5 						; 2019.11.08 From AMOS Factory Dual Playfield Fix
 	lsr.w	#4,d2
 	lsl.w	#1,d2
 	add.w	d2,d1
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+	move.w   #$F,d4
+	btst  #7,EcCon0(a0)
+	beq.s MkDC0
+	sub.w #1,d4
+MkDC0: 
+	and.w d4,d5
+	bne.s MkDC0a
+; bitplane fetch starts 2 bytes early if no finescroll remainder
+	sub.l #2,d1
+; ************************************** 2019.11.08 End of AMOS Factory Dual Playfield fix
+
+MkDC0a:
 	move.l	a1,d3
 	moveq	#EcPhysic,d2
 	move.w	EcNPlan(a0),d6    ; Here we get the amount of bitplanes stored in first screen of the DualPlayfield
 	; (in Duale, updated of EcNPlan forces cumulate 2 screens. This loop put all BplxPth/BplxPtl registers in the copper list
 	subq.w	#1,d6
 	move.w	#Bpl1PtH,d7
-MkDC1:	move.l	0(a0,d2.w),d5
+MkDC1:
+	move.l	0(a0,d2.w),d5
 	add.l	d1,d5
 	move.w	d7,(a1)+
 	addq.w	#2,d7
@@ -6696,20 +6885,31 @@ MkDC1:	move.l	0(a0,d2.w),d5
 	lsl.w	#6,d2
 	lea	CopL1*EcMax+T_CopMark(a5),a4
 	add.w	d2,a4
-MrkDC1	tst.l	(a4)
+MrkDC1:
+	tst.l	(a4)
 	addq.l	#8,a4
 	bne.s	MrkDC1
 	clr.l	(a4)
 	move.l	d3,-8(a4)
 	move.l	d1,-4(a4)
 * Adresses bitplanes IMPAIRS!
-MrkDC2	move.w	(sp)+,d1
+MrkDC2:
+	move.w	(sp)+,d1
 	add.w	EcVY(a2),d1		* Decalage ecran
 	mulu	EcTLigne(a2),d1
 	move.w	EcVx(a2),d2
+	move.w 	d2,d5 				; 2019.11.08 From AMOS Factory Dual Playfield Fix
 	lsr.w	#4,d2
 	lsl.w	#1,d2
 	add.w	d2,d1
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+MkDC0b:
+	and.w 	d4,d5
+	bne.s	MkDC0c
+	; Bitplane fetch starts 2 bytes early if no finescroll reminder
+	sub.l 	#2,d1
+; ************************************** 2019.11.08 End of AMOS Factory Dual Playfield fix
+MkDC0c:
 	move.l	a1,d3
 	moveq	#EcPhysic,d2
 	move.w	EcNPlan(a2),d6
@@ -6794,14 +6994,17 @@ MkdC2b:
 * Calcul DDF Start/Stop---> D1/D2
 	move.w	EcVX(a0),d6
 	move.w	EcVX(a2),d7
-	move.w	d6,d1
-	and.w	#15,d1
-	bne.s	Mkd2d
-	and.w	#$FFF0,d7
-Mkd2d:	move.w	d7,d1
-	and.w	#15,d1
-	bne.s	Mkd2e
-	and.w	#$FFF0,d6
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+;	move.w	d6,d1
+;	and.w	#15,d1
+;	bne.s	Mkd2d
+;	and.w	#$FFF0,d7
+;Mkd2d:	move.w	d7,d1
+;	and.w	#15,d1
+;	bne.s	Mkd2e
+;	and.w	#$FFF0,d6
+; 
+; ************************************** 2019.11.08 End of AMOS Factory Dual Playfield fix
 Mkd2e:	move.w	EcWXr(a0),d1
 	move.w	EcWTxr(a0),d2
 	btst	#7,EcCon0(a0)
@@ -6813,14 +7016,25 @@ Mkd2e:	move.w	EcWXr(a0),d1
 	lsr.w	#1,d2
 	subq.w	#8,d2
 	add.w	d1,d2
-	and.w	#15,d6
-	and.w	#15,d7
-	beq.s	MkdC3
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+;	and.w	#15,d6
+;	and.w	#15,d7
+;	beq.s	MkdC3
+; ************************************** 2019.11.08 End of AMOS Factory Dual Playfield fix
 	subq.w	#8,d1
 	subq.w	#2,d4
 	subq.w	#2,d5
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+	and.w 	#$F,d6
+	beq 	.next
+; ************************************** 2019.11.08 End of AMOS Factory Dual Playfield fix
 	neg.w	d6
 	add.w	#16,d6
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+.next:
+	and.w 	#$F,d7
+	beq 	MkdC3
+; ************************************** 2019.11.08 End Of AMOS Factory Dual Playfield fix
 	neg.w	d7
 	add.w	#16,d7
 	bra.s	MkdC3
@@ -6901,14 +7115,15 @@ WCop:	lsl.w	#8,d2
 	move.w	#$FFFE,(a1)+
 	rts
 
-***********************************************************
+*********************************************************** This method is the initial method that create copper list memory
 *	INITIALISATION GENERALE LISTE COPPERS
 *	D0= longueur des listes (physic et logic)
 CpInit:	
+	move.l	#16384,d0 ; 2019.11.11 Force reserve 16Ko memory for Copper lists instead of default 1Ko
 * Reserve la memoire pour les listes
 	move.l	d0,T_CopLong(a5)
-	bsr	ChipMm
-	beq	GFatal
+	bsr		ChipMm
+	beq		GFatal
 	move.l	d0,T_CopLogic(a5)
 	move.l	d0,a0
 	move.l	T_CopLong(a5),d0
@@ -6919,7 +7134,8 @@ CpInit:
 * Copper en ROUTE!
 	move.w	#-1,T_CopON(a5)
 * Marque les offsets des listes sprites au debut...
-HsCop	move.l	#$1003FFFE,(a0)+		Legere attente!
+HsCop:
+	move.l	#$1003FFFE,(a0)+		Legere attente!
 	move.l	-4(a0),(a1)+
 	move.w	#$120,d0
 CpI1:	move.w	d0,(a0)+
@@ -6929,8 +7145,46 @@ CpI1:	move.w	d0,(a0)+
 	addq.l	#2,a1
 	cmp.w	#$13e,d0
 	bls.s	CpI1
+	bsr insertAGAColorsInCopper 		; 2019.11.13 Insert the AGA color palette at the end of the screen definition.
 	moveq	#0,d0
 	rts
+
+; ************************* 2019.11.16 Update : This method insert colors 32 to X with X < 256 in the CopperList [D4-D7]
+insertAGAColorsInCopper:
+	Move.l 	#$1203FFFE,(a0)+ 			; Wait in copper list 0
+	Move.l 	#$1203FFFE,(a1)+ 			; Wait in copper list 1
+	; ************ Setup inital values for the AGA palette adding to Copper list
+	Move.l 	#0,d7 						; D7 = Current Color Palette ( = Initial one )
+	lea 	T_globAgaPal(a5),a2 		; A2 = First color of AGA palette ( =32 ) of the curent screen (a0)
+insert32cLoop:
+	add.w 	#1,d7 						; D7 = Next Palette (ensure we start from colors 32-63)
+	cmp.w   #8,d7 						; if we've pasted the last palette ( total = 256 colors )
+	bge 	insertIsOver				; Stop when we have reached 256 colors.
+	move.w  d7,d6 						; D6 = D7 = Current Palette
+	lsl.w   #5,d6 						; D6 = Current Palette * 32 colors = 1st color to thread
+    lsl.w 	#8,d6 						; Raise D6 to makes bits 0-2 reach 13-15 (lsl.w #5 + #8) for color palette switching
+    move.w  #BplCon3,(a0)+ 				; uses BplCon3 bits 13-15 to set other color palettes in copper list 0
+    move.w 	d6,(a0)+ 					; Active current palette in bplCon3 register in copper list 0
+    move.w  #BplCon3,(a1)+ 				; uses BplCon3 bits 13-15 to set other color palettes in copper list 1
+    move.w 	d6,(a1)+ 					; Active current palette in bplCon3 register in copper list 1
+	; * setup for the Copy of the 32 colors registers
+	move.w 	#color00,d5 				; D5 = Color00 register
+loopCopy:
+	move.w	d5,(a0)+ 					; insert current color register
+	move.w  (a2),(a0)+					; Copy the AgaPal inside the CopperList 0
+	move.w	d5,(a1)+ 					; insert current color register
+	move.w  (a2)+,(a1)+					; Copy the AgaPal inside the CopperList 1
+	add.w 	#2,d5 						; Jump to next color register
+	cmp.w 	#Color31,d5
+	ble 	loopCopy 					; If color <32 then continue the copy
+	bra 	insert32cLoop 				; Once 32 colors registers were copied, we go back at the beginning of the loop for the next group of colours.
+insertIsOver:
+    move.w  #BplCon3,(a0)+ 				; uses BplCon3 bits 13-15 to set other color palettes in copper list 0
+    move.w  #0,(a0)+ 					; reset to default color palette in copper list 0
+    move.w  #BplCon3,(a1)+ 				; uses BplCon3 bits 13-15 to set other color palettes in copper list 1
+    move.w  #0,(a1)+ 					; reset to default color palette in copper list 1
+	rts
+; ************************* 2019.11.16 End of Update
 
 ***********************************************************
 *	LIBERATION DES LISTES COPPER
@@ -7034,17 +7288,21 @@ CopW1	lsl.w	#8,d2			* Position en X/Y
 	and.w	#$00FE,d3
 	or.w	d4,d3
 	move.w	d3,(a1)+
-CopFin	move.l	a1,T_CopPos(a5)
+CopFin:
+	move.l	a1,T_CopPos(a5)
 	sub.l	T_CopLogic(a5),a1
 	cmp.l	T_CopLong(a5),a1
 	bcc	CopEr2
 	moveq	#0,d0
 	rts
-CopEr1	moveq	#1,d0			* Copper not desactivated
+CopEr1:
+	moveq	#1,d0			* Copper not desactivated
 	rts
-CopEr2	moveq	#2,d0			* Copper list too long
+CopEr2:
+	moveq	#2,d0			* Copper list too long
 	rts
-CopEr3	moveq	#3,d0			* Copper param out of range
+CopEr3:
+	moveq	#3,d0			* Copper param out of range
 	rts
 
 ******* CMOVE ad,value
@@ -7674,7 +7932,7 @@ AnMv1	move.w	d0,(a2)+
 AnMv2	bsr	AniLong
 	move.w	d0,(a2)+
 	ble	AniE1
-	bsr	StChr
+0	bsr	StChr
 	cmp.b	#",",d0
 	bne	AniE1
 	bsr	AniLong
@@ -8206,7 +8464,8 @@ CreME:	moveq	#-1,d0
 	bra.s	CreAME
 
 ******* CREATION DE LA TABLE!
-ResAMAL:tst.l	d1
+ResAMAL:
+	tst.l	d1
 	beq.s	ResDeja
 * Reserve la memoire pour la table, et copie le buffer!
 	move.l	a2,a0
@@ -8227,13 +8486,16 @@ ResAc:	move.l	(a0)+,(a1)+
 	dbra	d1,ResAc
 	move.l	(sp)+,a1
 	bra.s	ResPas
+
 * Table deja reservee!
-ResDeja	move.w	d2,AmNb(a2)
+ResDeja:
+	move.w	d2,AmNb(a2)
 	lea	AmStart(a2),a0
 	move.l	a0,AmPos(a2)
 
 * Calcule l''adresse ACT
-ResPas:	move.l	a2,a0
+ResPas:
+	move.l	a2,a0
 	cmp.w	#6,d4
 	beq	ResRain
 	cmp.w	#5,d4
@@ -9383,16 +9645,16 @@ IceStart
 	move.w	#$0200,d1
 	rts
 
-; Normal cold start: start default system
+; ********************************************************** Normal Cold Start : Default AMOS Engine Starting
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-StartAll
+StartAll:
 	movem.l	a0-a6/d1-d7,-(sp)
 	move.l	sp,T_GPile(a5)
 
 	move.l	a2,-(sp)			Palette par defaut
 	move.l	a0,-(sp)
 	
-; Attend que l''autre AMOS soit arrete! (si v2.0)
+; Wait that any other AMOS version in memory quited
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	cmp.w	#$0200,T_WVersion(a5)
 	bcs.s	.No20_a
@@ -9401,16 +9663,19 @@ StartAll
 	beq.s	.Wait2
 	move.l	d0,a2
 	move.w	#50*5,d3
-.Wait1	move.l	T_GfxBase(a5),a6
+.Wait1:
+	move.l	T_GfxBase(a5),a6
 	jsr	-270(a6)
 	cmp.b	#"S",(a2)
 	bne.s	.Wait2
 	dbra	d3,.Wait1
-.GoEnd	bra	GFatal
-.Wait2	movem.l	(sp)+,a0-a3/d0-d3
+.GoEnd:
+	bra	GFatal
+.Wait2:
+	movem.l	(sp)+,a0-a3/d0-d3
 .No20_a
 
-; Sauve les flags du DMA
+; Save DMA flags
 ; ~~~~~~~~~~~~~~~~~~~~~~
 	move.b	d0,T_AMOSHere(a5)
 	move.w	Circuits+DmaConR,T_OldDma(a5)
@@ -9445,7 +9710,8 @@ StartAll
 	move.l	a1,T_MouBank(a5)
 ; Pointe la palette pour l''ouverture des ecrans
 	subq.w	#1,d1
-.MLoop	move.w	(a1)+,d0
+.MLoop:
+	move.w	(a1)+,d0
 	mulu	(a1)+,d0
 	mulu	(a1)+,d0
 	lsl.l	#1,d0
@@ -9459,7 +9725,7 @@ StartAll
 	dbra	d0,.PCopy
 .No20_b
 
-; Ouverture de la fonte systeme 8x8
+; Open 8x8 pixels system font
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	lea	TopazName(pc),a1	Topaz force si <2.0
 	cmp.w	#$0200,T_WVersion(a5)
@@ -9498,17 +9764,17 @@ StartAll
 	beq.s	.PaAA
 	bset	#WFlag_AA,T_WFlags(a5)
 	bset	#WFlag_LoadView,T_WFlags(a5)
-.PaAA	move.l	$4.w,a0				Kickstart >= V39?
+.PaAA:
+	move.l	$4.w,a0				Kickstart >= V39?
 	cmp.w	#39,$14(a0)			Si oui, on fait un LoadView(0)
 	bcs.s	.Pa39
 	bset	#WFlag_LoadView,T_WFlags(a5)
-.Pa39
+.Pa39:
 	IFNE	Debug=2				Si debug
 	bclr	#WFlag_LoadView,T_WFlags(a5)	AMIGA-A normal...
 	ENDC
 
-
-; Ma propre tache
+; Find its own task
 ; ~~~~~~~~~~~~~~~
 	sub.l	a1,a1
 	move.l	$4.w,a6
@@ -9516,7 +9782,7 @@ StartAll
 	move.l	d0,T_MyTask(a5)
 	move.l	d0,a0
 
-; Ouverture du layer.library
+; Open the layer.library
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~
 	moveq	#0,d0
 	lea	LayName(pc),a1
@@ -9525,14 +9791,16 @@ StartAll
 	move.l	d0,T_LayBase(a5)
 	beq	GFatal
 
-; Branche l''input.device
+; Branch to input.device
 ; ~~~~~~~~~~~~~~~~~~~~~~
 	bsr	ClInit
+
 ; Open Console Device		
 ; ~~~~~~~~~~~~~~~~~~~
 	lea	ConIo(pc),a1
 	bsr	OpConsole
-; Branche le input_handler
+
+; Branch input_handler
 ; ~~~~~~~~~~~~~~~~~~~~~~~~
 	lea	T_IoDevice(a5),a1
 	bsr	OpInput
@@ -9547,7 +9815,7 @@ StartAll
 	jsr	_LVODoIo(a6)
 	move.w	#-1,T_DevHere(a5)
 
-; Parametres par defaut des ecrans
+; Set default screens parameters
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	move.l	(sp),a0	
 	move.w	#129,T_DefWX(a5)
@@ -9566,7 +9834,7 @@ StartAll
 	bsr	RbInit			Retourneur de bobs
 	move.l	(sp),a0
 	move.l	12(a0),d0
-	bsr	CpInit			Copper
+	bsr	CpInit			; Create the copper list memory area
 	bsr	EcInit			Ecrans
 	bsr	SyInit			Systeme
 	bsr	VBLInit			Interruptions VBL
@@ -9574,7 +9842,7 @@ StartAll
 
 ;	Si AA, change le vecteur LOADVIEW
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	btst	#WFlag_LoadView,T_WFlags(a5)	Si LoadView en route
+	btst	#WFlag_LoadView,T_WFlags(a5)	; Si LoadView en route
 	beq.s	.NoLoadView
 	lea	AMOS_LoadView(pc),a0
 	lea	T_AMOSHere(a5),a1		Adresse du test
@@ -9594,7 +9862,7 @@ StartAll
 	cmp.w	#$0200,T_WVersion(a5)
 	bcs.s	.No20_c
 	move.l	4(sp),a0			Palette par defaut
-	bsr	WRequest_Start
+	bsr		WRequest_Start
 ; 	Fabrique la fonte par defaut
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	bsr	Wi_MakeFonte
@@ -9604,7 +9872,7 @@ StartAll
 	move.l	T_MyTask(a5),a0
 	move.l	a5,$58(a0)
 	moveq	#Switcher_Signal,d3
-	bsr	Send_Switcher
+	bsr		Send_Switcher
 .No20_c
 
 ; 	Tout fini: AMOS to front ?
@@ -9892,6 +10160,11 @@ TAMOSWb
 	move.l	d0,T_IntScreen(a5)
 
 	move.l	T_GfxBase(a5),a6		WaitTOF
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+	move.w 	164(a6),d0
+	bset 	#$2,d0
+	move.w 	d0,164(a6)
+; ************************************** 2019.11.08 End of AMOS Factory Dual Playfield fix
 	jsr	-$10e(a6)
 	jsr	-$10e(a6)
 
@@ -9928,6 +10201,11 @@ TAMOSWb
 	move.l	T_GfxBase(a5),a0
 	move.l 	38(a0),$dff080
 	clr.w	$dff088
+; ************************************** 2019.11.08 From AMOS Factory Dual Playfield fix
+	move.w 	164(a0),d0
+	bset 	#$2,d0
+	move.w 	d0,164(a0)
+; ************************************** 2019.11.08 End of AMOS Factory Dual Playfield fix
 
 ; Efface l''ecran si AA
 ; ~~~~~~~~~~~~~~~~~~~~
@@ -13400,12 +13678,14 @@ AMOS_Stopped
 ***********************************************************
 *	DEMARRAGE A FROID DES FENETRES
 ***********************************************************
-WiInit:	lea	WiIn(pc),a0
+WiInit:
+	lea	WiIn(pc),a0
 	move.l	a0,T_WiVect(a5)
 	rts
 
 ******* FONCTIONS FENETRES
-WiIn:	bra	WOutC
+WiIn:
+	bra	WOutC
 	bra	WPrint
 	bra	WCentre
 	bra	WOpen
@@ -13429,14 +13709,16 @@ WiIn:	bra	WOutC
 ***********************************************************
 *	ARRET FINAL DES FENETRES
 ***********************************************************
-WiEnd:	rts
+WiEnd:
+	rts
 
 ***********************************************************
 *	Writing FENETRE, loin de la destination!!!
 *	D1= 0/ Normal - 1/ Or - 2/ Xor - 3/ And - 4/ RIEN
 *	D2= NORMAL - PAPER only - PEN only 
 ***********************************************************
-Writing:move.w	d1,d2
+Writing:
+	move.w	d1,d2
 	and.w	#$07,d1
 	cmp.w	#5,d1
 	bcc.s	Wrt0
@@ -13444,7 +13726,8 @@ Writing:move.w	d1,d2
 	lsl.w	#1,d1
 	beq.s	Wrt1
 	bset	#7,WiFlags(a5)
-Wrt1:	lea	WrtTab(pc),a1
+Wrt1:
+	lea	WrtTab(pc),a1
 	move.w	0(a1,d1.w),d0
 	lea	WMod1(pc),a0
 	move.w	d0,(a0)
@@ -13452,7 +13735,8 @@ Wrt1:	lea	WrtTab(pc),a1
 	move.w	d0,(a0)
 	lea	WMod3(pc),a0
 	move.w	d0,(a0)
-Wrt0:	move.w	d2,d1
+Wrt0:
+	move.w	d2,d1
 	lsr.w	#3,d1
 	and.w	#$03,d1
 	cmp.w	#3,d1
@@ -13460,20 +13744,24 @@ Wrt0:	move.w	d2,d1
 	lsl.w	#1,d1
 	beq.s	Wrt2
 	bset	#7,WiFlags(a5)
-Wrt2:	lea	GetTab(pc),a1
+Wrt2:
+	lea	GetTab(pc),a1
 	lea	WGet1(pc),a0
 	move.w	0(a1,d1.w),(a0)
 	lea	WGet2(pc),a0
 	move.w	0(a1,d1.w),(a0)
-Wrt3:	bsr	Sys_ClearCache
+Wrt3:
+	bsr	Sys_ClearCache
 	moveq	#0,d0
 	rts
-WrtTab:	move.b	d0,(a4)
+WrtTab:
+	move.b	d0,(a4)
 	or.b	d0,(a4)
 	eor.b	d0,(a4)
 	and.b	d0,(a4)
 	nop
-GetTab:	or.b	d1,d0
+GetTab:
+	or.b	d1,d0
 	nop
 	move.w	d1,d0
 
@@ -13538,7 +13826,8 @@ WiMdX:	movem.l	(sp)+,d0-d7/a0-a5
 	rts
 
 ******* Entree EFFACEMENT pour WIND SIZE!
-WiEff2:	movem.l	d0-d7/a0-a3,-(sp)
+WiEff2:
+	movem.l	d0-d7/a0-a3,-(sp)
 	tst.w	EcWiDec(a4)
 	beq	WiEfX
 	tst.l	WiDBuf(a5)
@@ -13549,11 +13838,13 @@ WiEff2:	movem.l	d0-d7/a0-a3,-(sp)
 	bls.s	WiEf2a
 	move.w	WiTxR(a5),d5
 * Limite en Y
-WiEf2a:	cmp.w	WiTyP(a5),d7
+WiEf2a:
+	cmp.w	WiTyP(a5),d7
 	bls.s	WiEf2b
 	move.w	WiTyP(a5),d7
 * Limite en X
-WiEf2b:	move.w	WiDxR(a5),d0
+WiEf2b:
+	move.w	WiDxR(a5),d0
 	move.w	d0,d2
 	add.w	d5,d2
 	move.w	WiDyR(a5),d1
@@ -13579,7 +13870,8 @@ WiEf2c:	move.w	d3,-(sp)
 ******* Efface la fenetre (A5) avec CLIP des fenetres DEVANT!
 *	Avec D5= 1/0 Avec / Sans bordure
 *	Entre Y=D6 et Y=D7 seulement!
-WiEff:	movem.l	d0-d7/a0-a3,-(sp)
+WiEff:
+	movem.l	d0-d7/a0-a3,-(sp)
 	tst.w	EcWiDec(a4)
 	beq	WiEfX
 	tst.l	WiDBuf(a5)
@@ -13634,7 +13926,7 @@ WiEf1:	move.w	d5,d4
 	subq.w	#1,d2
 	move.w	d5,d1
 	sub.w	d4,d1
-	lea	EcLogic(a4),a2
+	lea		EcLogic(a4),a2
 	cmp.w	#8,d1
 	bcc.s	WiER
 ** Recopie LENTE!
@@ -13679,7 +13971,8 @@ WiEf4:	addq.w	#1,d7
 	bcs	WiEf0
 	addq.l	#6,sp
 ** Ca y est!
-WiEfX:	movem.l	(sp)+,d0-d7/a0-a3
+WiEfX:
+	movem.l	(sp)+,d0-d7/a0-a3
 	rts
 
 ******* Effacement du buffer de decor (a5)
@@ -13742,7 +14035,8 @@ WiClpR:	cmp.w	4+2(sp),d4
 ***********************************************************
 
 ******* AffCur:	affiche le curseur si en route
-AffCur:	btst	#1,WiSys(a5)
+AffCur:
+	btst	#1,WiSys(a5)
 	beq.s	AfCFin
 
 	movem.l	d0-d7/a0-a3,-(sp)
@@ -13779,9 +14073,13 @@ AfC4:	dbra	d4,AfC1
 	movem.l	(sp)+,d0-d7/a0-a3
 AfCFin:	rts
 
+; ********************************************************************************************* Clear cursor.
 ******* EffCur:	efface le curseur si en route
-EffCur:	btst	#1,WiSys(a5)
-	beq.s	EfCFin
+; a4 = current screen
+; a5 = current screen windows
+EffCur:
+	btst	#1,WiSys(a5)
+	beq.s	EfCFin 			; If screen have no windows -> End of clear
 
 	movem.l	d3-d7/a0-a2,-(sp)
 	lea	EcCurS(a4),a0
@@ -13793,7 +14091,8 @@ EffCur:	btst	#1,WiSys(a5)
 	lea	EcCurrent(a4),a2
 
 ; Efface NORMAL
-EfC1:	move.l	(a2)+,a1
+EfC1:
+	move.l	(a2)+,a1
 	add.l	d4,a1
 	moveq	#7,d3
 EfC2:	move.b	(a0)+,(a1)
@@ -13814,7 +14113,8 @@ EfCFin:	rts
 *	D7= 0 / # de bordure
 *	A1= # du jeu de caracteres
 ***********************************************************
-WOpen:	movem.l	d1-d7/a1-a6,-(sp)
+WOpen:
+	movem.l	d1-d7/a1-a6,-(sp)
 	move.l	T_EcCourant(a5),a4
 
 ; Demande de la place memoire
@@ -13823,7 +14123,8 @@ WOpen:	movem.l	d1-d7/a1-a6,-(sp)
 	bne.s	Wo0
 	moveq	#1,d0
 	bra	WOut
-Wo0:	move.l	a5,a3
+Wo0:
+	move.l	a5,a3
 	move.l	d0,a5
 	lea	Circuits,a6
 
@@ -13848,14 +14149,15 @@ Wo0:	move.l	a5,a3
 	beq.s	Wo2
 	addq.w	#1,d2
 * Va tout calculer!
-Wo2	bsr	WiAdr
+Wo2:
+	bsr	WiAdr
 	bne	WErr
 	
 * Init parametres
 	clr.w	WiSys(a5)
 	clr.w	WiEsc(a5)
 	moveq	#0,d1			;Writing 0
-	bsr	Writing
+	bsr		Writing
 	move.l	EcWindow(a4),d0
 	beq.s	Wo3a
 * Une fenetre ouverte: reprend les parametres
@@ -13868,7 +14170,8 @@ Wo2	bsr	WiAdr
 	move.w	WiTab(a0),WiTab(a5)
 	bra.s	Wo4
 * Aucune fenetre ouverte: parametre par defaut
-Wo3a:	move.w	#1,WiPaper(a5)		;Paper=1 / Pen=2
+Wo3a:
+	move.w	#1,WiPaper(a5)		;Paper=1 / Pen=2
 	move.w	#2,WiPen(a5)
 	move.w	#3,WiCuCol(a5)
 	move.w	#4,WiTab(a5)
@@ -13881,7 +14184,8 @@ Wo3a:	move.w	#1,WiPaper(a5)		;Paper=1 / Pen=2
 	move.w	#1,WiCuCol(a5)
 	clr.w	WiBorPap(a5)
 	move.w	#1,WiBorPen(a5)
-Wo4:	bsr	AdColor
+Wo4:
+	bsr	AdColor
 	moveq	#1,d1			;Scrollings
 	bsr	Scroll
 
@@ -13913,7 +14217,8 @@ PaBor:
 	lea	DefCurs(pc),a0
 	lea	WiCuDraw(a5),a1
 	moveq	#7,d0
-InCu:	move.b	(a0)+,(a1)+
+InCu:
+	move.b	(a0)+,(a1)+
 	dbra	d0,InCu
 	bset	#1,WiSys(a5)
 	bsr	AffCur
@@ -14229,7 +14534,8 @@ sWti1:	move.b	(a0)+,(a1)+
 sWti2:	rts
 
 ******* WINDOW ADRESSE
-WAdr:	move.l	T_EcCourant(a5),a0
+WAdr:
+	move.l	T_EcCourant(a5),a0
 	move.l	EcWindow(a0),a0
 	moveq	#0,d1
 	move.w	WiNumber(a0),d1	
@@ -14237,25 +14543,29 @@ WAdr:	move.l	T_EcCourant(a5),a0
 	rts
 
 ******* SET CURS a1
-WiSCur:	movem.l	d1-d7/a1-a6,-(sp)
+WiSCur:
+	movem.l	d1-d7/a1-a6,-(sp)
 	move.l	T_EcCourant(a5),a4
 	move.l	EcWindow(a4),a5
 	bsr	EffCur
 	lea	WiCuDraw(a5),a2
 	moveq	#7,d0
-WiScu:	move.b	(a1)+,(a2)+
+WiScu:
+	move.b	(a1)+,(a2)+
 	dbra	d0,WiScu
 	bsr	AffCur
 	bra	WOk
 
 ******* Effacement de la fenetre courante
-WDel:	move.l	T_EcCourant(a5),a0
+WDel:
+	move.l	T_EcCourant(a5),a0
 	move.l	EcWindow(a0),a0
 	tst.w	WiNumber(a0)
 	bne.s	WiD1
 	moveq	#18,d0
 	rts
-WiD1:	movem.l	d1-d7/a1-a6,-(sp)
+WiD1:
+	movem.l	d1-d7/a1-a6,-(sp)
 	move.l	T_EcCourant(a5),a4
 	move.l	EcWindow(a4),d0
 	move.l	d0,a5
@@ -14292,29 +14602,34 @@ WiD3:	move.l	(sp)+,a5
 	bra	WOk
 
 ******* Effacement de toutes les fenetres
-WiDelA:	bsr	WiD1
+WiDelA:
+	bsr	WiD1
 	tst.l	d0
 	beq.s	WiDelA
 	moveq	#0,d0
 	rts		
 
-******* CLS effacement de toutes les fenetres SAUF zero!
-WiCls:	movem.l	d1-d7/a0-a6,-(sp)
+******* CLS effacement de toutes les fenetres SAUF zero! !!!!!
+WiCls:
+	movem.l	d1-d7/a0-a6,-(sp)
 	move.l	T_EcCourant(a5),a4
 	move.l	EcWindow(a4),d5
 	move.l	d5,a5
-	bsr	EffCur
+	bsr	EffCur 			; Call Clear Cursor with a4 = current screen, a5 = current screen windows
+
 WiCls1:	move.l	d5,a5
 	move.l	WiNext(a5),d5
 	tst.w	WiNumber(a5)
 	bne.s	WiCls2
 	move.l	a5,d7
 	bra.s	WiCls3
-WiCls2:	bsr	WiEffBuf
+WiCls2:
+	bsr	WiEffBuf
 	move.l	#WiLong,d0
 	move.l	a5,a1
 	bsr	FreeMm
-WiCls3:	tst.l	d5
+WiCls3:
+	tst.l	d5
 	bne.s	WiCls1
 	move.l	d7,a5
 	move.l	a5,EcWindow(a4)
@@ -14343,8 +14658,8 @@ WiF3:	rts
 ***********************************************************
 *	Dessine la bordure D1
 ***********************************************************
-DesBord:movem.l	d1-d7/a1-a6,-(sp)
-
+DesBord:
+	movem.l	d1-d7/a1-a6,-(sp)
 	tst.w	WiBord(a5)
 	beq	WErr10
 	move.w	WiBord(a5),d1
@@ -14381,7 +14696,8 @@ DesBord:movem.l	d1-d7/a1-a6,-(sp)
 	bra	WOk
 
 ******* Re dessine le bord, remet le curseur!!!
-ReBord	move.w	WiX(a5),-(sp)	
+ReBord:
+	move.w	WiX(a5),-(sp)	
 	move.w	WiY(a5),-(sp)
 	move.l	WiAdCur(a5),-(sp)
 	bsr	DesBord
@@ -14621,8 +14937,9 @@ CClw:	tst.w	WiBord(a5)
 ***********************************************************
 *	CLW
 ***********************************************************
-Clw:	move.l	WiAdhgI(a5),d0
-	lea	EcCurrent(a4),a0
+Clw:
+	move.l	WiAdhgI(a5),d0
+	lea		EcCurrent(a4),a0
 	move.w	WiTyCar(a5),d2
 	mulu	WiTyI(a5),d2
 	move.w	WiTxI(a5),d3
@@ -14632,16 +14949,18 @@ Clw:	move.l	WiAdhgI(a5),d0
 ***********************************************************
 *	CL LIGNE CURSEUR
 ***********************************************************
-ClLine:	move.w	WiY(a5),d0
+ClLine:
+	move.w	WiY(a5),d0
 	mulu	WiTLigne(a5),d0
 	add.l	WiAdhgI(a5),d0
-	lea	EcCurrent(a4),a0
+	lea		EcCurrent(a4),a0
 	move.w	WiTyCar(a5),d2
 	move.w	WiTxI(a5),d3
 
 ; Fin de CLW
-ClFin:	subq.w	#1,d2
-	lea	WiColFl(a5),a1
+ClFin:
+	subq.w	#1,d2
+	lea		WiColFl(a5),a1
 	move.w	EcTLigne(a4),d1
 	ext.l	d1
 	lsr.w	#1,d3
@@ -14654,18 +14973,21 @@ ClFin:	subq.w	#1,d2
 	clr.w	BltCon1(a6)
 	clr.w	BltModD(a6)
 	move.w	#$8040,DmaCon(a6)
-Clw1:	move.w	d4,d5
+Clw1:
+	move.w	d4,d5
 	move.l	a0,a2
 	move.l	a1,a3
-Clw2:	btst	d5,WiSys+1(a5)
+Clw2:
+	btst	d5,WiSys+1(a5)
 	bne.s	.skip
-	bsr	BlitWait
+	bsr		BlitWait
 	move.l	(a2),d7
 	add.l	d0,d7
 	move.l	d7,BltAdD(a6)
 	move.w	(a3),BltDatC(a6)
 	move.w	d3,BltSize(a6)
-.skip	addq.l	#4,a2
+.skip
+	addq.l	#4,a2
 	addq.l	#4,a3
 	dbra	d5,Clw2
 	add.l	d1,d0
@@ -15404,7 +15726,8 @@ EncFin:	clr.w	WiGraph(a5)
 ***********************************************************
 *	HOME
 ***********************************************************
-Home:	move.w	WiTx(a5),WiX(a5)
+Home:
+	move.w	WiTx(a5),WiX(a5)
 	clr.w	WiY(a5)
 	bsr	AdCurs
 	moveq	#0,d0
@@ -15738,7 +16061,8 @@ CPrt:	bsr	EffCur
 	bra	Prt
 
 *******	Calcul de l''adresse curseur
-AdCurs:	move.w	WiY(a5),d0
+AdCurs:
+	move.w	WiY(a5),d0
 	mulu	WiTLigne(a5),d0
 	move.w	WiTx(a5),d1
 	sub.w	WiX(a5),d1
@@ -15749,7 +16073,8 @@ AdCurs:	move.w	WiY(a5),d0
 	rts
 
 *******	Mode INTERIEUR
-WiInt:	move.w	WiTxI(a5),WiTx(a5)
+WiInt:
+	move.w	WiTxI(a5),WiTx(a5)
 	move.w	WiTyI(a5),WiTy(a5)
 	move.l	WiAdhgI(a5),WiAdhg(a5)
 	rts
