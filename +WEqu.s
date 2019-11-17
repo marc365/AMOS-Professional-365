@@ -349,6 +349,8 @@ FFkLong		equ 	24
 		Rw	ReqOldScreen,1
 		Rw	Req_On,1
 
+*************** Global Aga Palette
+		Rl 	globAgaPal,224 						; 2019.11.16 Adding global AGA Palette colors from 32 to 255
 *************** Longueur de la structure W.S
 		Rb	L_Trp,4
 L_Trappe	equ	-Count

@@ -1,21 +1,24 @@
 	IFND	GRAPHICS_CLIP_I
-GRAPHICS_CLIP_I SET	1
+GRAPHICS_CLIP_I	SET	1
 **
-**	$Filename: graphics/clip.i $
-**	$Release: 1.3 $
+**	$VER: clip.i 39.0 (2.12.91)
+**	Includes Release 40.15
 **
-**	
-**
-**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1985-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
+
+    IFND    EXEC_TYPES_I
+    include 'exec/types.i'
+    ENDC
 
     IFND    GRAPHICS_GFX_I
     include "graphics/gfx.i"
     ENDC
-	IFND	EXEC_SEMAPHORES_I
-	include "exec/semaphores.i"
-	ENDC
+
+    IFND    EXEC_SEMAPHORES_I
+    include "exec/semaphores.i"
+    ENDC
 
 NEWLOCKS	equ	1
 
@@ -45,7 +48,8 @@ NEWLOCKS	equ	1
 *			just by lucky coincidence
 *			this is not confused with simplesprites
 	STRUCT	lr_Lock,SS_SIZE
-	STRUCT	lr_reserved3,8
+	APTR	lr_BackFill
+	ULONG	lr_reserved1
 	APTR	lr_ClipRegion
 	APTR	lr_saveClipRects
 	STRUCT	lr_reserved2,22
@@ -53,22 +57,23 @@ NEWLOCKS	equ	1
     LABEL   lr_SIZEOF
 
  STRUCTURE  ClipRect,0
-    LONG    cr_Next
-    LONG    cr_prev
-    LONG    cr_lobs
-    LONG    cr_BitMap
-    WORD    cr_MinX
-    WORD    cr_MinY
-    WORD    cr_MaxX
-    WORD    cr_MaxY
-    APTR    cr__p1
-    APTR    cr__p2
-    LONG    cr_reserved
-    LONG    cr_Flags
- LABEL	    cr_SIZEOF
+    LONG    cr_Next		* Point to next cliprect
+    LONG    cr_prev		* Layers private use!!!
+    LONG    cr_lobs		* Layers private use!!!
+    LONG    cr_BitMap		* Bitmap for this cliprect (system private!!!)
+    WORD    cr_MinX		* Bounds of the cliprect
+    WORD    cr_MinY		*    "
+    WORD    cr_MaxX		*    "
+    WORD    cr_MaxY		*    "
+    APTR    cr__p1		* Layers private use!!!
+    APTR    cr__p2		* Layers private use!!!
+    LONG    cr_reserved		* Layers private use!!!
+    LONG    cr_Flags		* Layers private use!!!
+ LABEL      cr_SIZEOF
 
 * internal cliprect flags
-CR_NEEDS_NO_CONCEALED_RASTERS	equ	1
+CR_NEEDS_NO_CONCEALED_RASTERS   equ     1
+CR_NEEDS_NO_LAYERBLIT_DAMAGE 	equ	2
 
 * defines for clipping
 ISLESSX equ 1
@@ -77,12 +82,12 @@ ISGRTRX equ 4
 ISGRTRY equ 8
 
 * for ancient history reasons
-	IFND	lr_Front
-lr_Front	equ lr_front
-lr_Back		equ lr_back
-lr_RastPort	equ	lr_rp
-cr_Prev		equ cr_prev
-cr_LObs		equ	cr_lobs
-	ENDC
+        IFND    lr_Front
+lr_Front        equ lr_front
+lr_Back         equ lr_back
+lr_RastPort     equ lr_rp
+cr_Prev         equ cr_prev
+cr_LObs         equ cr_lobs
+        ENDC
 
 	ENDC	; GRAPHICS_CLIP_I

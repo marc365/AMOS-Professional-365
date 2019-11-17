@@ -1,12 +1,12 @@
 	IFND	EXEC_INTERRUPTS_I
 EXEC_INTERRUPTS_I	SET	1
 **
-**	$Filename: exec/interrupts.i $
-**	$Release: 1.3 $
+**	$VER: interrupts.i 39.0 (15.10.91)
+**	Includes Release 40.15
 **
-**	
+**	Callback structures used by hardware & software interrupts
 **
-**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1985-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
 
@@ -24,7 +24,7 @@ EXEC_INTERRUPTS_I	SET	1
 *   Interrupt Structure
 *
 *----------------------------------------------------------------
-	
+
  STRUCTURE  IS,LN_SIZE
     APTR    IS_DATA
     APTR    IS_CODE
@@ -46,8 +46,8 @@ EXEC_INTERRUPTS_I	SET	1
 
 *------ System Flag bits (in SysBase.SysFlags )
 
-    BITDEF  S,SAR,15	    * scheduling attention required
-    BITDEF  S,TQE,14	    * time quantum expended -- time to resched
+    BITDEF  S,SAR,15	    ; scheduling attention required (TOP BIT)
+    BITDEF  S,TQE,14	    ; time quantum expended -- time to resched
     BITDEF  S,SINT,13
 
 

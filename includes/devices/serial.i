@@ -1,17 +1,17 @@
 	IFND DEVICES_SERIAL_I
 DEVICES_SERIAL_I SET 1
 **
-**	$Filename: devices/serial.i $
-**	$Release: 1.3 $
+**	$VER: serial.i 33.6 (6.11.90)
+**	Includes Release 40.15
 **
 **	external declarations for the serial device
 **
-**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1985-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
     IFND     EXEC_IO_I
     include "exec/io.i"
-    ENDC	; EXEC_IO_I
+    ENDC    !EXEC_IO_I
 
 *--------------------------------------------------------------------
 *
@@ -29,11 +29,11 @@ SER_DEFAULT_CTLCHAR EQU $11130000  ; default chars for xON,xOFF
 *
 * Driver Specific Commands
 
-SDCMD_QUERY	EQU	CMD_NONSTD
-SDCMD_BREAK	EQU	CMD_NONSTD+1
-SDCMD_SETPARAMS EQU	CMD_NONSTD+2
+SDCMD_QUERY	EQU	CMD_NONSTD	;$09
+SDCMD_BREAK	EQU	CMD_NONSTD+1	;$0A
+SDCMD_SETPARAMS EQU	CMD_NONSTD+2	;$0B
 
-SER_DEVFINISH	EQU	CMD_NONSTD+2 ; number of device comands 
+SER_DEVFINISH	EQU	CMD_NONSTD+2 ; number of device comands
 
 *--------------------------------------------------------------------
 
@@ -60,13 +60,13 @@ SERIALNAME:	MACRO
 	BITDEF	IOST,WROTEBREAK,1 ;	"    break was latest output
 	BITDEF	IOST,OVERRUN,0	  ;	"    status word RBF overrun
 ;
-;	BITDEF's in a longword field) 
+;	BITDEF's in a longword field)
 ;	Example usage: BSET.B #SEXTB_MSPON,IO_EXTFLAGS+3(AX)
 				;IO_EXTFLAGS (extended flag longword)
 	BITDEF	SEXT,MSPON,1	;     "	   use mark-space parity,not odd-even
 	BITDEF	SEXT,MARK,0	;     "	   if mark-space, use mark
 *
-*******************************************************************************
+******************************************************************************
  STRUCTURE TERMARRAY,0
 	ULONG	 TERMARRAY_0
 	ULONG	 TERMARRAY_1
@@ -74,9 +74,9 @@ SERIALNAME:	MACRO
 
 *****************************************************************
 * CAUTION !!  IF YOU ACCESS the serial.device, you MUST (!!!!) use an
-* IOEXTSER-sized structure or you may overlay innocent memory, okay ?!	
+* IOEXTSER-sized structure or you may overlay innocent memory, okay ?!
 *****************************************************************
- 
+
  STRUCTURE IOEXTSER,IOSTD_SIZE
 
 *     STRUCT   MsgNode
@@ -109,16 +109,16 @@ SERIALNAME:	MACRO
 	UBYTE	IO_READLEN	; bits per read char (bit count)
 	UBYTE	IO_WRITELEN	; bits per write char (bit count)
 	UBYTE	IO_STOPBITS	; stopbits for read (count)
-	UBYTE	IO_SERFLAGS	; see SERFLAGS bit definitions above 
+	UBYTE	IO_SERFLAGS	; see SERFLAGS bit definitions above
 	UWORD	IO_STATUS	; status of serial port, as follows:
 *
 *		   BIT	ACTIVE	FUNCTION
 *		    0	 ---	reserved
-*		    1	 ---	reserved 
+*		    1	 ---	reserved
 *		    2	 high	Connected to parallel "select" on the A1000.
 *				Connected to both the parallel "select" and
-*				serial "ring indicator" pins on the A500 &
-*				A2000.	Take care when making cables.
+*				serial "ring indicator" pins on the A500
+*				& A2000.  Take care when making cables.
 *		    3	 low	Data Set Ready
 *		    4	 low	Clear To Send
 *		    5	 low	Carrier Detect
@@ -133,7 +133,7 @@ SERIALNAME:	MACRO
 *
 	LABEL	IOEXTSER_SIZE
 
-*******************************************************************************
+******************************************************************************
 
 *--------------------------------------------------------------------
 *
@@ -142,6 +142,7 @@ SERIALNAME:	MACRO
 *--------------------------------------------------------------------
 
 SerErr_DevBusy		EQU	1
+SerErr_BaudMismatch	EQU	2	;baud rate not supported by hardware
 SerErr_BufErr		EQU	4	;Failed to allocate new read buffer
 SerErr_InvParam		EQU	5
 SerErr_LineErr		EQU	6
@@ -154,9 +155,8 @@ SerErr_DetectedBreak	EQU    15
 
  IFD	DEVICES_SERIAL_I_OBSOLETE
 SER_DBAUD		EQU	9600	;unused
-SerErr_BaudMismatch	EQU	2	;unused
 SerErr_InvBaud		EQU	3	;unused
-SerErr_NotOpen		EQU	7	;unused	   
+SerErr_NotOpen		EQU	7	;unused
 SerErr_PortReset	EQU	8	;unused
 SerErr_InitErr		EQU    10	;unused
 SerErr_NoCTS		EQU    14	;unused
@@ -165,4 +165,5 @@ SerErr_NoCTS		EQU    14	;unused
 	BITDEF	IOSER,ACTIVE,4	  ;	"    rqst-qued-or-current bit
  ENDC
 
-	ENDC	; DEVICES_SERIAL_I 
+
+    ENDC    !DEVICES_SERIAL_I

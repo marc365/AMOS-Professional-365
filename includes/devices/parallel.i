@@ -1,18 +1,17 @@
-	IFND	DEVICES_PARALLEL_I
-DEVICES_PARALLEL_I	SET	1
+    IFND     DEVICES_PARALLEL_I
+DEVICES_PARALLEL_I SET 1
 **
-**	$Filename: devices/parallel.i $
-**	$Release: 1.3 $
+**	$VER: parallel.i 34.9 (25.5.89)
+**	Includes Release 40.15
 **
-**	external declarations for Serial Port Driver 
+**	external declarations for the parallel device
 **
-**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1985-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
-
     IFND     EXEC_IO_I
     include "exec/io.i"
-    ENDC	; EXEC_IO_I
+    ENDC    !EXEC_IO_I
 
 *--------------------------------------------------------------------
 *
@@ -21,7 +20,7 @@ DEVICES_PARALLEL_I	SET	1
 *--------------------------------------------------------------------
 
 ParErr_DevBusy		EQU	1
-ParErr_BufTooBig	EQU	2
+ParErr_BufTooBig		EQU	2
 ParErr_InvParam		EQU	3
 ParErr_LineErr		EQU	4
 ParErr_NotOpen		EQU	5
@@ -34,9 +33,9 @@ ParErr_InitErr		EQU	7
 *
 *--------------------------------------------------------------------
 *
-PDCMD_QUERY	   EQU	   CMD_NONSTD 
-PDCMD_SETPARAMS	   EQU	   CMD_NONSTD+1
-Par_DEVFINISH	   EQU	   10	     ; number of device comands 
+PDCMD_QUERY	   EQU	   CMD_NONSTD
+PDCMD_SETPARAMS    EQU	   CMD_NONSTD+1
+Par_DEVFINISH	   EQU	   10	     ; number of device comands
 *
 *--------------------------------------------------------------------
 *
@@ -50,18 +49,20 @@ PARALLELNAME:	MACRO
 		ENDM
 
 	BITDEF	PAR,SHARED,5	  ; PARFLAGS non-exclusive access
-	BITDEF	PAR,RAD_BOOGIE,3  ;    "     (not yet implemented)
+	BITDEF	PAR,SLOWMODE,4	  ;    "     slow mode selected bit
+	BITDEF	PAR,FASTMODE,3    ;    "     fast mode selected bit
+	BITDEF	PAR,RAD_BOOGIE,3  ;    "     for backward compatibility
+	BITDEF	PAR,ACKMODE,2     ;    "     ACK handshaking selected bit
 	BITDEF	PAR,EOFMODE,1	  ;    "     EOF mode enabled bit
-	BITDEF	IOPAR,QUEUED,6	  ; IO_FLAGS rqst-queued bit
-	BITDEF	IOPAR,ABORT,5	  ;    "     rqst-aborted bit
+        BITDEF  IOPAR,QUEUED,6    ; IO_FLAGS rqst-queued bit
+        BITDEF	IOPAR,ABORT,5     ;    "     rqst-aborted bit
 	BITDEF	IOPAR,ACTIVE,4	  ;    "     rqst-qued-or-current bit
-	BITDEF	IOPT,RWDIR,3	  ; IO_STATUS read=0,write=1
-	BITDEF	IOPT,PARSEL,2	  ;    "     printer selected on the A1000
-				  ; printer selected & serial "Ring Indicator"
-				  ; on the A500/A2000.	Be careful when making
-				  ; cables.
-	BITDEF	IOPT,PAPEROUT,1	  ;    "     paper out
-	BITDEF	IOPT,PARBUSY,0	  ;    "     printer in busy toggle
+        BITDEF	IOPT,RWDIR,3      ; IO_STATUS read=0,write=1
+        BITDEF	IOPT,PARSEL,2     ;    "     printer selected on the A1000
+				  ; printer selected & serial "Ring Indicator" on
+				  ; the A500/A2000.  Be careful when making cables.
+	BITDEF	IOPT,PAPEROUT,1   ;    "     paper out
+        BITDEF	IOPT,PARBUSY,0    ;    "     printer in busy toggle
 ;Note: Previous versions of this include file had bits 0 and 2 swapped
 *
 ************************************************************************
@@ -73,9 +74,9 @@ PARALLELNAME:	MACRO
 
 *****************************************************************
 *  CAUTION !!!	IF YOU ACCESS the parallel.device, you MUST (!!!!) use an
-*  IOEXTPAR-sized structure or you may overlay innocent memory, okay ?!	  
-***************************************************************** 
-  
+*  IOEXTPAR-sized structure or you may overlay innocent memory, okay ?!
+*****************************************************************
+
  STRUCTURE IOEXTPAR,IOSTD_SIZE
 
 *     STRUCT   MsgNode
@@ -103,10 +104,10 @@ PARALLELNAME:	MACRO
 *  30
 	ULONG	IO_PEXTFLAGS	; (not used) flag extension area
 	UBYTE	IO_PARSTATUS	; device status (see bit defs above)
-	UBYTE	IO_PARFLAGS	; see PARFLAGS bit definitions above 
+	UBYTE	IO_PARFLAGS	; see PARFLAGS bit definitions above
 	STRUCT	IO_PTERMARRAY,PTERMARRAY_SIZE ; termination char array
 	LABEL	IOEXTPar_SIZE
 
 ****************************************************************************
 
-	ENDC	; DEVICES_PARALLEL_I
+    ENDC    !DEVICES_PARALLEL_I

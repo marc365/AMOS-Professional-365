@@ -1,14 +1,18 @@
 	IFND	DEVICES_PRTGFX_I
 DEVICES_PRTGFX_I	SET	1
 **
-**	$Filename: devices/prtgfx.i $
-**	$Release: 1.3 $
+**	$VER: prtgfx.i 1.12 (26.7.90)
+**	Includes Release 40.15
 **
-**	
+**	printer.device structure definitions
 **
-**	(C) Copyright 1987,1988 Commodore-Amiga, Inc.
+**	(C) Copyright 1987-1999 Amiga, Inc.
 **	    All Rights Reserved
 **
+
+    IFND  EXEC_TYPES_I
+    INCLUDE  "exec/types.i"
+    ENDC
 
 PCMYELLOW	EQU	0		; byte index for yellow
 PCMMAGENTA	EQU	1		; byte index for magenta
@@ -24,7 +28,7 @@ PCMWHITE	EQU	PCMBLACK	; byte index for white
 		LABEL	colorSByte	; 1 entry for each of YMCB
 		STRUCT	colorByte,4	; ditto (except signed)
 		LABEL	ce_SIZEOF
-		
+
 	STRUCTURE	PrtInfo,0
 		APTR	pi_render	; PRIVATE - DO NOT USE!
 		APTR	pi_rp		; PRIVATE - DO NOT USE!
@@ -70,4 +74,3 @@ PCMWHITE	EQU	PCMBLACK	; byte index for white
 		LABEL	prtinfo_SIZEOF
 
 	ENDC	; DEVICES_PRTGFX_I
-
