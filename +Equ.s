@@ -1,3 +1,4 @@
+; http://amiga-dev.wikidot.com/information:hardware
 
         IFND    EZFlag
 EZFlag        set    0
@@ -38,6 +39,7 @@ BCHUNK_ABIT    equ    6
 
 EntNul:        equ $80000000
 
+; List of $DFFxxx registers : http://amiga-dev.wikidot.com/information:hardware
 Circuits:    equ $dff000
 
 IntReq:        equ $9c
@@ -78,6 +80,7 @@ DiwStrt:    equ $08e
 DiwStop:    equ $090
 DdfStrt:    equ $092
 DdfStop:    equ $094
+FMode:      equ $1FC
 
 ; Blitter
 BltSize:    equ $058
@@ -545,6 +548,8 @@ EcVY:        rs.w 1        *
 ; 2019.11.05 Added support for DualPlayfield 2x16colors
 EcCon3:        rs.w    1;   BplCon3 for Dual Playfield color shifting
 dpf2cshift: rs.w    1;   Value used for the Color shifting of 2nd DPF screen.
+EcFMode         rs.w    1; Value for the FetchMode defined for the screen display.
+EcOriginalBPL  rs.l     8 ; 2019.11.18 Original Bitplanes Memory Allocation
 ; Length of a screen
 EcLong        equ __RS
 

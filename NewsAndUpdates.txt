@@ -23,6 +23,21 @@ TO DO :
 - Added new command : Extended Dual Playfield SCREEN1, SCREEN2
 
 ********************************************************************
+2019.11.19 : AGA Support
+
+- Updated +W.s/EcCree to Add 64bits alignment for Bitmap creation.
+- Updated +W.s/EcCopHo to Add DDFStrt & BplxMOD changes when using Fetch Mode
+
+********************************************************************
+2019.11.18 : AGA Support
+
+- Updated +W.s/EcCree screen sizes limitation from 1024x1024 pixels to 2048x2048 pixels
+- Updated +Lib.s/L_InScreenOpen to remove Hires limitation to 4 bitplanes.
+- Updated +Equ.s/FMode equate to point to register #$1FC to handle AGA Fetch Mode
+- Updated +W.s/EcCree by rewritting the Bitmap Allocation to use BMF_DISPLAYABLE to handle Hires.
+- Updated +W.s/EcCree to handle FMode depending on screen resolution requested.
+
+********************************************************************
 2019.11.10-17 : Branch : AGA
 
 - Updated to Includes3.1

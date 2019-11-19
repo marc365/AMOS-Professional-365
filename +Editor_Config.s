@@ -1047,19 +1047,22 @@ Ed2
 	EdT	201,<>
 	EdT	202,<>
 	EdT	203,<>
-; AmiDARK Updated
+
+; AmiDARK Update : New error Messages
 ; ~~~~
-	EdT	204,<first and second screen are the same>                     ; EcE160
-	EdT	205,<First entered screen is already in dual playfield mode>   ; EcE161
-	EdT	206,<Second entered screen is already in dual playfield mode>  ; EcE162
-	EdT	207,<First screen contains more than 4 bitplanes>              ; EcE163
-	EdT	208,<Second screen contains more than 4 bitplanes>             ; EcE164
-	EdT	209,<Unknown error when trying to set dual playfield mode>     ; EcE165
-	EdT	210,<>
+	EdT	204,<first and second screen are the same>                            ; EcE160
+	EdT	205,<First entered screen is already in dual playfield mode>          ; EcE161
+	EdT	206,<Second entered screen is already in dual playfield mode>         ; EcE162
+	EdT	207,<First screen contains more than 4 bitplanes>                     ; EcE163
+	EdT	208,<Second screen contains more than 4 bitplanes>                    ; EcE164
+	EdT	209,<Unknown error when trying to set dual playfield mode>            ; EcE165
+	EdT	210,<AGA Specific screens requires width to be multiple of 64 pixels> ;EcE166
 	EdT	211,<>
 	EdT	212,<>
 	EdT	213,<>
 
+; End of list
+; ~~~~
 	dc.b	0,$ff
 	even
 .Error2
