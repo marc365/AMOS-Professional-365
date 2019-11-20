@@ -2980,7 +2980,7 @@ EcCr0:
     beq     .noHires
     Cmp.w   #4,d4           ; is Hires using more than 4 bitplanes ?
     blt     .noHires
-    Move.w  #$0001,EcFMode(a4)
+    Move.w  #%1,EcFMode(a4)
     bra     .fModeSet
 .noHires:
     Move.w  #0,EcFMode(a4)
@@ -3678,7 +3678,8 @@ EcDAll:    bsr    EcDel
     rts
 
 ******* SCREEN OFFSET n,dx,dy
-EcOffs:    bsr    EcGet
+EcOffs:
+    bsr    EcGet
     beq    EcME
     move.l    d0,a0
     cmp.l    #EntNul,d2
@@ -3690,10 +3691,12 @@ EcO1:
     beq.s    EcO2
     move.w    d3,EcAVY(a0)     ; Define Y screen offset (in pixels) from the top coordinate on Y axis
     bset    #2,EcAV(a0)      ; Bit #2 -> Refresh screen Y offset
-EcO2:    bra.s    EcTu
+EcO2:
+    bra.s    EcTu
 
 ******* HIDE/SHOW ecran D1,d2
-EcHide:    bsr    EcGet
+EcHide:
+    bsr    EcGet
     beq    EcME
     move.l    d0,a0
     tst.w    EcDual(a0)        * Pas DUAL PLAYFIELD
@@ -3702,8 +3705,10 @@ EcHide:    bsr    EcGet
     tst.w    d2
     beq.s    EcTut
     bset    #BitHide,EcFlags(a0)
-EcTut:    addq.w    #1,T_EcYAct(a5)
-EcTu:    bset    #BitEcrans,T_Actualise(a5)
+EcTut:
+    addq.w    #1,T_EcYAct(a5)
+EcTu:
+    bset    #BitEcrans,T_Actualise(a5)
     moveq    #0,d0
     rts
 
@@ -6690,11 +6695,19 @@ MkC5:                             ; Loop to put then entire screen palette in th
 PluDual:
     ENDC
 * Ecran normal!
-    add.w    EcVY(a0),d1        * Decalage ecran
-    mulu    EcTLigne(a0),d1
-    move.w    EcVx(a0),d2
+    add.w    EcVY(a0),d1           ; D1 = How many lines to scroll
+    mulu    EcTLigne(a0),d1 ;      ; D1 = Bytes shift for Y scrolling ( how many lines * 1 line byte size)
+    move.w    EcVx(a0),d2          ; D2 = X Scrolling (from left-right)
+    ; ************************ 2019.11.19 Update for Fetch mode 1 scrolling?
+	tst.w   EcFMode(a0)             ; 2019.11.19 Add -8 if FMode is active
+	beq 	.noFetchChanges4BPL
+	lsr.w    #5,d2    				; To make scrolling be 64 bits instead of 16 bits initial.
+	lsl.w    #2,d2
+	bra      .bplct
+.noFetchChanges4BPL:
     lsr.w    #4,d2
     lsl.w    #1,d2
+.bplct:
     add.w    d2,d1
     move.l    a1,d3
 * Poke les adresses des bitplanes
@@ -6797,12 +6810,38 @@ MkC2:
     add.w    #16,d6
     bra.s    MkC3
 * Hires
-MkCH:    sub.w    #9,d1
+MkCH:
+    sub.w    #9,d1
     lsr.w    #1,d1
     and.w    #$FFFC,d1
     lsr.w    #1,d2
     subq.w    #8,d2
     add.w    d1,d2
+
+; **************************** 2019.11.19 Updated for Fetch Mode Scrolling values.
+	tst.w   EcFMode(a0)             ; 2019.11.19 Add -8 if FMode is active
+	beq 	.noFetchChanges4S
+	; * Fetch 1 mode
+    and.w    #31,d6            ;Scrolling 64 bits
+    beq 	MkC3
+    subq.w    #4,d1
+    subq.w    #4,d4
+    neg.w   d6
+    add.w  #32,d6
+    move.w  d6,d5
+    and.w   #%1100000,d5  ; Get PF1H6 & PF1H7 for D5
+    lsl.w   #6,d5         ; d5 reach bytes 11-12
+    Or.w    d5,d6 
+    And.w   #%1100000011111,d6  ; D6 = Scroll value bits 2-5 + 6-7
+    Move.w  d6,d5
+    Lsr.w 	#1,d6 	       ; D6 = PF1H2-PF1H5 = Scroll bits 2-5 & 6-7
+    And.w   #%1,d5        ; D5 = Scroll values bits 0-1
+    Lsl.w   #8,d5          
+    lsl.w   #1,d5         ; D5 = PF1H1 = Scroll bits 1
+    Or.w    d5,d6          ; D6 = PF1H0-PF1H5 = Scroll bits 0-5 ( 6 bits = 32 bits mode )
+    bra     MkC3           ; -> To duplicate PF1H0-PF1H5 bits to PF2H0-PF2H5
+.noFetchChanges4S: 				; * No fetch changes to do ( Fetch = 0 )
+	; * No Fetch (=0) mode
     and.w    #15,d6            ;Scrolling?
     lsr.w    #1,d6
     beq.s    MkC3
@@ -6810,9 +6849,12 @@ MkCH:    sub.w    #9,d1
     subq.w    #4,d4
     neg.w    d6
     addq.w    #8,d6
-MkC3:    move.w    d6,d5
-    lsl.w    #4,d5
-    or.w    d6,d5
+MkC3:
+	; * Common part to copy Playfield 1 bits to Playfield 2 ones.
+    move.w    d6,d5 	; D5 = D6 = SCroll values 0-15
+    lsl.w    #4,d5 		; D5 shift for Playfield 2 scrolling value
+    or.w    d6,d5 		; D5 = D5 | D6 = Scrolling values for both playfields 1 & 2
+
 * Calcul et poke DDF Start/Stop
     tst.w   EcFMode(a0)             ; 2019.11.19 Add -8 if FMode is active
     beq     noFetchChanges
@@ -11044,9 +11086,11 @@ PaSync:
     rts
 
 ******* WAIT VBL D0, multitache
-WVbl_D0    movem.l    d0-d1/a0-a1/a6,-(sp)
+WVbl_D0:
+    movem.l    d0-d1/a0-a1/a6,-(sp)
     move.w    d0,-(sp)
-.Lp    move.l    T_GfxBase(a5),a6
+.Lp:
+    move.l    T_GfxBase(a5),a6
     jsr    _LVOWaitTOF(a6)
     subq.w    #1,(sp)
     bne.s    .Lp
@@ -11055,11 +11099,12 @@ WVbl_D0    movem.l    d0-d1/a0-a1/a6,-(sp)
     rts
 
 ******* WAIT VBL
-WVbl:    move.l    T_VblCount(a5),d0
-WVbl1:    cmp.l    T_VblCount(a5),d0
-    beq.s    WVbl1
-    moveq    #0,d0
-    rts        
+WVbl:	move.l	T_VblCount(a5),d0
+WVbl1:	cmp.l	T_VblCount(a5),d0
+	beq.s	WVbl1
+	moveq	#0,d0
+	rts		
+    
 
 ******* Traitement de la souris
 MousInt:tst.b    T_AMOSHere(a5)

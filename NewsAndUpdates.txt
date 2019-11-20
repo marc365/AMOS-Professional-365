@@ -23,10 +23,16 @@ TO DO :
 - Added new command : Extended Dual Playfield SCREEN1, SCREEN2
 
 ********************************************************************
+2019.11.20 : AGA Support
+
+- Updated +W.s/WVbl WaitVbl to use Graphics.library/WaitTOF() instead of manual calculation.
+- Fixed the Hires 640px fine scrolling by updating +W.s/WVbl.
+
+********************************************************************
 2019.11.19 : AGA Support
 
 - Updated +W.s/EcCree to Add 64bits alignment for Bitmap creation.
-- Updated +W.s/EcCopHo to Add DDFStrt & BplxMOD changes when using Fetch Mode
+- Updated +W.s/EcCopHo to Add DDFStrt & BplxMOD changes when using Fetch Mode in HiRes resolutions.
 
 ********************************************************************
 2019.11.18 : AGA Support
