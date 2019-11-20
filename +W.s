@@ -6,7 +6,10 @@
 ; 
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         OPT    P+
-; Docs : http://amigadev.elowar.com/read/ADCD_2.1/Includes_and_Autodocs_3._guide/node0000.html
+; Docs       : http://amigadev.elowar.com/read/ADCD_2.1/Includes_and_Autodocs_3._guide/node0000.html
+; Fetch Mode : http://jvaltane.kapsi.fi/amiga/howtocode/aga.html
+; Detect Aga : http://www.stashofcode.fr/code/afficher-sprites-et-bobs-sur-amiga/AGAByRandyOfComax.txt
+
 ***************************************************************************
         IFND    EZFlag
 EZFlag        equ     0
@@ -2416,39 +2419,8 @@ Blit_out:
 ***********************************************************
 *    Calcul de PEN/PAPER
 ***********************************************************
-AdColor:move.w    WiNPlan(a5),d1
-
-    move.w    WiPaper(a5),d2
-    move.w    WiPen(a5),d3
-    move.w    d2,d4
-    move.w    d3,d5
-    lea    TAdCol(pc),a0
-    lea    WiColor(a5),a1
-    lea    WiColFl(a5),a2
-
-ACol:    moveq    #16,d0
-    btst    d1,WiSys+1(a5)
-    bne.s    ACol1
-    clr.w    d0
-    lsr.w    #1,d2
-    roxl.w    #1,d0
-    lsr.w    #1,d3
-    roxl.w    #1,d0
-    lsl.w    #2,d0
-ACol1    move.l    0(a0,d0.w),d0
-    add.l    a0,d0
-    move.l    d0,(a1)+
-
-    lsr.w    #1,d4
-    subx.w    d0,d0
-    move.w    d0,(a2)+
-    lsr.w    #1,d5
-    subx.w    d0,d0
-    move.w    d0,(a2)+
-
-    dbra    d1,ACol
-
-    rts
+; AdColor:
+; Method moved further in the source code for bsr compatibility with new source code length.
 
 ;-----------------------------------------------------------------
 ; **** *** **** ****
@@ -2957,7 +2929,7 @@ EcCree:
 
 ;    Verifie les parametres
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    and.l    #$FFFFFFF0,d2         ; Aligne Screen Width on 16 pixels multiple
+    and.l    #$FFFFFFF0,d2         ; If screen size < 8 pixels
     beq    EcE4
     cmp.l    #2048,d2             ; 2019.11.18 : If Screen Width > 2048 -> Error
     bcc    EcE4
@@ -2970,7 +2942,20 @@ EcCree:
     cmp.l    #EcMaxPlans,d4         ; If Screen Depth > ExMAxPlans -> Error
     bhi    EcE4
 
-;    Screen Already created/available ?
+;     Check for AGA specific screens :
+; ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+; *********************** 2019.11.18 If Hires + > 4 Bpls -> Width multiple of 64 pixels
+;    Btst    #15,d5          ; Do we request HiRes ?
+;    beq     .noHiresFetch
+;    Cmp.w   #4,d4           ; is Hires using more than 4 bitplanes ?
+;    blt     .noHiresFetch
+;    ; Must be sure that screen width is multiple of 64 pixels.
+;    Move.l  d2,d5
+;    and.l   #$3F,d5
+;    bne    EcE166          ; AGA requires screen to be multiple of 64 pixels wide
+;.noHiresFetch:
+
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~
 ReEc:
     move.l    d1,-(sp)
@@ -2988,6 +2973,19 @@ EcCr0:
     bsr    FastMm
     beq    EcEE1
     move.l    d0,a4             ; A4 = Current Screen data structure
+
+; 
+; *********************** 2019.11.18 Preset the Fetch Mode depending on graphical resolution
+    Btst    #15,d5          ; Do we request HiRes ?
+    beq     .noHires
+    Cmp.w   #4,d4           ; is Hires using more than 4 bitplanes ?
+    blt     .noHires
+    Move.w  #%1,EcFMode(a4)
+    bra     .fModeSet
+.noHires:
+    Move.w  #0,EcFMode(a4)
+.fModeSet:
+; *********************** 2019.11.18 End pf Preset the Fetch Mode depending on graphical resolution
 
 ;    ****** This small loop copy the default AMOS color palette inside current screen one to set it.
     move.w    d6,EcNbCol(a4)
@@ -3044,6 +3042,8 @@ continue:                ; 2019.11.05 End of upgrade to handle BPU3 for 8 Bitpla
     move.w    d5,EcCon0(a4)      ; Save BplCon0 value for this screen
     move.w    #%00100100,EcCon2(a4)     ; Save BplCon2 value for this screen
 
+; http://jvaltane.kapsi.fi/amiga/howtocode/aga.html ( Fetch Mode )
+
 ;    Create/Initialize the BitMap Structure
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     moveq    #bm_SIZEOF,d0            bm_SIZEOF
@@ -3067,16 +3067,25 @@ continue:                ; 2019.11.05 End of upgrade to handle BPU3 for 8 Bitpla
     subq.w    #1,d6
     move.l    Ec_BitMap(a4),a1         ; a1 = Initialized BitMap Structure
     moveq    #0,d2                     ; D2 start at offset 0
+    Lea     EcOriginalBPL(a4),a0       ; AO = Original Bitmaps to save
 EcCra:
     move.l    EcTPlan(a4),d0             ; 2019.11.12 Directly moves ECTPlan in d0 instead of D7 register
+    Add.l      #8,d0                    ; Add 8 bytes to the bitmap size to allow manual realignment.
     bsr    ChipMm
     beq    EcMdd
+    Move.l    d0,(a0)+                  ; Save Original Bitmap Position
+    Add.l     #8,d0                     ; ADD + 8 to d0 to be at the higher limit of its memory allocation without bytes over
+    And.l     #$FFFFFFC0,d0             ; Align D0 to 64bits address in range 0 <= Start of memory allocation <= 8
     move.l    d0,bm_Planes(a1,d2.w)     ; Save bitmap in previously initialized bitmap structure
     move.l    d0,EcCurrent(a4,d2.w)     ; Save bitmaps to EcCurrent
     move.l    d0,EcLogic(a4,d2.w)     ; Save Bitmaps to EcLogic
     move.l    d0,EcPhysic(a4,d2.w)     ; Save Bitmap To ExPhysic
     addq.l    #4,d2
     dbra    d6,EcCra
+
+    bsr    BlitWait
+    bsr    WVbl
+    bsr    BlitWait
 
 ;    Create the true Intuition Rastport
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3276,6 +3285,12 @@ EcE165:
     move.l    #165,d0            <Unknown error when trying to set dual playfield mode> 
     bra.s    EcOut
     ; 2019.11.03 End of 6 new error messages for Dual Playfield command
+    ; 2019.11.19 New Error messages for AGA graphics issues
+EcE166:
+    move.l    #166,d0
+    bra.s   EcOut
+    ; 2019.11.19 End of New Error messages for AGA graphics issues
+
 EcE2:
     moveq    #2,d0            * 2 : SCREEN ALREADY OPENED
 * Sortie erreur ecrans
@@ -3595,12 +3610,14 @@ EcD3:    move.l    d3,a0
     bsr    WVbl                layers...
     bsr    BlitWait
     moveq    #EcMaxPlans-1,d7
-    lea    EcLogic(a4),a2
-    lea    EcPhysic(a4),a3
+    Lea     EcOriginalBPL(a4),a2       ; AO = Original Bitmaps to save 2019.11.19
+    ;lea    EcLogic(a4),a2
+    ;lea    EcPhysic(a4),a3
 EcFr0:    move.l    (a2),d2
     beq.s    EcFr1
     move.l    d2,a1
     move.l    EcTPlan(a4),d0
+    Add.l   #8,d0 ; 2019.11.19 For memory alignment
     bsr    FreeMm
 EcFr1:    clr.l    (a2)+
     cmp.l    (a3)+,d2
@@ -3608,11 +3625,13 @@ EcFr1:    clr.l    (a2)+
     clr.l    -4(a3)
 EcFr2:    dbra    d7,EcFr0
     moveq    #EcMaxPlans-1,d7
-    lea    EcPhysic(a4),a2
+    Lea     EcOriginalBPL(a4),a2       ; AO = Original Bitmaps to save 2019.11.19
+;    lea    EcPhysic(a4),a2
 EcFr3:    move.l    (a2),d0
     beq.s    EcFr4
     move.l    d0,a1
     move.l    EcTPlan(a4),d0
+    Add.l   #8,d0 ; 2019.11.19 For memory alignment
     bsr    FreeMm
 EcFr4:    clr.l    (a2)+
     dbra    d7,EcFr3
@@ -3659,7 +3678,8 @@ EcDAll:    bsr    EcDel
     rts
 
 ******* SCREEN OFFSET n,dx,dy
-EcOffs:    bsr    EcGet
+EcOffs:
+    bsr    EcGet
     beq    EcME
     move.l    d0,a0
     cmp.l    #EntNul,d2
@@ -3671,10 +3691,12 @@ EcO1:
     beq.s    EcO2
     move.w    d3,EcAVY(a0)     ; Define Y screen offset (in pixels) from the top coordinate on Y axis
     bset    #2,EcAV(a0)      ; Bit #2 -> Refresh screen Y offset
-EcO2:    bra.s    EcTu
+EcO2:
+    bra.s    EcTu
 
 ******* HIDE/SHOW ecran D1,d2
-EcHide:    bsr    EcGet
+EcHide:
+    bsr    EcGet
     beq    EcME
     move.l    d0,a0
     tst.w    EcDual(a0)        * Pas DUAL PLAYFIELD
@@ -3683,8 +3705,10 @@ EcHide:    bsr    EcGet
     tst.w    d2
     beq.s    EcTut
     bset    #BitHide,EcFlags(a0)
-EcTut:    addq.w    #1,T_EcYAct(a5)
-EcTu:    bset    #BitEcrans,T_Actualise(a5)
+EcTut:
+    addq.w    #1,T_EcYAct(a5)
+EcTu:
+    bset    #BitEcrans,T_Actualise(a5)
     moveq    #0,d0
     rts
 
@@ -6352,7 +6376,7 @@ CLPopulate:                                ; // 2019.11.05 Useless Reference add
     ; **************** The Logic copper already contains sprites datas & 2019.11.16 AGA Palette addon.
     move.l    T_CopLogic(a5),a1                 ; send LOGIC copper addres into -> A1 (Work is always donc on logic version, not physic one.)
 ;    lea     64+4(a1),a1
-    Add.l     #1000,a1                        ; 2019.11.16 Move further in the copper list to not modify the Sprites ((64+4)=68) area nor Aga Colors (4+(((1+32)*4)*7)+4)=932
+    Add.l     #1000,a1               ; 2019.11.16 Move further in the copper list to not modify the Sprites ((64+4)=68) area nor Aga Colors (4+(((1+32)*4)*7)+4)=932
 
 * Rainbow?
     tst.w    T_RainBow(a5)
@@ -6671,11 +6695,19 @@ MkC5:                             ; Loop to put then entire screen palette in th
 PluDual:
     ENDC
 * Ecran normal!
-    add.w    EcVY(a0),d1        * Decalage ecran
-    mulu    EcTLigne(a0),d1
-    move.w    EcVx(a0),d2
+    add.w    EcVY(a0),d1           ; D1 = How many lines to scroll
+    mulu    EcTLigne(a0),d1 ;      ; D1 = Bytes shift for Y scrolling ( how many lines * 1 line byte size)
+    move.w    EcVx(a0),d2          ; D2 = X Scrolling (from left-right)
+    ; ************************ 2019.11.19 Update for Fetch mode 1 scrolling?
+	tst.w   EcFMode(a0)             ; 2019.11.19 Add -8 if FMode is active
+	beq 	.noFetchChanges4BPL
+	lsr.w    #5,d2    				; To make scrolling be 64 bits instead of 16 bits initial.
+	lsl.w    #2,d2
+	bra      .bplct
+.noFetchChanges4BPL:
     lsr.w    #4,d2
     lsl.w    #1,d2
+.bplct:
     add.w    d2,d1
     move.l    a1,d3
 * Poke les adresses des bitplanes
@@ -6736,7 +6768,6 @@ MkC1a:
 MkC1b:
     move.w    d1,EcWXr(a0)
     move.w    d2,EcWTxr(a0)
-* Calcul et poke DIW Start/Stop
     move.w    #DiwStrt,(a1)+        ;DiwStrt Y = 0
     move.w    d1,(a1)
     or.w    #$0100,(a1)+
@@ -6779,12 +6810,38 @@ MkC2:
     add.w    #16,d6
     bra.s    MkC3
 * Hires
-MkCH:    sub.w    #9,d1
+MkCH:
+    sub.w    #9,d1
     lsr.w    #1,d1
     and.w    #$FFFC,d1
     lsr.w    #1,d2
     subq.w    #8,d2
     add.w    d1,d2
+
+; **************************** 2019.11.19 Updated for Fetch Mode Scrolling values.
+	tst.w   EcFMode(a0)             ; 2019.11.19 Add -8 if FMode is active
+	beq 	.noFetchChanges4S
+	; * Fetch 1 mode
+    and.w    #31,d6            ;Scrolling 64 bits
+    beq 	MkC3
+    subq.w    #4,d1
+    subq.w    #4,d4
+    neg.w   d6
+    add.w  #32,d6
+    move.w  d6,d5
+    and.w   #%1100000,d5  ; Get PF1H6 & PF1H7 for D5
+    lsl.w   #6,d5         ; d5 reach bytes 11-12
+    Or.w    d5,d6 
+    And.w   #%1100000011111,d6  ; D6 = Scroll value bits 2-5 + 6-7
+    Move.w  d6,d5
+    Lsr.w 	#1,d6 	       ; D6 = PF1H2-PF1H5 = Scroll bits 2-5 & 6-7
+    And.w   #%1,d5        ; D5 = Scroll values bits 0-1
+    Lsl.w   #8,d5          
+    lsl.w   #1,d5         ; D5 = PF1H1 = Scroll bits 1
+    Or.w    d5,d6          ; D6 = PF1H0-PF1H5 = Scroll bits 0-5 ( 6 bits = 32 bits mode )
+    bra     MkC3           ; -> To duplicate PF1H0-PF1H5 bits to PF2H0-PF2H5
+.noFetchChanges4S: 				; * No fetch changes to do ( Fetch = 0 )
+	; * No Fetch (=0) mode
     and.w    #15,d6            ;Scrolling?
     lsr.w    #1,d6
     beq.s    MkC3
@@ -6792,9 +6849,17 @@ MkCH:    sub.w    #9,d1
     subq.w    #4,d4
     neg.w    d6
     addq.w    #8,d6
-MkC3:    move.w    d6,d5
-    lsl.w    #4,d5
-    or.w    d6,d5
+MkC3:
+	; * Common part to copy Playfield 1 bits to Playfield 2 ones.
+    move.w    d6,d5 	; D5 = D6 = SCroll values 0-15
+    lsl.w    #4,d5 		; D5 shift for Playfield 2 scrolling value
+    or.w    d6,d5 		; D5 = D5 | D6 = Scrolling values for both playfields 1 & 2
+
+* Calcul et poke DDF Start/Stop
+    tst.w   EcFMode(a0)             ; 2019.11.19 Add -8 if FMode is active
+    beq     noFetchChanges
+    sub.l   #8,d1
+noFetchChanges:
 * Poke les valeurs
     move.w    #DdfStrt,(a1)+
     move.w    d1,(a1)+
@@ -6808,6 +6873,11 @@ MkC3:    move.w    d6,d5
     lsr.w    #3,d2
     add.w    d2,d4
 MkCi1:
+* Calcul et poke MODULO Start/Stop
+    tst.w   EcFMode(a0)             ; 2019.11.19 Add -8 if FMode is active
+    beq     noFetchChanges2
+    sub.l   #4,d4
+noFetchChanges2:
     move.w    #Bpl1Mod,(a1)+
     move.w    d4,(a1)+
     move.w    #Bpl2Mod,(a1)+                            ; Bpl2Mod
@@ -6822,6 +6892,8 @@ MkCi1:
     move.w    EcCon2(a0),(a1)+
     move.w    #BplCon3,(a1)+                             ; 2019.11.04 Added BplCon3 to support dual playfield 2x16 colors
     move.w  #%1000000000000,(a1)+
+    move.w    #FMode,(a1)+
+    Move.w      EcFMode(a0),(a1)+
 * Reactive le DMA au debut de la fenetre
 FiniCop:
     move.l    (sp)+,d4
@@ -7252,6 +7324,7 @@ insertIsOver:
     move.w  #%1000000000000,(a1)+
     rts
 ; ************************* 2019.11.16 End of Update
+; Fetch Mode details : http://jvaltane.kapsi.fi/amiga/howtocode/aga.html?fbclid=IwAR1p1ALu_PrIM40V8XuyhTL5n4gxBRqvuGUrHvENxIvDx6gV48QEHZX1Cl8#fetchmode
 
 ***********************************************************
 *    LIBERATION DES LISTES COPPER
@@ -11013,9 +11086,11 @@ PaSync:
     rts
 
 ******* WAIT VBL D0, multitache
-WVbl_D0    movem.l    d0-d1/a0-a1/a6,-(sp)
+WVbl_D0:
+    movem.l    d0-d1/a0-a1/a6,-(sp)
     move.w    d0,-(sp)
-.Lp    move.l    T_GfxBase(a5),a6
+.Lp:
+    move.l    T_GfxBase(a5),a6
     jsr    _LVOWaitTOF(a6)
     subq.w    #1,(sp)
     bne.s    .Lp
@@ -11024,11 +11099,12 @@ WVbl_D0    movem.l    d0-d1/a0-a1/a6,-(sp)
     rts
 
 ******* WAIT VBL
-WVbl:    move.l    T_VblCount(a5),d0
-WVbl1:    cmp.l    T_VblCount(a5),d0
-    beq.s    WVbl1
-    moveq    #0,d0
-    rts        
+WVbl:	move.l	T_VblCount(a5),d0
+WVbl1:	cmp.l	T_VblCount(a5),d0
+	beq.s	WVbl1
+	moveq	#0,d0
+	rts		
+    
 
 ******* Traitement de la souris
 MousInt:tst.b    T_AMOSHere(a5)
@@ -11429,6 +11505,7 @@ GSin1:    move.l    (a1)+,d0
 GSinX:    move.l    #EntNul,d1
     moveq    #0,d0
     rts
+
 
 **********************************************************
 *    SET MOUSE
@@ -14168,6 +14245,42 @@ EfC2:    move.b    (a0)+,(a1)
     dbra    d6,EfC1
     movem.l    (sp)+,d3-d7/a0-a2
 EfCFin:    rts
+
+***********************************************************
+*    Calcul de PEN/PAPER
+***********************************************************
+AdColor:
+    move.w    WiNPlan(a5),d1
+    move.w    WiPaper(a5),d2
+    move.w    WiPen(a5),d3
+    move.w    d2,d4
+    move.w    d3,d5
+    lea    TAdCol(pc),a0
+    lea    WiColor(a5),a1
+    lea    WiColFl(a5),a2
+ACol:
+    moveq    #16,d0
+    btst    d1,WiSys+1(a5)
+    bne.s    ACol1
+    clr.w    d0
+    lsr.w    #1,d2
+    roxl.w    #1,d0
+    lsr.w    #1,d3
+    roxl.w    #1,d0
+    lsl.w    #2,d0
+ACol1:
+    move.l    0(a0,d0.w),d0
+    add.l    a0,d0
+    move.l    d0,(a1)+
+    lsr.w    #1,d4
+    subx.w    d0,d0
+    move.w    d0,(a2)+
+    lsr.w    #1,d5
+    subx.w    d0,d0
+    move.w    d0,(a2)+
+    dbra    d1,ACol
+    rts
+
 
 ***********************************************************
 *    WINDOPEN
