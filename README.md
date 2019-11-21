@@ -23,5 +23,5 @@ In occasion of Pianeta Amiga 2012, Pietro Ghizzoni, current owner of AMOS Pro so
 
 # AMOS Professional X : present and future
 
-After seeing the marc365 repository containing a useable Amos Professional project, I decided to jump and explore the project source code. During that deep view, I learned as enough part of the internal graphical system of Amos Professional. Following this, I decided to create a new project called "Amos Professional X" (special) to add the support of AGA chipset to Amos Professional. The branch "main" is the project branch. Each other branch are dev ones and are merged to the 'main' branch once the work made for them is completed and tested.
+After seeing the marc365 repository containing a useable Amos Professional project, I decided to jump and explore the project source code. During that deep view, I learned enough parts and components of the internal graphical system of Amos Professional. Following this, I decided to create a new project called "Amos Professional X" (special) to add the support of AGA chipset to Amos Professional. The branch "main" is the project branch. Each other branch are dev ones and are merged to the 'main' branch once the work made for them is completed and tested. It's a personal "free time" project so progress can be irregular.
 
