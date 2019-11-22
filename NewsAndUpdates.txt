@@ -23,6 +23,14 @@ TO DO :
 - Added new command : Extended Dual Playfield SCREEN1, SCREEN2
 
 ********************************************************************
+2019.11.22 : Global project update
+
+- Changed the place where the configuration are copied at compilation time (moved them to AMOS/S)
+- Changed a place where AMOS.library was copied at compilation time (to AMOS/Libs)
+- Moved the concerned files to place where they should be.
+
+
+********************************************************************
 2019.11.22 : Compiler upgrade - Update 1
 
 - Increased all the APCmp buffers to makes compilation works with large .AMOS files
@@ -34,7 +42,6 @@ TO DO :
 
 
 - Updated +W.s/WVbl WaitVbl to use Graphics.library/WaitTOF() instead of manual calculation.
-
 - Fixed the Hires 640px fine scrolling by updating +W.s/WVbl.
 
 ********************************************************************

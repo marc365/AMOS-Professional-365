@@ -8,7 +8,8 @@ c/Get_Chunk RAM:Interpreter_Config.o AMOS/Tutorial/Extra_Configs/Interpreter_Con
 
 echo "***Installing default configuration"
 Copy AMOS/Tutorial/Extra_Configs/Editor_Config.Backup AMOS/APSystem/AMOSPro_Editor_Config
-Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup AMOS/AMOSPro_Interpreter_Config
+Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup AMOS/S/AMOSPro_Interpreter_Config
+Copy AMOS/S/AMOSPro_Interpreter_Config DH0:S/AMOSPro_Interpreter_Config
 
 echo "***Installing default configuration to s:"
 Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup s:AMOSPro_Interpreter_Config
