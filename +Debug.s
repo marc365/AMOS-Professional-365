@@ -1,4 +1,4 @@
 
 ; No Debugging!
 ; ~~~---~~~~~~~
-Debug		set	0
+Debug		set	2
