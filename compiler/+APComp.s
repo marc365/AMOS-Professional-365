@@ -1,4 +1,4 @@
-;____________________________________________________________________________
+____________________________________________________________________________
 ;............................................................................
 ;..................................................................2222222...
 ;...............................................................22222222220..
@@ -59,11 +59,11 @@ L_PathToDelete		equ	108*2
 
 ; 			Tailles buffers standart
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-L_BSo			equ	8000		Longueur buffer source
-L_DiscIn		equ	1024*4		Buffer chargement banques...
-L_BordBso		equ	128		Bordure buffer source
-L_BordBob		equ	768		Bordure buffer objet
-L_Bob			equ	1024*6		Buffer objet
+L_BSo			equ	250000		Longueur buffer source
+L_DiscIn		equ	4096*4		Buffer chargement banques...
+L_BordBso		equ	1024		Bordure buffer source
+L_BordBob		equ	1024		Bordure buffer objet
+L_Bob			equ	4096*6		Buffer object
 
 ;			Flags relocation
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,13 +73,14 @@ Rel_Label		equ	$03000000
 
 ;			Tokens de l'extension
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ext_Nb			equ	5
+Ext_Nb				equ	5
 Ext_TkCmp       	equ     6
 Ext_TkCOp       	equ     $14
 Ext_TkTstOn     	equ     $28
 Ext_TkTstOf     	equ     $3a
 Ext_TkTst       	equ     $4e
 
+demult 	equ 8 ;2019.11.21 To increas buffers.
 
 F_Externes		equ	0
 F_Dialogs		equ	1
@@ -131,7 +132,7 @@ AMOS_Start
 	lea	DZ(pc),a3
 	move.l	sp,Pile_AMOS-DZ(a3)	Position pile AMOS
 
-	move.l	#1024*4,d0		Reserve la pile
+	move.l	#1024*4*demult,d0		Reserve la pile
 	move.l	#Public|Clear,d1
 	move.l	$4.w,a6
 	jsr	_LVOAllocMem(a6)
@@ -197,7 +198,7 @@ AMOS_TheEnd
 	movem.l	d0-d1/a0-a1/a6,-(sp)
 	move.l	Pile_Base-DZ(a3),a1
 	clr.l	Pile_Base-DZ(a3)
-	move.l	#1024*4,d0
+	move.l	#1024*4*demult,d0
 	move.l	$4.w,a6
 	jsr	_LVOFreeMem(a6)
 .Skip	movem.l	(sp)+,d0-d1/a0-a1/a6
@@ -210,11 +211,13 @@ AMOS_TheEnd
 ;---------------------------------------------------------------------
 ;  Entree CLI
 ;---------------------------------------------------------------------
-CliIn	bsr	Reserve_DZ
+CliIn:
+	bsr	Reserve_DZ
 	clr.b	Flag_AMOS(a5)
 
 ; Entree commune
-Go_On	move.l	sp,C_Pile(a5)
+Go_On
+	move.l	sp,C_Pile(a5)
 	movem.l	a0/d0,-(sp)
 ; Reserve les buffers principaux
 	bsr	Reserve_Work
@@ -486,33 +489,35 @@ Compile_Reserve
 	cmp.w	#16,d2			Base de calculs= 16K
 	bcc.s	.Sup
 	moveq	#16,d2
-.Sup	tst.b	Flag_Big(a5)		Si flag big, buffers= buffersX4
+.Sup
+	tst.b	Flag_Big(a5)		Si flag big, buffers= buffersX4
 	beq.s	.Pabig
 	lsl.l	#2,d2
+	mulu 	#demult,d2
 .Pabig	moveq	#4,d3			4 shifts= 16
 
 	lea	B_FlagVarL(a5),a0	Variables locales
 	move.l	d2,d0
-	mulu	#256,d0
+	mulu	#256*demult,d0
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 
 	lea	B_FlagVarG(a5),a0	Variable globales
 	move.l	d2,d0
-	mulu	#256,d0
+	mulu	#256*demult,d0
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 
 	lea	B_Chaines(a5),a0	Buffer des chaines
 	move.l	d2,d0
-	mulu	#384*4,d0
+	mulu	#384*4*demult,d0
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 	move.l	a0,A_Chaines(a5)	Marque la fin des chaines
 
 	lea	B_Lea(a5),a0		Buffer des branchements en avant
 	move.l	d2,d0
-	mulu	#64*8,d0
+	mulu	#64*8*demult,d0
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 	move.l	a0,B_Lea(a5)
@@ -521,32 +526,32 @@ Compile_Reserve
 
 	lea	B_Labels(a5),a0		Buffer des labels
 	move.l	d2,d0
-	mulu	#768*4,d0
+	mulu	#768*4*demult,d0
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 	move.l	a0,B_Labels(a5)
 
 	lea	B_Reloc(a5),a0		Buffer de relocation
 	move.l	d2,d0
-	mulu	#256*4,d0	
+	mulu	#256*4*demult,d0	
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 
 	lea	B_Instructions1(a5),a0	Buffer des adresses des instructions
 	move.l	d2,d0
-	mulu	#1024*4,d0		Environ 1500 instructions / 32 k
+	mulu	#1024*4*demult,d0		Environ 1500 instructions / 32 k
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 
 	lea	B_Instructions2(a5),a0	Buffer des adresses des instructions procedures
 	move.l	d2,d0
-	mulu	#768*4,d0		Environ 1500 instructions / 32 k
+	mulu	#768*4*demult,d0		Environ 1500 instructions / 32 k
 	lsr.l	d3,d0
 	bsr	Buffer_Reserve
 
 	lea	B_LibRel(a5),a0		Buffer de relocation des JSR
 	move.l	d2,d0
-	mulu	#1024*2,d0
+	mulu	#1024*2*demult,d0
 	cmp.b	#1,Flag_Debug(a5)	Si mode DEBUG, un jump par instruction!
 	bcs.s	.NoD
 	lsl.l	#1,d0			Donc, fois deux!
@@ -554,17 +559,17 @@ Compile_Reserve
 	bsr	Buffer_Reserve
 	move.l	a0,A_LibRel(a5)
 
-	move.l	#1024,d0		Buffer des boucles
+	move.l	#1024*demult,d0		Buffer des boucles
 	lea	B_Bcles(a5),a0
 	bsr	Buffer_Reserve		
 	move.l	a0,A_Bcles(a5)
 
-	move.l	#256,d0			Buffer de stockage position
+	move.l	#256*demult,d0			Buffer de stockage position
 	lea	B_Stock(a5),a0
 	bsr	Buffer_Reserve
 	move.l	a0,A_Stock(a5)
 
-	move.l	#1024*4,d0		Buffer de script expressions
+	move.l	#1024*4*demult,d0		Buffer de script expressions
 	lea	B_Script(a5),a0
 	bsr	Buffer_Reserve
 	rts
@@ -577,7 +582,7 @@ Compile_Reserve
 Compile
 	
 ; Longueur du buffer variable par default
-	move.l	#8,L_Buf(a5)
+	move.l	#64*demult,L_Buf(a5)
 
 ; Relocation
 	bsr	Init_Reloc
@@ -587,7 +592,7 @@ Compile
 	lea	20,a6			Commence apres le header
 
 ; Message
-	moveq	#23,d0
+	moveq	#23,d0 ; Print "Compiling program..."
 	bsr	Mes_Print
 	bsr	Return
 	move.l	A_Banks(a5),d2		Estime le nombre de lignes
@@ -632,8 +637,10 @@ Db	tst.b	Flag_Numbers(a5)
 	move.l	B_Source(a5),a0
 	lea	20(a0),a0
 	moveq	#0,d3			Commence en ligne 1
-DbRloop	moveq	#0,d1
-DbLoop	addq.w	#1,d3
+DbRloop:
+	moveq	#0,d1
+DbLoop:
+	addq.w	#1,d3
 	add.w	d1,a0			Ligne suivante
 	add.w	d1,a0
 	cmp.l	d2,a0			La fin?
@@ -684,6 +691,9 @@ DbEnd
 	move.w	Cmva6d7(pc),d0		VGlobales=VLocales
 	bsr	OutWord
 
+	moveq	#81,d0 ; Print "CHRGET loop"
+	bsr	Mes_Print
+
 ;	Boucle du CHRGET
 ; ~~~~~~~~~~~~~~~~~~~~~~
 ChrGet	bsr	Aff_Pour		Affichage
@@ -728,7 +738,7 @@ ChrEnd	bsr	OutLea			Marque la fin du programme
 	move.b	Flag_Procs(a5),OFlag_Procs(a5)
 	move.l	A_Datas(a5),A_ADatas(a5)
 	move.w	M_ForNext(a5),MM_ForNext(a5)
-; Quelque chose à compiler???
+; Quelque chose Ã  compiler???
 	tst.w	NbInstr(a5)
 	beq	Err_NothingToCompile
 
@@ -1158,7 +1168,7 @@ CopyAMOSLib
 	move.l	B_DiskIn(a5),d2		Lis 1k de texte!
 	move.l	#1024,d3		
 	bsr	F_Read			sans erreur
-	moveq	#15,d0			Copie les message 15 à 19
+	moveq	#15,d0			Copie les message 15 Ã  19
 	moveq	#19,d1
 	moveq	#0,d2
 .Cop	cmp.w	d0,d2			Copie des messages
@@ -1680,8 +1690,8 @@ RFin	bsr	End_Pour
 ; 	Mode NUMBERS / DEBUG . Entree, D0=numero de ligne
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Db_OutNumber
-	tst.b	Flag_Numbers(a5)
-	beq.s	.Out
+;	tst.b	Flag_Numbers(a5)
+;	beq.s	.Out
 	move.w	Cur_Line(a5),d0
 	cmp.w	Old_Line(a5),d0
 	bne.s	.Db
@@ -1986,7 +1996,7 @@ Lib_Load
 	bsr	Aff_Pour
 ; Boucle de recopie, D3 octets
 	move.l	a4,-LB_Size-4(a2,d2.w)		Poke l'adresse de la routine
-	bset	#7,-LB_Size-4(a2,d2.w)		Bit 7 à 1 >>> routine chargee
+	bset	#7,-LB_Size-4(a2,d2.w)		Bit 7 Ã  1 >>> routine chargee
 	moveq	#0,d4				P_CLIB-> D4
 LRou0	bsr	Ld_Clib
 LRou1	move.b	(a2),d0
@@ -4551,7 +4561,7 @@ InVariable2
 	bsr	SoVar
 	move.w	d0,d1
 	and.w	#$000F,d0
-	move.w	d0,Type_Voulu(a5)	Marque le type desiré
+	move.w	d0,Type_Voulu(a5)	Marque le type desirÃ©
 	move.w	d1,-(sp)
 	bsr	Fn_Evalue_Voulu		Evalue correctement
 	bsr	Optimise_D2		Optimise le dernier
@@ -5068,7 +5078,7 @@ InDefFn	bsr	OutLea
 	bsr	GetWord
 	cmp.w	#_TkPar1,d0
 	bne.s	Cdfn2
-* Prend les variables (à l'envers)
+* Prend les variables (Ã  l'envers)
 	clr.w	N_Dfn(a5)
 Cdfn0	addq.l	#2,a6
 	move.l	a6,-(sp)
@@ -7065,7 +7075,7 @@ CTests	tst.b	Flag_NoTests(a5)
 	bne.s	.Notest
 	move.w	#L_Test_Normal,d0
 	bra	Do_JsrLibrary
-.Notest	move.w	Cmvqd6(pc),d0		Pas de test: remettre D6 à zero!
+.Notest	move.w	Cmvqd6(pc),d0		Pas de test: remettre D6 Ã  zero!
 	move.b	#1,d0
 	bra	OutWord
 
@@ -7922,7 +7932,7 @@ Cree_ErrorMessageNumber
 	move.l	(sp)+,d0
 	rts
 
-;	Trouve le numéro de la ligne pointee par A6->D0
+;	Trouve le numÃ©ro de la ligne pointee par A6->D0
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FindL	move.l	a6,d2
 	lea	20,a6
@@ -8137,7 +8147,7 @@ multdix:  dc.l 1000000000,100000000,10000000,1000000
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	OUVERTURE / TOKENISATION / TEST du source
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Open_Source
+Open_Source:
 ; - - - - - - - - - - - - -
 	clr.b	MathFlags(a5)		Pas de float par defaut
 ; Affichage
@@ -8738,7 +8748,7 @@ SoDi2:  bsr 	F_Read
 ; 	Ouverture du programme objet
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Open_Objet
-; Ouvre TOUJOURS en mémoire: reserve le 1er buffer
+; Ouvre TOUJOURS en mÃ©moire: reserve le 1er buffer
 	move.l	#L_Bob,d0
 	add.l	#16,d0
 	lea	BB_Objet_Base(a5),a0
@@ -9139,7 +9149,7 @@ GetBob	movem.l	a1/d0/d1,-(sp)
 ;-----> Poke un BYTE dans l'objet
 OutByte:tst.b	Flag_Objet(a5)
 	bne.s	OutbD
-* En mémoire
+* En mÃ©moire
 	movem.l	a0/a4,-(sp)
 .Reskip	move.l	BB_Objet(a5),a0
 	sub.l	(a0),a4
@@ -9168,7 +9178,7 @@ PamB:   rts
 ;-----> Poke un MOT dans l'objet
 OutWord:tst.b	Flag_Objet(a5)
 	bne.s	OutwD
-* En mémoire
+* En mÃ©moire
 OutW	movem.l	a0/a4,-(sp)
 .Reskip	move.l	BB_Objet(a5),a0
 	sub.l	(a0),a4
@@ -9197,7 +9207,7 @@ PamW:   rts
 ;-----> Poke un MOT LONG dans l'objet
 OutLong:tst.b	Flag_Objet(a5)
 	bne.s	OutlD
-* En mémoire
+* En mÃ©moire
 	movem.l	a0/a4,-(sp)
 .Reskip	move.l	BB_Objet(a5),a0
 	sub.l	(a0),a4
@@ -9749,7 +9759,7 @@ Libraries_Free
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	CHARGEMENT DE ROUTINES POUR LE COMPILATEUR
-;	A0=	Table des routines à charger
+;	A0=	Table des routines Ã  charger
 ;	A1=	Adresse du pointeur de buffer
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Load_Routines	
@@ -10140,7 +10150,7 @@ Init_Config
 	move.l	a0,d1
 	bsr	F_OpenOldD1
 	beq	Err_CantLoadIntConfig
-; Charge les données dc.w
+; Charge les donnÃ©es dc.w
 	moveq	#8,d3
 	move.l	B_Work(a5),d2
 	moveq	#F_Courant,d1
@@ -10154,7 +10164,7 @@ Init_Config
 	move.l	a0,d2
 	bsr	F_Read
 	bne	Err_CantLoadIntConfig
-; Charge les données texte
+; Charge les donnÃ©es texte
 	move.l	a2,d2
 	moveq	#8,d3
 	bsr	F_Read
@@ -10339,7 +10349,7 @@ Get_Urgence
 ; 	GESTION MEMOIRE
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-;	Reservation de la zone de donnée interne du compilateur
+;	Reservation de la zone de donnÃ©e interne du compilateur
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Reserve_DZ
 	movem.l	a0-a1/d0-d1,-(sp)
@@ -10383,7 +10393,7 @@ Free_Work
 
 ; 	Reservation des principaux buffers
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Reserve_Work
+Reserve_Work:
 	move.l	#256,d0			Name1
 	lea	Name1(a5),a0
 	bsr	Buffer_Reserve	
@@ -10420,7 +10430,7 @@ Reserve_Work
 Buffer_ReserveNoError
 	clr.w	-(sp)
 	bra.s	Buffer_R
-Buffer_Reserve
+Buffer_Reserve:
 	move.w	#-1,-(sp)
 Buffer_R
 	bsr	Buffer_Free		Par securite!
@@ -10888,7 +10898,7 @@ DeleteList
 	movem.l	(sp)+,a2/a6
 	rts
 
-;	Additionne le nom A0 au fichiers à detruire en fin de comp
+;	Additionne le nom A0 au fichiers Ã  detruire en fin de comp
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Add_DeleteList
 	move.l	Path_ToDelete(a5),a1
@@ -11084,7 +11094,8 @@ F_OpenNew
 	move.l	Name1(a5),d1
 F_OpenNewD1
 	move.l	#1006,d2
-F_Open	movem.l	d3/a6,-(sp)
+F_Open
+	movem.l	d3/a6,-(sp)
 	move.l	d0,d3
 	move.l	DosBase(a5),a6
 	jsr	_LVOOpen(a6)
@@ -11121,7 +11132,8 @@ F_CloseAll
 
 ;	READ fichier D1, D3 octets dans D2	
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-F_Read	movem.l	d1/a0-a1/a6,-(sp)
+F_Read:
+	movem.l	d1/a0-a1/a6,-(sp)
 	bsr	F_Handle
 	move.l	DosBase(a5),a6
 	jsr	_LVORead(a6)
@@ -12000,7 +12012,7 @@ Add_Routines
 		dc.l	AddPath-.R
 		dc.w	0		
 
-;		Routines à charger pour la tokenisation
+;		Routines Ã  charger pour la tokenisation
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Routines_Token	dc.w	L_Tokenisation
 		dc.w	L_CValRout
@@ -12010,7 +12022,7 @@ Routines_Token	dc.w	L_Tokenisation
 		dc.w	L_DoubleToAsc
 		dc.w	0
 
-;		Routines à charger pour le test
+;		Routines Ã  charger pour le test
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Routines_Test	dc.w	L_Testing
 		dc.w	L_CValRout
