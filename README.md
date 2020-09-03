@@ -1,3 +1,15 @@
+# Update September 2020
+
+The work here is based on the original AMOS Professional source taken from Aminet.Net - The ASCII formatting is preserved and an historical commit chain was created to follow the exact changes that were made to fix the broken source code.
+
+For historical note the branch subsequently provided by François Lionet on AOZ-Studio/AMOS-Professional-Official was not actually branched from here, it seems it was re-uploaded. They seemed to have had problems with the cira 1980's file format and made some changes such as:
+>[https://github.com/marc365/AMOS-Professional-Official/commit/99fa17f1466f563f0b60bfbef0598a83c881429a] (invalid label character that was breaking build)
+
+these are not needed in this "original" branch and I've decided to continue the "preservation" of the file format in this branch so won't merge. I have updated the name of this branch to AMOS Professional 365 so that the changes made here can be regarded as independent but can be integrated by anyone.
+
+This branch is being updated with stability fixes to the main system and this readme will be updated again when those commits are completed.
+
+# Future
 
 Anyone who is interested in this project should join François Lionets patreon:
 
