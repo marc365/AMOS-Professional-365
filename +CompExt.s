@@ -32,7 +32,7 @@
 		Include	"+Compext_Size.s"
 		Include	"+Compext_Labels.s"
 
-		INCDIR	"Work:Includes/i/"
+		INCDIR	"includes/"
 		Include "pp/powerpacker_lib.i"
 		Include "pp/ppbase.i"
 

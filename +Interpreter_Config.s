@@ -33,9 +33,9 @@ PI_AdMouse	dc.l 0			* 4 - Adresse souris
 		dc.l 128		* 16- Nombre lignes sprites
 ; Taille des buffers 
 ; ~~~~~~~~~~~~~~~~~~
-PI_VNmMax	dc.l 1024*4		* 20- Buffer des noms de variable
+PI_VNmMax	dc.l 1024*16	 * 20- Buffer des noms de variable
 PI_TVDirect	dc.w 42*6		* 24- Variables mode direct
-PI_DefSize	dc.l 1024*32		* 26- Taille buffer par defaut
+PI_DefSize	dc.l 1024*320		 * 26- Taille buffer par defaut
 ; Directory
 ; ~~~~~~~~~
 PI_DirSize	dc.w 30			* 30- 
@@ -56,7 +56,7 @@ PI_CloseEd	dc.b	1		38- Close editor effective
 PI_KillEd	dc.b	1		39- Kill editor effective
 PI_FsSort	dc.b	1		40- Sort files
 PI_FsSize	dc.b	1		41- Size of files
-PI_FsStore	dc.b	1		42- Store directories
+PI_FsStore	dc.b	0		42- Store directories
 ; Securite flags
 ; ~~~~~~~~~~~~~~
 		dc.b	0		43- Flag libre
@@ -64,7 +64,7 @@ PI_FsStore	dc.b	1		42- Store directories
 ; Text reader
 ; ~~~~~~~~~~~
 PI_RtSx		dc.w	640		48- Taille X ecran Readtext
-PI_RtSy		dc.w	200		50- Taille Y ecran Readtext
+PI_RtSy		dc.w	256		50- Taille Y ecran Readtext
 PI_RtWx		dc.w	129		52- Position X
 PI_RtWy		dc.w	50		54- Position Y
 PI_RtSpeed	dc.w	8		56- Vitesse apparition
@@ -78,7 +78,7 @@ PI_FsDVApp	dc.w	8		66- Vitesse app
 ; Ecran par defaut
 ; ~~~~~~~~~~~~~~~~
 PI_DefETx	dc.w 320		68- Tx default
-PI_DefETy	dc.w 200		70- Ty default
+PI_DefETy	dc.w 256		70- Ty default
 PI_DefECo	dc.w 4			72- Nplan default
 PI_DefECoN	dc.w 16			74- NColor default
 PI_DefEMo	dc.w 0			76- Mode default

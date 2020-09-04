@@ -271,7 +271,7 @@ HsLong:		equ 	20
 ***************************************************************
 		Rl	GPile,1
 		Rl	IntBase,1
-		Rl	IntScreen,1
+		Rl	ViewPort,1
 		Rl	GfxBase,1
 		Rl	LayBase,1
 		Rl	FntBase,1

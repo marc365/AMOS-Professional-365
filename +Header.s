@@ -124,7 +124,6 @@ ReRun_Normal
 	bsr	DecHunk
 	bmi	Abort_Mem
 	bsr	H_Reloc
-	bsr	EffLastLoad
 
 ; 4-5 : amos.library + datazone + mouse.abk
 	btst	#FHead_PRun,Head_Flags(a4)	PRun?
@@ -137,7 +136,6 @@ ReRun_Normal
 	bmi	Abort_Mem
 	tst.l	(a1)				Une librairie?
 	bne.s	.Libhere
-	bsr	EffLastLoad			Non, on enleve de la memoire
 	move.l	a6,-(sp)			Et on charge du disque
 	move.l	H_DosBase(a4),a6
 	lea	LibName2(pc),a0			APSystem/amos.library
@@ -224,14 +222,14 @@ ReRun_Normal
 	bmi	Abort_Mem
 	tst.l	(a1)
 	bne.s	.Mouse
-	bsr	EffLastLoad
 	bra.s	.FMouse
 .Mouse	move.l	a1,PI_AdMouse(a5)
-.FMouse	bra.s	.Fin45
+.FMouse	
+;bra.s	 .Fin45
 
 ; 4-5: RUN, on ne charge rien
-.Runne	bsr	EffHunk			Saute AMOS.library
-	bsr	EffHunk			Saute mouse.abk
+.Runne
+
 .Fin45
 
 ; 6 : Recopie l'environement systeme
@@ -250,13 +248,10 @@ ReRun_Normal
 	subq.l	#1,d0
 .Cop2	move.b	(a1)+,(a0)+
 	dbra	d0,.Cop2
-	bsr	EffLastLoad
 	bra.s	.PaPRun
 
 ; 4-5-6: PRUN, on saute tout!
-.PRunne	bsr	EffHunk			amos.library
-	bsr	EffHunk			mouse.abk
-	bsr	EffHunk			environment systeme
+.PRunne
 	move.b	#1,H_PRun(a4)		Met le flag PRUN
 .PaPRun
 
@@ -267,7 +262,6 @@ ReRun_Normal
 ; Une banque?
 	cmp.l	#-1,(a1)
 	bne.s	.Bk
-	bsr	EffLastLoad
 	bra.s	.Nobk
 ; Fabrique et branche la banque
 .Bk	lea	Sys_Banks(a5),a0
@@ -292,7 +286,7 @@ ReRun_Normal
 	subq.w	#1,d0
 .Cope	move.b	(a1)+,(a0)+
 	dbra	d0,.Cope
-.Noerr	bsr	EffLastLoad
+.Noerr
 
 ;	Short-Mem run, ou first run?
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -487,8 +481,6 @@ Run_Normal
 	move.l	Header_DZ(pc),a4
 ; Enleve le programme precedent
 	lea	H_Load+16(a4),a6
-	bsr	EffLastLoad		Les librairies
-	bsr	EffLastLoad		Le programmme
 	bsr	Abort_Run		Les banques + buffers
 	lea	Sys_Messages(a5),a0	+ les messages systeme
 	bsr	A0_Free
@@ -518,7 +510,7 @@ Load_Run
 	move.l	(a2)+,-4(a0)		Branche apres celui-ci
 	move.l	2(a2),d2		Flags programme + Flags hader
 	move.l	2+6(a2),d3		Prend les flags
-	bsr	H_Free
+	;bsr H_Free
 	moveq	#-1,d0			VRAI
 .Err	rts
 
@@ -883,7 +875,6 @@ Get_Bank
 	subq.l	#8,4(a1)
 	move.l	(a0),(a1)
 	move.l	a1,(a0)
-	bsr	EffLastLoad		Efface l'origine
 	bra	.Ok
 	ENDC
 ; Banque de sprites
@@ -939,7 +930,6 @@ Get_Bank
 	moveq	#32-1,d0
 .Pal	move.w	(a1)+,(a2)+
 	dbra	d0,.Pal
-	bsr	EffLastLoad		Debranche des hunks
 ; Retourne l'adresse de la banque
 .Ok	move.l	Cur_Banks(a5),a0	Retourne Start(b)
 	move.l	(a0),a0
@@ -951,16 +941,6 @@ Get_Bank
 ; Sortie
 .Out	movem.l	(sp)+,a2/d2-d4
 	rts
-
-;	Enleve le dernier hunk de la liste
-; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EffHunk	move.l	Header_DebPrg(pc),a0
-	move.l	-4(a0),d0
-	lsl.l	#2,d0
-	move.l	d0,a1			Adresse
-	move.l	(a1),-4(a0)		Detache de la liste
-	move.l	-(a1),d0		Longueur
-	bra	H_Free
 
 ;	Decompacte et enleve de la liste le HUNK suivant le header
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1026,18 +1006,6 @@ DecEnd	movem.l	(sp)+,a0/a2-a5/d2-d7
 	tst.l	d0			1= Ok existe / 0= termine / -1= out of mem!
 	rts
 
-;	Enleve le dernier pointeur de la liste (a6)
-; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EffLastLoad
-	movem.l	a1/d0,-(sp)
-	move.l	-(a6),d0
-	clr.l	(a6)
-	move.l	-(a6),a1
-	clr.l	(a6)
-	bsr	H_Free
-	movem.l	(sp)+,a1/d0
-	rts
-;	Efface de la liste le dernier pointeur
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ClrLastLoad
 	clr.l	-(a6)
@@ -1211,14 +1179,14 @@ H_AutoClick	dc.b	0,1
 		dc.l	0
 		dc.l	0
 		dc.l	0
-H_Click		dc.b	" Cancel ",0
+H_Click		dc.b	"Ok",0
 		even
 
 DosName		dc.b	"dos.library",0
 IntName		dc.b	"intuition.library",0
 GfxName		dc.b	"graphics.library",0
-OOfMem		dc.b	"Out of memory.",0
-NoAMOSlib	dc.b	"Cannot open AMOS.library (V2.00 or over).",0
+OOfMem		dc.b	"out of memory",0
+NoAMOSlib	dc.b	"cannot open AMOS.library",0
 LibName1	dc.b	"Libs:AMOS.library",0
 LibName2	dc.b	"APSystem/AMOS.library",0
 LibName3	dc.b	"Libs/AMOS.library",0

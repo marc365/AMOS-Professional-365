@@ -33,23 +33,14 @@
 	SECTION	"E",CODE
 ; - - - - - - - - - - - - -
 
-Hunk_1	jmp	Cold_Start
+    jmp	Cold_Start
 
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-; 	FIN DE L'INITIALISATION : ENLEVE LE HUNK INIT!
+; 	FIN DE L'INITIALISATION
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Init_Fin
 ; - - - - - - - - - - - - -
-
-; Enleve le hunk init
-; ~~~~~~~~~~~~~~~~~~~
-	lea	Hunk_1-8(pc),a0
-	lea	Hunk_2-8,a1
-	move.l	4(a1),4(a0)		Deconnecte le hunk 2
-	move.l	(a1),d0			Libere la memoire
-	move.l	$4.w,a6
-	jsr	_LVOFreeMem(a6)
 
 ; Ouvre une structure programme
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1422,7 +1413,6 @@ SP_Buffer	equ	__RS
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ; 	DEMARRAGE A FROID
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Hunk_2
 Cold_Start
 ; - - - - - - - - - - - - -
 	move.l	sp,SaveSp

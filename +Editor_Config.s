@@ -190,8 +190,8 @@ Debut
 		dc.b 	1,43,0			    Resource Maker
 		dc.b 	0,0,0			    -------------
 		dc.b 	1,44,0			10  Re-tokeniser
-		dc.b 	1,45,0			    Compiler Shell
-		dc.b 	1,46,0			    Compile
+		dc.b 	1,45,0			    Compiler
+		dc.b 	1,46,0			    Compile C_AMOS
 		dc.b 	0,0,0			    User Menu
 		dc.b 	0,0,0			    User Menu
 		dc.b 	0,0,0			15  User Menu
@@ -436,7 +436,7 @@ Debut
 		dc.b 	1,0,0			182
 		dc.b 	$80+$54,0,0		183Go Help
 		dc.b 	1,0,0			184
-		dc.b 	$FF,0
+		dc.b 	0,$FF
 
 .Ed_Code	dc.l	"1.10"		
 
@@ -520,7 +520,7 @@ Debut
 ; Chaines Menus
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	dc.l	.Mn2-.Mn1
-.Mn1	IncBin	"bin/Editor_Menus.asc"
+.Mn1	IncBin	"bin/+Editor_Menus.Asc"
 	Even
 .Mn2
 
@@ -1115,8 +1115,8 @@ Menu1	EdT	1,<Edit Objects>
 	EdT	9,<Resource Ed.>
 	EdT	10,<>
 	EdT	11,<Re-tokeniser>
-	EdT	12,<Compiler Shell>
-	EdT	13,<Compile>
+	EdT	12,<Compiler>
+	EdT	13,<Compile C_AMOS>
 	EdT	14,<>
 	EdT	15,<>
 	EdT	16,<>
@@ -1131,8 +1131,7 @@ Menu2
 ; Definitions Menu
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	dc.l	DMenu2-DMenu1
-DMenu1	Incbin	"bin/Editor_Menus.bin"
-	Even
+DMenu1	Incbin	"bin/+Editor_Menus.Bin"
 DMenu2	
 
 Fin

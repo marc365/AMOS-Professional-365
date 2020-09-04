@@ -6,7 +6,7 @@
 ;
 ;
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		OPT	P+
+
 
 ***************************************************************************
 		IFND	EZFlag
@@ -16,16 +16,21 @@ EZFlag		equ 	0
 
 		IncDir	"includes/"
 		Include "exec/types.i"
-		Include "exec/interrupts.i"
-		Include "graphics/gfx.i"
+		Include "graphics/rastport.i"
+		Include	"graphics/clip.i"
 		Include "graphics/layers.i"
-		Include "graphics/clip.i"
-		Include "hardware/intbits.i"
+		Include "graphics/text.i"
 		Include "devices/input.i"
 		Include "devices/inputevent.i"
+		Include "exec/interrupts.i"
+		Include "exec/io.i"
+		Include "hardware/intbits.i"
+		
+		Include "graphics/layers_lib.i"
+		Include "graphics/graphics_lib.i"
 
-		Include	"+Debug.s"
-		Include	"+AMOS_Includes.s"
+		Include	"+AMOS_Includes.S"
+
 
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Version	MACRO
@@ -9430,12 +9435,6 @@ StartAll
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	bsr	Wi_MakeFonte
 	bne	GFatal
-; 	Envoie le signal a l'AMOS Switcher
-; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	move.l	T_MyTask(a5),a0
-	move.l	a5,$58(a0)
-	moveq	#Switcher_Signal,d3
-	bsr	Send_Switcher
 .No20_c
 
 ; 	Tout fini: AMOS to front ?
@@ -9470,12 +9469,6 @@ EndAll	lea	Circuits,a6
 	moveq	#2,d0
 	bsr	WVbl_d0
 
-; Empeche le switcher de fonctionner (si 2.0)
-; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	cmp.w	#$0200,T_WVersion(a5)
-	bcs.s	.No20_a
-	moveq	#Switcher_Signal+1,d3
-	bsr	Send_Switcher
 ; 	Plus de requester
 ; ~~~~~~~~~~~~~~~~~~~~~~~
 	bsr	WRequest_Stop
@@ -9566,20 +9559,6 @@ IceEnd
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	bsr	WMemEnd			Plus de memory checking!
 	rts
-
-;	Envoie un signal à l'AMOS_Switcher (D3= signal)
-; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Send_Switcher
-	lea	Switcher(pc),a1
-	move.l	$4.w,a6
-	jsr	_LVOFindTask(a6)
-	tst.l	d0
-	beq.s	.PaSwi
-	move.l	d0,a1
-	moveq	#0,d0
-	bset	d3,d0
-	jsr	_LVOSignal(a6)
-.PaSwi	rts
 
 ;	Fabrique la fonte par defaut
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -9675,7 +9654,6 @@ DevName		dc.b	"input.device",0
 ConName		dc.b	"console.device",0
 LayName		dc.b	"layers.library",0
 TopazName	dc.b	"topaz.font",0
-Switcher	dc.b	"_Switcher AMOS_",0
 TaskName	dc.b	" AMOS",0
 		even
 ***********************************************************
@@ -9718,24 +9696,14 @@ TAMOSWb
 	beq.s	.NoWB
 	jsr	-78(a6)			
 .NoWB
-	lea	NewScreen(pc),a0
-	jsr	OpenScreen(a6)
-	move.l	d0,T_IntScreen(a5)
-
-	move.l	T_GfxBase(a5),a6		WaitTOF
-	jsr	-$10e(a6)
-	jsr	-$10e(a6)
-
-	sub.l	a1,a1
-	move.l	T_GfxBase(a5),a6
-	jsr	-$de(a6)			LoadView(a0)
-	jsr	-$10e(a6)			WaitTOF
-	jsr	-$10e(a6)			WaitTOF
-	move.w	$dff07c,d0
-	cmp.b	#$f8,d0				AA Chipset?
-	bne.s	.NoBug
-	move.w	#0,$dff1fc			Sprite resolution
-	move.w	#%0000110000000000,$dff106	Sprite width / DualPF palette
+	move.l  T_GfxBase(a5),a6	    WaitTOF
+    move.l  34(a6),T_ViewPort(a5)
+    move.l  #0,a1
+    jsr -222(a6)                LoadView
+	jsr -$10e(a6)
+	jsr -$10e(a6)
+    
+	move.w	 #%0000110000000000,$dff106	 Sprite width / DualPF palette
 .NoBug
 
 	movem.l	(sp)+,d0-d3/a0-a2/a6
@@ -9756,8 +9724,8 @@ TAMOSWb
 	move.b	#-1,T_AMOSHere+1(a5)		Code interdisant les requesters
 
 	move.w	T_OldDma(a5),$Dff096		Remet les chips
-	move.l	T_GfxBase(a5),a0
-	move.l 	38(a0),$dff080
+	move.l  T_GfxBase(a5),a0
+	move.l  38(a0),$dff080
 	clr.w	$dff088
 
 ; Efface l'ecran si AA
@@ -9769,11 +9737,12 @@ TAMOSWb
 	btst	#WFlag_WBClosed,T_WFlags(a5)	Si WB ferme, le rouvre!
 	beq.s	.NoBW
 	jsr	-210(a6)			Reopen workbench
-.NoBW	move.l	T_IntScreen(a5),a0		Close screen
-	jsr	CloseScreen(a6)
-	move.l	T_GfxBase(a5),a6
-	jsr	-$10e(a6)			WaitTOF
-	jsr	-$10e(a6)			WaitTOF
+.NoBW	
+    move.l  T_ViewPort(a5),a1      Close screen
+	move.l  T_GfxBase(a5),a6
+    jsr     -222(a6)        load view
+	jsr -$10e(a6)		    WaitTOF
+	jsr -$10e(a6)		    WaitTOF
 	movem.l	(sp)+,d0-d3/a0-a2/a6
 .PaAA1
 	clr.b	T_AMOSHere+1(a5)		Flip termine!
@@ -9824,16 +9793,6 @@ WiAuto		ds.b	8*6+WiSAuto+4
 		even
 ; Table de retournement bobs
 TRetour		ds.b	256
-
-NTx:		equ 480
-NTy:		equ 12
-NNp:		equ 1
-NewScreen:	dc.w 0,0,NTx,NTy,NNp
-		dc.b 1,0
-		dc.w %0010000000000000,%00000110
-		dc.l 0,0,0,0
-		ds.b	16
-		even
 
 ;		Caracteres speciaux des fontes AMOS
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -10498,6 +10457,8 @@ PaSync:
 	moveq	#0,d0
 	rts
 
+WVbl
+    moveq   #1,d0
 ******* WAIT VBL D0, multitache
 WVbl_D0	movem.l	d0-d1/a0-a1/a6,-(sp)
 	move.w	d0,-(sp)
@@ -10507,14 +10468,7 @@ WVbl_D0	movem.l	d0-d1/a0-a1/a6,-(sp)
 	bne.s	.Lp
 	addq.l	#2,sp
 	movem.l	(sp)+,d0-d1/a0-a1/a6
-	rts
-
-******* WAIT VBL
-WVbl:	move.l	T_VblCount(a5),d0
-WVbl1:	cmp.l	T_VblCount(a5),d0
-	beq.s	WVbl1
-	moveq	#0,d0
-	rts		
+	rts	
 
 ******* Traitement de la souris
 MousInt:tst.b	T_AMOSHere(a5)

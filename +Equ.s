@@ -1955,7 +1955,7 @@ Edt_Bt1		rs.b	Bt_Long		Structures bouton
 Edt_Bt2		rs.b	Bt_Long
 Edt_Bt3		rs.b	Bt_Long
 		rs.w	1
-Edt_Long	equ	__RS		Longueur de la structure
+Edt_Long	equ	__RS+16		Longueur de la structure
 
 ;						Flags de la ligne d'etat
 ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
