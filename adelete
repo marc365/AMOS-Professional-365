@@ -1,0 +1,20 @@
+echo "Deleting previous config files"
+Delete >NIL: AMOS/AMOSPro_Compiler_Config
+Delete >NIL: AMOS/AMOSPro_Interpreter_Config
+Delete >NIL: AMOS/APSystem/AMOSPro_Editor_Config
+echo "Deleting files from previous build"
+Delete >NIL: AMOS/APSystem/AMOS.library
+Delete >NIL: AMOS/APSystem/AMOSPro.Lib
+;Delete >NIL: AMOS/APSystem/AMOSPro_3d.Lib
+Delete >NIL: AMOS/APSystem/AMOSPro_Compact.Lib
+Delete >NIL: AMOS/APSystem/AMOSPro_Compiler.Lib
+Delete >NIL: AMOS/APSystem/AMOSPro_Editor
+Delete >NIL: AMOS/APSystem/AMOSPro_IOPorts.Lib
+Delete >NIL: AMOS/APSystem/AMOSPro_Monitor
+Delete >NIL: AMOS/APSystem/AMOSPro_Music.Lib
+Delete >NIL: AMOS/APSystem/AMOSPro_Request.Lib
+Delete >NIL: AMOS/APSystem/APCmp
+Delete >NIL: AMOS/APSystem/Compiler.Lib
+Delete >NIL: AMOS/APSystem/Header_Backstart.Lib
+Delete >NIL: AMOS/APSystem/Header_CLI.Lib
+

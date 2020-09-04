@@ -1,0 +1,3 @@
+echo "Assembling AMOSPro_Request.Lib"
+c/Library_Digest +Request.s
+c/Genam FROM +Request.s TO AMOS/APSystem/AMOSPro_Request.Lib

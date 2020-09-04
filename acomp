@@ -1,6 +1,4 @@
-echo "***Assembling compiler"
-execute compiler/acdata
-execute compiler/acomp
-execute compiler/aclib
-execute compiler/acompext
-execute compiler/aheader
+echo "Assembling APCmp Command Line Compiler"
+c/Genam FROM +APComp.s TO AMOS/APSystem/APCmp
+echo "Installing APCmp to C:"
+copy AMOS/APSystem/APCmp c:

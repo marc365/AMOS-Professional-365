@@ -1,2 +1,2 @@
-echo "***Assembling AMOSPro_Editor"
+echo "Assembling AMOSPro_Editor"
 c/Genam FROM +Edit.s TO AMOS/APSystem/AMOSPro_Editor

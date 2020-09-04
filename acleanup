@@ -1,0 +1,30 @@
+echo "Deleting temporary files"
+Delete >NIL: "+CLib_Labels.s"
+Delete >NIL: "+CLib_Size.s"
+Delete >NIL: "+Compact_Labels.s"
+Delete >NIL: "+Compact_Size.s"
+Delete >NIL: "+Compext_Labels.s"
+Delete >NIL: "+Compext_Size.s"
+Delete >NIL: "+ILib_Functions.s"
+Delete >NIL: "+ILib_Size.s"
+Delete >NIL: "+IO_Ports_Labels.s"
+Delete >NIL: "+IO_Ports_Size.s"
+Delete >NIL: "+Internal_Jumps.s"
+Delete >NIL: "+LEqu.s"
+Delete >NIL: "+Lib_Size.s"
+Delete >NIL: "+Music_Labels.s"
+Delete >NIL: "+Music_Size.s"
+Delete >NIL: "+Request_Labels.s"
+Delete >NIL: "+Request_Size.s"
+Delete >NIL: "+Toktab_Verif.Bin"
+Delete >NIL: "Instruction_List.Asc"
+Delete >NIL: "bin/Compiler_Config.o"
+Delete >NIL: "bin/Editor_Config.o"
+Delete >NIL: "bin/Interpreter_Config.o"
+
+Delete >NIL: c/Check_CLib.info
+Delete >NIL: c/Get_Chunk.info
+Delete >NIL: c/Library_Digest.info
+Delete >NIL: c/Make_labels.info
+Delete >NIL: c/Make_Toktable.info
+Delete >NIL: c/Make_Checklist.info

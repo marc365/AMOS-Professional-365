@@ -1,2 +1,2 @@
-echo "***Assembling AMOSPro_Monitor"
-c/genam FROM +Monitor.s TO AMOS/APSystem/AMOSPro_Monitor
+echo "Assembling AMOSPro_Monitor"
+c/Genam FROM +Monitor.s TO AMOS/APSystem/AMOSPro_Monitor

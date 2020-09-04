@@ -1,0 +1,2 @@
+echo "Assembling AMOSPro_3d.Lib"
+c/Genim2 +3d.s -oAMOS/APSystem/AMOSPro_3d.Lib -c

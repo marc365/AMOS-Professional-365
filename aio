@@ -1,0 +1,3 @@
+echo "Assembling AMOSPro_IOPorts.Lib"
+c/Library_Digest +IO_Ports.s
+c/Genam FROM +IO_Ports.s TO AMOS/APSystem/AMOSPro_IOPorts.Lib

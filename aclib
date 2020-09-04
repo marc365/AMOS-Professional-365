@@ -1,0 +1,4 @@
+echo "Assembling Compiler.Lib"
+c/Library_Digest +CLib.s
+c/Check_CLib
+c/Genam FROM +CLib.s TO AMOS/APSystem/Compiler.Lib

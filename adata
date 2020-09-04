@@ -1,15 +1,29 @@
-echo "***Assembling the Editor Configuration"
-c/genim2 +Editor_Config.s -oRAM:Editor_Config.o
-c/Get_Chunk RAM:Editor_Config.o AMOS/Tutorial/Extra_Configs/Editor_Config.Backup
 
-echo "***Assembling the default Interpreter Configuration"
-c/genim2 +Interpreter_Config.s -oRAM:Interpreter_Config.o
-c/Get_Chunk RAM:Interpreter_Config.o AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup
+;echo "Assembling Editor Menus Bin"
+;c/Genim2 +Editor_Menus_Bin.s -obin/+Editor_Menus_Bin.o -C
+;c/Get_Chunk bin/+Editor_Menus_Bin.o bin/+Editor_Menus.Bin
 
-echo "***Installing default configuration"
+;echo "Assembling Editor Menus Asc"
+;c/Genim2 +Editor_Menus_Asc.s -obin/+Editor_Menus_Asc.o -C
+;c/Get_Chunk bin/+Editor_Menus_Asc.o bin/+Editor_Menus.Asc
+
+echo "Assembling the Editor Configuration"
+c/Genim2 +Editor_Config.s -obin/Editor_Config.o
+c/Get_Chunk bin/Editor_Config.o AMOS/Tutorial/Extra_Configs/Editor_Config.Backup
+
+echo "Assembling the Interpreter Configuration"
+c/Genim2 +Interpreter_Config.s -obin/Interpreter_Config.o
+c/Get_Chunk bin/Interpreter_Config.o AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup
+
+echo "Assembling the Compiler Configuration"
+c/Genim2 +Compiler_Config.s -obin/Compiler_Config.o
+c/Get_Chunk bin/Compiler_Config.o AMOS/Tutorial/Extra_Configs/Compiler_Config.Backup
+
+echo "Installing configurations: editor to APSystem, interpreter and compiler to /"
 Copy AMOS/Tutorial/Extra_Configs/Editor_Config.Backup AMOS/APSystem/AMOSPro_Editor_Config
 Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup AMOS/AMOSPro_Interpreter_Config
+Copy AMOS/Tutorial/Extra_Configs/Compiler_Config.Backup AMOS/AMOSPro_Compiler_Config
 
-echo "***Installing default configuration to s:"
+echo "Installing default configuration to s:"
 Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup s:AMOSPro_Interpreter_Config
-
+Copy AMOS/Tutorial/Extra_Configs/Compiler_Config.Backup s:AMOSPro_Compiler_Config

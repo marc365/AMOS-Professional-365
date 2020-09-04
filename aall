@@ -1,18 +1,20 @@
-echo "***Assembling RELEASE build"
+execute adelete
 execute alib
 execute aw
 execute apro
 execute adata
 execute aedit
 execute amon
-execute aext
+execute arequest
+execute amusic
+execute acompact
+execute aio
+;execute a3d
 execute acomp
+execute acompext
+execute aclib
+execute aheader
 
-delete >NIL: +LEqu.s
-delete >NIL: +Toktab_Verif.Bin
+c/Make_Checklist
 
-echo "***Success RELEASE build"
-
-echo "***Running Tests"
-execute atools
-echo "***All Tests Successful"
+execute acleanup

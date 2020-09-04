@@ -1,9 +1,11 @@
-echo "***Making Token Table +Toktab_Verif.Bin"
+;echo "Assembling Dialog Functions"
+;c/Genim2 +Dialog_Funcs_Bin.s -obin/(+Dialog_Funcs.o) -C
+;c/Get_Chunk bin/(+Dialog_Funcs.o) bin/+Dialog_Funcs.bin
+
+echo "Making Token Table +Toktab_Verif.Bin"
 c/Make_Toktable
-echo "***Making Label Files"
+echo "Making Label Files"
+
 c/Make_Labels
-echo "***Assembling AMOSPro.Lib"
-c/genam FROM +lib.s TO AMOS/APSystem/AMOSPro.Lib
-delete >NIL: +ILib_Functions.s
-delete >NIL: +ILib_Size.s
-delete >NIL: +lib_size.s
+echo "Assembling AMOSPro.Lib"
+c/Genam FROM +lib.s TO AMOS/APSystem/AMOSPro.Lib
