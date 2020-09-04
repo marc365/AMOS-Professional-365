@@ -1,3 +1,0 @@
-.Key Drv
-Format drive <Drv> Name AMOSPro_Extras NOICONS QUICK
-Copy APC_Extras: <Drv> ALL

@@ -1,3 +1,0 @@
-Genim2 |Editor_DBL.s -o(Editor_DBL.o)
-GetChunk (Editor_DBL.o) Editor_DBL.Bin
-AMOSPro -w Insert_DBL.AMOS APSystem/AMOSPro_Editor_Resource.Abk Editor_DBL.Bin 2

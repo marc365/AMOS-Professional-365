@@ -1,3 +1,0 @@
-Copy +Debug1.s +Debug.s
-Copy +Debug1.s +Debug_On
-Delete +Debug_2On

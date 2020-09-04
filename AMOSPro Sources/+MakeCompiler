@@ -1,4 +1,0 @@
-.Key Drv
-Format drive <Drv> Name AMOSPro_Compiler NOICONS QUICK
-Install <Drv>
-Copy APC_Compiler: <Drv> ALL
