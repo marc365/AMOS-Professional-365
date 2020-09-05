@@ -1,6 +1,6 @@
 # AMOS Professional 365 (research version)
 
-This is more stable than the original and works perfectly, it has been tested over a long period of time. It has some personal customizations to the configs that I find comfortable and is a bit more system friendly - it includes a Macro that gets the scroll wheel working in the editor and memory tweaks that stop AMOS from crashing.
+This is more stable than the original and works perfectly, it has been tested over a long period of time. It has some personal customizations to the configs that I find comfortable and is more system friendly - it includes a Macro that gets the scroll wheel working in the editor and memory tweaks that stop AMOS from crashing.
 
 # Instructions
 
@@ -19,8 +19,6 @@ For historical note the branch subsequently provided by François Lionet on AOZ-
 >[invalid label character that was breaking build](https://github.com/AOZ-Studio/AMOS-Professional-Official/commit/99fa17f1466f563f0b60bfbef0598a83c881429a)
 
 these are not needed in this "original" branch and I've decided to continue the "preservation" of the file format in this branch so won't merge. I have updated the name of this branch to AMOS Professional 365 so that the changes made here can be regarded as independent but can be integrated by anyone.
-
-This branch is being updated with stability fixes to the main system and this readme will be updated again when those commits are completed.
 
 # Future
 
