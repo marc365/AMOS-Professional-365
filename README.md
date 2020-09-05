@@ -1,3 +1,15 @@
+# AMOS Professional 365 (research version)
+
+This is more stable than the original and works perfectly, it has been tested over a long period of time. It has some personal customizations to the configs that I find comfortable and is a bit more system friendly - it includes a Macro that gets the scroll wheel working in the editor and memory tweaks that stop AMOS from crashing.
+
+# Instructions
+
+This package contains everything needed to rebuild AMOS, and a fully built version in the /AMOS folder - there are a number of assembly build scripts prefixed with the "a..." character. The main build is accomplished by using "execute aall" in the CLI which executes each script in the correct sequence, also installing the config to S: and the library to LIBS:
+
+AMOS is well documented and supported on other websites and you are encouraged to learn from these sources as I have.
+
+There are also other branches available on github working on different aspects, you are also encouraged to search for these and get involved.
+
 # Update September 2020
 
 The work here is based on the original AMOS Professional source taken from Aminet.Net - The ASCII formatting is preserved and an historical commit chain was created to follow the exact changes that were made to fix the broken source code.
