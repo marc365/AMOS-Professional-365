@@ -13,7 +13,9 @@ execute arequestext
 execute amusicext
 execute acompactext
 execute aioext
-;execute a3dext
+execute a3dext
 c/Make_Checklist
 
-;execute acleanup
+execute acleanup
+
+echo "***assembly script complete***"

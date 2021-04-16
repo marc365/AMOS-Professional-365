@@ -124,7 +124,7 @@ Txt1		EdT	1,<APSystem/>
 		EdT	16,<AMOSPro_Music.Lib>
 		EdT	17,<AMOSPro_Compact.Lib>
 		EdT	18,<AMOSPro_Request.Lib>
-		EdT	19,<>
+		EdT	19,<AMOSPro_3d.Lib>
 		EdT	20,<AMOSPro_Compiler.Lib>
 		EdT	21,<AMOSPro_IOPorts.Lib>
 		EdT	22,<>
