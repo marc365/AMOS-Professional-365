@@ -1094,7 +1094,7 @@ Auto1	EdT	1,<AMOSPro_Accessories:AMOSPro_Help/AMOSPro_Help.AMOS>
 	EdT	41,<AMOSPro_Accessories:Object_Editor.AMOS>
 	EdT	42,<AMOSPro_Accessories:Sample_Bank_Maker.AMOS>
 	EdT	43,<AMOSPro_Accessories:Resource_Bank_Maker.AMOS>
-	EdT	44,<AMOSPro_Tutorial:ReTokenise.AMOS>
+	EdT	44,<AMOSPro_Accessories:ReTokenise.AMOS>
 	EdT	45,<AMOSPro_Compiler:Compiler_Shell.AMOS>
 	EdT	46,<AMOSPro_Compiler:Tiny_Shell.AMOS>
 	dc.b	0,$ff
